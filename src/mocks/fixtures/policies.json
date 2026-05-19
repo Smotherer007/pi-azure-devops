@@ -1,0 +1,61 @@
+{
+  "policies": [
+    {
+      "id": 1,
+      "type": {
+        "id": "policy-min-reviewers",
+        "displayName": "Minimum reviewers",
+        "url": "https://dev.azure.com/testorg/_apis/policy/types/policy-min-reviewers"
+      },
+      "scope": [
+        { "repositoryId": null, "refName": "refs/heads/main", "matchKind": "Exact" }
+      ],
+      "settings": {
+        "minimumApproverCount": 2,
+        "creatorVoteCounts": false,
+        "allowDownvotes": false,
+        "resetOnSourcePush": true
+      },
+      "isBlocking": true,
+      "isDeleted": false
+    },
+    {
+      "id": 2,
+      "type": {
+        "id": "policy-build",
+        "displayName": "Build validation",
+        "url": "https://dev.azure.com/testorg/_apis/policy/types/policy-build"
+      },
+      "scope": [
+        { "repositoryId": null, "refName": "refs/heads/main", "matchKind": "Exact" }
+      ],
+      "settings": {
+        "buildDefinitionId": 42,
+        "displayName": "CI Pipeline",
+        "manualQueueOnly": false,
+        "queueOnSourceUpdateOnly": true,
+        "validDuration": 1440
+      },
+      "isBlocking": true,
+      "isDeleted": false
+    },
+    {
+      "id": 3,
+      "type": {
+        "id": "policy-required-reviewer",
+        "displayName": "Required reviewer",
+        "url": "https://dev.azure.com/testorg/_apis/policy/types/policy-required-reviewer"
+      },
+      "scope": [
+        { "repositoryId": "repo-api", "refName": "refs/heads/main", "matchKind": "Exact" }
+      ],
+      "settings": {
+        "requiredReviewerIds": ["team-security"],
+        "creatorVoteCounts": false,
+        "message": "Security team review required for API changes"
+      },
+      "isBlocking": true,
+      "isDeleted": false
+    }
+  ]
+}

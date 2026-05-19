@@ -1,0 +1,70 @@
+{
+  "testSuites": {
+    "101": [
+      {
+        "id": 201,
+        "name": "Sprint 42 Testing",
+        "suiteType": "staticTestSuite",
+        "parentSuite": null,
+        "children": [301, 302],
+        "plan": { "id": 101, "name": "Sprint 42 Testing" },
+        "testCaseCount": 0,
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/testplan/Plans/101/Suites/201"
+      },
+      {
+        "id": 301,
+        "name": "Login Feature",
+        "suiteType": "staticTestSuite",
+        "parentSuite": { "id": 201, "name": "Sprint 42 Testing" },
+        "children": [],
+        "plan": { "id": 101, "name": "Sprint 42 Testing" },
+        "testCaseCount": 3,
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/testplan/Plans/101/Suites/301"
+      },
+      {
+        "id": 302,
+        "name": "Dashboard Requirements",
+        "suiteType": "requirementTestSuite",
+        "parentSuite": { "id": 201, "name": "Sprint 42 Testing" },
+        "children": [],
+        "requirementId": 5001,
+        "plan": { "id": 101, "name": "Sprint 42 Testing" },
+        "testCaseCount": 2,
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/testplan/Plans/101/Suites/302"
+      },
+      {
+        "id": 303,
+        "name": "Priority 1 Cases",
+        "suiteType": "dynamicTestSuite",
+        "parentSuite": { "id": 201, "name": "Sprint 42 Testing" },
+        "children": [],
+        "queryString": "SELECT [System.Id] FROM WorkItems WHERE [System.WorkItemType] = 'Test Case' AND [Microsoft.VSTS.Common.Priority] = 1",
+        "plan": { "id": 101, "name": "Sprint 42 Testing" },
+        "testCaseCount": 1,
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/testplan/Plans/101/Suites/303"
+      }
+    ],
+    "102": [
+      {
+        "id": 202,
+        "name": "Regression Suite",
+        "suiteType": "staticTestSuite",
+        "parentSuite": null,
+        "children": [401],
+        "plan": { "id": 102, "name": "Regression Suite" },
+        "testCaseCount": 0,
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/testplan/Plans/102/Suites/202"
+      },
+      {
+        "id": 401,
+        "name": "API Tests",
+        "suiteType": "staticTestSuite",
+        "parentSuite": { "id": 202, "name": "Regression Suite" },
+        "children": [],
+        "plan": { "id": 102, "name": "Regression Suite" },
+        "testCaseCount": 2,
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/testplan/Plans/102/Suites/401"
+      }
+    ]
+  }
+}

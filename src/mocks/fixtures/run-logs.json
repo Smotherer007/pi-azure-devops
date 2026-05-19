@@ -1,0 +1,30 @@
+{
+  "logs": {
+    "42": [
+      {
+        "id": 1,
+        "type": "Container",
+        "createdOn": "2024-01-15T10:00:05Z",
+        "lastChangedOn": "2024-01-15T10:00:30Z",
+        "lineCount": 15,
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/build/builds/42/logs/1"
+      },
+      {
+        "id": 2,
+        "type": "Container",
+        "createdOn": "2024-01-15T10:00:35Z",
+        "lastChangedOn": "2024-01-15T10:08:00Z",
+        "lineCount": 142,
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/build/builds/42/logs/2"
+      },
+      {
+        "id": 3,
+        "type": "Container",
+        "createdOn": "2024-01-15T10:08:05Z",
+        "lastChangedOn": "2024-01-15T10:12:30Z",
+        "lineCount": 89,
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/build/builds/42/logs/3"
+      }
+    ]
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "prCommits": {
+    "1": [
+      {
+        "commitId": "ghi3456789012",
+        "author": { "name": "Alice Developer", "date": "2026-05-10T09:00:00Z" },
+        "comment": "Add login page component",
+        "url": "https://dev.azure.com/testorg/TestProject/_git/webapp/commit/ghi3456789012"
+      },
+      {
+        "commitId": "ghi3456789013",
+        "author": { "name": "Alice Developer", "date": "2026-05-10T10:00:00Z" },
+        "comment": "Add OAuth callback handler",
+        "url": "https://dev.azure.com/testorg/TestProject/_git/webapp/commit/ghi3456789013"
+      },
+      {
+        "commitId": "ghi3456789014",
+        "author": { "name": "Alice Developer", "date": "2026-05-10T11:20:00Z" },
+        "comment": "Add error handling for token exchange",
+        "url": "https://dev.azure.com/testorg/TestProject/_git/webapp/commit/ghi3456789014"
+      }
+    ],
+    "2": [
+      {
+        "commitId": "jkl4567890123",
+        "author": { "name": "Alice Developer", "date": "2026-05-08T16:45:00Z" },
+        "comment": "Fix token refresh edge case",
+        "url": "https://dev.azure.com/testorg/TestProject/_git/webapp/commit/jkl4567890123"
+      }
+    ],
+    "4": [
+      {
+        "commitId": "pqr6789012345",
+        "author": { "name": "Carol QA", "date": "2026-05-11T07:00:00Z" },
+        "comment": "Add unit tests for auth endpoint",
+        "url": "https://dev.azure.com/testorg/TestProject/_git/api-service/commit/pqr6789012345"
+      },
+      {
+        "commitId": "pqr6789012346",
+        "author": { "name": "Carol QA", "date": "2026-05-11T07:30:00Z" },
+        "comment": "Add integration tests for auth flow",
+        "url": "https://dev.azure.com/testorg/TestProject/_git/api-service/commit/pqr6789012346"
+      },
+      {
+        "commitId": "pqr6789012347",
+        "author": { "name": "Carol QA", "date": "2026-05-11T08:00:00Z" },
+        "comment": "Add mock server setup for tests",
+        "url": "https://dev.azure.com/testorg/TestProject/_git/api-service/commit/pqr6789012347"
+      },
+      {
+        "commitId": "pqr6789012348",
+        "author": { "name": "Carol QA", "date": "2026-05-11T08:15:00Z" },
+        "comment": "Add rate-limit test scenario",
+        "url": "https://dev.azure.com/testorg/TestProject/_git/api-service/commit/pqr6789012348"
+      }
+    ],
+    "5": [
+      {
+        "commitId": "stu7890123456",
+        "author": { "name": "Eve Maintainer", "date": "2026-05-09T11:00:00Z" },
+        "comment": "Refactor string utils to shared-libs",
+        "url": "https://dev.azure.com/testorg/TestProject/_git/shared-libs/commit/stu7890123456"
+      },
+      {
+        "commitId": "stu7890123457",
+        "author": { "name": "Eve Maintainer", "date": "2026-05-09T11:15:00Z" },
+        "comment": "Refactor date formatting helpers",
+        "url": "https://dev.azure.com/testorg/TestProject/_git/shared-libs/commit/stu7890123457"
+      }
+    ]
+  }
+}

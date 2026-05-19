@@ -1,0 +1,43 @@
+{
+  "testPlans": [
+    {
+      "id": 101,
+      "name": "Sprint 42 Testing",
+      "state": "active",
+      "iteration": "TestProject\\Sprint 42",
+      "startDate": "2024-01-15T00:00:00Z",
+      "endDate": "2024-01-29T00:00:00Z",
+      "owner": { "displayName": "Alice Johnson", "uniqueName": "alice@example.com" },
+      "rootSuite": { "id": 201, "name": "Sprint 42 Testing" },
+      "revision": 3,
+      "areaPath": "TestProject\\Quality",
+      "url": "https://dev.azure.com/testorg/TestProject/_apis/testplan/Plans/101"
+    },
+    {
+      "id": 102,
+      "name": "Regression Suite",
+      "state": "active",
+      "iteration": "TestProject",
+      "startDate": "2024-01-01T00:00:00Z",
+      "endDate": "2024-12-31T00:00:00Z",
+      "owner": { "displayName": "Bob Smith", "uniqueName": "bob@example.com" },
+      "rootSuite": { "id": 202, "name": "Regression Suite" },
+      "revision": 7,
+      "areaPath": "TestProject\\Quality",
+      "url": "https://dev.azure.com/testorg/TestProject/_apis/testplan/Plans/102"
+    },
+    {
+      "id": 103,
+      "name": "Smoke Tests",
+      "state": "inactive",
+      "iteration": "TestProject\\Sprint 40",
+      "startDate": "2023-12-01T00:00:00Z",
+      "endDate": "2023-12-15T00:00:00Z",
+      "owner": { "displayName": "Alice Johnson", "uniqueName": "alice@example.com" },
+      "rootSuite": { "id": 203, "name": "Smoke Tests" },
+      "revision": 2,
+      "areaPath": "TestProject",
+      "url": "https://dev.azure.com/testorg/TestProject/_apis/testplan/Plans/103"
+    }
+  ]
+}

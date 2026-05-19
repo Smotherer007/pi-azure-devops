@@ -1,0 +1,77 @@
+{
+  "capacities": {
+    "Engineering:sprint-3": {
+      "teamMembers": [
+        {
+          "teamMember": {
+            "id": "id-jane",
+            "displayName": "Jane Developer",
+            "uniqueName": "jane@contoso.com"
+          },
+          "activities": [
+            { "name": "Development", "capacityPerDay": 6.0 },
+            { "name": "Code Review", "capacityPerDay": 1.0 }
+          ],
+          "daysOff": [
+            { "start": "2026-04-25T00:00:00Z", "end": "2026-04-25T00:00:00Z" }
+          ]
+        },
+        {
+          "teamMember": {
+            "id": "id-alex",
+            "displayName": "Alex Engineer",
+            "uniqueName": "alex@contoso.com"
+          },
+          "activities": [
+            { "name": "Development", "capacityPerDay": 7.0 }
+          ],
+          "daysOff": []
+        },
+        {
+          "teamMember": {
+            "id": "id-sam",
+            "displayName": "Sam DevOps",
+            "uniqueName": "sam@contoso.com"
+          },
+          "activities": [
+            { "name": "Infrastructure", "capacityPerDay": 4.0 },
+            { "name": "Development", "capacityPerDay": 3.0 }
+          ],
+          "daysOff": [
+            { "start": "2026-04-28T00:00:00Z", "end": "2026-04-29T00:00:00Z" }
+          ]
+        }
+      ],
+      "totalCapacityPerDay": 24.0,
+      "totalDaysOff": 3
+    },
+    "Engineering:sprint-4": {
+      "teamMembers": [
+        {
+          "teamMember": {
+            "id": "id-jane",
+            "displayName": "Jane Developer",
+            "uniqueName": "jane@contoso.com"
+          },
+          "activities": [
+            { "name": "Development", "capacityPerDay": 6.0 }
+          ],
+          "daysOff": []
+        },
+        {
+          "teamMember": {
+            "id": "id-alex",
+            "displayName": "Alex Engineer",
+            "uniqueName": "alex@contoso.com"
+          },
+          "activities": [
+            { "name": "Development", "capacityPerDay": 7.0 }
+          ],
+          "daysOff": []
+        }
+      ],
+      "totalCapacityPerDay": 13.0,
+      "totalDaysOff": 0
+    }
+  }
+}

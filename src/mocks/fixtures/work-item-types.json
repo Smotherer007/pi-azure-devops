@@ -1,0 +1,77 @@
+{
+  "workItemTypes": [
+    {
+      "name": "User Story",
+      "referenceName": "Microsoft.VSTS.WorkItemTypes.UserStory",
+      "description": "Tracks an item of user value. Captures the 'who, what, and why' of a feature.",
+      "color": "009CCC",
+      "icon": { "id": "aee38017-5a31-4e7d-ad5c-4b87c4c3c5a5", "url": "/_apis/wit/workItemIcons/aee38017-5a31-4e7d-ad5c-4b87c4c3c5a5" },
+      "states": [
+        { "name": "New", "color": "B2B2B2" },
+        { "name": "Active", "color": "009CCC" },
+        { "name": "Resolved", "color": "339933" },
+        { "name": "Closed", "color": "339933" }
+      ]
+    },
+    {
+      "name": "Bug",
+      "referenceName": "Microsoft.VSTS.WorkItemTypes.Bug",
+      "description": "Tracks a deviation from expected behavior.",
+      "color": "CC293D",
+      "icon": { "id": "aee38017-5a31-4e7d-ad5c-4b87c4c3c5a5", "url": "/_apis/wit/workItemIcons/aee38017-5a31-4e7d-ad5c-4b87c4c3c5a5" },
+      "states": [
+        { "name": "New", "color": "B2B2B2" },
+        { "name": "Active", "color": "CC293D" },
+        { "name": "Resolved", "color": "339933" },
+        { "name": "Closed", "color": "339933" }
+      ]
+    },
+    {
+      "name": "Task",
+      "referenceName": "Microsoft.VSTS.WorkItemTypes.Task",
+      "description": "Tracks work that needs to be done.",
+      "color": "F2CB1D",
+      "icon": { "id": "aee38017-5a31-4e7d-ad5c-4b87c4c3c5a5", "url": "/_apis/wit/workItemIcons/aee38017-5a31-4e7d-ad5c-4b87c4c3c5a5" },
+      "states": [
+        { "name": "To Do", "color": "B2B2B2" },
+        { "name": "In Progress", "color": "F2CB1D" },
+        { "name": "Done", "color": "339933" }
+      ]
+    },
+    {
+      "name": "Feature",
+      "referenceName": "Microsoft.VSTS.WorkItemTypes.Feature",
+      "description": "Tracks a group of user stories that deliver a cohesive feature.",
+      "color": "773B93",
+      "icon": { "id": "aee38017-5a31-4e7d-ad5c-4b87c4c3c5a5", "url": "/_apis/wit/workItemIcons/aee38017-5a31-4e7d-ad5c-4b87c4c3c5a5" },
+      "states": [
+        { "name": "New", "color": "B2B2B2" },
+        { "name": "In Progress", "color": "773B93" },
+        { "name": "Done", "color": "339933" }
+      ]
+    },
+    {
+      "name": "Epic",
+      "referenceName": "Microsoft.VSTS.WorkItemTypes.Epic",
+      "description": "Tracks a large deliverable that spans multiple features.",
+      "color": "E06C00",
+      "icon": { "id": "aee38017-5a31-4e7d-ad5c-4b87c4c3c5a5", "url": "/_apis/wit/workItemIcons/aee38017-5a31-4e7d-ad5c-4b87c4c3c5a5" },
+      "states": [
+        { "name": "New", "color": "B2B2B2" },
+        { "name": "In Progress", "color": "E06C00" },
+        { "name": "Done", "color": "339933" }
+      ]
+    },
+    {
+      "name": "Issue",
+      "referenceName": "Microsoft.VSTS.WorkItemTypes.Issue",
+      "description": "Tracks an impediment or blocking issue.",
+      "color": "B4009E",
+      "icon": { "id": "aee38017-5a31-4e7d-ad5c-4b87c4c3c5a5", "url": "/_apis/wit/workItemIcons/aee38017-5a31-4e7d-ad5c-4b87c4c3c5a5" },
+      "states": [
+        { "name": "Active", "color": "B4009E" },
+        { "name": "Closed", "color": "339933" }
+      ]
+    }
+  ]
+}

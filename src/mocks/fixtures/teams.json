@@ -1,0 +1,37 @@
+{
+  "teams": [
+    {
+      "id": "team-1",
+      "name": "Engineering",
+      "description": "Core engineering team",
+      "identity": {
+        "id": "id-eng-team",
+        "displayName": "Engineering",
+        "uniqueName": "Engineering"
+      },
+      "url": "https://dev.azure.com/testorg/_apis/projects/TestProject/teams/team-1"
+    },
+    {
+      "id": "team-2",
+      "name": "Platform",
+      "description": "Platform and infrastructure team",
+      "identity": {
+        "id": "id-plat-team",
+        "displayName": "Platform",
+        "uniqueName": "Platform"
+      },
+      "url": "https://dev.azure.com/testorg/_apis/projects/TestProject/teams/team-2"
+    },
+    {
+      "id": "team-3",
+      "name": "QA",
+      "description": "Quality assurance team",
+      "identity": {
+        "id": "id-qa-team",
+        "displayName": "QA",
+        "uniqueName": "QA"
+      },
+      "url": "https://dev.azure.com/testorg/_apis/projects/TestProject/teams/team-3"
+    }
+  ]
+}

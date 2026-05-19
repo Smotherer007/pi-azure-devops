@@ -1,0 +1,40 @@
+{
+  "repositories": [
+    {
+      "id": "repo-webapp",
+      "name": "webapp",
+      "url": "https://dev.azure.com/testorg/TestProject/_git/webapp",
+      "defaultBranch": "refs/heads/main",
+      "size": 1234567,
+      "project": {
+        "id": "proj-1",
+        "name": "TestProject",
+        "url": "https://dev.azure.com/testorg/_apis/projects/proj-1"
+      }
+    },
+    {
+      "id": "repo-api",
+      "name": "api-service",
+      "url": "https://dev.azure.com/testorg/TestProject/_git/api-service",
+      "defaultBranch": "refs/heads/main",
+      "size": 987654,
+      "project": {
+        "id": "proj-1",
+        "name": "TestProject",
+        "url": "https://dev.azure.com/testorg/_apis/projects/proj-1"
+      }
+    },
+    {
+      "id": "repo-shared",
+      "name": "shared-libs",
+      "url": "https://dev.azure.com/testorg/TestProject/_git/shared-libs",
+      "defaultBranch": "refs/heads/develop",
+      "size": 456789,
+      "project": {
+        "id": "proj-1",
+        "name": "TestProject",
+        "url": "https://dev.azure.com/testorg/_apis/projects/proj-1"
+      }
+    }
+  ]
+}

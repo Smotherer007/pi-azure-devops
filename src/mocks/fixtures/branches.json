@@ -1,0 +1,98 @@
+{
+  "branches": {
+    "repo-webapp": [
+      {
+        "name": "main",
+        "commit": {
+          "commitId": "abc1234567890",
+          "author": { "name": "Alice Developer", "date": "2026-05-10T10:00:00Z" },
+          "comment": "Merge pull request #2: Fix auth timeout"
+        },
+        "aheadCount": 0,
+        "behindCount": 0,
+        "isBaseVersion": true
+      },
+      {
+        "name": "develop",
+        "commit": {
+          "commitId": "def2345678901",
+          "author": { "name": "Bob Engineer", "date": "2026-05-09T14:30:00Z" },
+          "comment": "Update CI pipeline config"
+        },
+        "aheadCount": 3,
+        "behindCount": 1,
+        "isBaseVersion": false
+      },
+      {
+        "name": "feature/login",
+        "commit": {
+          "commitId": "ghi3456789012",
+          "author": { "name": "Carol QA", "date": "2026-05-11T08:15:00Z" },
+          "comment": "Add login page component"
+        },
+        "aheadCount": 5,
+        "behindCount": 2,
+        "isBaseVersion": false
+      },
+      {
+        "name": "hotfix/auth-fix",
+        "commit": {
+          "commitId": "jkl4567890123",
+          "author": { "name": "Alice Developer", "date": "2026-05-08T16:45:00Z" },
+          "comment": "Fix token refresh edge case"
+        },
+        "aheadCount": 1,
+        "behindCount": 0,
+        "isBaseVersion": false
+      }
+    ],
+    "repo-api": [
+      {
+        "name": "main",
+        "commit": {
+          "commitId": "mno5678901234",
+          "author": { "name": "Dave Architect", "date": "2026-05-10T09:00:00Z" },
+          "comment": "Bump version to 2.1.0"
+        },
+        "aheadCount": 0,
+        "behindCount": 0,
+        "isBaseVersion": true
+      },
+      {
+        "name": "feature/add-tests",
+        "commit": {
+          "commitId": "pqr6789012345",
+          "author": { "name": "Carol QA", "date": "2026-05-11T07:30:00Z" },
+          "comment": "Add integration tests for auth endpoint"
+        },
+        "aheadCount": 4,
+        "behindCount": 1,
+        "isBaseVersion": false
+      }
+    ],
+    "repo-shared": [
+      {
+        "name": "develop",
+        "commit": {
+          "commitId": "stu7890123456",
+          "author": { "name": "Eve Maintainer", "date": "2026-05-09T11:00:00Z" },
+          "comment": "Refactor string utils"
+        },
+        "aheadCount": 0,
+        "behindCount": 0,
+        "isBaseVersion": true
+      },
+      {
+        "name": "main",
+        "commit": {
+          "commitId": "vwx8901234567",
+          "author": { "name": "Eve Maintainer", "date": "2026-05-07T15:00:00Z" },
+          "comment": "Release v1.4.0"
+        },
+        "aheadCount": 0,
+        "behindCount": 2,
+        "isBaseVersion": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+/**
+ * azure_devops_list_repos — List all Git repositories in the project.
+ */
+
+import { Type } from "typebox";
+import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
+import { getGitApi } from "../utils/connection.js";
+import { formatAdoError } from "../utils/errors.js";
+import { formatRepoList } from "../utils/formatting.js";
+import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { mockListRepos } from "../mocks/mock-handler.js";
+
+export const listReposTool = {
+	name: "azure_devops_list_repos",
+	description:
+		"List all Git repositories in the configured Azure DevOps project. Returns repo name, ID, default branch, and size.",
+	parameters: Type.Object({
+		includeHidden: Type.Optional(Type.Boolean({ description: "Include hidden repositories", default: false })),
+		mock: Type.Optional(Type.Boolean({ description: "Use mock/fixture data" })),
+	}),
+	promptSnippet: "List Git repositories in the project",
+	promptGuidelines: [
+		"Use azure_devops_list_repos to discover available repositories before working with branches or PRs.",
+		"Repository ID or name is required for branch and PR tools.",
+	],
+
+	async execute(
+		_toolCallId: string,
+		params: { includeHidden?: boolean; mock?: boolean },
+		signal: AbortSignal | undefined,
+		_onUpdate: undefined,
+		ctx: { cwd: string; config?: AzureDevOpsConfig },
+	): Promise<ToolResult> {
+		const config = ctx.config ?? resolveConfig(ctx.cwd);
+
+		if (isMock(config, params.mock)) {
+			return mockListRepos();
+		}
+
+		try {
+			const gitApi = await getGitApi(config, signal);
+			const repos = await gitApi.getRepositories(config.project, undefined, undefined, params.includeHidden);
+
+			if (!repos || repos.length === 0) {
+				return textResult("No repositories found in this project.");
+			}
+
+			return textResult(formatRepoList(repos as any), { count: repos.length });
+		} catch (err) {
+			return errorResult(`Failed to list repositories: ${formatAdoError(err)}`);
+		}
+	},
+};

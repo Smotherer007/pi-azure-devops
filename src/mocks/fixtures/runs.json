@@ -1,0 +1,99 @@
+{
+  "runs": [
+    {
+      "id": 42,
+      "name": "20240115.1",
+      "pipeline": { "id": 1, "name": "CI Pipeline", "folder": "\\" },
+      "state": "completed",
+      "result": "succeeded",
+      "createdDate": "2024-01-15T10:00:00Z",
+      "finishedDate": "2024-01-15T10:12:30Z",
+      "resources": {
+        "repositories": {
+          "self": {
+            "refName": "refs/heads/main",
+            "version": "abc1234"
+          }
+        }
+      },
+      "templateParameters": {},
+      "url": "https://dev.azure.com/testorg/TestProject/_apis/pipelines/1/runs/42"
+    },
+    {
+      "id": 43,
+      "name": "20240115.2",
+      "pipeline": { "id": 1, "name": "CI Pipeline", "folder": "\\" },
+      "state": "completed",
+      "result": "failed",
+      "createdDate": "2024-01-15T14:00:00Z",
+      "finishedDate": "2024-01-15T14:08:45Z",
+      "resources": {
+        "repositories": {
+          "self": {
+            "refName": "refs/heads/feature/login",
+            "version": "def5678"
+          }
+        }
+      },
+      "templateParameters": {},
+      "url": "https://dev.azure.com/testorg/TestProject/_apis/pipelines/1/runs/43"
+    },
+    {
+      "id": 15,
+      "name": "20240115.1",
+      "pipeline": { "id": 2, "name": "Deploy Pipeline", "folder": "\\deploy" },
+      "state": "completed",
+      "result": "succeeded",
+      "createdDate": "2024-01-15T16:00:00Z",
+      "finishedDate": "2024-01-15T16:25:10Z",
+      "resources": {
+        "repositories": {
+          "self": {
+            "refName": "refs/heads/main",
+            "version": "abc1234"
+          }
+        }
+      },
+      "templateParameters": { "environment": "production" },
+      "url": "https://dev.azure.com/testorg/TestProject/_apis/pipelines/2/runs/15"
+    },
+    {
+      "id": 44,
+      "name": "20240116.1",
+      "pipeline": { "id": 1, "name": "CI Pipeline", "folder": "\\" },
+      "state": "inProgress",
+      "result": null,
+      "createdDate": "2024-01-16T09:00:00Z",
+      "finishedDate": null,
+      "resources": {
+        "repositories": {
+          "self": {
+            "refName": "refs/heads/develop",
+            "version": "ghi9012"
+          }
+        }
+      },
+      "templateParameters": {},
+      "url": "https://dev.azure.com/testorg/TestProject/_apis/pipelines/1/runs/44"
+    },
+    {
+      "id": 8,
+      "name": "20240114.1",
+      "pipeline": { "id": 3, "name": "Test Pipeline", "folder": "\\test" },
+      "state": "completed",
+      "result": "succeeded",
+      "createdDate": "2024-01-14T08:00:00Z",
+      "finishedDate": "2024-01-14T08:15:20Z",
+      "resources": {
+        "repositories": {
+          "self": {
+            "refName": "refs/heads/main",
+            "version": "jkl3456"
+          }
+        }
+      },
+      "templateParameters": {},
+      "url": "https://dev.azure.com/testorg/TestProject/_apis/pipelines/3/runs/8"
+    }
+  ]
+}

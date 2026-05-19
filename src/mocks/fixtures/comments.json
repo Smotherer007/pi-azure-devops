@@ -1,0 +1,40 @@
+{
+  "comments": {
+    "101": {
+      "comments": [
+        {
+          "id": 1,
+          "createdBy": { "displayName": "Jane Developer", "uniqueName": "jane@contoso.com" },
+          "createdDate": "2026-04-15T11:00:00Z",
+          "text": "Starting work on this. Will break it into tasks for the login form, API integration, and session management."
+        },
+        {
+          "id": 2,
+          "createdBy": { "displayName": "John PM", "uniqueName": "john@contoso.com" },
+          "createdDate": "2026-04-16T09:30:00Z",
+          "text": "Please make sure we handle the OAuth provider callback as well. Updated the acceptance criteria."
+        },
+        {
+          "id": 3,
+          "createdBy": { "displayName": "Jane Developer", "uniqueName": "jane@contoso.com" },
+          "createdDate": "2026-04-28T14:22:00Z",
+          "text": "Login form and session management are done. OAuth callback is still in progress — should be wrapped up by end of sprint."
+        }
+      ],
+      "continuationToken": null,
+      "totalCount": 3
+    },
+    "102": {
+      "comments": [
+        {
+          "id": 4,
+          "createdBy": { "displayName": "Alex Engineer", "uniqueName": "alex@contoso.com" },
+          "createdDate": "2026-05-02T10:00:00Z",
+          "text": "Reproduced on Safari 17.1. The issue is a missing polyfill for structuredClone. Will submit a fix."
+        }
+      ],
+      "continuationToken": null,
+      "totalCount": 1
+    }
+  }
+}

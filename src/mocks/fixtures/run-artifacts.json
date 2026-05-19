@@ -1,0 +1,24 @@
+{
+  "artifacts": {
+    "42": [
+      {
+        "id": 1,
+        "name": "drop",
+        "resource": {
+          "type": "FilePath",
+          "data": "\\\\server\\drops\\CI Pipeline\\42",
+          "url": "https://dev.azure.com/testorg/TestProject/_apis/build/builds/42/artifacts?artifactName=drop"
+        }
+      },
+      {
+        "id": 2,
+        "name": "logs",
+        "resource": {
+          "type": "FilePath",
+          "data": "\\\\server\\drops\\CI Pipeline\\42\\logs",
+          "url": "https://dev.azure.com/testorg/TestProject/_apis/build/builds/42/artifacts?artifactName=logs"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "prThreads": {
+    "repo-webapp:1": [
+      {
+        "id": 1,
+        "status": 1,
+        "comments": [
+          {
+            "id": 1,
+            "author": { "displayName": "Bob Engineer", "uniqueName": "bob@testorg.com" },
+            "publishedDate": "2026-05-10T11:00:00Z",
+            "content": "Looks good overall. Can we add error handling for the OAuth callback?"
+          },
+          {
+            "id": 2,
+            "author": { "displayName": "Alice Developer", "uniqueName": "alice@testorg.com" },
+            "publishedDate": "2026-05-10T11:15:00Z",
+            "content": "Good catch — added try/catch around the token exchange. See commit abc1234."
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "status": 2,
+        "comments": [
+          {
+            "id": 3,
+            "author": { "displayName": "Carol QA", "uniqueName": "carol@testorg.com" },
+            "publishedDate": "2026-05-10T14:00:00Z",
+            "content": "Found a typo: 'Sucessfully logged in' should be 'Successfully'."
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "status": 6,
+        "comments": [
+          {
+            "id": 4,
+            "author": { "displayName": "Bob Engineer", "uniqueName": "bob@testorg.com" },
+            "publishedDate": "2026-05-11T09:00:00Z",
+            "content": "Consider using the shared `formatDate()` from shared-libs instead of inline formatting."
+          }
+        ]
+      }
+    ],
+    "repo-api:4": [
+      {
+        "id": 4,
+        "status": 1,
+        "comments": [
+          {
+            "id": 5,
+            "author": { "displayName": "Dave Architect", "uniqueName": "dave@testorg.com" },
+            "publishedDate": "2026-05-11T09:30:00Z",
+            "content": "Nice test coverage. Should we also test the rate-limiting scenario?"
+          }
+        ]
+      }
+    ]
+  }
+}

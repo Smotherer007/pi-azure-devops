@@ -1,0 +1,53 @@
+/**
+ * azure_devops_list_pipelines — List YAML pipelines in the project.
+ */
+
+import { Type } from "typebox";
+import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
+import { getPipelinesApi } from "../utils/connection.js";
+import { formatAdoError } from "../utils/errors.js";
+import { formatPipelineList } from "../utils/formatting.js";
+import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { mockListPipelines } from "../mocks/mock-handler.js";
+
+export const listPipelinesTool = {
+	name: "azure_devops_list_pipelines",
+	description:
+		"List YAML pipelines (definitions) in the configured Azure DevOps project. Returns pipeline name, ID, folder, and YAML path.",
+	parameters: Type.Object({
+		top: Type.Optional(Type.Number({ description: "Maximum number of pipelines to return", default: 50 })),
+		mock: Type.Optional(Type.Boolean({ description: "Use mock/fixture data" })),
+	}),
+	promptSnippet: "List pipelines in the project",
+	promptGuidelines: [
+		"Use azure_devops_list_pipelines to discover available pipelines before running or inspecting runs.",
+		"Pipeline ID is required for most pipeline-related tools.",
+	],
+
+	async execute(
+		_toolCallId: string,
+		params: { top?: number; mock?: boolean },
+		signal: AbortSignal | undefined,
+		_onUpdate: undefined,
+		ctx: { cwd: string; config?: AzureDevOpsConfig },
+	): Promise<ToolResult> {
+		const config = ctx.config ?? resolveConfig(ctx.cwd);
+
+		if (isMock(config, params.mock)) {
+			return mockListPipelines();
+		}
+
+		try {
+			const pipelinesApi = await getPipelinesApi(config, signal);
+			const pipelines = await pipelinesApi.listPipelines(config.project, undefined, params.top);
+
+			if (!pipelines || pipelines.length === 0) {
+				return textResult("No pipelines found in this project.");
+			}
+
+			return textResult(formatPipelineList(pipelines as any), { count: pipelines.length });
+		} catch (err) {
+			return errorResult(`Failed to list pipelines: ${formatAdoError(err)}`);
+		}
+	},
+};

@@ -1,0 +1,90 @@
+{
+  "testPoints": {
+    "101-301": [
+      {
+        "id": 1,
+        "testCaseReference": { "id": 6001, "name": "Verify login with valid credentials" },
+        "configuration": { "id": "1", "name": "Windows Chrome" },
+        "outcome": "passed",
+        "state": "completed",
+        "tester": { "displayName": "Alice Johnson", "uniqueName": "alice@example.com" },
+        "lastRunBuildNumber": "20240120.1",
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/testplan/Plans/101/Suites/301/TestPoint/1"
+      },
+      {
+        "id": 2,
+        "testCaseReference": { "id": 6002, "name": "Verify login with invalid credentials" },
+        "configuration": { "id": "1", "name": "Windows Chrome" },
+        "outcome": "failed",
+        "state": "completed",
+        "tester": { "displayName": "Alice Johnson", "uniqueName": "alice@example.com" },
+        "lastRunBuildNumber": "20240120.1",
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/testplan/Plans/101/Suites/301/TestPoint/2"
+      },
+      {
+        "id": 3,
+        "testCaseReference": { "id": 6003, "name": "Verify password reset flow" },
+        "configuration": { "id": "2", "name": "Mac Safari" },
+        "outcome": "blocked",
+        "state": "completed",
+        "tester": { "displayName": "Bob Smith", "uniqueName": "bob@example.com" },
+        "lastRunBuildNumber": null,
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/testplan/Plans/101/Suites/301/TestPoint/3"
+      }
+    ],
+    "101-302": [
+      {
+        "id": 4,
+        "testCaseReference": { "id": 6004, "name": "Dashboard loads within 3 seconds" },
+        "configuration": { "id": "1", "name": "Windows Chrome" },
+        "outcome": "passed",
+        "state": "completed",
+        "tester": { "displayName": "Bob Smith", "uniqueName": "bob@example.com" },
+        "lastRunBuildNumber": "20240120.1",
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/testplan/Plans/101/Suites/302/TestPoint/4"
+      },
+      {
+        "id": 5,
+        "testCaseReference": { "id": 6005, "name": "Dashboard shows correct widget data" },
+        "configuration": { "id": "1", "name": "Windows Chrome" },
+        "outcome": "notExecuted",
+        "state": "ready",
+        "tester": { "displayName": "Alice Johnson", "uniqueName": "alice@example.com" },
+        "lastRunBuildNumber": null,
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/testplan/Plans/101/Suites/302/TestPoint/5"
+      }
+    ],
+    "102-401": [
+      {
+        "id": 6,
+        "testCaseReference": { "id": 6006, "name": "GET /api/users returns 200" },
+        "configuration": { "id": "3", "name": "Linux API" },
+        "outcome": "passed",
+        "state": "completed",
+        "tester": { "displayName": "Bob Smith", "uniqueName": "bob@example.com" },
+        "lastRunBuildNumber": "20240119.3",
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/testplan/Plans/102/Suites/401/TestPoint/6"
+      },
+      {
+        "id": 7,
+        "testCaseReference": { "id": 6006, "name": "GET /api/users returns 200" },
+        "configuration": { "id": "1", "name": "Windows Chrome" },
+        "outcome": "notExecuted",
+        "state": "ready",
+        "tester": { "displayName": "Alice Johnson", "uniqueName": "alice@example.com" },
+        "lastRunBuildNumber": null,
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/testplan/Plans/102/Suites/401/TestPoint/7"
+      },
+      {
+        "id": 8,
+        "testCaseReference": { "id": 6006, "name": "GET /api/users returns 200" },
+        "configuration": { "id": "2", "name": "Mac Safari" },
+        "outcome": "passed",
+        "state": "completed",
+        "tester": { "displayName": "Bob Smith", "uniqueName": "bob@example.com" },
+        "lastRunBuildNumber": "20240119.3",
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/testplan/Plans/102/Suites/401/TestPoint/8"
+      }
+    ]
+  }
+}

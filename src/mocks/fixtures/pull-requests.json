@@ -1,0 +1,105 @@
+{
+  "pullRequests": [
+    {
+      "pullRequestId": 1,
+      "title": "Add login page",
+      "description": "Implements the login page with form validation and OAuth support.",
+      "status": "active",
+      "sourceRefName": "refs/heads/feature/login",
+      "targetRefName": "refs/heads/main",
+      "repositoryId": "repo-webapp",
+      "createdBy": {
+        "id": "user-alice",
+        "displayName": "Alice Developer",
+        "uniqueName": "alice@testorg.com"
+      },
+      "creationDate": "2026-05-10T10:30:00Z",
+      "reviewers": [
+        { "id": "user-bob", "displayName": "Bob Engineer", "vote": 10 },
+        { "id": "user-carol", "displayName": "Carol QA", "vote": 0 }
+      ],
+      "mergeStatus": "succeeded",
+      "url": "https://dev.azure.com/testorg/TestProject/_git/webapp/pullrequest/1"
+    },
+    {
+      "pullRequestId": 2,
+      "title": "Fix auth timeout",
+      "description": "Resolves the token refresh issue causing intermittent 401s.",
+      "status": "completed",
+      "sourceRefName": "refs/heads/hotfix/auth-fix",
+      "targetRefName": "refs/heads/main",
+      "repositoryId": "repo-webapp",
+      "createdBy": {
+        "id": "user-alice",
+        "displayName": "Alice Developer",
+        "uniqueName": "alice@testorg.com"
+      },
+      "creationDate": "2026-05-08T16:50:00Z",
+      "closedDate": "2026-05-09T09:00:00Z",
+      "reviewers": [
+        { "id": "user-bob", "displayName": "Bob Engineer", "vote": 10 }
+      ],
+      "mergeStatus": "succeeded",
+      "url": "https://dev.azure.com/testorg/TestProject/_git/webapp/pullrequest/2"
+    },
+    {
+      "pullRequestId": 3,
+      "title": "Update dependencies",
+      "description": "Bump all npm packages to latest minor versions.",
+      "status": "abandoned",
+      "sourceRefName": "refs/heads/chore/deps",
+      "targetRefName": "refs/heads/main",
+      "repositoryId": "repo-webapp",
+      "createdBy": {
+        "id": "user-eve",
+        "displayName": "Eve Maintainer",
+        "uniqueName": "eve@testorg.com"
+      },
+      "creationDate": "2026-05-05T08:00:00Z",
+      "abandonedDate": "2026-05-06T12:00:00Z",
+      "reviewers": [],
+      "mergeStatus": "notSet",
+      "url": "https://dev.azure.com/testorg/TestProject/_git/webapp/pullrequest/3"
+    },
+    {
+      "pullRequestId": 4,
+      "title": "Add API tests",
+      "description": "Integration and unit tests for the auth endpoint.",
+      "status": "active",
+      "sourceRefName": "refs/heads/feature/add-tests",
+      "targetRefName": "refs/heads/main",
+      "repositoryId": "repo-api",
+      "createdBy": {
+        "id": "user-carol",
+        "displayName": "Carol QA",
+        "uniqueName": "carol@testorg.com"
+      },
+      "creationDate": "2026-05-11T08:00:00Z",
+      "reviewers": [
+        { "id": "user-dave", "displayName": "Dave Architect", "vote": 5 }
+      ],
+      "mergeStatus": "queued",
+      "url": "https://dev.azure.com/testorg/TestProject/_git/api-service/pullrequest/4"
+    },
+    {
+      "pullRequestId": 5,
+      "title": "Refactor shared utils",
+      "description": "Extract common string and date helpers to shared-libs.",
+      "status": "active",
+      "sourceRefName": "refs/heads/feature/refactor-utils",
+      "targetRefName": "refs/heads/develop",
+      "repositoryId": "repo-shared",
+      "createdBy": {
+        "id": "user-eve",
+        "displayName": "Eve Maintainer",
+        "uniqueName": "eve@testorg.com"
+      },
+      "creationDate": "2026-05-09T11:30:00Z",
+      "reviewers": [
+        { "id": "user-alice", "displayName": "Alice Developer", "vote": -5 }
+      ],
+      "mergeStatus": "notSet",
+      "url": "https://dev.azure.com/testorg/TestProject/_git/shared-libs/pullrequest/5"
+    }
+  ]
+}

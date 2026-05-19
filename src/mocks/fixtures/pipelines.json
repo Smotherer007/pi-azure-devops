@@ -1,0 +1,52 @@
+{
+  "pipelines": [
+    {
+      "id": 1,
+      "name": "CI Pipeline",
+      "folder": "\\",
+      "revision": 3,
+      "configuration": {
+        "type": "yaml",
+        "path": "azure-pipelines.yml",
+        "repository": {
+          "id": "repo-webapp",
+          "name": "webapp",
+          "type": "azureReposGit"
+        }
+      },
+      "url": "https://dev.azure.com/testorg/TestProject/_apis/pipelines/1"
+    },
+    {
+      "id": 2,
+      "name": "Deploy Pipeline",
+      "folder": "\\deploy",
+      "revision": 5,
+      "configuration": {
+        "type": "yaml",
+        "path": "deploy.yml",
+        "repository": {
+          "id": "repo-webapp",
+          "name": "webapp",
+          "type": "azureReposGit"
+        }
+      },
+      "url": "https://dev.azure.com/testorg/TestProject/_apis/pipelines/2"
+    },
+    {
+      "id": 3,
+      "name": "Test Pipeline",
+      "folder": "\\test",
+      "revision": 2,
+      "configuration": {
+        "type": "yaml",
+        "path": "tests.yml",
+        "repository": {
+          "id": "repo-api",
+          "name": "api-service",
+          "type": "azureReposGit"
+        }
+      },
+      "url": "https://dev.azure.com/testorg/TestProject/_apis/pipelines/3"
+    }
+  ]
+}

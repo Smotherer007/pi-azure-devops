@@ -1,0 +1,52 @@
+{
+  "testRuns": [
+    {
+      "id": 501,
+      "name": "Sprint 42 Manual Run",
+      "state": "InProgress",
+      "plan": { "id": 101, "name": "Sprint 42 Testing" },
+      "startedDate": "2024-01-20T10:00:00Z",
+      "completedDate": null,
+      "totalTests": 5,
+      "passedTests": 2,
+      "failedTests": 1,
+      "incompleteTests": 2,
+      "notApplicableTests": 0,
+      "owner": { "displayName": "Alice Johnson", "uniqueName": "alice@example.com" },
+      "buildConfiguration": { "buildDefinitionId": 1 },
+      "url": "https://dev.azure.com/testorg/TestProject/_apis/test/Runs/501"
+    },
+    {
+      "id": 502,
+      "name": "Regression Run 2024-01-19",
+      "state": "Completed",
+      "plan": { "id": 102, "name": "Regression Suite" },
+      "startedDate": "2024-01-19T08:00:00Z",
+      "completedDate": "2024-01-19T09:30:00Z",
+      "totalTests": 3,
+      "passedTests": 2,
+      "failedTests": 0,
+      "incompleteTests": 1,
+      "notApplicableTests": 0,
+      "owner": { "displayName": "Bob Smith", "uniqueName": "bob@example.com" },
+      "buildConfiguration": { "buildDefinitionId": 1 },
+      "url": "https://dev.azure.com/testorg/TestProject/_apis/test/Runs/502"
+    },
+    {
+      "id": 503,
+      "name": "Smoke Validation",
+      "state": "Completed",
+      "plan": { "id": 101, "name": "Sprint 42 Testing" },
+      "startedDate": "2024-01-18T14:00:00Z",
+      "completedDate": "2024-01-18T14:45:00Z",
+      "totalTests": 4,
+      "passedTests": 3,
+      "failedTests": 1,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "owner": { "displayName": "Alice Johnson", "uniqueName": "alice@example.com" },
+      "buildConfiguration": null,
+      "url": "https://dev.azure.com/testorg/TestProject/_apis/test/Runs/503"
+    }
+  ]
+}

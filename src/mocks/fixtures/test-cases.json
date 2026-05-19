@@ -1,0 +1,76 @@
+{
+  "testCases": {
+    "101-301": [
+      {
+        "workItem": {
+          "id": 6001,
+          "name": "Verify login with valid credentials",
+          "workItemFields": [
+            { "System.State": "Ready", "System.AssignedTo": "alice@example.com", "Microsoft.VSTS.Common.Priority": 1 }
+          ]
+        },
+        "order": 1,
+        "pointAssignments": [{ "configurationId": 1, "configurationName": "Windows Chrome" }]
+      },
+      {
+        "workItem": {
+          "id": 6002,
+          "name": "Verify login with invalid credentials",
+          "workItemFields": [
+            { "System.State": "Ready", "System.AssignedTo": "alice@example.com", "Microsoft.VSTS.Common.Priority": 1 }
+          ]
+        },
+        "order": 2,
+        "pointAssignments": [{ "configurationId": 1, "configurationName": "Windows Chrome" }]
+      },
+      {
+        "workItem": {
+          "id": 6003,
+          "name": "Verify password reset flow",
+          "workItemFields": [
+            { "System.State": "Design", "System.AssignedTo": "bob@example.com", "Microsoft.VSTS.Common.Priority": 2 }
+          ]
+        },
+        "order": 3,
+        "pointAssignments": [{ "configurationId": 2, "configurationName": "Mac Safari" }]
+      }
+    ],
+    "101-302": [
+      {
+        "workItem": {
+          "id": 6004,
+          "name": "Dashboard loads within 3 seconds",
+          "workItemFields": [
+            { "System.State": "Ready", "System.AssignedTo": "bob@example.com", "Microsoft.VSTS.Common.Priority": 1 }
+          ]
+        },
+        "order": 1,
+        "pointAssignments": [{ "configurationId": 1, "configurationName": "Windows Chrome" }]
+      },
+      {
+        "workItem": {
+          "id": 6005,
+          "name": "Dashboard shows correct widget data",
+          "workItemFields": [
+            { "System.State": "Ready", "System.AssignedTo": "alice@example.com", "Microsoft.VSTS.Common.Priority": 2 }
+          ]
+        },
+        "order": 2,
+        "pointAssignments": [{ "configurationId": 1, "configurationName": "Windows Chrome" }]
+      }
+    ],
+    "102-401": [
+      {
+        "workItem": {
+          "id": 6006,
+          "name": "GET /api/users returns 200",
+          "workItemFields": [
+            { "System.State": "Ready", "System.AssignedTo": "bob@example.com", "Microsoft.VSTS.Common.Priority": 1 }
+          ]
+        },
+        "order": 1,
+        "pointAssignments": [{ "configurationId": 3, "configurationName": "Linux API" }]
+      }
+    ]
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "timelines": {
+    "42": {
+      "records": [
+        {
+          "id": "stage-1",
+          "parentId": null,
+          "type": "Stage",
+          "name": "Build",
+          "order": 1,
+          "state": "completed",
+          "result": "succeeded",
+          "startTime": "2024-01-15T10:00:05Z",
+          "finishTime": "2024-01-15T10:12:30Z",
+          "errorCount": 0,
+          "warningCount": 0
+        },
+        {
+          "id": "job-1",
+          "parentId": "stage-1",
+          "type": "Job",
+          "name": "Build Job",
+          "order": 1,
+          "state": "completed",
+          "result": "succeeded",
+          "startTime": "2024-01-15T10:00:10Z",
+          "finishTime": "2024-01-15T10:12:25Z",
+          "errorCount": 0,
+          "warningCount": 1
+        },
+        {
+          "id": "task-1",
+          "parentId": "job-1",
+          "type": "Task",
+          "name": "npm install",
+          "order": 1,
+          "state": "completed",
+          "result": "succeeded",
+          "startTime": "2024-01-15T10:00:15Z",
+          "finishTime": "2024-01-15T10:03:00Z",
+          "errorCount": 0,
+          "warningCount": 0
+        },
+        {
+          "id": "task-2",
+          "parentId": "job-1",
+          "type": "Task",
+          "name": "npm run build",
+          "order": 2,
+          "state": "completed",
+          "result": "succeeded",
+          "startTime": "2024-01-15T10:03:05Z",
+          "finishTime": "2024-01-15T10:08:00Z",
+          "errorCount": 0,
+          "warningCount": 0
+        },
+        {
+          "id": "task-3",
+          "parentId": "job-1",
+          "type": "Task",
+          "name": "npm test",
+          "order": 3,
+          "state": "completed",
+          "result": "succeeded",
+          "startTime": "2024-01-15T10:08:05Z",
+          "finishTime": "2024-01-15T10:12:25Z",
+          "errorCount": 0,
+          "warningCount": 1
+        }
+      ]
+    },
+    "43": {
+      "records": [
+        {
+          "id": "stage-1",
+          "parentId": null,
+          "type": "Stage",
+          "name": "Build",
+          "order": 1,
+          "state": "completed",
+          "result": "failed",
+          "startTime": "2024-01-15T14:00:05Z",
+          "finishTime": "2024-01-15T14:08:45Z",
+          "errorCount": 2,
+          "warningCount": 0
+        },
+        {
+          "id": "job-1",
+          "parentId": "stage-1",
+          "type": "Job",
+          "name": "Build Job",
+          "order": 1,
+          "state": "completed",
+          "result": "failed",
+          "startTime": "2024-01-15T14:00:10Z",
+          "finishTime": "2024-01-15T14:08:40Z",
+          "errorCount": 2,
+          "warningCount": 0
+        },
+        {
+          "id": "task-1",
+          "parentId": "job-1",
+          "type": "Task",
+          "name": "npm test",
+          "order": 1,
+          "state": "completed",
+          "result": "failed",
+          "startTime": "2024-01-15T14:00:15Z",
+          "finishTime": "2024-01-15T14:08:40Z",
+          "errorCount": 2,
+          "warningCount": 0
+        }
+      ]
+    }
+  }
+}

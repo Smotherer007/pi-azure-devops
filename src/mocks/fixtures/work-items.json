@@ -1,0 +1,163 @@
+{
+  "workItems": [
+    {
+      "id": 101,
+      "rev": 3,
+      "fields": {
+        "System.AreaPath": "TestProject\\Engineering",
+        "System.TeamProject": "TestProject",
+        "System.IterationPath": "TestProject\\Sprint 4",
+        "System.WorkItemType": "User Story",
+        "System.State": "Active",
+        "System.Reason": "Implementation started",
+        "System.Title": "Implement user authentication flow",
+        "System.Description": "As a user, I want to log in with email and password so that I can access my account securely.\n\n## Acceptance Criteria\n- Login form with email/password fields\n- Error messages for invalid credentials\n- Session persistence across page reloads",
+        "System.Priority": 2,
+        "System.AssignedTo": {
+          "displayName": "Jane Developer",
+          "uniqueName": "jane@contoso.com"
+        },
+        "System.CreatedBy": {
+          "displayName": "John PM",
+          "uniqueName": "john@contoso.com"
+        },
+        "System.CreatedDate": "2026-04-15T10:30:00Z",
+        "System.ChangedBy": {
+          "displayName": "Jane Developer",
+          "uniqueName": "jane@contoso.com"
+        },
+        "System.ChangedDate": "2026-04-28T14:22:00Z",
+        "System.Tags": "authentication; security; v2",
+        "Microsoft.VSTS.Common.Priority": 2,
+        "Microsoft.VSTS.Common.ValueArea": "Business"
+      },
+      "url": "https://dev.azure.com/testorg/_apis/wit/workItems/101"
+    },
+    {
+      "id": 102,
+      "rev": 1,
+      "fields": {
+        "System.AreaPath": "TestProject\\Engineering",
+        "System.TeamProject": "TestProject",
+        "System.IterationPath": "TestProject\\Sprint 4",
+        "System.WorkItemType": "Bug",
+        "System.State": "Active",
+        "System.Reason": "New",
+        "System.Title": "Login page crashes on mobile Safari",
+        "System.Description": "Opening the login page on iOS Safari 17 causes a JavaScript error and blank screen.\n\n### Steps to Reproduce\n1. Open app on iPhone 15, Safari 17\n2. Navigate to /login\n3. Page goes blank with console error",
+        "System.Priority": 1,
+        "System.AssignedTo": {
+          "displayName": "Alex Engineer",
+          "uniqueName": "alex@contoso.com"
+        },
+        "System.CreatedBy": {
+          "displayName": "QA Bot",
+          "uniqueName": "qabot@contoso.com"
+        },
+        "System.CreatedDate": "2026-05-01T09:15:00Z",
+        "System.ChangedBy": {
+          "displayName": "QA Bot",
+          "uniqueName": "qabot@contoso.com"
+        },
+        "System.ChangedDate": "2026-05-01T09:15:00Z",
+        "System.Tags": "bug; mobile; safari; regression",
+        "Microsoft.VSTS.Common.Priority": 1,
+        "Microsoft.VSTS.Common.Severity": "2 - High"
+      },
+      "url": "https://dev.azure.com/testorg/_apis/wit/workItems/102"
+    },
+    {
+      "id": 103,
+      "rev": 2,
+      "fields": {
+        "System.AreaPath": "TestProject\\Engineering",
+        "System.TeamProject": "TestProject",
+        "System.IterationPath": "TestProject\\Sprint 3",
+        "System.WorkItemType": "Task",
+        "System.State": "Closed",
+        "System.Reason": "Completed",
+        "System.Title": "Set up CI pipeline for staging environment",
+        "System.Description": "Configure Azure DevOps YAML pipeline for automated builds and deployments to staging.",
+        "System.Priority": 3,
+        "System.AssignedTo": {
+          "displayName": "Sam DevOps",
+          "uniqueName": "sam@contoso.com"
+        },
+        "System.CreatedBy": {
+          "displayName": "Jane Developer",
+          "uniqueName": "jane@contoso.com"
+        },
+        "System.CreatedDate": "2026-04-10T08:00:00Z",
+        "System.ChangedBy": {
+          "displayName": "Sam DevOps",
+          "uniqueName": "sam@contoso.com"
+        },
+        "System.ChangedDate": "2026-04-18T16:45:00Z",
+        "Microsoft.VSTS.Common.Priority": 3
+      },
+      "url": "https://dev.azure.com/testorg/_apis/wit/workItems/103"
+    },
+    {
+      "id": 104,
+      "rev": 1,
+      "fields": {
+        "System.AreaPath": "TestProject\\Design",
+        "System.TeamProject": "TestProject",
+        "System.IterationPath": "TestProject\\Sprint 4",
+        "System.WorkItemType": "User Story",
+        "System.State": "New",
+        "System.Reason": "New",
+        "System.Title": "Dark mode support across all pages",
+        "System.Description": "As a user, I want a dark mode toggle so I can reduce eye strain when working at night.",
+        "System.Priority": 3,
+        "System.AssignedTo": null,
+        "System.CreatedBy": {
+          "displayName": "John PM",
+          "uniqueName": "john@contoso.com"
+        },
+        "System.CreatedDate": "2026-05-05T11:00:00Z",
+        "System.ChangedBy": {
+          "displayName": "John PM",
+          "uniqueName": "john@contoso.com"
+        },
+        "System.ChangedDate": "2026-05-05T11:00:00Z",
+        "System.Tags": "ux; accessibility",
+        "Microsoft.VSTS.Common.Priority": 3
+      },
+      "url": "https://dev.azure.com/testorg/_apis/wit/workItems/104"
+    },
+    {
+      "id": 105,
+      "rev": 5,
+      "fields": {
+        "System.AreaPath": "TestProject\\Engineering",
+        "System.TeamProject": "TestProject",
+        "System.IterationPath": "TestProject\\Sprint 4",
+        "System.WorkItemType": "Bug",
+        "System.State": "Resolved",
+        "System.Reason": "Fixed",
+        "System.Title": "API returns 500 on concurrent requests",
+        "System.Description": "Load testing revealed that the /api/orders endpoint returns HTTP 500 when handling more than 50 concurrent requests.",
+        "System.Priority": 1,
+        "System.AssignedTo": {
+          "displayName": "Alex Engineer",
+          "uniqueName": "alex@contoso.com"
+        },
+        "System.CreatedBy": {
+          "displayName": "Load Test Bot",
+          "uniqueName": "loadtest@contoso.com"
+        },
+        "System.CreatedDate": "2026-04-20T13:00:00Z",
+        "System.ChangedBy": {
+          "displayName": "Alex Engineer",
+          "uniqueName": "alex@contoso.com"
+        },
+        "System.ChangedDate": "2026-05-03T10:30:00Z",
+        "System.Tags": "bug; performance; api",
+        "Microsoft.VSTS.Common.Priority": 1,
+        "Microsoft.VSTS.Common.Severity": "1 - Critical"
+      },
+      "url": "https://dev.azure.com/testorg/_apis/wit/workItems/105"
+    }
+  ]
+}

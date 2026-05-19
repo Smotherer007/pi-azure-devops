@@ -1,0 +1,49 @@
+/**
+ * azure_devops_get_test_plan — Get a single test plan by ID.
+ */
+
+import { Type } from "typebox";
+import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
+import { getTestPlanApi } from "../utils/connection.js";
+import { formatAdoError } from "../utils/errors.js";
+import { formatTestPlan } from "../utils/formatting.js";
+import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { mockGetTestPlan } from "../mocks/mock-handler.js";
+
+export const getTestPlanTool = {
+	name: "azure_devops_get_test_plan",
+	description:
+		"Get a single test plan by ID. Returns name, state, iteration, dates, owner, root suite, and area path.",
+	parameters: Type.Object({
+		planId: Type.Number({ description: "Test plan ID" }),
+		mock: Type.Optional(Type.Boolean({ description: "Use mock/fixture data" })),
+	}),
+	promptSnippet: "Get test plan detail by ID",
+
+	async execute(
+		_toolCallId: string,
+		params: { planId: number; mock?: boolean },
+		signal: AbortSignal | undefined,
+		_onUpdate: undefined,
+		ctx: { cwd: string; config?: AzureDevOpsConfig },
+	): Promise<ToolResult> {
+		const config = ctx.config ?? resolveConfig(ctx.cwd);
+
+		if (isMock(config, params.mock)) {
+			return mockGetTestPlan(params.planId);
+		}
+
+		try {
+			const testPlanApi = await getTestPlanApi(config, signal);
+			const plan = await testPlanApi.getTestPlanById(config.project, params.planId);
+
+			if (!plan) {
+				return errorResult(`Test plan #${params.planId} not found.`);
+			}
+
+			return textResult(formatTestPlan(plan as any), { planId: plan.id });
+		} catch (err) {
+			return errorResult(`Failed to get test plan #${params.planId}: ${formatAdoError(err)}`);
+		}
+	},
+};

@@ -1,0 +1,43 @@
+{
+  "evaluations": [
+    {
+      "evaluationId": "eval-1",
+      "policyId": 1,
+      "policyDisplayName": "Minimum reviewers",
+      "artifactId": "vstfs://CodeReview/CodeReviewId/1",
+      "status": "approved",
+      "startedDate": "2026-05-10T10:35:00Z",
+      "completedDate": "2026-05-10T12:00:00Z",
+      "context": {
+        "minimumApproverCount": 2,
+        "currentApproverCount": 2
+      }
+    },
+    {
+      "evaluationId": "eval-2",
+      "policyId": 2,
+      "policyDisplayName": "Build validation",
+      "artifactId": "vstfs://CodeReview/CodeReviewId/1",
+      "status": "running",
+      "startedDate": "2026-05-10T10:35:00Z",
+      "context": {
+        "buildDefinitionId": 42,
+        "buildId": 999,
+        "buildNumber": "20260510.1"
+      }
+    },
+    {
+      "evaluationId": "eval-3",
+      "policyId": 3,
+      "policyDisplayName": "Required reviewer",
+      "artifactId": "vstfs://CodeReview/CodeReviewId/1",
+      "status": "rejected",
+      "startedDate": "2026-05-10T10:35:00Z",
+      "completedDate": "2026-05-10T14:00:00Z",
+      "context": {
+        "requiredReviewerIds": ["team-security"],
+        "message": "Security team review required for API changes"
+      }
+    }
+  ]
+}

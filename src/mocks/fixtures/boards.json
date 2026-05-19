@@ -1,0 +1,35 @@
+{
+  "boards": {
+    "Engineering": [
+      {
+        "id": "stories",
+        "name": "Stories",
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/work/boards/stories"
+      },
+      {
+        "id": "features",
+        "name": "Features",
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/work/boards/features"
+      }
+    ],
+    "Platform": [
+      {
+        "id": "stories",
+        "name": "Stories",
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/work/boards/stories"
+      },
+      {
+        "id": "epics",
+        "name": "Epics",
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/work/boards/epics"
+      }
+    ],
+    "QA": [
+      {
+        "id": "stories",
+        "name": "Stories",
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/work/boards/stories"
+      }
+    ]
+  }
+}

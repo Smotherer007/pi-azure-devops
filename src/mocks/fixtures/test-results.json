@@ -1,0 +1,94 @@
+{
+  "testResults": {
+    "501": [
+      {
+        "id": 100001,
+        "testCaseTitle": "Verify login with valid credentials",
+        "testCase": { "id": 6001, "name": "Verify login with valid credentials" },
+        "outcome": "Passed",
+        "state": "Completed",
+        "durationInMs": 12500,
+        "startedDate": "2024-01-20T10:05:00Z",
+        "completedDate": "2024-01-20T10:05:12Z",
+        "errorMessage": null,
+        "comment": "Verified on Chrome 120",
+        "runBy": { "displayName": "Alice Johnson", "uniqueName": "alice@example.com" },
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/test/Runs/501/Results/100001"
+      },
+      {
+        "id": 100002,
+        "testCaseTitle": "Verify login with invalid credentials",
+        "testCase": { "id": 6002, "name": "Verify login with invalid credentials" },
+        "outcome": "Failed",
+        "state": "Completed",
+        "durationInMs": 8200,
+        "startedDate": "2024-01-20T10:06:00Z",
+        "completedDate": "2024-01-20T10:06:08Z",
+        "errorMessage": "Expected error toast not shown after invalid login attempt",
+        "comment": null,
+        "runBy": { "displayName": "Alice Johnson", "uniqueName": "alice@example.com" },
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/test/Runs/501/Results/100002"
+      },
+      {
+        "id": 100003,
+        "testCaseTitle": "Dashboard loads within 3 seconds",
+        "testCase": { "id": 6004, "name": "Dashboard loads within 3 seconds" },
+        "outcome": "Passed",
+        "state": "Completed",
+        "durationInMs": 2100,
+        "startedDate": "2024-01-20T10:10:00Z",
+        "completedDate": "2024-01-20T10:10:02Z",
+        "errorMessage": null,
+        "comment": "Loaded in 1.8s",
+        "runBy": { "displayName": "Bob Smith", "uniqueName": "bob@example.com" },
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/test/Runs/501/Results/100003"
+      }
+    ],
+    "502": [
+      {
+        "id": 100004,
+        "testCaseTitle": "GET /api/users returns 200",
+        "testCase": { "id": 6006, "name": "GET /api/users returns 200" },
+        "outcome": "Passed",
+        "state": "Completed",
+        "durationInMs": 350,
+        "startedDate": "2024-01-19T08:05:00Z",
+        "completedDate": "2024-01-19T08:05:00Z",
+        "errorMessage": null,
+        "comment": null,
+        "runBy": { "displayName": "Bob Smith", "uniqueName": "bob@example.com" },
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/test/Runs/502/Results/100004"
+      },
+      {
+        "id": 100005,
+        "testCaseTitle": "GET /api/users returns 200",
+        "testCase": { "id": 6006, "name": "GET /api/users returns 200" },
+        "outcome": "Passed",
+        "state": "Completed",
+        "durationInMs": 410,
+        "startedDate": "2024-01-19T08:06:00Z",
+        "completedDate": "2024-01-19T08:06:00Z",
+        "errorMessage": null,
+        "comment": "Tested with Mac Safari config",
+        "runBy": { "displayName": "Bob Smith", "uniqueName": "bob@example.com" },
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/test/Runs/502/Results/100005"
+      }
+    ],
+    "503": [
+      {
+        "id": 100006,
+        "testCaseTitle": "Verify password reset flow",
+        "testCase": { "id": 6003, "name": "Verify password reset flow" },
+        "outcome": "Blocked",
+        "state": "Completed",
+        "durationInMs": 0,
+        "startedDate": "2024-01-18T14:20:00Z",
+        "completedDate": "2024-01-18T14:20:00Z",
+        "errorMessage": "Email service unavailable in test environment",
+        "comment": "Blocked by email service outage",
+        "runBy": { "displayName": "Alice Johnson", "uniqueName": "alice@example.com" },
+        "url": "https://dev.azure.com/testorg/TestProject/_apis/test/Runs/503/Results/100006"
+      }
+    ]
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "iterations": {
+    "Engineering": [
+      {
+        "id": "sprint-1",
+        "name": "Sprint 1",
+        "path": "TestProject\\Sprint 1",
+        "attributes": {
+          "startDate": "2026-03-23T00:00:00Z",
+          "finishDate": "2026-04-05T00:00:00Z",
+          "timeFrame": "past"
+        },
+        "url": "https://dev.azure.com/testorg/_apis/work/teamsettings/iterations/sprint-1"
+      },
+      {
+        "id": "sprint-2",
+        "name": "Sprint 2",
+        "path": "TestProject\\Sprint 2",
+        "attributes": {
+          "startDate": "2026-04-06T00:00:00Z",
+          "finishDate": "2026-04-19T00:00:00Z",
+          "timeFrame": "past"
+        },
+        "url": "https://dev.azure.com/testorg/_apis/work/teamsettings/iterations/sprint-2"
+      },
+      {
+        "id": "sprint-3",
+        "name": "Sprint 3",
+        "path": "TestProject\\Sprint 3",
+        "attributes": {
+          "startDate": "2026-04-20T00:00:00Z",
+          "finishDate": "2026-05-03T00:00:00Z",
+          "timeFrame": "current"
+        },
+        "url": "https://dev.azure.com/testorg/_apis/work/teamsettings/iterations/sprint-3"
+      },
+      {
+        "id": "sprint-4",
+        "name": "Sprint 4",
+        "path": "TestProject\\Sprint 4",
+        "attributes": {
+          "startDate": "2026-05-04T00:00:00Z",
+          "finishDate": "2026-05-17T00:00:00Z",
+          "timeFrame": "future"
+        },
+        "url": "https://dev.azure.com/testorg/_apis/work/teamsettings/iterations/sprint-4"
+      },
+      {
+        "id": "sprint-5",
+        "name": "Sprint 5",
+        "path": "TestProject\\Sprint 5",
+        "attributes": {
+          "startDate": "2026-05-18T00:00:00Z",
+          "finishDate": "2026-05-31T00:00:00Z",
+          "timeFrame": "future"
+        },
+        "url": "https://dev.azure.com/testorg/_apis/work/teamsettings/iterations/sprint-5"
+      }
+    ],
+    "Platform": [
+      {
+        "id": "plat-sprint-1",
+        "name": "Platform Sprint 1",
+        "path": "TestProject\\Platform\\Platform Sprint 1",
+        "attributes": {
+          "startDate": "2026-04-20T00:00:00Z",
+          "finishDate": "2026-05-03T00:00:00Z",
+          "timeFrame": "current"
+        },
+        "url": "https://dev.azure.com/testorg/_apis/work/teamsettings/iterations/plat-sprint-1"
+      },
+      {
+        "id": "plat-sprint-2",
+        "name": "Platform Sprint 2",
+        "path": "TestProject\\Platform\\Platform Sprint 2",
+        "attributes": {
+          "startDate": "2026-05-04T00:00:00Z",
+          "finishDate": "2026-05-17T00:00:00Z",
+          "timeFrame": "future"
+        },
+        "url": "https://dev.azure.com/testorg/_apis/work/teamsettings/iterations/plat-sprint-2"
+      }
+    ],
+    "QA": [
+      {
+        "id": "qa-sprint-1",
+        "name": "QA Sprint 1",
+        "path": "TestProject\\QA\\QA Sprint 1",
+        "attributes": {
+          "startDate": "2026-04-20T00:00:00Z",
+          "finishDate": "2026-05-03T00:00:00Z",
+          "timeFrame": "current"
+        },
+        "url": "https://dev.azure.com/testorg/_apis/work/teamsettings/iterations/qa-sprint-1"
+      }
+    ]
+  }
+}

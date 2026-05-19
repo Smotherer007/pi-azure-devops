@@ -1,0 +1,151 @@
+{
+  "boardDetails": {
+    "Engineering:stories": {
+      "id": "stories",
+      "name": "Stories",
+      "url": "https://dev.azure.com/testorg/TestProject/_apis/work/boards/stories",
+      "canEdit": true,
+      "revision": 3,
+      "isValid": true,
+      "columns": [
+        {
+          "id": "col-new",
+          "name": "New",
+          "columnType": 0,
+          "itemLimit": 10,
+          "stateMappings": {
+            "User Story": "New",
+            "Bug": "New",
+            "Task": "To Do"
+          }
+        },
+        {
+          "id": "col-active",
+          "name": "Active",
+          "columnType": 1,
+          "itemLimit": 5,
+          "stateMappings": {
+            "User Story": "Active",
+            "Bug": "Active",
+            "Task": "In Progress"
+          }
+        },
+        {
+          "id": "col-resolved",
+          "name": "Resolved",
+          "columnType": 1,
+          "itemLimit": 5,
+          "stateMappings": {
+            "User Story": "Resolved",
+            "Bug": "Resolved",
+            "Task": "Done"
+          }
+        },
+        {
+          "id": "col-closed",
+          "name": "Closed",
+          "columnType": 2,
+          "itemLimit": null,
+          "stateMappings": {
+            "User Story": "Closed",
+            "Bug": "Closed",
+            "Task": "Closed"
+          }
+        }
+      ],
+      "rows": [
+        { "id": "row-1", "name": "" }
+      ],
+      "fields": {
+        "columnField": { "referenceName": "System.State" },
+        "rowField": { "referenceName": "" },
+        "doneField": { "referenceName": "" }
+      }
+    },
+    "Engineering:features": {
+      "id": "features",
+      "name": "Features",
+      "url": "https://dev.azure.com/testorg/TestProject/_apis/work/boards/features",
+      "canEdit": true,
+      "revision": 1,
+      "isValid": true,
+      "columns": [
+        {
+          "id": "col-new",
+          "name": "New",
+          "columnType": 0,
+          "itemLimit": null,
+          "stateMappings": {
+            "Feature": "New"
+          }
+        },
+        {
+          "id": "col-active",
+          "name": "In Progress",
+          "columnType": 1,
+          "itemLimit": null,
+          "stateMappings": {
+            "Feature": "In Progress"
+          }
+        },
+        {
+          "id": "col-done",
+          "name": "Done",
+          "columnType": 2,
+          "itemLimit": null,
+          "stateMappings": {
+            "Feature": "Done"
+          }
+        }
+      ],
+      "rows": [],
+      "fields": {
+        "columnField": { "referenceName": "System.State" }
+      }
+    },
+    "Platform:stories": {
+      "id": "stories",
+      "name": "Stories",
+      "url": "https://dev.azure.com/testorg/TestProject/_apis/work/boards/stories",
+      "canEdit": true,
+      "revision": 1,
+      "isValid": true,
+      "columns": [
+        {
+          "id": "col-todo",
+          "name": "To Do",
+          "columnType": 0,
+          "itemLimit": 10,
+          "stateMappings": {
+            "User Story": "New",
+            "Bug": "New"
+          }
+        },
+        {
+          "id": "col-doing",
+          "name": "Doing",
+          "columnType": 1,
+          "itemLimit": 5,
+          "stateMappings": {
+            "User Story": "Active",
+            "Bug": "Active"
+          }
+        },
+        {
+          "id": "col-done",
+          "name": "Done",
+          "columnType": 2,
+          "itemLimit": null,
+          "stateMappings": {
+            "User Story": "Closed",
+            "Bug": "Closed"
+          }
+        }
+      ],
+      "rows": [],
+      "fields": {
+        "columnField": { "referenceName": "System.State" }
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "revisions": {
+    "101": [
+      {
+        "rev": 1,
+        "fields": {
+          "System.WorkItemType": "User Story",
+          "System.State": "New",
+          "System.Reason": "New",
+          "System.Title": "Implement user authentication flow",
+          "System.CreatedBy": { "displayName": "John PM", "uniqueName": "john@contoso.com" },
+          "System.CreatedDate": "2026-04-15T10:30:00Z",
+          "System.ChangedBy": { "displayName": "John PM", "uniqueName": "john@contoso.com" },
+          "System.ChangedDate": "2026-04-15T10:30:00Z"
+        }
+      },
+      {
+        "rev": 2,
+        "fields": {
+          "System.State": "Active",
+          "System.Reason": "Implementation started",
+          "System.AssignedTo": { "displayName": "Jane Developer", "uniqueName": "jane@contoso.com" },
+          "System.ChangedBy": { "displayName": "Jane Developer", "uniqueName": "jane@contoso.com" },
+          "System.ChangedDate": "2026-04-15T11:00:00Z"
+        }
+      },
+      {
+        "rev": 3,
+        "fields": {
+          "System.Tags": "authentication; security; v2",
+          "System.ChangedBy": { "displayName": "Jane Developer", "uniqueName": "jane@contoso.com" },
+          "System.ChangedDate": "2026-04-28T14:22:00Z"
+        }
+      }
+    ],
+    "102": [
+      {
+        "rev": 1,
+        "fields": {
+          "System.WorkItemType": "Bug",
+          "System.State": "Active",
+          "System.Reason": "New",
+          "System.Title": "Login page crashes on mobile Safari",
+          "System.AssignedTo": { "displayName": "Alex Engineer", "uniqueName": "alex@contoso.com" },
+          "System.CreatedBy": { "displayName": "QA Bot", "uniqueName": "qabot@contoso.com" },
+          "System.CreatedDate": "2026-05-01T09:15:00Z",
+          "System.ChangedBy": { "displayName": "QA Bot", "uniqueName": "qabot@contoso.com" },
+          "System.ChangedDate": "2026-05-01T09:15:00Z"
+        }
+      }
+    ]
+  }
+}

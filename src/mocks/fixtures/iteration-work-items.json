@@ -1,0 +1,41 @@
+{
+  "iterationWorkItems": {
+    "Engineering:sprint-3": {
+      "workItemRelations": [
+        {
+          "rel": "System.LinkTypes.Hierarchy-Reverse",
+          "source": null,
+          "target": { "id": 101 }
+        },
+        {
+          "rel": "System.LinkTypes.Hierarchy-Reverse",
+          "source": null,
+          "target": { "id": 102 }
+        },
+        {
+          "rel": "System.LinkTypes.Hierarchy-Reverse",
+          "source": null,
+          "target": { "id": 105 }
+        }
+      ]
+    },
+    "Engineering:sprint-4": {
+      "workItemRelations": [
+        {
+          "rel": "System.LinkTypes.Hierarchy-Reverse",
+          "source": null,
+          "target": { "id": 104 }
+        }
+      ]
+    },
+    "Platform:plat-sprint-1": {
+      "workItemRelations": [
+        {
+          "rel": "System.LinkTypes.Hierarchy-Reverse",
+          "source": null,
+          "target": { "id": 103 }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,69 @@
+/**
+ * azure_devops_get_work_item_revisions — Get revision history for a work item.
+ */
+
+import { Type } from "typebox";
+import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
+import { getWorkItemTrackingApi } from "../utils/connection.js";
+import { formatAdoError, isNotFoundError } from "../utils/errors.js";
+import { formatRevisions } from "../utils/formatting.js";
+import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { mockGetWorkItemRevisions } from "../mocks/mock-handler.js";
+
+export const getWorkItemRevisionsTool = {
+	name: "azure_devops_get_work_item_revisions",
+	description:
+		"Get revision history for an Azure DevOps work item. Shows all changes with who changed what and when.",
+	parameters: Type.Object({
+		workItemId: Type.Number({ description: "Work item ID" }),
+		top: Type.Optional(Type.Number({ description: "Maximum revisions to return (default: 50)" })),
+		mock: Type.Optional(Type.Boolean({ description: "Use mock/fixture data" })),
+	}),
+	promptSnippet: "Get revision history for an Azure DevOps work item",
+	promptGuidelines: [
+		"Use azure_devops_get_work_item_revisions to see how a work item changed over time.",
+	],
+
+	async execute(
+		_toolCallId: string,
+		params: { workItemId: number; top?: number; mock?: boolean },
+		signal: AbortSignal | undefined,
+		_onUpdate: undefined,
+		ctx: { cwd: string; config?: AzureDevOpsConfig },
+	): Promise<ToolResult> {
+		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const top = params.top ?? 50;
+
+		if (isMock(config, params.mock)) {
+			return mockGetWorkItemRevisions(params.workItemId);
+		}
+
+		try {
+			const witApi = await getWorkItemTrackingApi(config, signal);
+			const revisions = await witApi.getRevisions(
+				params.workItemId,
+				top,
+				undefined,
+				undefined,
+				config.project,
+			);
+
+			if (!revisions || revisions.length === 0) {
+				return textResult(
+					`No revisions found for work item #${params.workItemId}.`,
+					{ workItemId: params.workItemId, count: 0 },
+				);
+			}
+
+			return textResult(
+				`Revision history for #${params.workItemId}:\n\n${formatRevisions(revisions as any)}`,
+				{ workItemId: params.workItemId, count: revisions.length },
+			);
+		} catch (err) {
+			if (isNotFoundError(err)) {
+				return errorResult(`Work item #${params.workItemId} not found.`);
+			}
+			return errorResult(`Failed to get revisions: ${formatAdoError(err)}`);
+		}
+	},
+};
