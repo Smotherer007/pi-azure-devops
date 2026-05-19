@@ -216,6 +216,67 @@ describe("azure_devops_set_pull_request_vote (mock)", () => {
 });
 
 // ---------------------------------------------------------------------------
+// azure_devops_set_pull_request_autocomplete
+// ---------------------------------------------------------------------------
+
+describe("azure_devops_set_pull_request_autocomplete (mock)", () => {
+	it("enables auto-complete", async () => {
+		const { setPullRequestAutocompleteTool } = await import("../../src/tools/set-pull-request-autocomplete.js");
+		const result = await setPullRequestAutocompleteTool.execute(
+			"",
+			{ repositoryId: "repo-webapp", pullRequestId: 1, enabled: true, mock: true },
+			undefined, noop, mockCtx,
+		);
+		assert.ok(result.content[0].text.includes("Auto-complete enabled"));
+		assert.equal(result.details.autoComplete, true);
+	});
+
+	it("disables auto-complete", async () => {
+		const { setPullRequestAutocompleteTool } = await import("../../src/tools/set-pull-request-autocomplete.js");
+		const result = await setPullRequestAutocompleteTool.execute(
+			"",
+			{ repositoryId: "repo-webapp", pullRequestId: 1, enabled: false, mock: true },
+			undefined, noop, mockCtx,
+		);
+		assert.ok(result.content[0].text.includes("Auto-complete disabled"));
+		assert.equal(result.details.autoComplete, false);
+	});
+});
+
+// ---------------------------------------------------------------------------
+// azure_devops_link_pr_work_items
+// ---------------------------------------------------------------------------
+
+describe("azure_devops_link_pr_work_items (mock)", () => {
+	it("links work items to a PR", async () => {
+		const { linkPrWorkItemsTool } = await import("../../src/tools/link-pr-work-items.js");
+		const result = await linkPrWorkItemsTool.execute(
+			"",
+			{ repositoryId: "repo-webapp", pullRequestId: 1, workItemIds: [101, 102], operation: "add", mock: true },
+			undefined, noop, mockCtx,
+		);
+		assert.ok(result.content[0].text.includes("Linked"));
+		assert.ok(result.content[0].text.includes("#101"));
+		assert.ok(result.content[0].text.includes("#102"));
+		assert.ok(result.content[0].text.includes("to"));
+		assert.equal(result.details.operation, "add");
+	});
+
+	it("unlinks work items from a PR", async () => {
+		const { linkPrWorkItemsTool } = await import("../../src/tools/link-pr-work-items.js");
+		const result = await linkPrWorkItemsTool.execute(
+			"",
+			{ repositoryId: "repo-webapp", pullRequestId: 1, workItemIds: [101], operation: "remove", mock: true },
+			undefined, noop, mockCtx,
+		);
+		assert.ok(result.content[0].text.includes("Unlinked"));
+		assert.ok(result.content[0].text.includes("#101"));
+		assert.ok(result.content[0].text.includes("from"));
+		assert.equal(result.details.operation, "remove");
+	});
+});
+
+// ---------------------------------------------------------------------------
 // Safety model
 // ---------------------------------------------------------------------------
 
@@ -225,6 +286,8 @@ describe("Phase 3 mutation tools safety", () => {
 		assert.equal(isMutationTool("azure_devops_update_pull_request"), true);
 		assert.equal(isMutationTool("azure_devops_add_pull_request_comment"), true);
 		assert.equal(isMutationTool("azure_devops_set_pull_request_vote"), true);
+		assert.equal(isMutationTool("azure_devops_set_pull_request_autocomplete"), true);
+		assert.equal(isMutationTool("azure_devops_link_pr_work_items"), true);
 	});
 
 	it("does not flag Phase 3 read tools as mutations", () => {
@@ -275,5 +338,24 @@ describe("formatMutationSummary Phase 3 tools", () => {
 		});
 		assert.ok(summary.includes("Vote on PR #42"));
 		assert.ok(summary.includes("approve"));
+	});
+
+	it("formats azure_devops_set_pull_request_autocomplete summary", () => {
+		const summary = formatMutationSummary("azure_devops_set_pull_request_autocomplete", {
+			pullRequestId: 42,
+			enabled: true,
+		});
+		assert.ok(summary.includes("Auto-complete PR #42"));
+		assert.ok(summary.includes("enable"));
+	});
+
+	it("formats azure_devops_link_pr_work_items summary", () => {
+		const summary = formatMutationSummary("azure_devops_link_pr_work_items", {
+			pullRequestId: 42,
+			workItemIds: [101, 102],
+			operation: "add",
+		});
+		assert.ok(summary.includes("Link work items to PR #42"));
+		assert.ok(summary.includes("#101, #102"));
 	});
 });

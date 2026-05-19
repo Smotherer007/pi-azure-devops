@@ -126,6 +126,17 @@ export function formatMutationSummary(toolName: string, params: MutationParams):
 			const vote = String(params.vote ?? "?");
 			return `Vote on PR #${prId}: ${vote}`;
 		}
+		case "azure_devops_set_pull_request_autocomplete": {
+			const prId = params.pullRequestId ?? "?";
+			const enabled = params.enabled ? "enable" : "disable";
+			return `Auto-complete PR #${prId}: ${enabled}`;
+		}
+		case "azure_devops_link_pr_work_items": {
+			const prId = params.pullRequestId ?? "?";
+			const ids = (params.workItemIds as number[] ?? []).map((id) => `#${id}`).join(", ");
+			const op = String(params.operation ?? "add");
+			return `Link work items to PR #${prId}: ${ids} (${op})`;
+		}
 		case "azure_devops_run_pipeline": {
 			const pId = params.pipelineId ?? "?";
 			const branch = String(params.branch ?? "(default)");
