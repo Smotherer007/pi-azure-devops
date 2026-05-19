@@ -59,6 +59,30 @@ describe("formatIteration edge cases", () => {
 		});
 		assert.ok(result.includes("?"));
 	});
+
+	it("handles numeric TimeFrame enum 0 (Past)", () => {
+		const result = formatIteration({
+			name: "Sprint 0",
+			attributes: { timeFrame: 0 as any },
+		});
+		assert.ok(result.includes("⚪ Past"));
+	});
+
+	it("handles numeric TimeFrame enum 1 (Current)", () => {
+		const result = formatIteration({
+			name: "Sprint 1",
+			attributes: { timeFrame: 1 as any },
+		});
+		assert.ok(result.includes("🔵 Current"));
+	});
+
+	it("handles numeric TimeFrame enum 2 (Future)", () => {
+		const result = formatIteration({
+			name: "Sprint 2",
+			attributes: { timeFrame: 2 as any },
+		});
+		assert.ok(result.includes("🟢 Future"));
+	});
 });
 
 describe("formatCapacity edge cases", () => {

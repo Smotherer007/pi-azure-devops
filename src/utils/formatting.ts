@@ -275,16 +275,21 @@ interface IterationLike {
 	url?: string;
 }
 
+// TimeFrame can be a numeric enum (0=Past, 1=Current, 2=Future) or a string.
 const TIMEFRAME_LABELS: Record<string, string> = {
-	current: "🔵 Current",
+	"0": "⚪ Past",
+	"1": "🔵 Current",
+	"2": "🟢 Future",
 	past: "⚪ Past",
+	current: "🔵 Current",
 	future: "🟢 Future",
 };
 
 export function formatIteration(iteration: IterationLike): string {
 	const attrs = iteration.attributes ?? {};
-	const tf = attrs.timeFrame ?? "";
-	const tfLabel = TIMEFRAME_LABELS[tf.toLowerCase()] ?? tf;
+	const rawTf = attrs.timeFrame;
+	const tf = rawTf !== undefined && rawTf !== null && rawTf !== "" ? String(rawTf) : "";
+	const tfLabel = tf ? (TIMEFRAME_LABELS[tf.toLowerCase()] ?? tf) : "";
 	const start = attrs.startDate ? new Date(attrs.startDate).toISOString().slice(0, 10) : "?";
 	const end = attrs.finishDate ? new Date(attrs.finishDate).toISOString().slice(0, 10) : "?";
 
