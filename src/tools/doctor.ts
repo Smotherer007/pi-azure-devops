@@ -22,18 +22,9 @@ export async function runDoctor(
 	mock: boolean | undefined,
 	signal?: AbortSignal,
 ): Promise<ToolResult> {
-	// If a config was injected (test / session), use it as the single connection.
-	// Otherwise, resolve ALL org+project combinations from pi-azure-devops.json.
-	let connections: AzureDevOpsConfig[];
-	let configErrors: string[] = [];
-
-	if (config) {
-		connections = [config];
-	} else {
-		const resolved = resolveAllOrgConfigs();
-		connections = resolved.connections;
-		configErrors = resolved.errors;
-	}
+	// Always resolve ALL org+project combinations from pi-azure-devops.json.
+	// The injected session config (if any) is only used for the mock flag fallback.
+	const { connections, errors: configErrors } = resolveAllOrgConfigs();
 
 	if (configErrors.length > 0 && connections.length === 0) {
 		return errorResult(
@@ -43,7 +34,8 @@ export async function runDoctor(
 	}
 
 	// Mock mode — show all configured connections as simulated
-	if (isMock(connections[0], mock)) {
+	const mockConfig = config ?? connections[0];
+	if (isMock(mockConfig, mock)) {
 		return textResult(formatMockReport(connections));
 	}
 
