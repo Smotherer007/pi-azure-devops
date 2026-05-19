@@ -268,16 +268,26 @@ export function resolveOrgProjectConfig(
 		);
 	}
 
-	// Find the target project within that org
-	const targetProjectName = projectName ?? baseConfig.project;
-	const targetProject = targetOrg.projects.find(
-		(p) => p.name === targetProjectName,
+	// Find the target project within that org.
+	// If projectName is explicitly given, search for it.
+	// If only orgName is given (no project), try the base project name first;
+	// if it doesn't exist in the target org, fall back to the org's first project.
+	let targetProject = targetOrg.projects.find(
+		(p) => p.name === projectName,
 	);
 
+	if (!targetProject && !projectName) {
+		// No explicit project — try the base config's project, then fall back to first
+		targetProject = targetOrg.projects.find(
+			(p) => p.name === baseConfig.project,
+		) ?? targetOrg.projects[0];
+	}
+
 	if (!targetProject) {
+		const searchedName = projectName ?? baseConfig.project;
 		throw new ConfigError(
-			[`project "${targetProjectName}" in org "${targetOrgName}"`],
-			`Project "${targetProjectName}" not found in org "${targetOrgName}". ` +
+			[`project "${searchedName}" in org "${targetOrgName}"`],
+			`Project "${searchedName}" not found in org "${targetOrgName}". ` +
 			`Available: ${targetOrg.projects.map((p) => p.name).join(", ")}`,
 		);
 	}

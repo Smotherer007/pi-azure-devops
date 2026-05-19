@@ -1,6 +1,6 @@
 import { describe, it, beforeEach, afterEach } from "node:test";
 import assert from "node:assert/strict";
-import { existsSync, mkdirSync, rmSync } from "node:fs";
+import { existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { runDoctor } from "../../src/tools/doctor.js";
 import type { AzureDevOpsConfig } from "../../src/config/index.js";
 import { tmpdir } from "node:os";
@@ -21,8 +21,21 @@ function makeConfig(overrides: Partial<AzureDevOpsConfig> = {}): AzureDevOpsConf
 		maxQueryResults: 100,
 		autocomplete: true,
 		mock: false,
+		allOrgs: [
+			{
+				name: "testorg",
+				url: "https://dev.azure.com/testorg",
+				projects: [{ name: "TestProject", pat: "fake-token" }]
+			}
+		],
 		...overrides,
 	};
+}
+
+/** Write a valid pi-azure-devops.json to the test dir so resolveAllOrgConfigs can find it */
+function writeConfigFile(dir: string, orgs: any[]) {
+	const configPath = join(dir, "pi-azure-devops.json");
+	writeFileSync(configPath, JSON.stringify({ orgs }), "utf-8");
 }
 
 // ---------------------------------------------------------------------------
@@ -51,6 +64,9 @@ describe("runDoctor", () => {
 	});
 
 	it("returns mock report when mock mode is enabled via config", async () => {
+		writeConfigFile(testDir, [
+			{ name: "testorg", url: "https://dev.azure.com/testorg", projects: [{ name: "TestProject", pat: "fake-token" }] }
+		]);
 		const config = makeConfig({ mock: true });
 		const result = await runDoctor(testDir, config, undefined);
 		assert.ok(result.content[0].text.includes("Mock Mode"));
@@ -60,6 +76,9 @@ describe("runDoctor", () => {
 	});
 
 	it("returns mock report when mock=true parameter is passed", async () => {
+		writeConfigFile(testDir, [
+			{ name: "testorg", url: "https://dev.azure.com/testorg", projects: [{ name: "TestProject", pat: "fake-token" }] }
+		]);
 		const config = makeConfig({ mock: false });
 		const result = await runDoctor(testDir, config, true);
 		assert.ok(result.content[0].text.includes("Mock Mode"));
@@ -67,6 +86,9 @@ describe("runDoctor", () => {
 	});
 
 	it("mock report includes org and project", async () => {
+		writeConfigFile(testDir, [
+			{ name: "testorg", url: "https://dev.azure.com/testorg", projects: [{ name: "TestProject", pat: "fake-token" }] }
+		]);
 		const config = makeConfig({ mock: true });
 		const result = await runDoctor(testDir, config, undefined);
 		assert.ok(result.content[0].text.includes("testorg"));
@@ -74,6 +96,9 @@ describe("runDoctor", () => {
 	});
 
 	it("mock report includes org count and sections", async () => {
+		writeConfigFile(testDir, [
+			{ name: "testorg", url: "https://dev.azure.com/testorg", projects: [{ name: "TestProject", pat: "fake-token" }] }
+		]);
 		const config = makeConfig({ mock: true });
 		const result = await runDoctor(testDir, config, undefined);
 		assert.ok(result.content[0].text.includes("### testorg / TestProject"));

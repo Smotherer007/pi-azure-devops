@@ -1,7 +1,7 @@
 import { describe, it, beforeEach, afterEach } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, writeFileSync, mkdirSync, rmSync } from "node:fs";
-import { resolveConfig, tryResolveConfig, resolveConfigForDoctor } from "../../src/config/index.js";
+import { resolveConfig, tryResolveConfig, resolveAllOrgConfigs } from "../../src/config/index.js";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { randomUUID } from "node:crypto";
@@ -93,25 +93,24 @@ describe("tryResolveConfig team field", () => {
 	});
 });
 
-describe("resolveConfigForDoctor team field", () => {
+describe("resolveAllOrgConfigs team field", () => {
 	beforeEach(() => {
 		if (existsSync(testDir)) rmSync(testDir, { recursive: true, force: true });
 		mkdirSync(testDir, { recursive: true });
 	});
 	afterEach(teardown);
 
-	it("includes team in clean report", () => {
+	it("includes team in all org connections", () => {
 		setup(baseConfig({ defaultTeam: "Engineering" }));
-		const report = resolveConfigForDoctor();
-		assert.ok(report.config);
-		assert.equal(report.config!.team, "Engineering");
-		assert.equal(report.errors.length, 0);
+		const { connections } = resolveAllOrgConfigs();
+		assert.equal(connections.length, 1);
+		assert.equal(connections[0].team, "Engineering");
 	});
 
 	it("includes team as undefined when not set", () => {
 		setup(baseConfig());
-		const report = resolveConfigForDoctor();
-		assert.ok(report.config);
-		assert.equal(report.config!.team, undefined);
+		const { connections } = resolveAllOrgConfigs();
+		assert.equal(connections.length, 1);
+		assert.equal(connections[0].team, undefined);
 	});
 });

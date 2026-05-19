@@ -63,10 +63,7 @@ pi install /path/to/pi-azure-devops
         { "name": "ClientApp", "pat": "client-specific-token" }
       ]
     }
-  ],
-  "defaultOrg": "my-company",
-  "defaultProject": "ProjectA",
-  "safetyLevel": "confirm"
+  ]
 }
 ```
 

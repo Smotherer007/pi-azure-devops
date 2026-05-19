@@ -1,7 +1,7 @@
 import { describe, it, beforeEach, afterEach } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, writeFileSync, mkdirSync, rmSync, readFileSync } from "node:fs";
-import { resolveConfig, tryResolveConfig, resolveConfigForDoctor, ConfigError, ensureConfigTemplate } from "../../src/config/index.js";
+import { resolveConfig, tryResolveConfig, resolveAllOrgConfigs, resolveOrgProjectConfig, ConfigError, ensureConfigTemplate } from "../../src/config/index.js";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { randomUUID } from "node:crypto";
@@ -214,7 +214,7 @@ describe("tryResolveConfig", () => {
 	});
 });
 
-describe("resolveConfigForDoctor", () => {
+describe("resolveAllOrgConfigs", () => {
 	beforeEach(() => {
 		if (existsSync(testDir)) rmSync(testDir, { recursive: true, force: true });
 		mkdirSync(testDir, { recursive: true });
@@ -222,46 +222,121 @@ describe("resolveConfigForDoctor", () => {
 
 	afterEach(teardown);
 
-	it("reports errors when required fields are missing", () => {
+	it("reports errors when no orgs configured", () => {
 		setup(JSON.stringify({ orgs: [] }));
-		const report = resolveConfigForDoctor();
-		assert.equal(report.config, undefined);
-		assert.ok(report.errors.length > 0);
+		const { connections, errors } = resolveAllOrgConfigs();
+		assert.equal(connections.length, 0);
+		assert.ok(errors.length > 0);
 		teardown();
 	});
 
-	it("reports warning when PAT not set for pat/auto auth", () => {
+	it("returns all org+project connections", () => {
 		setup(JSON.stringify({
-			orgs: [{
-				name: "myorg",
-				url: "https://dev.azure.com/myorg",
-				projects: [{ name: "MyProject" }]
-			}],
-			authMethod: "pat"
+			orgs: [
+				{ name: "org1", url: "https://dev.azure.com/org1", projects: [{ name: "P1", pat: "t1" }] },
+				{ name: "org2", url: "https://dev.azure.com/org2", projects: [{ name: "P2", pat: "t2" }, { name: "P3", pat: "t3" }] }
+			]
 		}));
 
-		const report = resolveConfigForDoctor();
-		assert.ok(report.config);
-		assert.equal(report.config.authMethod, "pat");
-		assert(report.warnings.some((w) => w.includes("PAT")));
+		const { connections, errors } = resolveAllOrgConfigs();
+		assert.equal(connections.length, 3);
+		assert.equal(errors.length, 0);
+		assert.equal(connections[0].orgUrl, "https://dev.azure.com/org1");
+		assert.equal(connections[0].project, "P1");
+		assert.equal(connections[1].project, "P2");
+		assert.equal(connections[2].project, "P3");
 		teardown();
 	});
 
-	it("returns clean report when everything is configured", () => {
+	it("reports errors for orgs with missing url", () => {
 		setup(JSON.stringify({
-			orgs: [{
-				name: "myorg",
-				url: "https://dev.azure.com/myorg",
-				projects: [{ name: "MyProject", pat: "fake-token" }]
-			}],
-			authMethod: "pat"
+			orgs: [
+				{ name: "badorg", projects: [{ name: "P1", pat: "t1" }] }
+			]
 		}));
 
-		const report = resolveConfigForDoctor();
-		assert.ok(report.config);
-		assert.equal(report.errors.length, 0);
-		assert.equal(report.warnings.length, 0);
+		const { connections, errors } = resolveAllOrgConfigs();
+		assert.equal(connections.length, 0);
+		assert.ok(errors.some((e) => e.includes("missing url")));
 		teardown();
+	});
+
+	it("reports errors for orgs with no projects", () => {
+		setup(JSON.stringify({
+			orgs: [
+				{ name: "emptyorg", url: "https://dev.azure.com/emptyorg", projects: [] }
+			]
+		}));
+
+		const { connections, errors } = resolveAllOrgConfigs();
+		assert.equal(connections.length, 0);
+		assert.ok(errors.some((e) => e.includes("no projects")));
+		teardown();
+	});
+});
+
+describe("resolveOrgProjectConfig", () => {
+	const baseConfig = {
+		orgUrl: "https://dev.azure.com/defaultorg",
+		project: "DefaultProject",
+		team: undefined as string | undefined,
+		pat: "default-token",
+		allOrgs: [
+			{ name: "defaultorg", url: "https://dev.azure.com/defaultorg", projects: [{ name: "DefaultProject", pat: "default-token" }] },
+			{ name: "otherorg", url: "https://dev.azure.com/otherorg", projects: [{ name: "OtherProject", pat: "other-token" }] }
+		],
+		authMethod: "pat" as const,
+		safetyLevel: "confirm" as const,
+		defaultWorkItemType: "User Story",
+		maxQueryResults: 100,
+		autocomplete: true,
+		mock: false,
+	};
+
+	it("returns base config when no overrides", () => {
+		const result = resolveOrgProjectConfig(baseConfig);
+		assert.equal(result.orgUrl, "https://dev.azure.com/defaultorg");
+		assert.equal(result.project, "DefaultProject");
+	});
+
+	it("switches to specified org", () => {
+		const result = resolveOrgProjectConfig(baseConfig, "otherorg");
+		assert.equal(result.orgUrl, "https://dev.azure.com/otherorg");
+		assert.equal(result.project, "DefaultProject"); // project not overridden
+	});
+
+	it("switches to specified org and project", () => {
+		const result = resolveOrgProjectConfig(baseConfig, "otherorg", "OtherProject");
+		assert.equal(result.orgUrl, "https://dev.azure.com/otherorg");
+		assert.equal(result.project, "OtherProject");
+		assert.equal(result.pat, "other-token");
+	});
+
+	it("switches project within same org", () => {
+		// Set up allOrgs with multiple projects in one org
+		const multiProjConfig = {
+			...baseConfig,
+			allOrgs: [
+				{ name: "myorg", url: "https://dev.azure.com/myorg", projects: [
+					{ name: "ProjA", pat: "pat-a" },
+					{ name: "ProjB", pat: "pat-b" }
+				] },
+			],
+			orgUrl: "https://dev.azure.com/myorg",
+			project: "ProjA",
+		};
+		const result = resolveOrgProjectConfig(multiProjConfig, undefined, "ProjB");
+		assert.equal(result.orgUrl, "https://dev.azure.com/myorg");
+		assert.equal(result.project, "ProjB");
+		assert.equal(result.pat, "pat-b");
+	});
+
+	it("throws for unknown org", () => {
+		assert.throws(() => resolveOrgProjectConfig(baseConfig, "nonexistent"), ConfigError);
+	});
+
+	it("throws for unknown project", () => {
+		assert.throws(() => resolveOrgProjectConfig(baseConfig, "otherorg", "NonexistentProject"), ConfigError);
 	});
 });
 
