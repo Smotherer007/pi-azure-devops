@@ -1,15 +1,17 @@
 /**
  * azure_devops_link_pr_work_items — Link or unlink work items from a pull request.
  *
- * Uses the WorkItemTracking API to add/remove ArtifactLink relations on work items,
- * because the PR update endpoint silently ignores workItemRefs in the body.
- * See: https://learn.microsoft.com/en-us/rest/api/azure/devops/git/pull-requests/update
+ * Uses the Pull Request Work Items REST API directly:
+ *   Add:    PATCH /_apis/git/repositories/{repoId}/pullRequests/{prId}/workitems/{wiId}
+ *   Remove: DELETE /_apis/git/repositories/{repoId}/pullRequests/{prId}/workitems/{wiId}
+ *
+ * The ArtifactLink approach via WorkItemTracking was unreliable — the link
+ * didn't appear in the PR's "Work Items" tab. The REST API is the canonical way.
  */
 
 import { Type } from "typebox";
 import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
-import { getGitApi, getCoreApi, getWorkItemTrackingApi } from "../utils/connection.js";
-import { WorkItemExpand } from "azure-devops-node-api/interfaces/WorkItemTrackingInterfaces.js";
+import { getGitApi, getCoreApi, getConnection } from "../utils/connection.js";
 import { formatAdoError, isNotFoundError } from "../utils/errors.js";
 import { isMock, textResult, errorResult, type ToolResult, resolveEffectiveConfig, OrgParam, ProjectParam } from "./shared.js";
 
@@ -81,63 +83,30 @@ export const linkPrWorkItemsTool = {
 				return errorResult(`Pull request #${params.pullRequestId} not found.`);
 			}
 
-			// 3. Build the PR artifact URI
-			// Format: vstfs:///Git/PullRequestId/{projectId}/{repositoryId}/{pullRequestId}
-			const repoId = params.repositoryId;
-			const artifactUri = `vstfs:///Git/PullRequestId/${project.id}/${repoId}/${params.pullRequestId}`;
+			// 3. Resolve repository GUID (required by the REST API)
+			const repoGuid = (pr.repository as any)?.id;
+			if (!repoGuid) {
+				return errorResult(`Could not determine repository GUID from PR #${params.pullRequestId}.`);
+			}
 
-			// 4. Add or remove artifact links on each work item
-			const witApi = await getWorkItemTrackingApi(config, signal);
+			// 4. Add or remove work items using the PR Work Items REST API
+			const connection = await getConnection(config, signal);
 			const results: string[] = [];
 			const errors: string[] = [];
 
 			for (const wiId of params.workItemIds) {
 				try {
+					// Build the REST URL for this work item
+					const url = `${config.orgUrl}/${config.project}/_apis/git/repositories/${repoGuid}/pullRequests/${params.pullRequestId}/workitems/${wiId}?api-version=7.1-preview.1`;
+
 					if (params.operation === "add") {
-						// Add an ArtifactLink relation pointing to the PR
-						await witApi.updateWorkItem(
-							{},
-							[
-								{
-									op: "add",
-									path: "/relations/-",
-									value: {
-										rel: "ArtifactLink",
-										url: artifactUri,
-										attributes: {
-											name: "Pull Request",
-										},
-									},
-								},
-							],
-							wiId,
-							config.project,
-						);
+						// PATCH adds the work item to the PR
+						await connection.rest.update(url, null);
 						results.push(`#${wiId}`);
 					} else {
-						// Remove: get the work item with relations to find the artifact link index
-						const wi = await witApi.getWorkItem(wiId, undefined, undefined, WorkItemExpand.Relations, config.project);
-						const relations: Array<{ rel?: string; url?: string }> = (wi as any).relations ?? [];
-						const idx = relations.findIndex(
-							(r) => r.rel === "ArtifactLink" && r.url === artifactUri,
-						);
-
-						if (idx >= 0) {
-							await witApi.updateWorkItem(
-								{},
-								[
-									{
-										op: "remove",
-										path: `/relations/${idx}`,
-									},
-								],
-								wiId,
-								config.project,
-							);
-							results.push(`#${wiId}`);
-						} else {
-							errors.push(`#${wiId}: not linked to this PR`);
-						}
+						// DELETE removes the work item from the PR
+						await connection.rest.del(url);
+						results.push(`#${wiId}`);
 					}
 				} catch (err) {
 					errors.push(`#${wiId}: ${formatAdoError(err)}`);
@@ -157,7 +126,7 @@ export const linkPrWorkItemsTool = {
 				{
 					pullRequestId: params.pullRequestId,
 					repositoryId: params.repositoryId,
-					artifactUri,
+					repoGuid,
 					workItemIds: params.workItemIds,
 					operation: params.operation,
 					linked: results,
