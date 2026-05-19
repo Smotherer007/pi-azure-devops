@@ -1,6 +1,6 @@
 {
   "name": "@patimweb/pi-azure-devops",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Azure DevOps integration for pi coding agent — work items, boards, repos, pull requests, pipelines, and test plans",
   "keywords": [
     "pi-package",
