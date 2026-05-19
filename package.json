@@ -43,8 +43,7 @@
     "@semantic-release/git": "^10.0.0"
   },
   "publishConfig": {
-    "access": "public",
-    "image": "https://raw.githubusercontent.com/Smotherer007/pi-azure-devops/main/screenshot.png"
+    "access": "public"
   },
   "pi": {
     "extensions": [
@@ -55,6 +54,7 @@
     ],
     "prompts": [
       "./prompts"
-    ]
+    ],
+    "image": "https://raw.githubusercontent.com/Smotherer007/pi-azure-devops/main/screenshot.png"
   }
 }

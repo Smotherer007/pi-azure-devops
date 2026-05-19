@@ -17,7 +17,6 @@ export interface PatAuthResult {
  */
 export function createPatAuth(token: string | undefined): PatAuthResult | undefined {
 	if (!token) return undefined;
-	if (!token) return undefined;
 	return {
 		handler: getPersonalAccessTokenHandler(token),
 		method: "pat",
