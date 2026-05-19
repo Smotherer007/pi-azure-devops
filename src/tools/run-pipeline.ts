@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getPipelinesApi } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
 import { formatRun } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockRunPipeline } from "../mocks/mock-handler.js";
 
 export const runPipelineTool = {
@@ -15,6 +15,8 @@ export const runPipelineTool = {
 	description:
 		"Queue a new pipeline run. Optionally specify branch, template parameters, stages to skip, and variables.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		pipelineId: Type.Number({ description: "Pipeline ID to run" }),
 		pipelineVersion: Type.Optional(Type.Number({ description: "Specific pipeline version to run" })),
 		branch: Type.Optional(Type.String({ description: "Branch to build (e.g. main, feature/login). Defaults to repo default." })),
@@ -38,13 +40,14 @@ export const runPipelineTool = {
 			templateParameters?: Record<string, string>;
 			stagesToSkip?: string[];
 			variables?: Record<string, string>;
-			mock?: boolean;
+			mock?: boolean; org?: string; project?: string;
 		},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockRunPipeline(params.pipelineId, params.branch, params.templateParameters);

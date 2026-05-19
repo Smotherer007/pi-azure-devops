@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getWorkItemTrackingApi } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
 import { formatWorkItem, formatWorkItemList } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockQueryWorkItems } from "../mocks/mock-handler.js";
 
 export const queryWorkItemsTool = {
@@ -16,6 +16,8 @@ export const queryWorkItemsTool = {
 		"Run a WIQL query to find Azure DevOps work items. " +
 		"Supports full WIQL syntax. Use to search by type, state, assigned to, area path, iteration path, etc.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		query: Type.String({
 			description:
 				"WIQL query string. Example: SELECT [System.Id] FROM WorkItems WHERE [System.State] = 'Active'",
@@ -30,12 +32,13 @@ export const queryWorkItemsTool = {
 
 	async execute(
 		_toolCallId: string,
-		params: { query: string; top?: number; mock?: boolean },
+		params: { query: string; top?: number; mock?: boolean ; org?: string; project?: string},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 		const top = params.top ?? config.maxQueryResults;
 
 		if (isMock(config, params.mock)) {

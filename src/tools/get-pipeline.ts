@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getPipelinesApi } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
 import { formatPipeline } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockGetPipeline } from "../mocks/mock-handler.js";
 
 export const getPipelineTool = {
@@ -15,6 +15,8 @@ export const getPipelineTool = {
 	description:
 		"Get a single YAML pipeline definition by ID. Returns name, folder, YAML path, and repository info.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		pipelineId: Type.Number({ description: "Pipeline ID" }),
 		pipelineVersion: Type.Optional(Type.Number({ description: "Specific pipeline version" })),
 		mock: Type.Optional(Type.Boolean({ description: "Use mock/fixture data" })),
@@ -23,12 +25,13 @@ export const getPipelineTool = {
 
 	async execute(
 		_toolCallId: string,
-		params: { pipelineId: number; pipelineVersion?: number; mock?: boolean },
+		params: { pipelineId: number; pipelineVersion?: number; mock?: boolean ; org?: string; project?: string},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockGetPipeline(params.pipelineId);

@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getWorkApi } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
 import { formatBoard } from "../utils/formatting.js";
-import { isMock, TeamParam, resolveTeamContext, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, TeamParam, resolveTeamContext, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockSetBoardColumns } from "../mocks/mock-handler.js";
 
 /** Schema for a single column definition */
@@ -25,6 +25,8 @@ export const setBoardColumnsTool = {
 		"Reconfigure columns on an Azure DevOps board. Replaces all columns with the provided set. " +
 		"Each column has a name, optional WIP limit, and state mappings per work item type.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		boardId: Type.String({ description: "Board ID (e.g. 'Stories', 'Features')" }),
 		columns: Type.Array(ColumnSchema, { description: "New column definitions (replaces existing)" }),
 		team: TeamParam,
@@ -42,13 +44,14 @@ export const setBoardColumnsTool = {
 			boardId: string;
 			columns: Array<{ name: string; itemLimit?: number; stateMappings?: Record<string, string> }>;
 			team?: string;
-			mock?: boolean;
+			mock?: boolean; org?: string; project?: string;
 		},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		const teamCtx = resolveTeamContext(config, params.team);
 		if (!teamCtx) {

@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getGitApi } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
 import { formatPullRequest } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockCreatePullRequest } from "../mocks/mock-handler.js";
 
 export const createPullRequestTool = {
@@ -15,6 +15,8 @@ export const createPullRequestTool = {
 	description:
 		"Create a new Azure DevOps pull request. Requires repository, source branch, target branch, and title.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		repositoryId: Type.String({ description: "Repository ID or name" }),
 		sourceRefName: Type.String({ description: "Source branch (e.g. refs/heads/feature/login)" }),
 		targetRefName: Type.String({ description: "Target branch (e.g. refs/heads/main)" }),
@@ -38,13 +40,14 @@ export const createPullRequestTool = {
 			title: string;
 			description?: string;
 			isDraft?: boolean;
-			mock?: boolean;
+			mock?: boolean; org?: string; project?: string;
 		},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockCreatePullRequest(

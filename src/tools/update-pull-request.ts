@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getGitApi } from "../utils/connection.js";
 import { formatAdoError, isNotFoundError } from "../utils/errors.js";
 import { formatPullRequest } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockUpdatePullRequest } from "../mocks/mock-handler.js";
 
 const STATUS_MAP: Record<string, number> = {
@@ -21,6 +21,8 @@ export const updatePullRequestTool = {
 	description:
 		"Update an Azure DevOps pull request — change title, description, or status (abandon/complete/reactivate).",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		repositoryId: Type.String({ description: "Repository ID or name" }),
 		pullRequestId: Type.Number({ description: "Pull request ID" }),
 		title: Type.Optional(Type.String({ description: "New title" })),
@@ -46,13 +48,14 @@ export const updatePullRequestTool = {
 			title?: string;
 			description?: string;
 			status?: string;
-			mock?: boolean;
+			mock?: boolean; org?: string; project?: string;
 		},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockUpdatePullRequest(params.repositoryId, params.pullRequestId, {

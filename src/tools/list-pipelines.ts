@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getPipelinesApi } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
 import { formatPipelineList } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockListPipelines } from "../mocks/mock-handler.js";
 
 export const listPipelinesTool = {
@@ -15,6 +15,8 @@ export const listPipelinesTool = {
 	description:
 		"List YAML pipelines (definitions) in the configured Azure DevOps project. Returns pipeline name, ID, folder, and YAML path.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		top: Type.Optional(Type.Number({ description: "Maximum number of pipelines to return", default: 50 })),
 		mock: Type.Optional(Type.Boolean({ description: "Use mock/fixture data" })),
 	}),
@@ -26,12 +28,13 @@ export const listPipelinesTool = {
 
 	async execute(
 		_toolCallId: string,
-		params: { top?: number; mock?: boolean },
+		params: { top?: number; mock?: boolean ; org?: string; project?: string},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockListPipelines();

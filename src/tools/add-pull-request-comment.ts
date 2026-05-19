@@ -6,7 +6,7 @@ import { Type } from "typebox";
 import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getGitApi } from "../utils/connection.js";
 import { formatAdoError, isNotFoundError } from "../utils/errors.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockAddPullRequestComment } from "../mocks/mock-handler.js";
 
 const THREAD_STATUS_MAP: Record<string, number> = {
@@ -20,6 +20,8 @@ export const addPullRequestCommentTool = {
 	description:
 		"Add a comment to an Azure DevOps pull request. Creates a new comment thread on the PR.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		repositoryId: Type.String({ description: "Repository ID or name" }),
 		pullRequestId: Type.Number({ description: "Pull request ID" }),
 		content: Type.String({ description: "Comment text" }),
@@ -43,13 +45,14 @@ export const addPullRequestCommentTool = {
 			pullRequestId: number;
 			content: string;
 			threadStatus?: string;
-			mock?: boolean;
+			mock?: boolean; org?: string; project?: string;
 		},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockAddPullRequestComment(params.repositoryId, params.pullRequestId, params.content);

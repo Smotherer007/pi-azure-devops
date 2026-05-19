@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getBuildApi } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
 import { formatRunList } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockListRuns } from "../mocks/mock-handler.js";
 
 const STATUS_MAP: Record<string, number> = {
@@ -31,6 +31,8 @@ export const listRunsTool = {
 	description:
 		"List pipeline runs (builds). Optionally filter by pipeline ID, status, result, or branch. Returns run ID, pipeline name, state, result, duration, and branch.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		pipelineId: Type.Optional(Type.Number({ description: "Filter by pipeline ID (omit for all pipelines)" })),
 		top: Type.Optional(Type.Number({ description: "Maximum number of runs to return", default: 25 })),
 		status: Type.Optional(Type.String({ description: "Filter by state: completed, inProgress, cancelling, postponed, notStarted, all" })),
@@ -47,12 +49,13 @@ export const listRunsTool = {
 
 	async execute(
 		_toolCallId: string,
-		params: { pipelineId?: number; top?: number; status?: string; result?: string; branch?: string; mock?: boolean },
+		params: { pipelineId?: number; top?: number; status?: string; result?: string; branch?: string; mock?: boolean ; org?: string; project?: string},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockListRuns({

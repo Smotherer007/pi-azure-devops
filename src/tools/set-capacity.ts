@@ -6,7 +6,7 @@ import { Type } from "typebox";
 import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getWorkApi } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
-import { isMock, TeamParam, resolveTeamContext, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, TeamParam, resolveTeamContext, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockSetCapacity } from "../mocks/mock-handler.js";
 
 /** Schema for a single activity entry */
@@ -34,6 +34,8 @@ export const setCapacityTool = {
 		"Set sprint capacity for all team members at once (full replacement, not patch). " +
 		"Provide each member's activities with hours/day and optional days off.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		iterationId: Type.String({ description: "Iteration/sprint GUID" }),
 		capacities: Type.Array(MemberCapacitySchema, {
 			description: "Capacity for each team member — replaces existing capacity",
@@ -57,13 +59,14 @@ export const setCapacityTool = {
 				daysOff?: Array<{ start: string; end: string }>;
 			}>;
 			team?: string;
-			mock?: boolean;
+			mock?: boolean; org?: string; project?: string;
 		},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		const teamCtx = resolveTeamContext(config, params.team);
 		if (!teamCtx) {

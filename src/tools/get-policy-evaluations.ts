@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getPolicyApi } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
 import { formatPolicyEvaluation } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockGetPolicyEvaluations } from "../mocks/mock-handler.js";
 
 export const getPolicyEvaluationsTool = {
@@ -15,6 +15,8 @@ export const getPolicyEvaluationsTool = {
 	description:
 		"Get policy evaluation status for an Azure DevOps pull request. Shows whether each policy (reviewers, build, etc.) is approved, pending, or rejected.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		pullRequestId: Type.Number({ description: "Pull request ID" }),
 		repositoryId: Type.Optional(Type.String({ description: "Repository ID or name (used for artifact ID construction)" })),
 		mock: Type.Optional(Type.Boolean({ description: "Use mock/fixture data" })),
@@ -27,12 +29,13 @@ export const getPolicyEvaluationsTool = {
 
 	async execute(
 		_toolCallId: string,
-		params: { pullRequestId: number; repositoryId?: string; mock?: boolean },
+		params: { pullRequestId: number; repositoryId?: string; mock?: boolean ; org?: string; project?: string},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockGetPolicyEvaluations(`vstfs://CodeReview/CodeReviewId/${params.pullRequestId}`);

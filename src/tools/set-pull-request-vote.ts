@@ -6,7 +6,7 @@ import { Type } from "typebox";
 import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getGitApi } from "../utils/connection.js";
 import { formatAdoError, isNotFoundError } from "../utils/errors.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockSetPullRequestVote } from "../mocks/mock-handler.js";
 
 const VOTE_MAP: Record<string, number> = {
@@ -30,6 +30,8 @@ export const setPullRequestVoteTool = {
 	description:
 		"Vote on an Azure DevOps pull request. Use approve, approve-with-suggestions, waiting-for-author, reject, or reset.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		repositoryId: Type.String({ description: "Repository ID or name" }),
 		pullRequestId: Type.Number({ description: "Pull request ID" }),
 		vote: Type.Union([
@@ -53,13 +55,14 @@ export const setPullRequestVoteTool = {
 			repositoryId: string;
 			pullRequestId: number;
 			vote: string;
-			mock?: boolean;
+			mock?: boolean; org?: string; project?: string;
 		},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 		const voteValue = VOTE_MAP[params.vote];
 
 		if (isMock(config, params.mock)) {

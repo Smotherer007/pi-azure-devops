@@ -234,6 +234,63 @@ export function tryResolveConfig(cwd?: string): AzureDevOpsConfig | undefined {
 }
 
 /**
+ * Resolve a specific org+project config from the base config's allOrgs list.
+ *
+ * Used by tools that accept optional org/project parameters to override
+ * the default session config.
+ *
+ * @param baseConfig - The session-level resolved config (from resolveConfig)
+ * @param orgName - Optional org name to look up in allOrgs
+ * @param projectName - Optional project name to look up in the org
+ * @returns A new AzureDevOpsConfig pointing to the requested org/project
+ * @throws ConfigError if the org or project is not found
+ */
+export function resolveOrgProjectConfig(
+	baseConfig: AzureDevOpsConfig,
+	orgName?: string,
+	projectName?: string,
+): AzureDevOpsConfig {
+	// No overrides — return base as-is
+	if (!orgName && !projectName) return baseConfig;
+
+	// Find the target org
+	const targetOrgName = orgName ??
+		baseConfig.orgUrl.replace(/^https?:\/\/dev\.azure\.com\//, "");
+	const targetOrg = baseConfig.allOrgs.find(
+		(o) => o.name === targetOrgName,
+	);
+
+	if (!targetOrg) {
+		throw new ConfigError(
+			[`org "${targetOrgName}"`],
+			`Organization "${targetOrgName}" not found in pi-azure-devops.json. ` +
+			`Available: ${baseConfig.allOrgs.map((o) => o.name).join(", ")}`,
+		);
+	}
+
+	// Find the target project within that org
+	const targetProjectName = projectName ?? baseConfig.project;
+	const targetProject = targetOrg.projects.find(
+		(p) => p.name === targetProjectName,
+	);
+
+	if (!targetProject) {
+		throw new ConfigError(
+			[`project "${targetProjectName}" in org "${targetOrgName}"`],
+			`Project "${targetProjectName}" not found in org "${targetOrgName}". ` +
+			`Available: ${targetOrg.projects.map((p) => p.name).join(", ")}`,
+		);
+	}
+
+	return {
+		...baseConfig,
+		orgUrl: targetOrg.url.replace(/\/+$/, ""),
+		project: targetProject.name,
+		pat: targetProject.pat || baseConfig.pat,
+	};
+}
+
+/**
  * Resolve ALL configured org+project combinations from pi-azure-devops.json.
  *
  * Unlike resolveConfig(), this does NOT use defaultOrg/defaultProject —

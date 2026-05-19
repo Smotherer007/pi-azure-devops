@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getWorkItemTrackingApi } from "../utils/connection.js";
 import { formatAdoError, isNotFoundError } from "../utils/errors.js";
 import { formatRevisions } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockGetWorkItemRevisions } from "../mocks/mock-handler.js";
 
 export const getWorkItemRevisionsTool = {
@@ -15,6 +15,8 @@ export const getWorkItemRevisionsTool = {
 	description:
 		"Get revision history for an Azure DevOps work item. Shows all changes with who changed what and when.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		workItemId: Type.Number({ description: "Work item ID" }),
 		top: Type.Optional(Type.Number({ description: "Maximum revisions to return (default: 50)" })),
 		mock: Type.Optional(Type.Boolean({ description: "Use mock/fixture data" })),
@@ -26,12 +28,13 @@ export const getWorkItemRevisionsTool = {
 
 	async execute(
 		_toolCallId: string,
-		params: { workItemId: number; top?: number; mock?: boolean },
+		params: { workItemId: number; top?: number; mock?: boolean ; org?: string; project?: string},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 		const top = params.top ?? 50;
 
 		if (isMock(config, params.mock)) {

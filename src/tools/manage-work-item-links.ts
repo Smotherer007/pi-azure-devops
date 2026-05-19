@@ -8,7 +8,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getWorkItemTrackingApi } from "../utils/connection.js";
 import { formatAdoError, isNotFoundError } from "../utils/errors.js";
 import { formatWorkItem } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockManageWorkItemLinks } from "../mocks/mock-handler.js";
 
 export const manageWorkItemLinksTool = {
@@ -18,6 +18,8 @@ export const manageWorkItemLinksTool = {
 		"Common relation types: System.LinkTypes.Hierarchy-Forward (parent/child), " +
 		"System.LinkTypes.Related, System.LinkTypes.Duplicate, System.LinkTypes.Dependency.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		workItemId: Type.Number({ description: "Source work item ID" }),
 		operation: StringEnum(["add", "remove"] as const, { description: "Add or remove the link" }),
 		relationType: Type.String({
@@ -40,13 +42,14 @@ export const manageWorkItemLinksTool = {
 			relationType: string;
 			targetId: number;
 			comment?: string;
-			mock?: boolean;
+			mock?: boolean; org?: string; project?: string;
 		},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockManageWorkItemLinks(

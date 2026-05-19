@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getWorkItemTrackingApi } from "../utils/connection.js";
 import { formatAdoError, isNotFoundError } from "../utils/errors.js";
 import { formatComments } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockGetWorkItemComments } from "../mocks/mock-handler.js";
 
 export const getWorkItemCommentsTool = {
@@ -15,6 +15,8 @@ export const getWorkItemCommentsTool = {
 	description:
 		"Retrieve all comments on an Azure DevOps work item. Returns comment text, author, and date.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		workItemId: Type.Number({ description: "Work item ID" }),
 		mock: Type.Optional(Type.Boolean({ description: "Use mock/fixture data" })),
 	}),
@@ -25,12 +27,13 @@ export const getWorkItemCommentsTool = {
 
 	async execute(
 		_toolCallId: string,
-		params: { workItemId: number; mock?: boolean },
+		params: { workItemId: number; mock?: boolean ; org?: string; project?: string},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockGetWorkItemComments(params.workItemId);

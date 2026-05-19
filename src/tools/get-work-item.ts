@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getWorkItemTrackingApi } from "../utils/connection.js";
 import { formatAdoError, isNotFoundError } from "../utils/errors.js";
 import { formatWorkItem } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, resolveEffectiveConfig, OrgParam, ProjectParam, type ToolResult } from "./shared.js";
 import { mockGetWorkItem } from "../mocks/mock-handler.js";
 
 export const getWorkItemTool = {
@@ -16,6 +16,8 @@ export const getWorkItemTool = {
 		"Fetch a single Azure DevOps work item by ID. Returns all fields, formatted for readability.",
 	parameters: Type.Object({
 		id: Type.Number({ description: "Work item ID" }),
+		org: OrgParam,
+		project: ProjectParam,
 		mock: Type.Optional(Type.Boolean({ description: "Use mock/fixture data" })),
 	}),
 	promptSnippet: "Fetch an Azure DevOps work item by ID",
@@ -25,12 +27,13 @@ export const getWorkItemTool = {
 
 	async execute(
 		_toolCallId: string,
-		params: { id: number; mock?: boolean },
+		params: { id: number; org?: string; project?: string; mock?: boolean },
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockGetWorkItem(params.id);

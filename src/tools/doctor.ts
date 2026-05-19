@@ -11,7 +11,7 @@ import {
 import { tryResolveAuth } from "../auth/index.js";
 import { getConnection } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 
 /**
  * Run the doctor check. Exported for testability.
@@ -125,6 +125,8 @@ export const doctorTool = {
 		"Check Azure DevOps configuration, authentication readiness, and connection health. " +
 		"Run this first to verify your setup before using other Azure DevOps tools.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		mock: Type.Optional(Type.Boolean({ description: "Use mock mode (report healthy without network)" })),
 	}),
 	promptSnippet: "Check Azure DevOps configuration and connectivity",
@@ -135,7 +137,7 @@ export const doctorTool = {
 
 	async execute(
 		_toolCallId: string,
-		params: { mock?: boolean },
+		params: { mock?: boolean ; org?: string; project?: string},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },

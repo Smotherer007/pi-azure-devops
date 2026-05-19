@@ -4,6 +4,7 @@
 
 import { Type } from "typebox";
 import type { AzureDevOpsConfig } from "../config/index.js";
+import { resolveOrgProjectConfig } from "../config/index.js";
 
 // ---------------------------------------------------------------------------
 // Common schemas
@@ -12,6 +13,16 @@ import type { AzureDevOpsConfig } from "../config/index.js";
 /** Mock parameter — supported by all tools */
 export const MockParam = Type.Optional(
 	Type.Boolean({ description: "Use mock/fixture data instead of live Azure DevOps API" }),
+);
+
+/** Organization parameter — overrides default org */
+export const OrgParam = Type.Optional(
+	Type.String({ description: "Organization name (e.g. 'neoimpulse', 'eagleburgmann'). Uses default if omitted." }),
+);
+
+/** Project parameter — overrides default project */
+export const ProjectParam = Type.Optional(
+	Type.String({ description: "Project name (e.g. 'PI Agent Reviewer', 'SCODA'). Uses default if omitted." }),
 );
 
 /** Team parameter — overrides config default team */
@@ -96,6 +107,24 @@ export const MUTATION_TOOLS = new Set([
 
 export function isMutationTool(toolName: string): boolean {
 	return MUTATION_TOOLS.has(toolName);
+}
+
+// ---------------------------------------------------------------------------
+// Config resolution with org/project overrides
+// ---------------------------------------------------------------------------
+
+/**
+ * Resolve the effective AzureDevOpsConfig given optional org/project overrides.
+ * Uses resolveOrgProjectConfig from config/index.ts to look up the right
+ * org+project in allOrgs, falling back to the base config defaults.
+ */
+export function resolveEffectiveConfig(
+	baseConfig: AzureDevOpsConfig,
+	org?: string,
+	project?: string,
+): AzureDevOpsConfig {
+	if (!org && !project) return baseConfig;
+	return resolveOrgProjectConfig(baseConfig, org, project);
 }
 
 // ---------------------------------------------------------------------------

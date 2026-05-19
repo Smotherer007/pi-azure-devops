@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getTestPlanApi } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
 import { formatTestCaseList } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockListTestCases } from "../mocks/mock-handler.js";
 
 export const listTestCasesTool = {
@@ -15,6 +15,8 @@ export const listTestCasesTool = {
 	description:
 		"List test cases in a test suite. Returns case ID, title, state, assigned to, priority, and configurations.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		planId: Type.Number({ description: "Test plan ID" }),
 		suiteId: Type.Number({ description: "Test suite ID" }),
 		mock: Type.Optional(Type.Boolean({ description: "Use mock/fixture data" })),
@@ -27,12 +29,13 @@ export const listTestCasesTool = {
 
 	async execute(
 		_toolCallId: string,
-		params: { planId: number; suiteId: number; mock?: boolean },
+		params: { planId: number; suiteId: number; mock?: boolean ; org?: string; project?: string},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockListTestCases(params.planId, params.suiteId);

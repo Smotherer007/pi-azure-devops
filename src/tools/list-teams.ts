@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getCoreApi } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
 import { formatTeamList } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockListTeams } from "../mocks/mock-handler.js";
 
 export const listTeamsTool = {
@@ -15,6 +15,8 @@ export const listTeamsTool = {
 	description:
 		"List all teams in the configured Azure DevOps project. Returns team name, description, and ID.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		mock: Type.Optional(Type.Boolean({ description: "Use mock/fixture data" })),
 	}),
 	promptSnippet: "List Azure DevOps teams in the project",
@@ -25,12 +27,13 @@ export const listTeamsTool = {
 
 	async execute(
 		_toolCallId: string,
-		params: { mock?: boolean },
+		params: { mock?: boolean ; org?: string; project?: string},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockListTeams();

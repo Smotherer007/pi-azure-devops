@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getWorkItemTrackingApi } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
 import { formatWorkItemTypeList } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockListWorkItemTypes } from "../mocks/mock-handler.js";
 
 export const listWorkItemTypesTool = {
@@ -16,6 +16,8 @@ export const listWorkItemTypesTool = {
 		"List all available work item types for the Azure DevOps project. " +
 		"Use before creating work items to determine valid types.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		mock: Type.Optional(Type.Boolean({ description: "Use mock/fixture data" })),
 	}),
 	promptSnippet: "List Azure DevOps work item types",
@@ -25,12 +27,13 @@ export const listWorkItemTypesTool = {
 
 	async execute(
 		_toolCallId: string,
-		params: { mock?: boolean },
+		params: { mock?: boolean ; org?: string; project?: string},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockListWorkItemTypes();

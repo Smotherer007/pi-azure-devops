@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getWorkApi } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
 import { formatBoardList } from "../utils/formatting.js";
-import { isMock, TeamParam, resolveTeamContext, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, TeamParam, resolveTeamContext, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockListBoards } from "../mocks/mock-handler.js";
 
 export const listBoardsTool = {
@@ -15,6 +15,8 @@ export const listBoardsTool = {
 	description:
 		"List boards for an Azure DevOps team. Returns board name, ID, and URL. Requires a team (from config or parameter).",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		team: TeamParam,
 		mock: Type.Optional(Type.Boolean({ description: "Use mock/fixture data" })),
 	}),
@@ -25,12 +27,13 @@ export const listBoardsTool = {
 
 	async execute(
 		_toolCallId: string,
-		params: { team?: string; mock?: boolean },
+		params: { team?: string; mock?: boolean ; org?: string; project?: string},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		const teamCtx = resolveTeamContext(config, params.team);
 		if (!teamCtx) {

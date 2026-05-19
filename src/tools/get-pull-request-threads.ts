@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getGitApi } from "../utils/connection.js";
 import { formatAdoError, isNotFoundError } from "../utils/errors.js";
 import { formatPullRequestThread } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockGetPullRequestThreads } from "../mocks/mock-handler.js";
 
 export const getPullRequestThreadsTool = {
@@ -15,6 +15,8 @@ export const getPullRequestThreadsTool = {
 	description:
 		"Get comment threads on an Azure DevOps pull request. Shows thread status and all comments with authors.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		repositoryId: Type.String({ description: "Repository ID or name" }),
 		pullRequestId: Type.Number({ description: "Pull request ID" }),
 		mock: Type.Optional(Type.Boolean({ description: "Use mock/fixture data" })),
@@ -27,12 +29,13 @@ export const getPullRequestThreadsTool = {
 
 	async execute(
 		_toolCallId: string,
-		params: { repositoryId: string; pullRequestId: number; mock?: boolean },
+		params: { repositoryId: string; pullRequestId: number; mock?: boolean ; org?: string; project?: string},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockGetPullRequestThreads(params.repositoryId, params.pullRequestId);

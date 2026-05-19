@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getGitApi } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
 import { formatPullRequestList } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockListPullRequests } from "../mocks/mock-handler.js";
 
 const PR_STATUS_MAP: Record<string, number> = {
@@ -22,6 +22,8 @@ export const listPullRequestsTool = {
 	description:
 		"List or search Azure DevOps pull requests. Supports filtering by status, repository, creator, and branch names. Returns PR ID, title, status, author, and branch info.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		repositoryId: Type.Optional(Type.String({ description: "Repository ID or name to scope results" })),
 		status: Type.Optional(Type.Union([
 			Type.Literal("active"),
@@ -53,13 +55,14 @@ export const listPullRequestsTool = {
 			sourceRefName?: string;
 			targetRefName?: string;
 			top?: number;
-			mock?: boolean;
+			mock?: boolean; org?: string; project?: string;
 		},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockListPullRequests({

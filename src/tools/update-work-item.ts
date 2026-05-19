@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getWorkItemTrackingApi } from "../utils/connection.js";
 import { formatAdoError, isNotFoundError } from "../utils/errors.js";
 import { formatWorkItem } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockUpdateWorkItem } from "../mocks/mock-handler.js";
 
 export const updateWorkItemTool = {
@@ -16,6 +16,8 @@ export const updateWorkItemTool = {
 		"Update fields on an existing Azure DevOps work item using JSON Patch. " +
 		"Provide the work item ID and a map of field names to new values.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		id: Type.Number({ description: "Work item ID to update" }),
 		fields: Type.Record(Type.String(), Type.String(), {
 			description: "Fields to update, e.g. {\"System.State\": \"Closed\", \"System.Reason\": \"Completed\"}",
@@ -29,12 +31,13 @@ export const updateWorkItemTool = {
 
 	async execute(
 		_toolCallId: string,
-		params: { id: number; fields: Record<string, string>; mock?: boolean },
+		params: { id: number; fields: Record<string, string>; mock?: boolean ; org?: string; project?: string},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockUpdateWorkItem(params.id, params.fields);

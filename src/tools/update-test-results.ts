@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getTestResultsApi } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
 import { formatTestResultList } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockUpdateTestResults } from "../mocks/mock-handler.js";
 
 const OUTCOME_MAP: Record<string, number> = {
@@ -31,6 +31,8 @@ export const updateTestResultsTool = {
 	description:
 		"Update test case results in a test run. Set outcome (passed, failed, blocked, etc.) and optional comment for each result.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		runId: Type.Number({ description: "Test run ID" }),
 		results: Type.Array(
 			Type.Object({
@@ -53,13 +55,14 @@ export const updateTestResultsTool = {
 		params: {
 			runId: number;
 			results: Array<{ id: number; outcome: string; comment?: string }>;
-			mock?: boolean;
+			mock?: boolean; org?: string; project?: string;
 		},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockUpdateTestResults(

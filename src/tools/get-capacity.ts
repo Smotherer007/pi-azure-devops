@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getWorkApi } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
 import { formatCapacity } from "../utils/formatting.js";
-import { isMock, TeamParam, resolveTeamContext, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, TeamParam, resolveTeamContext, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockGetCapacity } from "../mocks/mock-handler.js";
 
 export const getCapacityTool = {
@@ -15,6 +15,8 @@ export const getCapacityTool = {
 	description:
 		"Get sprint capacity for an Azure DevOps team — per-member activities, capacity per day, days off, and team totals.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		iterationId: Type.String({ description: "Iteration/sprint GUID or ID" }),
 		team: TeamParam,
 		mock: Type.Optional(Type.Boolean({ description: "Use mock/fixture data" })),
@@ -27,12 +29,13 @@ export const getCapacityTool = {
 
 	async execute(
 		_toolCallId: string,
-		params: { iterationId: string; team?: string; mock?: boolean },
+		params: { iterationId: string; team?: string; mock?: boolean ; org?: string; project?: string},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		const teamCtx = resolveTeamContext(config, params.team);
 		if (!teamCtx) {

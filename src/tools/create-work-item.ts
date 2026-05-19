@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getWorkItemTrackingApi } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
 import { formatWorkItem } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockCreateWorkItem } from "../mocks/mock-handler.js";
 
 export const createWorkItemTool = {
@@ -15,6 +15,8 @@ export const createWorkItemTool = {
 	description:
 		"Create a new Azure DevOps work item. Requires type, title, and optionally description and custom fields.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		type: Type.String({ description: "Work item type (e.g., User Story, Bug, Task). Use azure_devops_list_work_item_types to see valid types." }),
 		title: Type.String({ description: "Work item title" }),
 		description: Type.Optional(Type.String({ description: "Work item description (supports HTML)" })),
@@ -31,12 +33,13 @@ export const createWorkItemTool = {
 
 	async execute(
 		_toolCallId: string,
-		params: { type: string; title: string; description?: string; fields?: Record<string, string>; mock?: boolean },
+		params: { type: string; title: string; description?: string; fields?: Record<string, string>; mock?: boolean ; org?: string; project?: string},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockCreateWorkItem(params.type, params.title, params.description, params.fields);

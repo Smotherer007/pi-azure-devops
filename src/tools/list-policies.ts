@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getPolicyApi } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
 import { formatPolicy } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockListPolicies } from "../mocks/mock-handler.js";
 
 export const listPoliciesTool = {
@@ -15,6 +15,8 @@ export const listPoliciesTool = {
 	description:
 		"List branch and PR policies configured for the Azure DevOps project. Shows policy type, blocking status, scope, and settings.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		scope: Type.Optional(Type.String({ description: "Filter by scope (e.g. refs/heads/main)" })),
 		mock: Type.Optional(Type.Boolean({ description: "Use mock/fixture data" })),
 	}),
@@ -26,12 +28,13 @@ export const listPoliciesTool = {
 
 	async execute(
 		_toolCallId: string,
-		params: { scope?: string; mock?: boolean },
+		params: { scope?: string; mock?: boolean ; org?: string; project?: string},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockListPolicies(params.scope);

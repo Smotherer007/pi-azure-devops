@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getGitApi } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
 import { formatRepoList } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockListRepos } from "../mocks/mock-handler.js";
 
 export const listReposTool = {
@@ -15,6 +15,8 @@ export const listReposTool = {
 	description:
 		"List all Git repositories in the configured Azure DevOps project. Returns repo name, ID, default branch, and size.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		includeHidden: Type.Optional(Type.Boolean({ description: "Include hidden repositories", default: false })),
 		mock: Type.Optional(Type.Boolean({ description: "Use mock/fixture data" })),
 	}),
@@ -26,12 +28,13 @@ export const listReposTool = {
 
 	async execute(
 		_toolCallId: string,
-		params: { includeHidden?: boolean; mock?: boolean },
+		params: { includeHidden?: boolean; mock?: boolean ; org?: string; project?: string},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockListRepos();

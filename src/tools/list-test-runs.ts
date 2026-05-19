@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getTestResultsApi } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
 import { formatTestRunList } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockListTestRuns } from "../mocks/mock-handler.js";
 
 export const listTestRunsTool = {
@@ -15,6 +15,8 @@ export const listTestRunsTool = {
 	description:
 		"List test runs in the project. Optionally filter by plan ID, build URI, or owner. Returns run ID, name, state, pass/total counts, and date.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		planId: Type.Optional(Type.Number({ description: "Filter by test plan ID" })),
 		buildUri: Type.Optional(Type.String({ description: "Filter by build URI" })),
 		owner: Type.Optional(Type.String({ description: "Filter by owner display name" })),
@@ -29,12 +31,13 @@ export const listTestRunsTool = {
 
 	async execute(
 		_toolCallId: string,
-		params: { planId?: number; buildUri?: string; owner?: string; top?: number; mock?: boolean },
+		params: { planId?: number; buildUri?: string; owner?: string; top?: number; mock?: boolean ; org?: string; project?: string},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockListTestRuns({ planId: params.planId });

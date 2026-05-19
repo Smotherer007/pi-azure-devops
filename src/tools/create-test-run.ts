@@ -7,7 +7,7 @@ import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
 import { getTestPlanApi, getTestResultsApi } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
 import { formatTestRun } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult } from "./shared.js";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
 import { mockCreateTestRun } from "../mocks/mock-handler.js";
 
 export const createTestRunTool = {
@@ -15,6 +15,8 @@ export const createTestRunTool = {
 	description:
 		"Create a new test run from a test plan and selected suites. Collects test points from the specified suites and queues a run.",
 	parameters: Type.Object({
+		org: OrgParam,
+		project: ProjectParam,
 		planId: Type.Number({ description: "Test plan ID" }),
 		suiteIds: Type.Array(Type.Number(), { description: "Suite IDs to include in the run" }),
 		name: Type.Optional(Type.String({ description: "Run name (auto-generated if omitted)" })),
@@ -34,13 +36,14 @@ export const createTestRunTool = {
 			suiteIds: number[];
 			name?: string;
 			comment?: string;
-			mock?: boolean;
+			mock?: boolean; org?: string; project?: string;
 		},
 		signal: AbortSignal | undefined,
 		_onUpdate: undefined,
 		ctx: { cwd: string; config?: AzureDevOpsConfig },
 	): Promise<ToolResult> {
-		const config = ctx.config ?? resolveConfig(ctx.cwd);
+		const baseConfig = ctx.config ?? resolveConfig(ctx.cwd);
+		const config = resolveEffectiveConfig(baseConfig, params.org, params.project);
 
 		if (isMock(config, params.mock)) {
 			return mockCreateTestRun(params.planId, params.suiteIds, params.name);
