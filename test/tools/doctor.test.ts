@@ -56,12 +56,14 @@ describe("runDoctor", () => {
 		assert.ok(result.content[0].text.includes("Mock Mode"));
 		assert.ok(result.content[0].text.includes("simulated as connected"));
 		assert.ok(result.content[0].text.includes("simulated as authenticated"));
+		assert.ok(result.content[0].text.includes("Orgs configured: 1"));
 	});
 
 	it("returns mock report when mock=true parameter is passed", async () => {
 		const config = makeConfig({ mock: false });
 		const result = await runDoctor(testDir, config, true);
 		assert.ok(result.content[0].text.includes("Mock Mode"));
+		assert.ok(result.content[0].text.includes("Orgs configured: 1"));
 	});
 
 	it("mock report includes org and project", async () => {
@@ -71,9 +73,10 @@ describe("runDoctor", () => {
 		assert.ok(result.content[0].text.includes("TestProject"));
 	});
 
-	it("mock report includes safety level", async () => {
-		const config = makeConfig({ mock: true, safetyLevel: "readonly" });
+	it("mock report includes org count and sections", async () => {
+		const config = makeConfig({ mock: true });
 		const result = await runDoctor(testDir, config, undefined);
-		assert.ok(result.content[0].text.includes("readonly"));
+		assert.ok(result.content[0].text.includes("### testorg / TestProject"));
+		assert.ok(result.content[0].text.includes("- **URL:** https://dev.azure.com/testorg"));
 	});
 });

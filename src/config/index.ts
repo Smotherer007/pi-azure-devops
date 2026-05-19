@@ -233,38 +233,67 @@ export function tryResolveConfig(cwd?: string): AzureDevOpsConfig | undefined {
 	}
 }
 
-export function resolveConfigForDoctor(cwd?: string): {
-	config: AzureDevOpsConfig | undefined;
+/**
+ * Resolve ALL configured org+project combinations from pi-azure-devops.json.
+ *
+ * Unlike resolveConfig(), this does NOT use defaultOrg/defaultProject —
+ * it returns every org×project pairing so the doctor can validate them all.
+ */
+export function resolveAllOrgConfigs(): {
+	connections: AzureDevOpsConfig[];
 	errors: string[];
-	warnings: string[];
 } {
+	const raw = readConfigFile();
 	const errors: string[] = [];
-	const warnings: string[] = [];
 
-	try {
-		const config = resolveConfig(cwd);
-
-		if (!VALID_AUTH_METHODS.has(config.authMethod)) {
-			warnings.push(`Invalid authMethod "${config.authMethod}", will fall back to auto-detect`);
-		}
-
-		if (!VALID_SAFETY_LEVELS.has(config.safetyLevel)) {
-			warnings.push(`Invalid safetyLevel, using default "${DEFAULTS.safetyLevel}"`);
-		}
-
-		if ((config.authMethod === "pat" || config.authMethod === "auto") && !config.pat) {
-			warnings.push("No PAT configured in pi-azure-devops.json — will try Azure CLI");
-		}
-
-		return { config, errors, warnings };
-	} catch (err) {
-		if (err instanceof ConfigError) {
-			errors.push(...err.missing);
-		} else {
-			errors.push(String(err));
-		}
-		return { config: undefined, errors, warnings };
+	if (!raw.orgs || raw.orgs.length === 0) {
+		errors.push("No orgs configured in pi-azure-devops.json");
+		return { connections: [], errors };
 	}
+
+	const connections: AzureDevOpsConfig[] = [];
+
+	for (const org of raw.orgs) {
+		if (!org.url) {
+			errors.push(`Org "${org.name || "(unnamed)"}": missing url`);
+			continue;
+		}
+
+		const projects = org.projects ?? [];
+		for (const proj of projects) {
+			if (!proj.name) {
+				errors.push(`Org "${org.name}": project missing name`);
+				continue;
+			}
+
+			const authMethod =
+				validateAuthMethod(raw.authMethod) ?? DEFAULTS.authMethod;
+			const safetyLevel =
+				validateSafetyLevel(raw.safetyLevel) ?? DEFAULTS.safetyLevel;
+
+			connections.push({
+				orgUrl: org.url.replace(/\/+$/, ""),
+				project: proj.name,
+				team: raw.defaultTeam?.trim() || undefined,
+				pat: proj.pat || undefined,
+				allOrgs: raw.orgs,
+				authMethod,
+				safetyLevel,
+				defaultWorkItemType:
+					raw.defaultWorkItemType ?? DEFAULTS.defaultWorkItemType,
+				maxQueryResults:
+					raw.maxQueryResults ?? DEFAULTS.maxQueryResults,
+				autocomplete: raw.autocomplete ?? DEFAULTS.autocomplete,
+				mock: raw.mock ?? DEFAULTS.mock,
+			});
+		}
+
+		if (projects.length === 0) {
+			errors.push(`Org "${org.name}": no projects configured`);
+		}
+	}
+
+	return { connections, errors };
 }
 
 // ---------------------------------------------------------------------------

@@ -1,9 +1,13 @@
 /**
- * azure_devops_doctor — Check config, auth readiness, and connection health.
+ * azure_devops_doctor — Check config, auth readiness, and connection health
+ * for ALL configured org+project combinations.
  */
 
 import { Type } from "typebox";
-import { resolveConfigForDoctor, type AzureDevOpsConfig } from "../config/index.js";
+import {
+	resolveAllOrgConfigs,
+	type AzureDevOpsConfig,
+} from "../config/index.js";
 import { tryResolveAuth } from "../auth/index.js";
 import { getConnection } from "../utils/connection.js";
 import { formatAdoError } from "../utils/errors.js";
@@ -18,53 +22,75 @@ export async function runDoctor(
 	mock: boolean | undefined,
 	signal?: AbortSignal,
 ): Promise<ToolResult> {
-	// Resolve config if not provided
-	if (!config) {
-		const report = resolveConfigForDoctor(cwd);
-		if (!report.config) {
-			return errorResult(
-				`Azure DevOps configuration issues:\n${report.errors.map((e) => `  ❌ ${e}`).join("\n")}\n\n` +
-					"Set AZURE_DEVOPS_ORG_URL and AZURE_DEVOPS_PROJECT (env vars or settings.json).",
-			);
-		}
-		config = report.config;
+	// If a config was injected (test / session), use it as the single connection.
+	// Otherwise, resolve ALL org+project combinations from pi-azure-devops.json.
+	let connections: AzureDevOpsConfig[];
+	let configErrors: string[] = [];
+
+	if (config) {
+		connections = [config];
+	} else {
+		const resolved = resolveAllOrgConfigs();
+		connections = resolved.connections;
+		configErrors = resolved.errors;
 	}
 
-	// Mock mode
-	if (isMock(config, mock)) {
-		return textResult(formatMockReport(config));
+	if (configErrors.length > 0 && connections.length === 0) {
+		return errorResult(
+			`Azure DevOps configuration issues in pi-azure-devops.json:\n${configErrors.map((e) => `  ❌ ${e}`).join("\n")}\n\n` +
+				"Edit ~/.pi/agent/pi-azure-devops.json with your orgs, projects, and PATs.",
+		);
 	}
 
+	// Mock mode — show all configured connections as simulated
+	if (isMock(connections[0], mock)) {
+		return textResult(formatMockReport(connections));
+	}
+
+	// Live validation — iterate over every org+project
 	const lines: string[] = [];
 	lines.push("## Azure DevOps Configuration");
-	lines.push(`- **Org:** ${config.orgUrl}`);
-	lines.push(`- **Project:** ${config.project}`);
-	lines.push(`- **Auth Method:** ${config.authMethod}`);
-	lines.push(`- **Safety Level:** ${config.safetyLevel}`);
-	lines.push(`- **Mock Mode:** off`);
-
-	// Auth check
+	lines.push(`- **Orgs configured:** ${connections.length}`);
 	lines.push("");
-	lines.push("## Authentication");
-	const auth = await tryResolveAuth(config, signal);
-	if (auth) {
-		lines.push(`✅ Authenticated via **${auth.method}**`);
-	} else {
-		lines.push("❌ No authentication available");
-		return errorResult(lines.join("\n"));
+
+	for (let i = 0; i < connections.length; i++) {
+		const conn = connections[i];
+		lines.push(`### ${conn.orgUrl.replace("https://dev.azure.com/", "")} / ${conn.project}`);
+		lines.push(`- **URL:** ${conn.orgUrl}`);
+
+		// Auth check
+		const auth = await tryResolveAuth(conn, signal);
+		if (auth) {
+			lines.push(`- **Auth:** ✅ Authenticated via **${auth.method}**`);
+		} else {
+			lines.push(`- **Auth:** ❌ No authentication available`);
+			continue;
+		}
+
+		// Connection check
+		try {
+			const connection = await getConnection(conn, signal);
+			const witApi = await connection.getWorkItemTrackingApi();
+			const types = await witApi.getWorkItemTypes(conn.project);
+			lines.push(
+				`- **Connection:** ✅ Connected — ${types?.length ?? 0} work item types available`,
+			);
+		} catch (err) {
+			lines.push(
+				`- **Connection:** ❌ Failed: ${formatAdoError(err)}`,
+			);
+		}
+
+		if (i < connections.length - 1) lines.push("");
 	}
 
-	// Connection check
-	lines.push("");
-	lines.push("## Connection");
-	try {
-		const connection = await getConnection(config, signal);
-		const witApi = await connection.getWorkItemTrackingApi();
-		const types = await witApi.getWorkItemTypes(config.project);
-		lines.push(`✅ Connected — ${types?.length ?? 0} work item types available`);
-	} catch (err) {
-		lines.push(`❌ Connection failed: ${formatAdoError(err)}`);
-		return errorResult(lines.join("\n"));
+	// Append any config-level errors (e.g. missing url in one org)
+	if (configErrors.length > 0) {
+		lines.push("");
+		lines.push("## ⚠️ Config Warnings");
+		for (const err of configErrors) {
+			lines.push(`- ${err}`);
+		}
 	}
 
 	return textResult(lines.join("\n"));
@@ -74,23 +100,27 @@ export async function runDoctor(
 // Mock report
 // ---------------------------------------------------------------------------
 
-function formatMockReport(config: AzureDevOpsConfig): string {
-	return [
+function formatMockReport(connections: AzureDevOpsConfig[]): string {
+	const lines: string[] = [
 		"## Azure DevOps Configuration (Mock Mode)",
-		`- **Org:** ${config.orgUrl}`,
-		`- **Project:** ${config.project}`,
-		`- **Auth Method:** ${config.authMethod}`,
-		`- **Safety Level:** ${config.safetyLevel}`,
-		`- **Mock Mode:** on`,
+		`- **Orgs configured:** ${connections.length}`,
 		"",
-		"## Authentication",
-		"✅ Mock — simulated as authenticated",
-		"",
-		"## Connection",
-		"✅ Mock — simulated as connected (6 work item types)",
-		"",
-		"⚠️ Running in mock mode. No network calls were made.",
-	].join("\n");
+	];
+
+	for (const conn of connections) {
+		lines.push(
+			`### ${conn.orgUrl.replace("https://dev.azure.com/", "")} / ${conn.project}`,
+		);
+		lines.push(`- **URL:** ${conn.orgUrl}`);
+		lines.push(`- **Auth:** ✅ Mock — simulated as authenticated`);
+		lines.push(
+			`- **Connection:** ✅ Mock — simulated as connected (6 work item types)`,
+		);
+		lines.push("");
+	}
+
+	lines.push("⚠️ Running in mock mode. No network calls were made.");
+	return lines.join("\n");
 }
 
 // ---------------------------------------------------------------------------
@@ -108,6 +138,7 @@ export const doctorTool = {
 	promptSnippet: "Check Azure DevOps configuration and connectivity",
 	promptGuidelines: [
 		"Use azure_devops_doctor before other Azure DevOps tools to verify the user's setup is working.",
+		"The doctor validates ALL configured orgs and projects from pi-azure-devops.json.",
 	],
 
 	async execute(
