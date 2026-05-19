@@ -1,13 +1,15 @@
 /**
  * azure_devops_link_pr_work_items — Link or unlink work items from a pull request.
  *
- * Links work items to a PR so they appear in the PR's "Work Items" panel and
- * are transitioned when the PR completes.
+ * Uses the WorkItemTracking API to add/remove ArtifactLink relations on work items,
+ * because the PR update endpoint silently ignores workItemRefs in the body.
+ * See: https://learn.microsoft.com/en-us/rest/api/azure/devops/git/pull-requests/update
  */
 
 import { Type } from "typebox";
 import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
-import { getGitApi } from "../utils/connection.js";
+import { getGitApi, getCoreApi, getWorkItemTrackingApi } from "../utils/connection.js";
+import { WorkItemExpand } from "azure-devops-node-api/interfaces/WorkItemTrackingInterfaces.js";
 import { formatAdoError, isNotFoundError } from "../utils/errors.js";
 import { isMock, textResult, errorResult, type ToolResult, resolveEffectiveConfig, OrgParam, ProjectParam } from "./shared.js";
 
@@ -60,66 +62,107 @@ export const linkPrWorkItemsTool = {
 		}
 
 		try {
-			const gitApi = await getGitApi(config, signal);
+			// 1. Resolve the project ID (GUID) needed for the artifact URI
+			const coreApi = await getCoreApi(config, signal);
+			const project = await coreApi.getProject(config.project);
+			if (!project || !project.id) {
+				return errorResult(`Project "${config.project}" not found.`);
+			}
 
-			// 1. Read current PR to get existing work item refs
+			// 2. Verify the PR exists (also gives us the repo GUID if needed)
+			const gitApi = await getGitApi(config, signal);
 			const pr = await gitApi.getPullRequest(
 				params.repositoryId,
 				params.pullRequestId,
 				config.project,
-				undefined,
-				undefined,
-				undefined,
-				false,
-				true, // includeWorkItemRefs
 			);
 
 			if (!pr || !pr.pullRequestId) {
 				return errorResult(`Pull request #${params.pullRequestId} not found.`);
 			}
 
-			// 2. Build the new work item refs list
-			const existingRefs: { id: string; url: string }[] = (pr.workItemRefs || []).map((ref) => ({
-				id: ref.id || "",
-				url: ref.url || "",
-			}));
+			// 3. Build the PR artifact URI
+			// Format: vstfs:///Git/PullRequestId/{projectId}/{repositoryId}/{pullRequestId}
+			const repoId = params.repositoryId;
+			const artifactUri = `vstfs:///Git/PullRequestId/${project.id}/${repoId}/${params.pullRequestId}`;
 
-			const baseUrl = `${config.orgUrl}`;
+			// 4. Add or remove artifact links on each work item
+			const witApi = await getWorkItemTrackingApi(config, signal);
+			const results: string[] = [];
+			const errors: string[] = [];
 
-			if (params.operation === "add") {
-				for (const wiId of params.workItemIds) {
-					const idStr = String(wiId);
-					if (!existingRefs.some((ref) => ref.id === idStr)) {
-						existingRefs.push({
-							id: idStr,
-							url: `${baseUrl}/_apis/wit/workItems/${wiId}`,
-						});
+			for (const wiId of params.workItemIds) {
+				try {
+					if (params.operation === "add") {
+						// Add an ArtifactLink relation pointing to the PR
+						await witApi.updateWorkItem(
+							{},
+							[
+								{
+									op: "add",
+									path: "/relations/-",
+									value: {
+										rel: "ArtifactLink",
+										url: artifactUri,
+										attributes: {
+											name: "Pull Request",
+										},
+									},
+								},
+							],
+							wiId,
+							config.project,
+						);
+						results.push(`#${wiId}`);
+					} else {
+						// Remove: get the work item with relations to find the artifact link index
+						const wi = await witApi.getWorkItem(wiId, undefined, undefined, WorkItemExpand.Relations, config.project);
+						const relations: Array<{ rel?: string; url?: string }> = (wi as any).relations ?? [];
+						const idx = relations.findIndex(
+							(r) => r.rel === "ArtifactLink" && r.url === artifactUri,
+						);
+
+						if (idx >= 0) {
+							await witApi.updateWorkItem(
+								{},
+								[
+									{
+										op: "remove",
+										path: `/relations/${idx}`,
+									},
+								],
+								wiId,
+								config.project,
+							);
+							results.push(`#${wiId}`);
+						} else {
+							errors.push(`#${wiId}: not linked to this PR`);
+						}
 					}
+				} catch (err) {
+					errors.push(`#${wiId}: ${formatAdoError(err)}`);
 				}
-			} else {
-				const removeSet = new Set(params.workItemIds.map(String));
-				const filtered = existingRefs.filter((ref) => !removeSet.has(ref.id));
-				existingRefs.length = 0;
-				existingRefs.push(...filtered);
 			}
 
-			// 3. Update the PR with the new work item refs
-			const updatedPr = await gitApi.updatePullRequest(
-				{ workItemRefs: existingRefs } as any,
-				params.repositoryId,
-				params.pullRequestId,
-				config.project,
-			);
-
-			if (!updatedPr || !updatedPr.pullRequestId) {
-				return errorResult(`Failed to update work item links for PR #${params.pullRequestId}.`);
-			}
-
+			// 5. Build the response
 			const verb = params.operation === "add" ? "Linked" : "Unlinked";
-			const ids = params.workItemIds.map((id) => `#${id}`).join(", ");
+			const successPart = results.length > 0
+				? `✅ ${verb} work item(s) ${results.join(", ")} ${params.operation === "add" ? "to" : "from"} PR #${params.pullRequestId}`
+				: `⚠️ No work items were ${params.operation === "add" ? "linked" : "unlinked"}.`;
+
+			const errorPart = errors.length > 0 ? `\n\n❌ Errors:\n${errors.map((e) => `- ${e}`).join("\n")}` : "";
+
 			return textResult(
-				`✅ ${verb} work item(s) ${ids} ${params.operation === "add" ? "to" : "from"} PR #${params.pullRequestId}`,
-				{ pullRequestId: updatedPr.pullRequestId, repositoryId: params.repositoryId, workItemIds: params.workItemIds, operation: params.operation },
+				`${successPart}${errorPart}`,
+				{
+					pullRequestId: params.pullRequestId,
+					repositoryId: params.repositoryId,
+					artifactUri,
+					workItemIds: params.workItemIds,
+					operation: params.operation,
+					linked: results,
+					errors: errors.length > 0 ? errors : undefined,
+				},
 			);
 		} catch (err) {
 			if (isNotFoundError(err)) {

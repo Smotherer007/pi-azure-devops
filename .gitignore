@@ -5,3 +5,4 @@ dist/
 *.js.map
 !.prettierrc.js
 .DS_Store
+*.tgz
