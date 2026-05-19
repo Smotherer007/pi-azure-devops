@@ -1,62 +1,70 @@
-import { describe, it, beforeEach } from "node:test";
+import { describe, it, beforeEach, afterEach } from "node:test";
 import assert from "node:assert/strict";
-import { resolveConfig, tryResolveConfig, resolveConfigForDoctor, type AzureDevOpsConfig } from "../../src/config/index.js";
+import { existsSync, writeFileSync, mkdirSync, rmSync } from "node:fs";
+import { resolveConfig, tryResolveConfig, resolveConfigForDoctor } from "../../src/config/index.js";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { randomUUID } from "node:crypto";
+
+const testDir = join(tmpdir(), `pi-ado-team-${randomUUID()}`);
+const configPath = join(testDir, "pi-azure-devops.json");
+const origPiDir = process.env.PI_CODING_AGENT_DIR;
+
+function setup(json: string) {
+	mkdirSync(testDir, { recursive: true });
+	writeFileSync(configPath, json, "utf-8");
+	process.env.PI_CODING_AGENT_DIR = testDir;
+}
+
+function teardown() {
+	process.env.PI_CODING_AGENT_DIR = origPiDir;
+	if (existsSync(testDir)) rmSync(testDir, { recursive: true, force: true });
+}
+
+const baseConfig = (overrides: Record<string, unknown> = {}) => JSON.stringify({
+	orgs: [{ name: "testorg", url: "https://dev.azure.com/testorg", projects: [{ name: "TestProject", pat: "token" }] }],
+	...overrides,
+});
 
 describe("resolveConfig team field", () => {
-	const baseEnv: Record<string, string | undefined> = {
-		AZURE_DEVOPS_ORG_URL: "https://dev.azure.com/testorg",
-		AZURE_DEVOPS_PROJECT: "TestProject",
-	};
-
-	function withEnv(overrides: Record<string, string | undefined>): void {
-		for (const [key, value] of Object.entries(overrides)) {
-			if (value === undefined) {
-				delete process.env[key];
-			} else {
-				process.env[key] = value;
-			}
-		}
-	}
-
 	beforeEach(() => {
-		// Clean up all Azure DevOps env vars
-		for (const key of Object.keys(process.env)) {
-			if (key.startsWith("AZURE_DEVOPS_")) delete process.env[key];
-		}
+		if (existsSync(testDir)) rmSync(testDir, { recursive: true, force: true });
+		mkdirSync(testDir, { recursive: true });
 	});
+	afterEach(teardown);
 
 	it("returns undefined team when not configured", () => {
-		withEnv(baseEnv);
+		setup(baseConfig());
 		const config = resolveConfig();
 		assert.equal(config.team, undefined);
 	});
 
-	it("resolves team from AZURE_DEVOPS_TEAM env var", () => {
-		withEnv({ ...baseEnv, AZURE_DEVOPS_TEAM: "Engineering" });
+	it("resolves team from defaultTeam config", () => {
+		setup(baseConfig({ defaultTeam: "Engineering" }));
 		const config = resolveConfig();
 		assert.equal(config.team, "Engineering");
 	});
 
-	it("trims whitespace from AZURE_DEVOPS_TEAM", () => {
-		withEnv({ ...baseEnv, AZURE_DEVOPS_TEAM: "  Engineering  " });
+	it("trims whitespace from defaultTeam", () => {
+		setup(baseConfig({ defaultTeam: "  Engineering  " }));
 		const config = resolveConfig();
 		assert.equal(config.team, "Engineering");
 	});
 
-	it("ignores empty AZURE_DEVOPS_TEAM env var", () => {
-		withEnv({ ...baseEnv, AZURE_DEVOPS_TEAM: "" });
+	it("ignores empty defaultTeam", () => {
+		setup(baseConfig({ defaultTeam: "" }));
 		const config = resolveConfig();
 		assert.equal(config.team, undefined);
 	});
 
-	it("ignores whitespace-only AZURE_DEVOPS_TEAM env var", () => {
-		withEnv({ ...baseEnv, AZURE_DEVOPS_TEAM: "   " });
+	it("ignores whitespace-only defaultTeam", () => {
+		setup(baseConfig({ defaultTeam: "   " }));
 		const config = resolveConfig();
 		assert.equal(config.team, undefined);
 	});
 
 	it("includes team in resolved config object", () => {
-		withEnv({ ...baseEnv, AZURE_DEVOPS_TEAM: "Platform" });
+		setup(baseConfig({ defaultTeam: "Platform" }));
 		const config = resolveConfig();
 		assert.ok("team" in config);
 		assert.equal(config.team, "Platform");
@@ -65,23 +73,20 @@ describe("resolveConfig team field", () => {
 
 describe("tryResolveConfig team field", () => {
 	beforeEach(() => {
-		for (const key of Object.keys(process.env)) {
-			if (key.startsWith("AZURE_DEVOPS_")) delete process.env[key];
-		}
+		if (existsSync(testDir)) rmSync(testDir, { recursive: true, force: true });
+		mkdirSync(testDir, { recursive: true });
 	});
+	afterEach(teardown);
 
 	it("returns config with team undefined when valid config exists", () => {
-		process.env.AZURE_DEVOPS_ORG_URL = "https://dev.azure.com/testorg";
-		process.env.AZURE_DEVOPS_PROJECT = "TestProject";
+		setup(baseConfig());
 		const config = tryResolveConfig();
 		assert.ok(config);
 		assert.equal(config!.team, undefined);
 	});
 
-	it("returns config with team when AZURE_DEVOPS_TEAM is set", () => {
-		process.env.AZURE_DEVOPS_ORG_URL = "https://dev.azure.com/testorg";
-		process.env.AZURE_DEVOPS_PROJECT = "TestProject";
-		process.env.AZURE_DEVOPS_TEAM = "QA";
+	it("returns config with team when defaultTeam is set", () => {
+		setup(baseConfig({ defaultTeam: "QA" }));
 		const config = tryResolveConfig();
 		assert.ok(config);
 		assert.equal(config!.team, "QA");
@@ -90,15 +95,13 @@ describe("tryResolveConfig team field", () => {
 
 describe("resolveConfigForDoctor team field", () => {
 	beforeEach(() => {
-		for (const key of Object.keys(process.env)) {
-			if (key.startsWith("AZURE_DEVOPS_")) delete process.env[key];
-		}
+		if (existsSync(testDir)) rmSync(testDir, { recursive: true, force: true });
+		mkdirSync(testDir, { recursive: true });
 	});
+	afterEach(teardown);
 
 	it("includes team in clean report", () => {
-		process.env.AZURE_DEVOPS_ORG_URL = "https://dev.azure.com/testorg";
-		process.env.AZURE_DEVOPS_PROJECT = "TestProject";
-		process.env.AZURE_DEVOPS_TEAM = "Engineering";
+		setup(baseConfig({ defaultTeam: "Engineering" }));
 		const report = resolveConfigForDoctor();
 		assert.ok(report.config);
 		assert.equal(report.config!.team, "Engineering");
@@ -106,8 +109,7 @@ describe("resolveConfigForDoctor team field", () => {
 	});
 
 	it("includes team as undefined when not set", () => {
-		process.env.AZURE_DEVOPS_ORG_URL = "https://dev.azure.com/testorg";
-		process.env.AZURE_DEVOPS_PROJECT = "TestProject";
+		setup(baseConfig());
 		const report = resolveConfigForDoctor();
 		assert.ok(report.config);
 		assert.equal(report.config!.team, undefined);

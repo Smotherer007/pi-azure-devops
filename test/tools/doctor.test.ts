@@ -1,7 +1,11 @@
-import { describe, it } from "node:test";
+import { describe, it, beforeEach, afterEach } from "node:test";
 import assert from "node:assert/strict";
+import { existsSync, mkdirSync, rmSync } from "node:fs";
 import { runDoctor } from "../../src/tools/doctor.js";
 import type { AzureDevOpsConfig } from "../../src/config/index.js";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { randomUUID } from "node:crypto";
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -21,74 +25,55 @@ function makeConfig(overrides: Partial<AzureDevOpsConfig> = {}): AzureDevOpsConf
 	};
 }
 
-function withEnv(vars: Record<string, string | undefined>, fn: () => void): void {
-	const originals = new Map<string, string | undefined>();
-	for (const [key, value] of Object.entries(vars)) {
-		originals.set(key, process.env[key]);
-		if (value === undefined) {
-			delete process.env[key];
-		} else {
-			process.env[key] = value;
-		}
-	}
-	try {
-		fn();
-	} finally {
-		for (const [key, value] of originals) {
-			if (value === undefined) {
-				delete process.env[key];
-			} else {
-				process.env[key] = value;
-			}
-		}
-	}
-}
-
 // ---------------------------------------------------------------------------
 // Tests
 // ---------------------------------------------------------------------------
 
 describe("runDoctor", () => {
+	const testDir = join(tmpdir(), `pi-ado-doctor-${randomUUID()}`);
+	const origPiDir = process.env.PI_CODING_AGENT_DIR;
+
+	beforeEach(() => {
+		if (existsSync(testDir)) rmSync(testDir, { recursive: true, force: true });
+		mkdirSync(testDir, { recursive: true });
+		process.env.PI_CODING_AGENT_DIR = testDir;
+	});
+
+	afterEach(() => {
+		process.env.PI_CODING_AGENT_DIR = origPiDir;
+		if (existsSync(testDir)) rmSync(testDir, { recursive: true, force: true });
+	});
+
 	it("returns error when config is missing", async () => {
-		withEnv({ AZURE_DEVOPS_ORG_URL: undefined, AZURE_DEVOPS_PROJECT: undefined }, async () => {
-			const result = await runDoctor(process.cwd(), undefined, false);
-			assert.ok(result.content[0].text.includes("❌"));
-			assert.ok(result.content[0].text.includes("configuration issues"));
-		});
+		const result = await runDoctor(testDir, undefined, false);
+		assert.ok(result.content[0].text.includes("❌"));
+		assert.ok(result.content[0].text.includes("configuration issues"));
 	});
 
 	it("returns mock report when mock mode is enabled via config", async () => {
-		withEnv({ AZURE_DEVOPS_PAT: "fake-token" }, async () => {
-			const config = makeConfig({ mock: true });
-			const result = await runDoctor(process.cwd(), config, undefined);
-			assert.ok(result.content[0].text.includes("Mock Mode"));
-			assert.ok(result.content[0].text.includes("simulated as connected"));
-			assert.ok(result.content[0].text.includes("simulated as authenticated"));
-		});
+		const config = makeConfig({ mock: true });
+		const result = await runDoctor(testDir, config, undefined);
+		assert.ok(result.content[0].text.includes("Mock Mode"));
+		assert.ok(result.content[0].text.includes("simulated as connected"));
+		assert.ok(result.content[0].text.includes("simulated as authenticated"));
 	});
 
 	it("returns mock report when mock=true parameter is passed", async () => {
-		withEnv({ AZURE_DEVOPS_PAT: "fake-token" }, async () => {
-			const config = makeConfig({ mock: false });
-			const result = await runDoctor(process.cwd(), config, true);
-			assert.ok(result.content[0].text.includes("Mock Mode"));
-		});
+		const config = makeConfig({ mock: false });
+		const result = await runDoctor(testDir, config, true);
+		assert.ok(result.content[0].text.includes("Mock Mode"));
 	});
 
 	it("mock report includes org and project", async () => {
-		withEnv({ AZURE_DEVOPS_PAT: "fake-token" }, async () => {
-			const config = makeConfig({ mock: true });
-			const result = await runDoctor(process.cwd(), config, undefined);
-			assert.ok(result.content[0].text.includes("testorg"));
-			assert.ok(result.content[0].text.includes("TestProject"));
-		});
+		const config = makeConfig({ mock: true });
+		const result = await runDoctor(testDir, config, undefined);
+		assert.ok(result.content[0].text.includes("testorg"));
+		assert.ok(result.content[0].text.includes("TestProject"));
 	});
 
 	it("mock report includes safety level", async () => {
-		withEnv({ AZURE_DEVOPS_PAT: "fake-token" }, async () => {
-			const config = makeConfig({ mock: true, safetyLevel: "readonly" });
-			const result = await runDoctor(process.cwd(), config, undefined);
-			assert.ok(result.content[0].text.includes("readonly"));
-		});
+		const config = makeConfig({ mock: true, safetyLevel: "readonly" });
+		const result = await runDoctor(testDir, config, undefined);
+		assert.ok(result.content[0].text.includes("readonly"));
 	});
 });
