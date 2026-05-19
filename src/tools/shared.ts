@@ -96,6 +96,8 @@ export const MUTATION_TOOLS = new Set([
 	"azure_devops_update_pull_request",
 	"azure_devops_add_pull_request_comment",
 	"azure_devops_set_pull_request_vote",
+	"azure_devops_set_pull_request_autocomplete",
+	"azure_devops_link_pr_work_items",
 	// Phase 2: Pipelines
 	"azure_devops_run_pipeline",
 	"azure_devops_cancel_run",

@@ -34,6 +34,8 @@ import { createPullRequestTool } from "../tools/create-pull-request.js";
 import { updatePullRequestTool } from "../tools/update-pull-request.js";
 import { addPullRequestCommentTool } from "../tools/add-pull-request-comment.js";
 import { setPullRequestVoteTool } from "../tools/set-pull-request-vote.js";
+import { setPullRequestAutocompleteTool } from "../tools/set-pull-request-autocomplete.js";
+import { linkPrWorkItemsTool } from "../tools/link-pr-work-items.js";
 import { listPipelinesTool } from "../tools/list-pipelines.js";
 import { getPipelineTool } from "../tools/get-pipeline.js";
 import { listRunsTool } from "../tools/list-runs.js";
@@ -95,6 +97,8 @@ const tools = [
 	updatePullRequestTool,
 	addPullRequestCommentTool,
 	setPullRequestVoteTool,
+	setPullRequestAutocompleteTool,
+	linkPrWorkItemsTool,
 	// Phase 2: Pipelines (read)
 	listPipelinesTool,
 	getPipelineTool,
