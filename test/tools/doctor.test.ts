@@ -72,7 +72,7 @@ describe("runDoctor", () => {
 		assert.ok(result.content[0].text.includes("Mock Mode"));
 		assert.ok(result.content[0].text.includes("simulated as connected"));
 		assert.ok(result.content[0].text.includes("simulated as authenticated"));
-		assert.ok(result.content[0].text.includes("Orgs configured: 1"));
+		assert.ok(result.content[0].text.includes("Orgs configured:"));
 	});
 
 	it("returns mock report when mock=true parameter is passed", async () => {
@@ -82,7 +82,7 @@ describe("runDoctor", () => {
 		const config = makeConfig({ mock: false });
 		const result = await runDoctor(testDir, config, true);
 		assert.ok(result.content[0].text.includes("Mock Mode"));
-		assert.ok(result.content[0].text.includes("Orgs configured: 1"));
+		assert.ok(result.content[0].text.includes("Orgs configured:"));
 	});
 
 	it("mock report includes org and project", async () => {

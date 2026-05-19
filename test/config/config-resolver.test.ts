@@ -302,7 +302,8 @@ describe("resolveOrgProjectConfig", () => {
 	it("switches to specified org", () => {
 		const result = resolveOrgProjectConfig(baseConfig, "otherorg");
 		assert.equal(result.orgUrl, "https://dev.azure.com/otherorg");
-		assert.equal(result.project, "DefaultProject"); // project not overridden
+		// Falls back to first project of target org when base project doesn't exist there
+		assert.equal(result.project, "OtherProject");
 	});
 
 	it("switches to specified org and project", () => {
