@@ -1,7 +1,7 @@
 import { describe, it, beforeEach, afterEach } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, writeFileSync, mkdirSync, rmSync, readFileSync } from "node:fs";
-import { resolveConfig, tryResolveConfig, resolveAllOrgConfigs, resolveOrgProjectConfig, ConfigError, ensureConfigTemplate } from "../../src/config/index.js";
+import { resolveConfig, tryResolveConfig, resolveAllOrgConfigs, resolveOrgProjectConfig, ConfigError, ensureConfigTemplate, type SafetyLevel } from "../../src/config/index.js";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { randomUUID } from "node:crypto";
@@ -166,6 +166,57 @@ describe("resolveConfig", () => {
 		teardown();
 	});
 
+	it("cascading safety level: project overrides org overrides global", () => {
+		setup(JSON.stringify({
+			orgs: [{
+				name: "myorg",
+				url: "https://dev.azure.com/myorg",
+				safetyLevel: "open",
+				projects: [{
+					name: "MyProject",
+					pat: "token",
+					safetyLevel: "readonly"
+				}]
+			}],
+			safetyLevel: "confirm"
+		}));
+
+		const config = resolveConfig();
+		assert.equal(config.safetyLevel, "readonly");
+		teardown();
+	});
+
+	it("cascading safety level: org overrides global when project has none", () => {
+		setup(JSON.stringify({
+			orgs: [{
+				name: "myorg",
+				url: "https://dev.azure.com/myorg",
+				safetyLevel: "open",
+				projects: [{ name: "MyProject", pat: "token" }]
+			}],
+			safetyLevel: "confirm"
+		}));
+
+		const config = resolveConfig();
+		assert.equal(config.safetyLevel, "open");
+		teardown();
+	});
+
+	it("cascading safety level: global used when neither org nor project specify", () => {
+		setup(JSON.stringify({
+			orgs: [{
+				name: "myorg",
+				url: "https://dev.azure.com/myorg",
+				projects: [{ name: "MyProject", pat: "token" }]
+			}],
+			safetyLevel: "readonly"
+		}));
+
+		const config = resolveConfig();
+		assert.equal(config.safetyLevel, "readonly");
+		teardown();
+	});
+
 	it("defaultOrg picks correct org", () => {
 		setup(JSON.stringify({
 			orgs: [
@@ -273,6 +324,29 @@ describe("resolveAllOrgConfigs", () => {
 		assert.ok(errors.some((e) => e.includes("no projects")));
 		teardown();
 	});
+
+	it("resolves cascading safety levels per project", () => {
+		setup(JSON.stringify({
+			orgs: [{
+				name: "org1",
+				url: "https://dev.azure.com/org1",
+				safetyLevel: "open",
+				projects: [
+					{ name: "P1", pat: "t1" },
+					{ name: "P2", pat: "t2", safetyLevel: "readonly" }
+				]
+			}],
+			safetyLevel: "confirm"
+		}));
+
+		const { connections } = resolveAllOrgConfigs();
+		assert.equal(connections.length, 2);
+		// P1 inherits org level "open" (org overrides global "confirm")
+		assert.equal(connections[0].safetyLevel, "open");
+		// P2 has its own "readonly" (project overrides org "open")
+		assert.equal(connections[1].safetyLevel, "readonly");
+		teardown();
+	});
 });
 
 describe("resolveOrgProjectConfig", () => {
@@ -338,6 +412,29 @@ describe("resolveOrgProjectConfig", () => {
 
 	it("throws for unknown project", () => {
 		assert.throws(() => resolveOrgProjectConfig(baseConfig, "otherorg", "NonexistentProject"), ConfigError);
+	});
+
+	it("resolves cascading safety level from target org/project", () => {
+		const cfg = {
+			...baseConfig,
+			allOrgs: [{
+				name: "myorg",
+				url: "https://dev.azure.com/myorg",
+				safetyLevel: "open" as SafetyLevel,
+				projects: [
+					{ name: "ProjA", pat: "pat-a" },
+					{ name: "ProjB", pat: "pat-b", safetyLevel: "readonly" as SafetyLevel }
+				]
+			}],
+			orgUrl: "https://dev.azure.com/myorg",
+			project: "ProjA",
+		};
+		// ProjA inherits org level "open"
+		const r1 = resolveOrgProjectConfig(cfg, undefined, "ProjA");
+		assert.equal(r1.safetyLevel, "open");
+		// ProjB has its own "readonly" which overrides org "open"
+		const r2 = resolveOrgProjectConfig(cfg, undefined, "ProjB");
+		assert.equal(r2.safetyLevel, "readonly");
 	});
 });
 

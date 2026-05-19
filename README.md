@@ -174,14 +174,16 @@ All settings are stored in `~/.pi/agent/pi-azure-devops.json`.
 | `orgs` | array | — | List of org configurations |
 | `orgs[].name` | string | — | Display name for the org |
 | `orgs[].url` | string | — | Org URL (e.g. https://dev.azure.com/myorg) |
+| `orgs[].safetyLevel` | string | — | Safety level override for all projects in this org |
 | `orgs[].projects` | array | — | Projects in this org |
 | `orgs[].projects[].name` | string | — | Project name |
 | `orgs[].projects[].pat` | string | — | Personal Access Token |
+| `orgs[].projects[].safetyLevel` | string | — | Safety level override for this specific project |
 | `defaultOrg` | string | first org | Default organization |
 | `defaultProject` | string | first project | Default project |
 | `defaultTeam` | string | — | Default team |
 | `authMethod` | string | `"auto"` | `"pat"`, `"azure-cli"`, or `"auto"` |
-| `safetyLevel` | string | `"confirm"` | `"open"`, `"confirm"`, or `"readonly"` |
+| `safetyLevel` | string | `"confirm"` | Global default: `"open"`, `"confirm"`, or `"readonly"` |
 | `defaultWorkItemType` | string | `"User Story"` | Default type for creation |
 | `maxQueryResults` | number | 100 | Max WIQL query results |
 | `autocomplete` | boolean | true | Enable `#id` work item completion |
@@ -194,6 +196,29 @@ All settings are stored in `~/.pi/agent/pi-azure-devops.json`.
 | `open` | No confirmation on mutations |
 | `confirm` | User confirms before create/update/delete |
 | `readonly` | All mutation tools blocked |
+
+Safety level is resolved with **cascading overrides** — the most specific setting wins:
+
+```
+project.safetyLevel  >  org.safetyLevel  >  global safetyLevel  >  default ("confirm")
+```
+
+Example: set `"open"` globally so most projects flow freely, then lock down
+production with `"readonly"` on a specific project:
+
+```json
+{
+  "safetyLevel": "open",
+  "orgs": [{
+    "name": "my-org",
+    "url": "https://dev.azure.com/my-org",
+    "projects": [
+      { "name": "DevProject", "pat": "..." },
+      { "name": "ProdProject", "pat": "...", "safetyLevel": "readonly" }
+    ]
+  }]
+}
+```
 
 ## Architecture
 

@@ -18,6 +18,8 @@ export interface ProjectConfig {
 	name: string;
 	/** Personal Access Token for this project */
 	pat: string;
+	/** Safety level override for this project (overrides org and global) */
+	safetyLevel?: SafetyLevel;
 }
 
 /** An Azure DevOps organization configuration */
@@ -28,6 +30,8 @@ export interface OrgConfig {
 	url: string;
 	/** Projects within this org */
 	projects: ProjectConfig[];
+	/** Safety level override for this org (overrides global, overridden by project) */
+	safetyLevel?: SafetyLevel;
 }
 
 /** Root configuration shape for pi-azure-devops.json */
@@ -155,6 +159,27 @@ function validateSafetyLevel(value: string | undefined): SafetyLevel | undefined
 	return VALID_SAFETY_LEVELS.has(normalized) ? (normalized as SafetyLevel) : undefined;
 }
 
+/**
+ * Resolve the effective safety level with cascading overrides.
+ * Priority (most specific wins): project > org > global > default
+ */
+function resolveEffectiveSafetyLevel(
+	globalLevel: SafetyLevel | undefined,
+	org: OrgConfig | undefined,
+	project: ProjectConfig | undefined,
+): SafetyLevel {
+	const projectLevel = validateSafetyLevel(project?.safetyLevel);
+	if (projectLevel) return projectLevel;
+
+	const orgLevel = validateSafetyLevel(org?.safetyLevel);
+	if (orgLevel) return orgLevel;
+
+	const global = validateSafetyLevel(globalLevel);
+	if (global) return global;
+
+	return DEFAULTS.safetyLevel;
+}
+
 // ---------------------------------------------------------------------------
 // Resolver
 // ---------------------------------------------------------------------------
@@ -201,9 +226,11 @@ export function resolveConfig(_cwd: string = process.cwd()): AzureDevOpsConfig {
 		validateAuthMethod(config.authMethod) ??
 		DEFAULTS.authMethod;
 
-	const safetyLevel =
-		validateSafetyLevel(config.safetyLevel) ??
-		DEFAULTS.safetyLevel;
+	const safetyLevel = resolveEffectiveSafetyLevel(
+		config.safetyLevel,
+		org,
+		project,
+	);
 
 	const defaultWorkItemType = config.defaultWorkItemType ?? DEFAULTS.defaultWorkItemType;
 	const maxQueryResults = config.maxQueryResults ?? DEFAULTS.maxQueryResults;
@@ -292,11 +319,22 @@ export function resolveOrgProjectConfig(
 		);
 	}
 
+	// Resolve safety level with cascading overrides for the target org/project.
+	// The base config may have been resolved with a different org/project's level;
+	// we re-resolve here so the target's most specific setting takes effect.
+	const raw = readConfigFile();
+	const targetSafetyLevel = resolveEffectiveSafetyLevel(
+		raw.safetyLevel,
+		targetOrg,
+		targetProject,
+	);
+
 	return {
 		...baseConfig,
 		orgUrl: targetOrg.url.replace(/\/+$/, ""),
 		project: targetProject.name,
 		pat: targetProject.pat || baseConfig.pat,
+		safetyLevel: targetSafetyLevel,
 	};
 }
 
@@ -335,8 +373,11 @@ export function resolveAllOrgConfigs(): {
 
 			const authMethod =
 				validateAuthMethod(raw.authMethod) ?? DEFAULTS.authMethod;
-			const safetyLevel =
-				validateSafetyLevel(raw.safetyLevel) ?? DEFAULTS.safetyLevel;
+			const safetyLevel = resolveEffectiveSafetyLevel(
+				raw.safetyLevel,
+				org,
+				proj,
+			);
 
 			connections.push({
 				orgUrl: org.url.replace(/\/+$/, ""),
@@ -380,7 +421,8 @@ const TEMPLATE_JSON = `{
         }
       ]
     }
-  ]
+  ],
+  "safetyLevel": "confirm"
 }
 `;
 
