@@ -42,6 +42,9 @@
     "typescript": "^5.8.0",
     "vitest": "^4.1.8"
   },
+  "overrides": {
+    "undici": "7.28.0"
+  },
   "publishConfig": {
     "access": "public"
   },
