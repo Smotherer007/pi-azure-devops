@@ -836,18 +836,35 @@ export function formatArtifactList(artifacts: ArtifactLike[]): string {
 // ---------------------------------------------------------------------------
 
 const TIMELINE_STATE_ICONS: Record<string, string> = {
+	"0": "⏸️ Pending",
+	"1": "⏳ In Progress",
+	"2": "✅ Completed",
 	completed: "✅",
 	inProgress: "⏳",
 	pending: "⏸️",
 };
 
+function normalizeTimelineState(state: unknown): string {
+	return TIMELINE_STATE_ICONS[String(state)] ?? TIMELINE_STATE_ICONS[String(state).toLowerCase()] ?? "⏸️";
+}
+
 const TIMELINE_RESULT_ICONS: Record<string, string> = {
+	"0": "🟢 Succeeded",
+	"1": "⚠️ Succeeded with issues",
+	"2": "🔴 Failed",
+	"3": "⚪ Canceled",
+	"4": "⏭️ Skipped",
+	"5": "⚪ Abandoned",
 	succeeded: "🟢",
 	failed: "🔴",
 	canceled: "⚪",
 	skipped: "⏭️",
 	abandoned: "⚪",
 };
+
+function normalizeTimelineResult(result: unknown): string {
+	return TIMELINE_RESULT_ICONS[String(result)] ?? TIMELINE_RESULT_ICONS[String(result).toLowerCase()] ?? "";
+}
 
 interface TimelineRecordLike {
 	id?: string;
@@ -868,8 +885,8 @@ interface TimelineLike {
 }
 
 export function formatTimelineRecord(record: TimelineRecordLike): string {
-	const stateIcon = TIMELINE_STATE_ICONS[record.state ?? ""] ?? "⏸️";
-	const resultIcon = record.result ? (TIMELINE_RESULT_ICONS[record.result] ?? "") : "";
+	const stateIcon = normalizeTimelineState(record.state);
+	const resultIcon = record.result ? normalizeTimelineResult(record.result) : "";
 	const icon = resultIcon || stateIcon;
 	const duration = formatDuration(record.startTime, record.finishTime);
 	const issues: string[] = [];
