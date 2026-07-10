@@ -12,10 +12,10 @@ import type {
 	AutocompleteSuggestions,
 } from "@earendil-works/pi-tui";
 import { fuzzyFilter } from "@earendil-works/pi-tui";
-import type { AzureDevOpsConfig } from "../config/index.js";
-import { isMock } from "../tools/shared.js";
-import { getWorkItemTrackingApi } from "../utils/connection.js";
-import { mockQueryWorkItems } from "../mocks/mock-handler.js";
+import type { AzureDevOpsConfig } from "../config/index.ts";
+import { isMock } from "../tools/shared.ts";
+import { getWorkItemTrackingApi } from "../utils/connection.ts";
+import { mockQueryWorkItems } from "../mocks/mock-handler.ts";
 
 // ---------------------------------------------------------------------------
 // Work item loading (exported for testing)

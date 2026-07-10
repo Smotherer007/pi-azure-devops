@@ -12,7 +12,7 @@ import {
 	formatCommitList,
 	formatPolicy,
 	formatPolicyEvaluation,
-} from "../../src/utils/formatting.js";
+} from "../../src/utils/formatting.ts";
 
 // ---------------------------------------------------------------------------
 // Repo formatting

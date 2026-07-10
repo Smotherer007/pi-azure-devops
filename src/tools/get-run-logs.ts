@@ -3,11 +3,11 @@
  */
 
 import { Type } from "typebox";
-import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
-import { getBuildApi } from "../utils/connection.js";
-import { formatAdoError } from "../utils/errors.js";
-import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
-import { mockGetRunLogs } from "../mocks/mock-handler.js";
+import { resolveConfig, type AzureDevOpsConfig } from "../config/index.ts";
+import { getBuildApi } from "../utils/connection.ts";
+import { formatAdoError } from "../utils/errors.ts";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.ts";
+import { mockGetRunLogs } from "../mocks/mock-handler.ts";
 
 export const getRunLogsTool = {
 	name: "azure_devops_get_run_logs",

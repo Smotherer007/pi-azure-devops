@@ -3,12 +3,12 @@
  */
 
 import { Type } from "typebox";
-import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
-import { getPolicyApi } from "../utils/connection.js";
-import { formatAdoError } from "../utils/errors.js";
-import { formatPolicyEvaluation } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
-import { mockGetPolicyEvaluations } from "../mocks/mock-handler.js";
+import { resolveConfig, type AzureDevOpsConfig } from "../config/index.ts";
+import { getPolicyApi, getCoreApi } from "../utils/connection.ts";
+import { formatAdoError } from "../utils/errors.ts";
+import { formatPolicyEvaluation } from "../utils/formatting.ts";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.ts";
+import { mockGetPolicyEvaluations } from "../mocks/mock-handler.ts";
 
 export const getPolicyEvaluationsTool = {
 	name: "azure_devops_get_policy_evaluations",
@@ -42,8 +42,13 @@ export const getPolicyEvaluationsTool = {
 		}
 
 		try {
+			const coreApi = await getCoreApi(config, signal);
+			const projects = await coreApi.getProjects();
+			const projectRef = projects?.find((p) => p.name === config.project);
+			const projectId = projectRef?.id ?? config.project;
+
 			const policyApi = await getPolicyApi(config, signal);
-			const artifactId = `vstfs://CodeReview/CodeReviewId/${config.project}/${params.pullRequestId}`;
+			const artifactId = `vstfs:///CodeReview/CodeReviewId/${projectId}/${params.pullRequestId}`;
 
 			const evaluations = await policyApi.getPolicyEvaluations(
 				config.project,

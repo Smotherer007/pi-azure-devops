@@ -6,7 +6,7 @@ import {
 	formatTestRun,
 	formatTestResult,
 	formatTestPoint,
-} from "../../src/utils/formatting.js";
+} from "../../src/utils/formatting.ts";
 
 // ---------------------------------------------------------------------------
 // Plans with no dates

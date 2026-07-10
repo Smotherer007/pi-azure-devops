@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import type { AzureDevOpsConfig } from "../../src/config/index.js";
+import type { AzureDevOpsConfig } from "../../src/config/index.ts";
 
 function mockConfig(team?: string): AzureDevOpsConfig {
 	return {
@@ -16,9 +16,9 @@ function mockConfig(team?: string): AzureDevOpsConfig {
 	};
 }
 
-import { setBoardColumnsTool } from "../../src/tools/set-board-columns.js";
-import { setIterationTool } from "../../src/tools/set-iteration.js";
-import { setCapacityTool } from "../../src/tools/set-capacity.js";
+import { setBoardColumnsTool } from "../../src/tools/set-board-columns.ts";
+import { setIterationTool } from "../../src/tools/set-iteration.ts";
+import { setCapacityTool } from "../../src/tools/set-capacity.ts";
 
 const noSignal = undefined as any;
 const noUpdate = undefined as any;

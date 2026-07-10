@@ -2,7 +2,7 @@ import { describe, it, beforeEach, afterEach, mock } from "node:test";
 import assert from "node:assert/strict";
 import {
 	clearConnectionCache,
-} from "../../src/utils/connection.js";
+} from "../../src/utils/connection.ts";
 
 // We test by importing the module and verifying it exports the expected functions.
 // Integration tests with a real Azure DevOps connection are covered by tool-level tests.
@@ -10,17 +10,17 @@ import {
 
 describe("connection exports", () => {
 	it("exports getGitApi function", async () => {
-		const { getGitApi } = await import("../../src/utils/connection.js");
+		const { getGitApi } = await import("../../src/utils/connection.ts");
 		assert.equal(typeof getGitApi, "function");
 	});
 
 	it("exports getPolicyApi function", async () => {
-		const { getPolicyApi } = await import("../../src/utils/connection.js");
+		const { getPolicyApi } = await import("../../src/utils/connection.ts");
 		assert.equal(typeof getPolicyApi, "function");
 	});
 
 	it("exports getConnection function", async () => {
-		const { getConnection } = await import("../../src/utils/connection.js");
+		const { getConnection } = await import("../../src/utils/connection.ts");
 		assert.equal(typeof getConnection, "function");
 	});
 
@@ -29,37 +29,37 @@ describe("connection exports", () => {
 	});
 
 	it("exports getWorkItemTrackingApi function", async () => {
-		const { getWorkItemTrackingApi } = await import("../../src/utils/connection.js");
+		const { getWorkItemTrackingApi } = await import("../../src/utils/connection.ts");
 		assert.equal(typeof getWorkItemTrackingApi, "function");
 	});
 
 	it("exports getWorkApi function", async () => {
-		const { getWorkApi } = await import("../../src/utils/connection.js");
+		const { getWorkApi } = await import("../../src/utils/connection.ts");
 		assert.equal(typeof getWorkApi, "function");
 	});
 
 	it("exports getCoreApi function", async () => {
-		const { getCoreApi } = await import("../../src/utils/connection.js");
+		const { getCoreApi } = await import("../../src/utils/connection.ts");
 		assert.equal(typeof getCoreApi, "function");
 	});
 
 	it("exports getBuildApi function", async () => {
-		const { getBuildApi } = await import("../../src/utils/connection.js");
+		const { getBuildApi } = await import("../../src/utils/connection.ts");
 		assert.equal(typeof getBuildApi, "function");
 	});
 
 	it("exports getPipelinesApi function", async () => {
-		const { getPipelinesApi } = await import("../../src/utils/connection.js");
+		const { getPipelinesApi } = await import("../../src/utils/connection.ts");
 		assert.equal(typeof getPipelinesApi, "function");
 	});
 
 	it("exports getTestPlanApi function", async () => {
-		const { getTestPlanApi } = await import("../../src/utils/connection.js");
+		const { getTestPlanApi } = await import("../../src/utils/connection.ts");
 		assert.equal(typeof getTestPlanApi, "function");
 	});
 
 	it("exports getTestResultsApi function", async () => {
-		const { getTestResultsApi } = await import("../../src/utils/connection.js");
+		const { getTestResultsApi } = await import("../../src/utils/connection.ts");
 		assert.equal(typeof getTestResultsApi, "function");
 	});
 });

@@ -1,1 +1,1 @@
-export { default } from "./src/extension/index.js";
+export { default } from "./src/extension/index.ts";

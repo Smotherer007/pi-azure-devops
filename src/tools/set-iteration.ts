@@ -4,11 +4,11 @@
 
 import { StringEnum } from "@earendil-works/pi-ai";
 import { Type } from "typebox";
-import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
-import { getWorkApi } from "../utils/connection.js";
-import { formatAdoError } from "../utils/errors.js";
-import { isMock, TeamParam, resolveTeamContext, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
-import { mockSetIteration } from "../mocks/mock-handler.js";
+import { resolveConfig, type AzureDevOpsConfig } from "../config/index.ts";
+import { getWorkApi } from "../utils/connection.ts";
+import { formatAdoError } from "../utils/errors.ts";
+import { isMock, TeamParam, resolveTeamContext, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.ts";
+import { mockSetIteration } from "../mocks/mock-handler.ts";
 
 export const setIterationTool = {
 	name: "azure_devops_set_iteration",

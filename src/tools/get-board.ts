@@ -3,12 +3,12 @@
  */
 
 import { Type } from "typebox";
-import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
-import { getWorkApi } from "../utils/connection.js";
-import { formatAdoError, isNotFoundError } from "../utils/errors.js";
-import { formatBoard } from "../utils/formatting.js";
-import { isMock, TeamParam, resolveTeamContext, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
-import { mockGetBoard } from "../mocks/mock-handler.js";
+import { resolveConfig, type AzureDevOpsConfig } from "../config/index.ts";
+import { getWorkApi } from "../utils/connection.ts";
+import { formatAdoError, isNotFoundError } from "../utils/errors.ts";
+import { formatBoard } from "../utils/formatting.ts";
+import { isMock, TeamParam, resolveTeamContext, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.ts";
+import { mockGetBoard } from "../mocks/mock-handler.ts";
 
 export const getBoardTool = {
 	name: "azure_devops_get_board",

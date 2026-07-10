@@ -3,12 +3,12 @@
  */
 
 import { Type } from "typebox";
-import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
-import { getGitApi } from "../utils/connection.js";
-import { formatAdoError } from "../utils/errors.js";
-import { formatPullRequestList } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
-import { mockListPullRequests } from "../mocks/mock-handler.js";
+import { resolveConfig, type AzureDevOpsConfig } from "../config/index.ts";
+import { getGitApi } from "../utils/connection.ts";
+import { formatAdoError } from "../utils/errors.ts";
+import { formatPullRequestList } from "../utils/formatting.ts";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.ts";
+import { mockListPullRequests } from "../mocks/mock-handler.ts";
 
 const PR_STATUS_MAP: Record<string, number> = {
 	active: 1,

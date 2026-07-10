@@ -4,7 +4,7 @@ import {
 	isMutationTool,
 	shouldBlock,
 	formatMutationSummary,
-} from "../../src/safety/index.js";
+} from "../../src/safety/index.ts";
 
 // ---------------------------------------------------------------------------
 // isMutationTool — Phase 3 PR tools

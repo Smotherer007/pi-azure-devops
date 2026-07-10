@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { type AzureDevOpsConfig } from "../../src/config/index.js";
+import { type AzureDevOpsConfig } from "../../src/config/index.ts";
 
 function makeConfig(overrides: Partial<AzureDevOpsConfig> = {}): AzureDevOpsConfig {
 	return {
@@ -25,7 +25,7 @@ const noop = undefined as any;
 
 describe("azure_devops_list_runs edge cases (mock)", () => {
 	it("filters by pipeline + status together", async () => {
-		const { listRunsTool } = await import("../../src/tools/list-runs.js");
+		const { listRunsTool } = await import("../../src/tools/list-runs.ts");
 		const result = await listRunsTool.execute(
 			"",
 			{ pipelineId: 1, status: "completed", mock: true },
@@ -37,7 +37,7 @@ describe("azure_devops_list_runs edge cases (mock)", () => {
 	});
 
 	it("filters by pipeline + result together", async () => {
-		const { listRunsTool } = await import("../../src/tools/list-runs.js");
+		const { listRunsTool } = await import("../../src/tools/list-runs.ts");
 		const result = await listRunsTool.execute(
 			"",
 			{ pipelineId: 1, result: "succeeded", mock: true },
@@ -49,7 +49,7 @@ describe("azure_devops_list_runs edge cases (mock)", () => {
 	});
 
 	it("returns empty for non-existent pipeline", async () => {
-		const { listRunsTool } = await import("../../src/tools/list-runs.js");
+		const { listRunsTool } = await import("../../src/tools/list-runs.ts");
 		const result = await listRunsTool.execute(
 			"",
 			{ pipelineId: 9999, mock: true },
@@ -61,7 +61,7 @@ describe("azure_devops_list_runs edge cases (mock)", () => {
 	});
 
 	it("filters by branch with refs/heads prefix", async () => {
-		const { listRunsTool } = await import("../../src/tools/list-runs.js");
+		const { listRunsTool } = await import("../../src/tools/list-runs.ts");
 		const result = await listRunsTool.execute(
 			"",
 			{ branch: "refs/heads/main", mock: true },
@@ -73,7 +73,7 @@ describe("azure_devops_list_runs edge cases (mock)", () => {
 	});
 
 	it("filters by feature branch", async () => {
-		const { listRunsTool } = await import("../../src/tools/list-runs.js");
+		const { listRunsTool } = await import("../../src/tools/list-runs.ts");
 		const result = await listRunsTool.execute(
 			"",
 			{ branch: "feature/login", mock: true },
@@ -91,7 +91,7 @@ describe("azure_devops_list_runs edge cases (mock)", () => {
 
 describe("azure_devops_get_run edge cases (mock)", () => {
 	it("returns error for wrong pipeline ID", async () => {
-		const { getRunTool } = await import("../../src/tools/get-run.js");
+		const { getRunTool } = await import("../../src/tools/get-run.ts");
 		const result = await getRunTool.execute(
 			"",
 			{ pipelineId: 2, runId: 42, mock: true },
@@ -110,7 +110,7 @@ describe("azure_devops_get_run edge cases (mock)", () => {
 
 describe("azure_devops_get_pipeline edge cases (mock)", () => {
 	it("returns pipeline 2 details", async () => {
-		const { getPipelineTool } = await import("../../src/tools/get-pipeline.js");
+		const { getPipelineTool } = await import("../../src/tools/get-pipeline.ts");
 		const result = await getPipelineTool.execute(
 			"",
 			{ pipelineId: 2, mock: true },
@@ -123,7 +123,7 @@ describe("azure_devops_get_pipeline edge cases (mock)", () => {
 	});
 
 	it("returns pipeline 3 details", async () => {
-		const { getPipelineTool } = await import("../../src/tools/get-pipeline.js");
+		const { getPipelineTool } = await import("../../src/tools/get-pipeline.ts");
 		const result = await getPipelineTool.execute(
 			"",
 			{ pipelineId: 3, mock: true },

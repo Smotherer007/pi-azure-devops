@@ -3,12 +3,12 @@
  */
 
 import { Type } from "typebox";
-import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
-import { getWorkApi } from "../utils/connection.js";
-import { formatAdoError } from "../utils/errors.js";
-import { formatBoard } from "../utils/formatting.js";
-import { isMock, TeamParam, resolveTeamContext, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
-import { mockSetBoardColumns } from "../mocks/mock-handler.js";
+import { resolveConfig, type AzureDevOpsConfig } from "../config/index.ts";
+import { getWorkApi } from "../utils/connection.ts";
+import { formatAdoError } from "../utils/errors.ts";
+import { formatBoard } from "../utils/formatting.ts";
+import { isMock, TeamParam, resolveTeamContext, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.ts";
+import { mockSetBoardColumns } from "../mocks/mock-handler.ts";
 
 /** Schema for a single column definition */
 const ColumnSchema = Type.Object({

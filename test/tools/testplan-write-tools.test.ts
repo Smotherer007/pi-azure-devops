@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { type AzureDevOpsConfig } from "../../src/config/index.js";
+import { type AzureDevOpsConfig } from "../../src/config/index.ts";
 
 function makeConfig(overrides: Partial<AzureDevOpsConfig> = {}): AzureDevOpsConfig {
 	return {
@@ -25,7 +25,7 @@ const noop = undefined as any;
 
 describe("azure_devops_create_test_run (mock)", () => {
 	it("creates run with name", async () => {
-		const { createTestRunTool } = await import("../../src/tools/create-test-run.js");
+		const { createTestRunTool } = await import("../../src/tools/create-test-run.ts");
 		const result = await createTestRunTool.execute(
 			"",
 			{ planId: 101, suiteIds: [301], name: "My Run", mock: true },
@@ -38,7 +38,7 @@ describe("azure_devops_create_test_run (mock)", () => {
 	});
 
 	it("creates run without name (auto-generated)", async () => {
-		const { createTestRunTool } = await import("../../src/tools/create-test-run.js");
+		const { createTestRunTool } = await import("../../src/tools/create-test-run.ts");
 		const result = await createTestRunTool.execute(
 			"",
 			{ planId: 101, suiteIds: [301, 302], mock: true },
@@ -50,7 +50,7 @@ describe("azure_devops_create_test_run (mock)", () => {
 	});
 
 	it("includes mock indicator", async () => {
-		const { createTestRunTool } = await import("../../src/tools/create-test-run.js");
+		const { createTestRunTool } = await import("../../src/tools/create-test-run.ts");
 		const result = await createTestRunTool.execute(
 			"",
 			{ planId: 101, suiteIds: [301], mock: true },
@@ -68,7 +68,7 @@ describe("azure_devops_create_test_run (mock)", () => {
 
 describe("azure_devops_update_test_results (mock)", () => {
 	it("updates single result", async () => {
-		const { updateTestResultsTool } = await import("../../src/tools/update-test-results.js");
+		const { updateTestResultsTool } = await import("../../src/tools/update-test-results.ts");
 		const result = await updateTestResultsTool.execute(
 			"",
 			{
@@ -85,7 +85,7 @@ describe("azure_devops_update_test_results (mock)", () => {
 	});
 
 	it("updates multiple results", async () => {
-		const { updateTestResultsTool } = await import("../../src/tools/update-test-results.js");
+		const { updateTestResultsTool } = await import("../../src/tools/update-test-results.ts");
 		const result = await updateTestResultsTool.execute(
 			"",
 			{
@@ -106,7 +106,7 @@ describe("azure_devops_update_test_results (mock)", () => {
 	});
 
 	it("includes comments in results", async () => {
-		const { updateTestResultsTool } = await import("../../src/tools/update-test-results.js");
+		const { updateTestResultsTool } = await import("../../src/tools/update-test-results.ts");
 		const result = await updateTestResultsTool.execute(
 			"",
 			{
@@ -122,7 +122,7 @@ describe("azure_devops_update_test_results (mock)", () => {
 	});
 
 	it("includes mock indicator", async () => {
-		const { updateTestResultsTool } = await import("../../src/tools/update-test-results.js");
+		const { updateTestResultsTool } = await import("../../src/tools/update-test-results.ts");
 		const result = await updateTestResultsTool.execute(
 			"",
 			{

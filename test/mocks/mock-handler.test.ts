@@ -11,7 +11,7 @@ import {
 	mockAddWorkItemComment,
 	mockManageWorkItemLinks,
 	clearFixtureCache,
-} from "../../src/mocks/mock-handler.js";
+} from "../../src/mocks/mock-handler.ts";
 
 beforeEach(() => {
 	clearFixtureCache();

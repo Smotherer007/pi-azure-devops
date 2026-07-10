@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { type AzureDevOpsConfig } from "../../src/config/index.js";
+import { type AzureDevOpsConfig } from "../../src/config/index.ts";
 
 function makeConfig(overrides: Partial<AzureDevOpsConfig> = {}): AzureDevOpsConfig {
 	return {
@@ -25,7 +25,7 @@ const noop = undefined as any;
 
 describe("azure_devops_run_pipeline edge cases (mock)", () => {
 	it("queues pipeline 3 (Test Pipeline)", async () => {
-		const { runPipelineTool } = await import("../../src/tools/run-pipeline.js");
+		const { runPipelineTool } = await import("../../src/tools/run-pipeline.ts");
 		const result = await runPipelineTool.execute(
 			"",
 			{ pipelineId: 3, mock: true },
@@ -38,7 +38,7 @@ describe("azure_devops_run_pipeline edge cases (mock)", () => {
 	});
 
 	it("includes branch in result", async () => {
-		const { runPipelineTool } = await import("../../src/tools/run-pipeline.js");
+		const { runPipelineTool } = await import("../../src/tools/run-pipeline.ts");
 		const result = await runPipelineTool.execute(
 			"",
 			{ pipelineId: 1, branch: "release/v2", mock: true },
@@ -56,7 +56,7 @@ describe("azure_devops_run_pipeline edge cases (mock)", () => {
 
 describe("azure_devops_cancel_run edge cases (mock)", () => {
 	it("cannot cancel completed run", async () => {
-		const { cancelRunTool } = await import("../../src/tools/cancel-run.js");
+		const { cancelRunTool } = await import("../../src/tools/cancel-run.ts");
 		const result = await cancelRunTool.execute(
 			"",
 			{ pipelineId: 2, runId: 15, mock: true },
@@ -68,7 +68,7 @@ describe("azure_devops_cancel_run edge cases (mock)", () => {
 	});
 
 	it("cannot cancel run from wrong pipeline", async () => {
-		const { cancelRunTool } = await import("../../src/tools/cancel-run.js");
+		const { cancelRunTool } = await import("../../src/tools/cancel-run.ts");
 		const result = await cancelRunTool.execute(
 			"",
 			{ pipelineId: 2, runId: 44, mock: true },
@@ -86,7 +86,7 @@ describe("azure_devops_cancel_run edge cases (mock)", () => {
 
 describe("azure_devops_retry_run edge cases (mock)", () => {
 	it("retry returns incremented run ID", async () => {
-		const { retryRunTool } = await import("../../src/tools/retry-run.js");
+		const { retryRunTool } = await import("../../src/tools/retry-run.ts");
 		const result = await retryRunTool.execute(
 			"",
 			{ pipelineId: 1, runId: 42, mock: true },

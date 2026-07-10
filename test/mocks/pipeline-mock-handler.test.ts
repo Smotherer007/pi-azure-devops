@@ -11,7 +11,7 @@ import {
 	mockRunPipeline,
 	mockCancelRun,
 	mockRetryRun,
-} from "../../src/mocks/mock-handler.js";
+} from "../../src/mocks/mock-handler.ts";
 
 // ---------------------------------------------------------------------------
 // mockListPipelines
@@ -199,7 +199,7 @@ describe("mockCancelRun", () => {
 	it("cancels in-progress run", () => {
 		const result = mockCancelRun(1, 44);
 		assert.ok(result.content[0].text.includes("Cancelled"));
-		assert.ok(result.content[0].text.includes("cancelling"));
+		assert.ok(result.content[0].text.includes("Canceling"));
 	});
 
 	it("returns error for completed run", () => {

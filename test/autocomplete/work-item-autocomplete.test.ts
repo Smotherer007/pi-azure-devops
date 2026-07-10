@@ -5,8 +5,8 @@ import {
 	filterWorkItems,
 	formatWorkItemItem,
 	loadWorkItemsFromMock,
-} from "../../src/autocomplete/work-item-autocomplete.js";
-import type { WorkItemSummary } from "../../src/autocomplete/work-item-autocomplete.js";
+} from "../../src/autocomplete/work-item-autocomplete.ts";
+import type { WorkItemSummary } from "../../src/autocomplete/work-item-autocomplete.ts";
 
 // We import the module to test individual exported functions.
 // Note: extractWorkItemToken, filterWorkItems, formatWorkItemItem, loadWorkItemsFromMock

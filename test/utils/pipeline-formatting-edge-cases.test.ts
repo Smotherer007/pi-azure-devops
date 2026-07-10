@@ -7,7 +7,7 @@ import {
 	formatTimeline,
 	formatDuration,
 	formatTimelineRecord,
-} from "../../src/utils/formatting.js";
+} from "../../src/utils/formatting.ts";
 
 // ---------------------------------------------------------------------------
 // formatPipeline — edge cases
@@ -44,7 +44,7 @@ describe("formatRun edge cases", () => {
 
 	it("handles cancelling state", () => {
 		const result = formatRun({ id: 1, state: "cancelling" });
-		assert.ok(result.includes("cancelling"));
+		assert.ok(result.includes("Canceling"));
 	});
 });
 
@@ -57,7 +57,7 @@ describe("formatRunList edge cases", () => {
 		const result = formatRunList([
 			{ id: 44, pipeline: { name: "CI" }, state: "inProgress", result: null },
 		]);
-		assert.ok(result.includes("inProgress"));
+		assert.ok(result.includes("In Progress"));
 	});
 });
 

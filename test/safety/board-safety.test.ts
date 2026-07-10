@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { formatMutationSummary } from "../../src/safety/index.js";
+import { formatMutationSummary } from "../../src/safety/index.ts";
 
 describe("formatMutationSummary Phase 5 tools", () => {
 	it("formats azure_devops_set_board_columns summary", () => {

@@ -4,8 +4,8 @@ import {
 	isMutationTool,
 	shouldBlock,
 	formatMutationSummary,
-} from "../../src/safety/index.js";
-import type { SafetyLevel } from "../../src/config/index.js";
+} from "../../src/safety/index.ts";
+import type { SafetyLevel } from "../../src/config/index.ts";
 
 // ---------------------------------------------------------------------------
 // isMutationTool

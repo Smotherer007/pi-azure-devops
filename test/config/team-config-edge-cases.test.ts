@@ -8,7 +8,7 @@ describe("resolveConfig team precedence", () => {
 
 describe("resolveTeamContext edge cases", () => {
 	it("handles team with surrounding spaces in param", async () => {
-		const { resolveTeamContext } = await import("../../src/tools/shared.js");
+		const { resolveTeamContext } = await import("../../src/tools/shared.ts");
 		const config = {
 			orgUrl: "https://dev.azure.com/testorg",
 			project: "TestProject",
@@ -25,7 +25,7 @@ describe("resolveTeamContext edge cases", () => {
 	});
 
 	it("returns undefined when both are whitespace-only", async () => {
-		const { resolveTeamContext } = await import("../../src/tools/shared.js");
+		const { resolveTeamContext } = await import("../../src/tools/shared.ts");
 		const config = {
 			orgUrl: "https://dev.azure.com/testorg",
 			project: "TestProject",
@@ -42,7 +42,7 @@ describe("resolveTeamContext edge cases", () => {
 	});
 
 	it("param takes precedence over config team", async () => {
-		const { resolveTeamContext } = await import("../../src/tools/shared.js");
+		const { resolveTeamContext } = await import("../../src/tools/shared.ts");
 		const config = {
 			orgUrl: "https://dev.azure.com/testorg",
 			project: "TestProject",
@@ -59,7 +59,7 @@ describe("resolveTeamContext edge cases", () => {
 	});
 
 	it("falls back to config team when param is undefined", async () => {
-		const { resolveTeamContext } = await import("../../src/tools/shared.js");
+		const { resolveTeamContext } = await import("../../src/tools/shared.ts");
 		const config = {
 			orgUrl: "https://dev.azure.com/testorg",
 			project: "TestProject",

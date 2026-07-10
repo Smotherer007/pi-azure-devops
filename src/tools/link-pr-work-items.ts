@@ -10,10 +10,10 @@
  */
 
 import { Type } from "typebox";
-import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
-import { getGitApi, getWorkItemTrackingApi, getConnection } from "../utils/connection.js";
-import { formatAdoError, isNotFoundError } from "../utils/errors.js";
-import { isMock, textResult, errorResult, type ToolResult, resolveEffectiveConfig, OrgParam, ProjectParam } from "./shared.js";
+import { resolveConfig, type AzureDevOpsConfig } from "../config/index.ts";
+import { getGitApi, getWorkItemTrackingApi, getConnection } from "../utils/connection.ts";
+import { formatAdoError, isNotFoundError } from "../utils/errors.ts";
+import { isMock, textResult, errorResult, type ToolResult, resolveEffectiveConfig, OrgParam, ProjectParam } from "./shared.ts";
 
 export const linkPrWorkItemsTool = {
 	name: "azure_devops_link_pr_work_items",

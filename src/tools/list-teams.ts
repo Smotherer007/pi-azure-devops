@@ -3,12 +3,12 @@
  */
 
 import { Type } from "typebox";
-import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
-import { getCoreApi } from "../utils/connection.js";
-import { formatAdoError } from "../utils/errors.js";
-import { formatTeamList } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
-import { mockListTeams } from "../mocks/mock-handler.js";
+import { resolveConfig, type AzureDevOpsConfig } from "../config/index.ts";
+import { getCoreApi } from "../utils/connection.ts";
+import { formatAdoError } from "../utils/errors.ts";
+import { formatTeamList } from "../utils/formatting.ts";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.ts";
+import { mockListTeams } from "../mocks/mock-handler.ts";
 
 export const listTeamsTool = {
 	name: "azure_devops_list_teams",

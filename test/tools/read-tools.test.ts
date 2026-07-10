@@ -1,11 +1,11 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { getWorkItemTool } from "../../src/tools/get-work-item.js";
-import { queryWorkItemsTool } from "../../src/tools/query-work-items.js";
-import { listWorkItemTypesTool } from "../../src/tools/list-work-item-types.js";
-import { getWorkItemCommentsTool } from "../../src/tools/get-work-item-comments.js";
-import { getWorkItemRevisionsTool } from "../../src/tools/get-work-item-revisions.js";
-import type { AzureDevOpsConfig } from "../../src/config/index.js";
+import { getWorkItemTool } from "../../src/tools/get-work-item.ts";
+import { queryWorkItemsTool } from "../../src/tools/query-work-items.ts";
+import { listWorkItemTypesTool } from "../../src/tools/list-work-item-types.ts";
+import { getWorkItemCommentsTool } from "../../src/tools/get-work-item-comments.ts";
+import { getWorkItemRevisionsTool } from "../../src/tools/get-work-item-revisions.ts";
+import type { AzureDevOpsConfig } from "../../src/config/index.ts";
 
 // ---------------------------------------------------------------------------
 // Helpers

@@ -9,7 +9,7 @@ import {
 	formatArtifactList,
 	formatTimeline,
 	formatDuration,
-} from "../../src/utils/formatting.js";
+} from "../../src/utils/formatting.ts";
 
 // ---------------------------------------------------------------------------
 // formatPipeline
@@ -82,7 +82,7 @@ describe("formatRun", () => {
 		});
 		assert.ok(result.includes("Run #42"));
 		assert.ok(result.includes("CI Pipeline"));
-		assert.ok(result.includes("completed"));
+		assert.ok(result.includes("Completed"));
 		assert.ok(result.includes("succeeded"));
 		assert.ok(result.includes("main"));
 	});
@@ -94,7 +94,7 @@ describe("formatRun", () => {
 			state: "inProgress",
 			result: null,
 		});
-		assert.ok(result.includes("inProgress"));
+		assert.ok(result.includes("In Progress"));
 		assert.ok(!result.includes("Result"));
 	});
 

@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { extractWorkItemToken } from "../../src/autocomplete/work-item-autocomplete.js";
+import { extractWorkItemToken } from "../../src/autocomplete/work-item-autocomplete.ts";
 
 describe("extractWorkItemToken", () => {
 	it("extracts token after # at start of line", () => {

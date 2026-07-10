@@ -3,11 +3,11 @@
  */
 
 import { Type } from "typebox";
-import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
-import { getBuildApi } from "../utils/connection.js";
-import { formatAdoError } from "../utils/errors.js";
-import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
-import { mockCancelRun } from "../mocks/mock-handler.js";
+import { resolveConfig, type AzureDevOpsConfig } from "../config/index.ts";
+import { getBuildApi } from "../utils/connection.ts";
+import { formatAdoError } from "../utils/errors.ts";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.ts";
+import { mockCancelRun } from "../mocks/mock-handler.ts";
 
 /** BuildStatus.Cancelling — used to cancel an in-progress build */
 const BUILD_STATUS_CANCELLING = 4;

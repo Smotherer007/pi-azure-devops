@@ -3,12 +3,12 @@
  */
 
 import { Type } from "typebox";
-import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
-import { getWorkApi } from "../utils/connection.js";
-import { formatAdoError } from "../utils/errors.js";
-import { formatBoardList } from "../utils/formatting.js";
-import { isMock, TeamParam, resolveTeamContext, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
-import { mockListBoards } from "../mocks/mock-handler.js";
+import { resolveConfig, type AzureDevOpsConfig } from "../config/index.ts";
+import { getWorkApi } from "../utils/connection.ts";
+import { formatAdoError } from "../utils/errors.ts";
+import { formatBoardList } from "../utils/formatting.ts";
+import { isMock, TeamParam, resolveTeamContext, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.ts";
+import { mockListBoards } from "../mocks/mock-handler.ts";
 
 export const listBoardsTool = {
 	name: "azure_devops_list_boards",

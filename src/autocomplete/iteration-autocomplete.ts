@@ -14,9 +14,9 @@ import type {
 	AutocompleteSuggestions,
 } from "@earendil-works/pi-tui";
 import { fuzzyFilter } from "@earendil-works/pi-tui";
-import type { AzureDevOpsConfig } from "../config/index.js";
-import { isMock } from "../tools/shared.js";
-import { getWorkApi } from "../utils/connection.js";
+import type { AzureDevOpsConfig } from "../config/index.ts";
+import { isMock } from "../tools/shared.ts";
+import { getWorkApi } from "../utils/connection.ts";
 
 // ---------------------------------------------------------------------------
 // Iteration data types (exported for testing)

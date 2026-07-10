@@ -1,6 +1,6 @@
 import { describe, it, beforeEach } from "node:test";
 import assert from "node:assert/strict";
-import { clearFixtureCache } from "../../src/mocks/mock-handler.js";
+import { clearFixtureCache } from "../../src/mocks/mock-handler.ts";
 import {
 	mockListTeams,
 	mockListBoards,
@@ -11,7 +11,7 @@ import {
 	mockSetBoardColumns,
 	mockSetIteration,
 	mockSetCapacity,
-} from "../../src/mocks/mock-handler.js";
+} from "../../src/mocks/mock-handler.ts";
 
 beforeEach(() => clearFixtureCache());
 

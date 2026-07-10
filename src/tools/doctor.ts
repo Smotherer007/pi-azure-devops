@@ -7,11 +7,11 @@ import { Type } from "typebox";
 import {
 	resolveAllOrgConfigs,
 	type AzureDevOpsConfig,
-} from "../config/index.js";
-import { tryResolveAuth } from "../auth/index.js";
-import { getConnection } from "../utils/connection.js";
-import { formatAdoError } from "../utils/errors.js";
-import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
+} from "../config/index.ts";
+import { tryResolveAuth } from "../auth/index.ts";
+import { getConnection } from "../utils/connection.ts";
+import { formatAdoError } from "../utils/errors.ts";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.ts";
 
 /**
  * Run the doctor check. Exported for testability.

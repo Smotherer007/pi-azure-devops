@@ -3,12 +3,12 @@
  */
 
 import { Type } from "typebox";
-import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
-import { getWorkItemTrackingApi } from "../utils/connection.js";
-import { formatAdoError, isNotFoundError } from "../utils/errors.js";
-import { formatRevisions } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
-import { mockGetWorkItemRevisions } from "../mocks/mock-handler.js";
+import { resolveConfig, type AzureDevOpsConfig } from "../config/index.ts";
+import { getWorkItemTrackingApi } from "../utils/connection.ts";
+import { formatAdoError, isNotFoundError } from "../utils/errors.ts";
+import { formatRevisions } from "../utils/formatting.ts";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.ts";
+import { mockGetWorkItemRevisions } from "../mocks/mock-handler.ts";
 
 export const getWorkItemRevisionsTool = {
 	name: "azure_devops_get_work_item_revisions",

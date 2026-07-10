@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { formatAdoError, isAuthError, isNotFoundError } from "../../src/utils/errors.js";
+import { formatAdoError, isAuthError, isNotFoundError } from "../../src/utils/errors.ts";
 
 describe("formatAdoError", () => {
 	it("formats 401 Unauthorized errors", () => {

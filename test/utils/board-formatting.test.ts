@@ -9,7 +9,7 @@ import {
 	formatIteration,
 	formatIterationList,
 	formatCapacity,
-} from "../../src/utils/formatting.js";
+} from "../../src/utils/formatting.ts";
 
 describe("formatTeam", () => {
 	it("formats team with all fields", () => {

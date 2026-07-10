@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { type AzureDevOpsConfig } from "../../src/config/index.js";
+import { type AzureDevOpsConfig } from "../../src/config/index.ts";
 
 function makeConfig(overrides: Partial<AzureDevOpsConfig> = {}): AzureDevOpsConfig {
 	return {
@@ -25,7 +25,7 @@ const noop = undefined as any;
 
 describe("azure_devops_run_pipeline (mock)", () => {
 	it("queues a pipeline run", async () => {
-		const { runPipelineTool } = await import("../../src/tools/run-pipeline.js");
+		const { runPipelineTool } = await import("../../src/tools/run-pipeline.ts");
 		const result = await runPipelineTool.execute(
 			"",
 			{ pipelineId: 1, mock: true },
@@ -39,7 +39,7 @@ describe("azure_devops_run_pipeline (mock)", () => {
 	});
 
 	it("queues with branch", async () => {
-		const { runPipelineTool } = await import("../../src/tools/run-pipeline.js");
+		const { runPipelineTool } = await import("../../src/tools/run-pipeline.ts");
 		const result = await runPipelineTool.execute(
 			"",
 			{ pipelineId: 1, branch: "develop", mock: true },
@@ -51,7 +51,7 @@ describe("azure_devops_run_pipeline (mock)", () => {
 	});
 
 	it("queues with template parameters", async () => {
-		const { runPipelineTool } = await import("../../src/tools/run-pipeline.js");
+		const { runPipelineTool } = await import("../../src/tools/run-pipeline.ts");
 		const result = await runPipelineTool.execute(
 			"",
 			{
@@ -67,7 +67,7 @@ describe("azure_devops_run_pipeline (mock)", () => {
 	});
 
 	it("returns error for unknown pipeline", async () => {
-		const { runPipelineTool } = await import("../../src/tools/run-pipeline.js");
+		const { runPipelineTool } = await import("../../src/tools/run-pipeline.ts");
 		const result = await runPipelineTool.execute(
 			"",
 			{ pipelineId: 999, mock: true },
@@ -86,7 +86,7 @@ describe("azure_devops_run_pipeline (mock)", () => {
 
 describe("azure_devops_cancel_run (mock)", () => {
 	it("cancels an in-progress run", async () => {
-		const { cancelRunTool } = await import("../../src/tools/cancel-run.js");
+		const { cancelRunTool } = await import("../../src/tools/cancel-run.ts");
 		const result = await cancelRunTool.execute(
 			"",
 			{ pipelineId: 1, runId: 44, mock: true },
@@ -95,11 +95,11 @@ describe("azure_devops_cancel_run (mock)", () => {
 			mockCtx,
 		);
 		assert.ok(result.content[0].text.includes("Cancelled"));
-		assert.ok(result.content[0].text.includes("cancelling"));
+		assert.ok(result.content[0].text.includes("Canceling"));
 	});
 
 	it("returns error for non-in-progress run", async () => {
-		const { cancelRunTool } = await import("../../src/tools/cancel-run.js");
+		const { cancelRunTool } = await import("../../src/tools/cancel-run.ts");
 		const result = await cancelRunTool.execute(
 			"",
 			{ pipelineId: 1, runId: 42, mock: true },
@@ -112,7 +112,7 @@ describe("azure_devops_cancel_run (mock)", () => {
 	});
 
 	it("returns error for unknown run", async () => {
-		const { cancelRunTool } = await import("../../src/tools/cancel-run.js");
+		const { cancelRunTool } = await import("../../src/tools/cancel-run.ts");
 		const result = await cancelRunTool.execute(
 			"",
 			{ pipelineId: 1, runId: 9999, mock: true },
@@ -131,7 +131,7 @@ describe("azure_devops_cancel_run (mock)", () => {
 
 describe("azure_devops_retry_run (mock)", () => {
 	it("retries a run", async () => {
-		const { retryRunTool } = await import("../../src/tools/retry-run.js");
+		const { retryRunTool } = await import("../../src/tools/retry-run.ts");
 		const result = await retryRunTool.execute(
 			"",
 			{ pipelineId: 1, runId: 43, mock: true },
@@ -145,7 +145,7 @@ describe("azure_devops_retry_run (mock)", () => {
 	});
 
 	it("returns error for unknown run", async () => {
-		const { retryRunTool } = await import("../../src/tools/retry-run.js");
+		const { retryRunTool } = await import("../../src/tools/retry-run.ts");
 		const result = await retryRunTool.execute(
 			"",
 			{ pipelineId: 1, runId: 9999, mock: true },

@@ -6,9 +6,9 @@
  * 2. Azure CLI (az login)
  */
 
-import { createPatAuth } from "./pat.js";
-import { createAzureCliAuth, clearTokenCache } from "./azure-cli.js";
-import type { AzureDevOpsConfig, AuthMethod } from "../config/index.js";
+import { createPatAuth } from "./pat.ts";
+import { createAzureCliAuth, clearTokenCache } from "./azure-cli.ts";
+import type { AzureDevOpsConfig, AuthMethod } from "../config/index.ts";
 import type { getPersonalAccessTokenHandler } from "azure-devops-node-api";
 
 type IRequestHandler = ReturnType<typeof getPersonalAccessTokenHandler>;
@@ -79,12 +79,14 @@ function getMethodsToTry(authMethod: AuthMethod, hasPat: boolean): ("pat" | "azu
 }
 
 export class AuthResolutionError extends Error {
+	readonly attemptedMethods: string[];
 	constructor(
 		message: string,
-		public readonly attemptedMethods: string[],
+		attemptedMethods: string[],
 	) {
 		super(message);
 		this.name = "AuthResolutionError";
+		this.attemptedMethods = attemptedMethods;
 	}
 }
 

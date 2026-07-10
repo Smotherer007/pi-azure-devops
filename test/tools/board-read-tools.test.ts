@@ -1,6 +1,6 @@
 import { describe, it, beforeEach } from "node:test";
 import assert from "node:assert/strict";
-import { resolveConfig, type AzureDevOpsConfig } from "../../src/config/index.js";
+import { resolveConfig, type AzureDevOpsConfig } from "../../src/config/index.ts";
 
 // Build a mock config with team set
 function mockConfig(team?: string): AzureDevOpsConfig {
@@ -18,12 +18,12 @@ function mockConfig(team?: string): AzureDevOpsConfig {
 }
 
 // Import tools — they all support mock mode
-import { listTeamsTool } from "../../src/tools/list-teams.js";
-import { listBoardsTool } from "../../src/tools/list-boards.js";
-import { getBoardTool } from "../../src/tools/get-board.js";
-import { listIterationsTool } from "../../src/tools/list-iterations.js";
-import { getIterationWorkItemsTool } from "../../src/tools/get-iteration-work-items.js";
-import { getCapacityTool } from "../../src/tools/get-capacity.js";
+import { listTeamsTool } from "../../src/tools/list-teams.ts";
+import { listBoardsTool } from "../../src/tools/list-boards.ts";
+import { getBoardTool } from "../../src/tools/get-board.ts";
+import { listIterationsTool } from "../../src/tools/list-iterations.ts";
+import { getIterationWorkItemsTool } from "../../src/tools/get-iteration-work-items.ts";
+import { getCapacityTool } from "../../src/tools/get-capacity.ts";
 
 const noSignal = undefined as any;
 const noUpdate = undefined as any;

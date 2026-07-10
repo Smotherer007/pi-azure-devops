@@ -1,7 +1,7 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { resolveAuth, tryResolveAuth, AuthResolutionError } from "../../src/auth/index.js";
-import type { AzureDevOpsConfig } from "../../src/config/index.js";
+import { resolveAuth, tryResolveAuth, AuthResolutionError } from "../../src/auth/index.ts";
+import type { AzureDevOpsConfig } from "../../src/config/index.ts";
 
 // ---------------------------------------------------------------------------
 // Helpers

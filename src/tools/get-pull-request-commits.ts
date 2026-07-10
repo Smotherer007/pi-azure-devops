@@ -3,12 +3,12 @@
  */
 
 import { Type } from "typebox";
-import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
-import { getGitApi } from "../utils/connection.js";
-import { formatAdoError, isNotFoundError } from "../utils/errors.js";
-import { formatCommitList } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
-import { mockGetPullRequestCommits } from "../mocks/mock-handler.js";
+import { resolveConfig, type AzureDevOpsConfig } from "../config/index.ts";
+import { getGitApi } from "../utils/connection.ts";
+import { formatAdoError, isNotFoundError } from "../utils/errors.ts";
+import { formatCommitList } from "../utils/formatting.ts";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.ts";
+import { mockGetPullRequestCommits } from "../mocks/mock-handler.ts";
 
 export const getPullRequestCommitsTool = {
 	name: "azure_devops_get_pull_request_commits",

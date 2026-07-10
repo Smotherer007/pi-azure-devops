@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import type { AzureDevOpsConfig } from "../../src/config/index.js";
+import type { AzureDevOpsConfig } from "../../src/config/index.ts";
 
 function makeConfig(overrides: Partial<AzureDevOpsConfig> = {}): AzureDevOpsConfig {
 	return {
@@ -25,7 +25,7 @@ const noop = undefined as any;
 
 describe("azure_devops_create_pull_request edge cases", () => {
 	it("creates PR with develop as target", async () => {
-		const { createPullRequestTool } = await import("../../src/tools/create-pull-request.js");
+		const { createPullRequestTool } = await import("../../src/tools/create-pull-request.ts");
 		const result = await createPullRequestTool.execute(
 			"",
 			{
@@ -42,7 +42,7 @@ describe("azure_devops_create_pull_request edge cases", () => {
 	});
 
 	it("returns details with repositoryId", async () => {
-		const { createPullRequestTool } = await import("../../src/tools/create-pull-request.js");
+		const { createPullRequestTool } = await import("../../src/tools/create-pull-request.ts");
 		const result = await createPullRequestTool.execute(
 			"",
 			{
@@ -58,7 +58,7 @@ describe("azure_devops_create_pull_request edge cases", () => {
 	});
 
 	it("returns details with generated PR ID", async () => {
-		const { createPullRequestTool } = await import("../../src/tools/create-pull-request.js");
+		const { createPullRequestTool } = await import("../../src/tools/create-pull-request.ts");
 		const result = await createPullRequestTool.execute(
 			"",
 			{
@@ -74,7 +74,7 @@ describe("azure_devops_create_pull_request edge cases", () => {
 	});
 
 	it("includes mock warning", async () => {
-		const { createPullRequestTool } = await import("../../src/tools/create-pull-request.js");
+		const { createPullRequestTool } = await import("../../src/tools/create-pull-request.ts");
 		const result = await createPullRequestTool.execute(
 			"",
 			{
@@ -96,7 +96,7 @@ describe("azure_devops_create_pull_request edge cases", () => {
 
 describe("azure_devops_update_pull_request edge cases", () => {
 	it("updates description", async () => {
-		const { updatePullRequestTool } = await import("../../src/tools/update-pull-request.js");
+		const { updatePullRequestTool } = await import("../../src/tools/update-pull-request.ts");
 		const result = await updatePullRequestTool.execute(
 			"",
 			{
@@ -111,7 +111,7 @@ describe("azure_devops_update_pull_request edge cases", () => {
 	});
 
 	it("updates multiple fields at once", async () => {
-		const { updatePullRequestTool } = await import("../../src/tools/update-pull-request.js");
+		const { updatePullRequestTool } = await import("../../src/tools/update-pull-request.ts");
 		const result = await updatePullRequestTool.execute(
 			"",
 			{
@@ -128,7 +128,7 @@ describe("azure_devops_update_pull_request edge cases", () => {
 	});
 
 	it("details include changes array", async () => {
-		const { updatePullRequestTool } = await import("../../src/tools/update-pull-request.js");
+		const { updatePullRequestTool } = await import("../../src/tools/update-pull-request.ts");
 		const result = await updatePullRequestTool.execute(
 			"",
 			{
@@ -149,7 +149,7 @@ describe("azure_devops_update_pull_request edge cases", () => {
 
 describe("azure_devops_add_pull_request_comment edge cases", () => {
 	it("adds comment with special characters", async () => {
-		const { addPullRequestCommentTool } = await import("../../src/tools/add-pull-request-comment.js");
+		const { addPullRequestCommentTool } = await import("../../src/tools/add-pull-request-comment.ts");
 		const result = await addPullRequestCommentTool.execute(
 			"",
 			{
@@ -164,7 +164,7 @@ describe("azure_devops_add_pull_request_comment edge cases", () => {
 	});
 
 	it("adds comment to different repo", async () => {
-		const { addPullRequestCommentTool } = await import("../../src/tools/add-pull-request-comment.js");
+		const { addPullRequestCommentTool } = await import("../../src/tools/add-pull-request-comment.ts");
 		const result = await addPullRequestCommentTool.execute(
 			"",
 			{
@@ -179,7 +179,7 @@ describe("azure_devops_add_pull_request_comment edge cases", () => {
 	});
 
 	it("details include repoId", async () => {
-		const { addPullRequestCommentTool } = await import("../../src/tools/add-pull-request-comment.js");
+		const { addPullRequestCommentTool } = await import("../../src/tools/add-pull-request-comment.ts");
 		const result = await addPullRequestCommentTool.execute(
 			"",
 			{
@@ -200,7 +200,7 @@ describe("azure_devops_add_pull_request_comment edge cases", () => {
 
 describe("azure_devops_set_pull_request_vote edge cases", () => {
 	it("details include vote label", async () => {
-		const { setPullRequestVoteTool } = await import("../../src/tools/set-pull-request-vote.js");
+		const { setPullRequestVoteTool } = await import("../../src/tools/set-pull-request-vote.ts");
 		const result = await setPullRequestVoteTool.execute(
 			"",
 			{ repositoryId: "repo-webapp", pullRequestId: 1, vote: "approve", mock: true },
@@ -210,7 +210,7 @@ describe("azure_devops_set_pull_request_vote edge cases", () => {
 	});
 
 	it("vote on different repo", async () => {
-		const { setPullRequestVoteTool } = await import("../../src/tools/set-pull-request-vote.js");
+		const { setPullRequestVoteTool } = await import("../../src/tools/set-pull-request-vote.ts");
 		const result = await setPullRequestVoteTool.execute(
 			"",
 			{ repositoryId: "repo-api", pullRequestId: 4, vote: "reject", mock: true },
@@ -221,7 +221,7 @@ describe("azure_devops_set_pull_request_vote edge cases", () => {
 	});
 
 	it("all vote values produce correct numeric mapping", async () => {
-		const { setPullRequestVoteTool } = await import("../../src/tools/set-pull-request-vote.js");
+		const { setPullRequestVoteTool } = await import("../../src/tools/set-pull-request-vote.ts");
 		const votes: Array<[string, number]> = [
 			["approve", 10],
 			["approve-with-suggestions", 5],

@@ -6,7 +6,7 @@ import {
 	mockRunPipeline,
 	mockCancelRun,
 	mockRetryRun,
-} from "../../src/mocks/mock-handler.js";
+} from "../../src/mocks/mock-handler.ts";
 
 // ---------------------------------------------------------------------------
 // Combined filter edge cases

@@ -4,8 +4,8 @@
  */
 
 import { WebApi } from "azure-devops-node-api";
-import type { AzureDevOpsConfig } from "../config/index.js";
-import { resolveAuth } from "../auth/index.js";
+import type { AzureDevOpsConfig } from "../config/index.ts";
+import { resolveAuth } from "../auth/index.ts";
 
 // Cache per session — keyed by orgUrl
 const connections = new Map<string, WebApi>();

@@ -8,7 +8,7 @@ import {
 	formatWorkItemTypeList,
 	formatComments,
 	formatRevisions,
-} from "../../src/utils/formatting.js";
+} from "../../src/utils/formatting.ts";
 
 // Minimal work item shape matching the inferred type
 function makeWorkItem(overrides: Record<string, unknown> = {}): any {

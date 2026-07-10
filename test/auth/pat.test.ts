@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { createPatAuth } from "../../src/auth/pat.js";
+import { createPatAuth } from "../../src/auth/pat.ts";
 
 describe("createPatAuth", () => {
 	it("returns undefined for undefined token", () => {

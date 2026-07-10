@@ -1,7 +1,7 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import type { AzureDevOpsConfig } from "../../src/config/index.js";
-import { isMutationTool, formatMutationSummary } from "../../src/safety/index.js";
+import type { AzureDevOpsConfig } from "../../src/config/index.ts";
+import { isMutationTool, formatMutationSummary } from "../../src/safety/index.ts";
 
 function makeConfig(overrides: Partial<AzureDevOpsConfig> = {}): AzureDevOpsConfig {
 	return {
@@ -26,7 +26,7 @@ const noop = undefined as any;
 
 describe("azure_devops_create_pull_request (mock)", () => {
 	it("creates a PR and returns confirmation", async () => {
-		const { createPullRequestTool } = await import("../../src/tools/create-pull-request.js");
+		const { createPullRequestTool } = await import("../../src/tools/create-pull-request.ts");
 		const result = await createPullRequestTool.execute(
 			"",
 			{
@@ -46,7 +46,7 @@ describe("azure_devops_create_pull_request (mock)", () => {
 	});
 
 	it("creates a PR without description", async () => {
-		const { createPullRequestTool } = await import("../../src/tools/create-pull-request.js");
+		const { createPullRequestTool } = await import("../../src/tools/create-pull-request.ts");
 		const result = await createPullRequestTool.execute(
 			"",
 			{
@@ -68,7 +68,7 @@ describe("azure_devops_create_pull_request (mock)", () => {
 
 describe("azure_devops_update_pull_request (mock)", () => {
 	it("updates title and returns confirmation", async () => {
-		const { updatePullRequestTool } = await import("../../src/tools/update-pull-request.js");
+		const { updatePullRequestTool } = await import("../../src/tools/update-pull-request.ts");
 		const result = await updatePullRequestTool.execute(
 			"",
 			{
@@ -84,7 +84,7 @@ describe("azure_devops_update_pull_request (mock)", () => {
 	});
 
 	it("updates status to abandoned", async () => {
-		const { updatePullRequestTool } = await import("../../src/tools/update-pull-request.js");
+		const { updatePullRequestTool } = await import("../../src/tools/update-pull-request.ts");
 		const result = await updatePullRequestTool.execute(
 			"",
 			{
@@ -100,7 +100,7 @@ describe("azure_devops_update_pull_request (mock)", () => {
 	});
 
 	it("returns error for unknown PR", async () => {
-		const { updatePullRequestTool } = await import("../../src/tools/update-pull-request.js");
+		const { updatePullRequestTool } = await import("../../src/tools/update-pull-request.ts");
 		const result = await updatePullRequestTool.execute(
 			"",
 			{
@@ -122,7 +122,7 @@ describe("azure_devops_update_pull_request (mock)", () => {
 
 describe("azure_devops_add_pull_request_comment (mock)", () => {
 	it("adds a comment and returns confirmation", async () => {
-		const { addPullRequestCommentTool } = await import("../../src/tools/add-pull-request-comment.js");
+		const { addPullRequestCommentTool } = await import("../../src/tools/add-pull-request-comment.ts");
 		const result = await addPullRequestCommentTool.execute(
 			"",
 			{
@@ -138,7 +138,7 @@ describe("azure_devops_add_pull_request_comment (mock)", () => {
 	});
 
 	it("adds a comment with threadStatus", async () => {
-		const { addPullRequestCommentTool } = await import("../../src/tools/add-pull-request-comment.js");
+		const { addPullRequestCommentTool } = await import("../../src/tools/add-pull-request-comment.ts");
 		const result = await addPullRequestCommentTool.execute(
 			"",
 			{
@@ -160,7 +160,7 @@ describe("azure_devops_add_pull_request_comment (mock)", () => {
 
 describe("azure_devops_set_pull_request_vote (mock)", () => {
 	it("records approve vote", async () => {
-		const { setPullRequestVoteTool } = await import("../../src/tools/set-pull-request-vote.js");
+		const { setPullRequestVoteTool } = await import("../../src/tools/set-pull-request-vote.ts");
 		const result = await setPullRequestVoteTool.execute(
 			"",
 			{ repositoryId: "repo-webapp", pullRequestId: 1, vote: "approve", mock: true },
@@ -171,7 +171,7 @@ describe("azure_devops_set_pull_request_vote (mock)", () => {
 	});
 
 	it("records reject vote", async () => {
-		const { setPullRequestVoteTool } = await import("../../src/tools/set-pull-request-vote.js");
+		const { setPullRequestVoteTool } = await import("../../src/tools/set-pull-request-vote.ts");
 		const result = await setPullRequestVoteTool.execute(
 			"",
 			{ repositoryId: "repo-webapp", pullRequestId: 1, vote: "reject", mock: true },
@@ -182,7 +182,7 @@ describe("azure_devops_set_pull_request_vote (mock)", () => {
 	});
 
 	it("records waiting-for-author vote", async () => {
-		const { setPullRequestVoteTool } = await import("../../src/tools/set-pull-request-vote.js");
+		const { setPullRequestVoteTool } = await import("../../src/tools/set-pull-request-vote.ts");
 		const result = await setPullRequestVoteTool.execute(
 			"",
 			{ repositoryId: "repo-webapp", pullRequestId: 1, vote: "waiting-for-author", mock: true },
@@ -193,7 +193,7 @@ describe("azure_devops_set_pull_request_vote (mock)", () => {
 	});
 
 	it("records approve-with-suggestions vote", async () => {
-		const { setPullRequestVoteTool } = await import("../../src/tools/set-pull-request-vote.js");
+		const { setPullRequestVoteTool } = await import("../../src/tools/set-pull-request-vote.ts");
 		const result = await setPullRequestVoteTool.execute(
 			"",
 			{ repositoryId: "repo-webapp", pullRequestId: 1, vote: "approve-with-suggestions", mock: true },
@@ -204,7 +204,7 @@ describe("azure_devops_set_pull_request_vote (mock)", () => {
 	});
 
 	it("resets vote", async () => {
-		const { setPullRequestVoteTool } = await import("../../src/tools/set-pull-request-vote.js");
+		const { setPullRequestVoteTool } = await import("../../src/tools/set-pull-request-vote.ts");
 		const result = await setPullRequestVoteTool.execute(
 			"",
 			{ repositoryId: "repo-webapp", pullRequestId: 1, vote: "reset", mock: true },
@@ -221,7 +221,7 @@ describe("azure_devops_set_pull_request_vote (mock)", () => {
 
 describe("azure_devops_set_pull_request_autocomplete (mock)", () => {
 	it("enables auto-complete", async () => {
-		const { setPullRequestAutocompleteTool } = await import("../../src/tools/set-pull-request-autocomplete.js");
+		const { setPullRequestAutocompleteTool } = await import("../../src/tools/set-pull-request-autocomplete.ts");
 		const result = await setPullRequestAutocompleteTool.execute(
 			"",
 			{ repositoryId: "repo-webapp", pullRequestId: 1, enabled: true, mock: true },
@@ -232,7 +232,7 @@ describe("azure_devops_set_pull_request_autocomplete (mock)", () => {
 	});
 
 	it("disables auto-complete", async () => {
-		const { setPullRequestAutocompleteTool } = await import("../../src/tools/set-pull-request-autocomplete.js");
+		const { setPullRequestAutocompleteTool } = await import("../../src/tools/set-pull-request-autocomplete.ts");
 		const result = await setPullRequestAutocompleteTool.execute(
 			"",
 			{ repositoryId: "repo-webapp", pullRequestId: 1, enabled: false, mock: true },
@@ -249,7 +249,7 @@ describe("azure_devops_set_pull_request_autocomplete (mock)", () => {
 
 describe("azure_devops_link_pr_work_items (mock)", () => {
 	it("links work items to a PR", async () => {
-		const { linkPrWorkItemsTool } = await import("../../src/tools/link-pr-work-items.js");
+		const { linkPrWorkItemsTool } = await import("../../src/tools/link-pr-work-items.ts");
 		const result = await linkPrWorkItemsTool.execute(
 			"",
 			{ repositoryId: "repo-webapp", pullRequestId: 1, workItemIds: [101, 102], operation: "add", mock: true },
@@ -263,7 +263,7 @@ describe("azure_devops_link_pr_work_items (mock)", () => {
 	});
 
 	it("unlinks work items from a PR", async () => {
-		const { linkPrWorkItemsTool } = await import("../../src/tools/link-pr-work-items.js");
+		const { linkPrWorkItemsTool } = await import("../../src/tools/link-pr-work-items.ts");
 		const result = await linkPrWorkItemsTool.execute(
 			"",
 			{ repositoryId: "repo-webapp", pullRequestId: 1, workItemIds: [101], operation: "remove", mock: true },

@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { type AzureDevOpsConfig } from "../../src/config/index.js";
+import { type AzureDevOpsConfig } from "../../src/config/index.ts";
 
 function makeConfig(overrides: Partial<AzureDevOpsConfig> = {}): AzureDevOpsConfig {
 	return {
@@ -25,7 +25,7 @@ const noop = undefined as any;
 
 describe("azure_devops_create_test_run edge cases (mock)", () => {
 	it("creates run with multiple suites", async () => {
-		const { createTestRunTool } = await import("../../src/tools/create-test-run.js");
+		const { createTestRunTool } = await import("../../src/tools/create-test-run.ts");
 		const result = await createTestRunTool.execute(
 			"",
 			{ planId: 101, suiteIds: [301, 302, 303], name: "Multi-Suite Run", mock: true },
@@ -37,7 +37,7 @@ describe("azure_devops_create_test_run edge cases (mock)", () => {
 	});
 
 	it("creates run with custom name containing special chars", async () => {
-		const { createTestRunTool } = await import("../../src/tools/create-test-run.js");
+		const { createTestRunTool } = await import("../../src/tools/create-test-run.ts");
 		const result = await createTestRunTool.execute(
 			"",
 			{ planId: 101, suiteIds: [301], name: "Run (v2.0) - Sprint #42", mock: true },
@@ -49,7 +49,7 @@ describe("azure_devops_create_test_run edge cases (mock)", () => {
 	});
 
 	it("creates run from plan 102", async () => {
-		const { createTestRunTool } = await import("../../src/tools/create-test-run.js");
+		const { createTestRunTool } = await import("../../src/tools/create-test-run.ts");
 		const result = await createTestRunTool.execute(
 			"",
 			{ planId: 102, suiteIds: [401], name: "Regression Run", mock: true },
@@ -67,7 +67,7 @@ describe("azure_devops_create_test_run edge cases (mock)", () => {
 
 describe("azure_devops_update_test_results edge cases (mock)", () => {
 	it("updates with all outcome types", async () => {
-		const { updateTestResultsTool } = await import("../../src/tools/update-test-results.js");
+		const { updateTestResultsTool } = await import("../../src/tools/update-test-results.ts");
 		const result = await updateTestResultsTool.execute(
 			"",
 			{
@@ -89,7 +89,7 @@ describe("azure_devops_update_test_results edge cases (mock)", () => {
 	});
 
 	it("updates with comment on each result", async () => {
-		const { updateTestResultsTool } = await import("../../src/tools/update-test-results.js");
+		const { updateTestResultsTool } = await import("../../src/tools/update-test-results.ts");
 		const result = await updateTestResultsTool.execute(
 			"",
 			{
@@ -108,7 +108,7 @@ describe("azure_devops_update_test_results edge cases (mock)", () => {
 	});
 
 	it("updates results in different run", async () => {
-		const { updateTestResultsTool } = await import("../../src/tools/update-test-results.js");
+		const { updateTestResultsTool } = await import("../../src/tools/update-test-results.ts");
 		const result = await updateTestResultsTool.execute(
 			"",
 			{

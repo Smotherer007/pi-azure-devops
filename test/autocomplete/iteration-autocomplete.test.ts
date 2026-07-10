@@ -6,7 +6,7 @@ import {
 	formatIterationItem,
 	loadIterationsFromMockData,
 	type IterationSummary,
-} from "../../src/autocomplete/iteration-autocomplete.js";
+} from "../../src/autocomplete/iteration-autocomplete.ts";
 
 const mockIterations: IterationSummary[] = [
 	{ id: "sprint-1", name: "Sprint 1", path: "Project\\Sprint 1", startDate: "2026-03-23T00:00:00Z", finishDate: "2026-04-05T00:00:00Z", timeframe: "past" },
@@ -215,7 +215,7 @@ describe("loadIterationsFromMockData", () => {
 
 describe("registerIterationAutocomplete guards", () => {
 	it("does nothing when autocomplete is disabled", async () => {
-		const { registerIterationAutocomplete } = await import("../../src/autocomplete/iteration-autocomplete.js");
+		const { registerIterationAutocomplete } = await import("../../src/autocomplete/iteration-autocomplete.ts");
 		let called = false;
 		registerIterationAutocomplete(
 			() => { called = true; },
@@ -235,7 +235,7 @@ describe("registerIterationAutocomplete guards", () => {
 	});
 
 	it("does nothing when team is not configured", async () => {
-		const { registerIterationAutocomplete } = await import("../../src/autocomplete/iteration-autocomplete.js");
+		const { registerIterationAutocomplete } = await import("../../src/autocomplete/iteration-autocomplete.ts");
 		let called = false;
 		registerIterationAutocomplete(
 			() => { called = true; },
@@ -255,7 +255,7 @@ describe("registerIterationAutocomplete guards", () => {
 	});
 
 	it("registers when both autocomplete and team are set", async () => {
-		const { registerIterationAutocomplete } = await import("../../src/autocomplete/iteration-autocomplete.js");
+		const { registerIterationAutocomplete } = await import("../../src/autocomplete/iteration-autocomplete.ts");
 		let called = false;
 		registerIterationAutocomplete(
 			() => { called = true; },

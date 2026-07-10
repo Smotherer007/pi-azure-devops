@@ -1,7 +1,7 @@
 import { describe, it, beforeEach, afterEach } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, writeFileSync, mkdirSync, rmSync } from "node:fs";
-import { resolveConfig, ConfigError } from "../../src/config/index.js";
+import { resolveConfig, ConfigError } from "../../src/config/index.ts";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { randomUUID } from "node:crypto";

@@ -13,7 +13,7 @@ import {
 	formatTestRunList,
 	formatTestResult,
 	formatTestResultList,
-} from "../../src/utils/formatting.js";
+} from "../../src/utils/formatting.ts";
 
 // ---------------------------------------------------------------------------
 // formatTestPlan / formatTestPlanList

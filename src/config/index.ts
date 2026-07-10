@@ -86,12 +86,14 @@ export interface AzureDevOpsConfig {
 
 /** Error thrown when required config is missing */
 export class ConfigError extends Error {
+	readonly missing: string[];
 	constructor(
-		public readonly missing: string[],
+		missing: string[],
 		message?: string,
 	) {
 		super(message ?? `Missing required Azure DevOps configuration: ${missing.join(", ")}`);
 		this.name = "ConfigError";
+		this.missing = missing;
 	}
 }
 

@@ -7,8 +7,8 @@
  * - readonly: mutation tools blocked entirely
  */
 
-import type { SafetyLevel } from "../config/index.js";
-import { MUTATION_TOOLS } from "../tools/shared.js";
+import type { SafetyLevel } from "../config/index.ts";
+import { MUTATION_TOOLS } from "../tools/shared.ts";
 
 // ---------------------------------------------------------------------------
 // Resolver

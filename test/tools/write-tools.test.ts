@@ -1,10 +1,10 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { createWorkItemTool } from "../../src/tools/create-work-item.js";
-import { updateWorkItemTool } from "../../src/tools/update-work-item.js";
-import { addWorkItemCommentTool } from "../../src/tools/add-work-item-comment.js";
-import { manageWorkItemLinksTool } from "../../src/tools/manage-work-item-links.js";
-import type { AzureDevOpsConfig } from "../../src/config/index.js";
+import { createWorkItemTool } from "../../src/tools/create-work-item.ts";
+import { updateWorkItemTool } from "../../src/tools/update-work-item.ts";
+import { addWorkItemCommentTool } from "../../src/tools/add-work-item-comment.ts";
+import { manageWorkItemLinksTool } from "../../src/tools/manage-work-item-links.ts";
+import type { AzureDevOpsConfig } from "../../src/config/index.ts";
 
 // ---------------------------------------------------------------------------
 // Helpers

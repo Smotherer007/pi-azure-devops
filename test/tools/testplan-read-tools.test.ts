@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { type AzureDevOpsConfig } from "../../src/config/index.js";
+import { type AzureDevOpsConfig } from "../../src/config/index.ts";
 
 function makeConfig(overrides: Partial<AzureDevOpsConfig> = {}): AzureDevOpsConfig {
 	return {
@@ -25,7 +25,7 @@ const noop = undefined as any;
 
 describe("azure_devops_list_test_plans (mock)", () => {
 	it("returns all test plans", async () => {
-		const { listTestPlansTool } = await import("../../src/tools/list-test-plans.js");
+		const { listTestPlansTool } = await import("../../src/tools/list-test-plans.ts");
 		const result = await listTestPlansTool.execute("", { mock: true }, undefined, noop, mockCtx);
 		assert.equal(result.details.count, 3);
 		assert.ok(result.content[0].text.includes("Sprint 42 Testing"));
@@ -34,7 +34,7 @@ describe("azure_devops_list_test_plans (mock)", () => {
 	});
 
 	it("filters active plans", async () => {
-		const { listTestPlansTool } = await import("../../src/tools/list-test-plans.js");
+		const { listTestPlansTool } = await import("../../src/tools/list-test-plans.ts");
 		const result = await listTestPlansTool.execute("", { filterActivePlans: true, mock: true }, undefined, noop, mockCtx);
 		assert.equal(result.details.count, 2);
 		assert.ok(result.content[0].text.includes("Sprint 42 Testing"));
@@ -42,7 +42,7 @@ describe("azure_devops_list_test_plans (mock)", () => {
 	});
 
 	it("includes mock indicator", async () => {
-		const { listTestPlansTool } = await import("../../src/tools/list-test-plans.js");
+		const { listTestPlansTool } = await import("../../src/tools/list-test-plans.ts");
 		const result = await listTestPlansTool.execute("", { mock: true }, undefined, noop, mockCtx);
 		assert.ok(result.content[0].text.includes("mock"));
 	});
@@ -54,14 +54,14 @@ describe("azure_devops_list_test_plans (mock)", () => {
 
 describe("azure_devops_get_test_plan (mock)", () => {
 	it("returns plan by ID", async () => {
-		const { getTestPlanTool } = await import("../../src/tools/get-test-plan.js");
+		const { getTestPlanTool } = await import("../../src/tools/get-test-plan.ts");
 		const result = await getTestPlanTool.execute("", { planId: 101, mock: true }, undefined, noop, mockCtx);
 		assert.ok(result.content[0].text.includes("Sprint 42 Testing"));
 		assert.equal(result.details.planId, 101);
 	});
 
 	it("returns error for unknown plan", async () => {
-		const { getTestPlanTool } = await import("../../src/tools/get-test-plan.js");
+		const { getTestPlanTool } = await import("../../src/tools/get-test-plan.ts");
 		const result = await getTestPlanTool.execute("", { planId: 999, mock: true }, undefined, noop, mockCtx);
 		assert.ok(result.content[0].text.includes("not found"));
 		assert.equal(result.details.error, true);
@@ -74,19 +74,19 @@ describe("azure_devops_get_test_plan (mock)", () => {
 
 describe("azure_devops_list_test_suites (mock)", () => {
 	it("returns suites for plan 101", async () => {
-		const { listTestSuitesTool } = await import("../../src/tools/list-test-suites.js");
+		const { listTestSuitesTool } = await import("../../src/tools/list-test-suites.ts");
 		const result = await listTestSuitesTool.execute("", { planId: 101, mock: true }, undefined, noop, mockCtx);
 		assert.equal(result.details.count, 4);
 	});
 
 	it("returns suites for plan 102", async () => {
-		const { listTestSuitesTool } = await import("../../src/tools/list-test-suites.js");
+		const { listTestSuitesTool } = await import("../../src/tools/list-test-suites.ts");
 		const result = await listTestSuitesTool.execute("", { planId: 102, mock: true }, undefined, noop, mockCtx);
 		assert.equal(result.details.count, 2);
 	});
 
 	it("returns error for unknown plan", async () => {
-		const { listTestSuitesTool } = await import("../../src/tools/list-test-suites.js");
+		const { listTestSuitesTool } = await import("../../src/tools/list-test-suites.ts");
 		const result = await listTestSuitesTool.execute("", { planId: 999, mock: true }, undefined, noop, mockCtx);
 		assert.ok(result.content[0].text.includes("No test suites") || result.content[0].text.includes("not found"));
 	});
@@ -98,13 +98,13 @@ describe("azure_devops_list_test_suites (mock)", () => {
 
 describe("azure_devops_get_test_suite (mock)", () => {
 	it("returns suite by ID", async () => {
-		const { getTestSuiteTool } = await import("../../src/tools/get-test-suite.js");
+		const { getTestSuiteTool } = await import("../../src/tools/get-test-suite.ts");
 		const result = await getTestSuiteTool.execute("", { planId: 101, suiteId: 301, mock: true }, undefined, noop, mockCtx);
 		assert.equal(result.details.suiteId, 301);
 	});
 
 	it("returns error for unknown suite", async () => {
-		const { getTestSuiteTool } = await import("../../src/tools/get-test-suite.js");
+		const { getTestSuiteTool } = await import("../../src/tools/get-test-suite.ts");
 		const result = await getTestSuiteTool.execute("", { planId: 101, suiteId: 999, mock: true }, undefined, noop, mockCtx);
 		assert.ok(result.content[0].text.includes("not found"));
 		assert.equal(result.details.error, true);
@@ -117,13 +117,13 @@ describe("azure_devops_get_test_suite (mock)", () => {
 
 describe("azure_devops_list_test_cases (mock)", () => {
 	it("returns cases for plan 101 suite 301", async () => {
-		const { listTestCasesTool } = await import("../../src/tools/list-test-cases.js");
+		const { listTestCasesTool } = await import("../../src/tools/list-test-cases.ts");
 		const result = await listTestCasesTool.execute("", { planId: 101, suiteId: 301, mock: true }, undefined, noop, mockCtx);
 		assert.ok(result.details.count > 0);
 	});
 
 	it("returns error for unknown suite", async () => {
-		const { listTestCasesTool } = await import("../../src/tools/list-test-cases.js");
+		const { listTestCasesTool } = await import("../../src/tools/list-test-cases.ts");
 		const result = await listTestCasesTool.execute("", { planId: 101, suiteId: 999, mock: true }, undefined, noop, mockCtx);
 		assert.ok(result.content[0].text.includes("No test cases") || result.content[0].text.includes("not found"));
 	});
@@ -135,13 +135,13 @@ describe("azure_devops_list_test_cases (mock)", () => {
 
 describe("azure_devops_list_test_points (mock)", () => {
 	it("returns points for plan 101 suite 301", async () => {
-		const { listTestPointsTool } = await import("../../src/tools/list-test-points.js");
+		const { listTestPointsTool } = await import("../../src/tools/list-test-points.ts");
 		const result = await listTestPointsTool.execute("", { planId: 101, suiteId: 301, mock: true }, undefined, noop, mockCtx);
 		assert.ok(result.details.count > 0);
 	});
 
 	it("returns error for unknown suite", async () => {
-		const { listTestPointsTool } = await import("../../src/tools/list-test-points.js");
+		const { listTestPointsTool } = await import("../../src/tools/list-test-points.ts");
 		const result = await listTestPointsTool.execute("", { planId: 101, suiteId: 999, mock: true }, undefined, noop, mockCtx);
 		assert.ok(result.content[0].text.includes("No test points") || result.content[0].text.includes("not found"));
 	});
@@ -153,13 +153,13 @@ describe("azure_devops_list_test_points (mock)", () => {
 
 describe("azure_devops_get_test_run (mock)", () => {
 	it("returns run by ID", async () => {
-		const { getTestRunTool } = await import("../../src/tools/get-test-run.js");
+		const { getTestRunTool } = await import("../../src/tools/get-test-run.ts");
 		const result = await getTestRunTool.execute("", { runId: 501, mock: true }, undefined, noop, mockCtx);
 		assert.equal(result.details.runId, 501);
 	});
 
 	it("returns error for unknown run", async () => {
-		const { getTestRunTool } = await import("../../src/tools/get-test-run.js");
+		const { getTestRunTool } = await import("../../src/tools/get-test-run.ts");
 		const result = await getTestRunTool.execute("", { runId: 999, mock: true }, undefined, noop, mockCtx);
 		assert.ok(result.content[0].text.includes("not found"));
 		assert.equal(result.details.error, true);
@@ -172,19 +172,19 @@ describe("azure_devops_get_test_run (mock)", () => {
 
 describe("azure_devops_list_test_runs (mock)", () => {
 	it("returns all test runs", async () => {
-		const { listTestRunsTool } = await import("../../src/tools/list-test-runs.js");
+		const { listTestRunsTool } = await import("../../src/tools/list-test-runs.ts");
 		const result = await listTestRunsTool.execute("", { mock: true }, undefined, noop, mockCtx);
 		assert.equal(result.details.count, 3);
 	});
 
 	it("filters by planId", async () => {
-		const { listTestRunsTool } = await import("../../src/tools/list-test-runs.js");
+		const { listTestRunsTool } = await import("../../src/tools/list-test-runs.ts");
 		const result = await listTestRunsTool.execute("", { planId: 101, mock: true }, undefined, noop, mockCtx);
 		assert.ok(result.details.count > 0);
 	});
 
 	it("includes mock indicator", async () => {
-		const { listTestRunsTool } = await import("../../src/tools/list-test-runs.js");
+		const { listTestRunsTool } = await import("../../src/tools/list-test-runs.ts");
 		const result = await listTestRunsTool.execute("", { mock: true }, undefined, noop, mockCtx);
 		assert.ok(result.content[0].text.includes("mock"));
 	});

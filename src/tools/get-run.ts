@@ -3,12 +3,12 @@
  */
 
 import { Type } from "typebox";
-import { resolveConfig, type AzureDevOpsConfig } from "../config/index.js";
-import { getPipelinesApi } from "../utils/connection.js";
-import { formatAdoError } from "../utils/errors.js";
-import { formatRun } from "../utils/formatting.js";
-import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.js";
-import { mockGetRun } from "../mocks/mock-handler.js";
+import { resolveConfig, type AzureDevOpsConfig } from "../config/index.ts";
+import { getPipelinesApi } from "../utils/connection.ts";
+import { formatAdoError } from "../utils/errors.ts";
+import { formatRun } from "../utils/formatting.ts";
+import { isMock, textResult, errorResult, type ToolResult , resolveEffectiveConfig, OrgParam, ProjectParam} from "./shared.ts";
+import { mockGetRun } from "../mocks/mock-handler.ts";
 
 export const getRunTool = {
 	name: "azure_devops_get_run",

@@ -9,7 +9,7 @@ import {
 	formatIteration,
 	formatIterationList,
 	formatCapacity,
-} from "../../src/utils/formatting.js";
+} from "../../src/utils/formatting.ts";
 
 describe("formatTeam edge cases", () => {
 	it("handles team with only id and name", () => {

@@ -3,8 +3,8 @@
  */
 
 import { Type } from "typebox";
-import type { AzureDevOpsConfig } from "../config/index.js";
-import { resolveOrgProjectConfig } from "../config/index.js";
+import type { AzureDevOpsConfig } from "../config/index.ts";
+import { resolveOrgProjectConfig } from "../config/index.ts";
 
 // ---------------------------------------------------------------------------
 // Common schemas

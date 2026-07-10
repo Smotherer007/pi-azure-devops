@@ -45,8 +45,8 @@ import {
 	formatTestRun,
 	formatTestRunList,
 	formatTestResultList,
-} from "../utils/formatting.js";
-import { textResult, errorResult, type ToolResult } from "../tools/shared.js";
+} from "../utils/formatting.ts";
+import { textResult, errorResult, type ToolResult } from "../tools/shared.ts";
 
 // ---------------------------------------------------------------------------
 // Fixture loading
@@ -1403,7 +1403,7 @@ export function mockCancelRun(pipelineId: number, runId: number): ToolResult {
 			`✅ Cancelled run #${runId} (mock mode)`,
 			"",
 			`- **Pipeline:** ${run.pipeline?.name ?? "?"} (#${pipelineId})`,
-			`- **State:** cancelling`,
+			`- **State:** Canceling`,
 			"",
 			"⚠️ This is mock data — no run was actually cancelled.",
 		].join("\n"),

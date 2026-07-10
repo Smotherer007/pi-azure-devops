@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { resolveTeamContext, MUTATION_TOOLS, isMutationTool } from "../../src/tools/shared.js";
+import { resolveTeamContext, MUTATION_TOOLS, isMutationTool } from "../../src/tools/shared.ts";
 
 describe("resolveTeamContext", () => {
 	const config = {

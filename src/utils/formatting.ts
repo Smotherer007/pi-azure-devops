@@ -439,10 +439,18 @@ export function formatBranchList(branches: BranchLike[]): string {
 // ---------------------------------------------------------------------------
 
 const PR_STATUS_LABELS: Record<string, string> = {
+	"0": "Not Set",
+	"1": "🟢 Active",
+	"2": "⚪ Abandoned",
+	"3": "✅ Completed",
 	active: "🟢 Active",
 	completed: "✅ Completed",
 	abandoned: "⚪ Abandoned",
 };
+
+function normalizePrStatus(status: unknown): string {
+	return PR_STATUS_LABELS[String(status)] ?? PR_STATUS_LABELS[String(status).toLowerCase()] ?? String(status ?? "Unknown");
+}
 
 const VOTE_LABELS: Record<number, string> = {
 	10: "Approved",
@@ -468,7 +476,7 @@ interface PullRequestLike {
 
 export function formatPullRequest(pr: PullRequestLike): string {
 	const lines: string[] = [];
-	const statusLabel = PR_STATUS_LABELS[pr.status ?? ""] ?? pr.status ?? "Unknown";
+	const statusLabel = normalizePrStatus(pr.status);
 
 	lines.push(`# PR #${pr.pullRequestId ?? "?"}: ${pr.title ?? "(untitled)"}`);
 	lines.push(`- **Status:** ${statusLabel}`);
@@ -504,7 +512,7 @@ export function formatPullRequestList(prs: PullRequestLike[]): string {
 
 	const lines: string[] = [];
 	for (const pr of prs) {
-		const statusLabel = PR_STATUS_LABELS[pr.status ?? ""] ?? pr.status ?? "?";
+		const statusLabel = normalizePrStatus(pr.status);
 		const source = shortRef(pr.sourceRefName);
 		const target = shortRef(pr.targetRefName);
 		const author = pr.createdBy?.displayName ?? "?";
@@ -657,17 +665,33 @@ export function formatPolicyEvaluation(evaluation: PolicyEvaluationLike): string
 // ---------------------------------------------------------------------------
 
 const RUN_STATE_ICONS: Record<string, string> = {
-	completed: "✅",
-	inProgress: "⏳",
-	cancelling: "❌",
+	"0": "❓ Unknown",
+	"1": "⏳ In Progress",
+	"2": "❌ Canceling",
+	"4": "✅ Completed",
+	completed: "✅ Completed",
+	inProgress: "⏳ In Progress",
+	cancelling: "❌ Canceling",
 };
 
+function normalizeRunState(state: unknown): string {
+	return RUN_STATE_ICONS[String(state)] ?? RUN_STATE_ICONS[String(state).toLowerCase()] ?? `⏸️ ${state}`;
+}
+
 const RUN_RESULT_LABELS: Record<string, string> = {
-	succeeded: "succeeded",
-	failed: "failed",
-	canceled: "canceled",
-	partiallySucceeded: "partially succeeded",
+	"0": "unknown",
+	"1": "✅ succeeded",
+	"2": "🔴 failed",
+	"4": "⚪ canceled",
+	succeeded: "✅ succeeded",
+	failed: "🔴 failed",
+	canceled: "⚪ canceled",
+	partiallySucceeded: "⚠️ partially succeeded",
 };
+
+function normalizeRunResult(result: unknown): string {
+	return RUN_RESULT_LABELS[String(result)] ?? RUN_RESULT_LABELS[String(result).toLowerCase()] ?? String(result ?? "");
+}
 
 interface PipelineLike {
 	id?: number;
@@ -734,14 +758,14 @@ export function formatDuration(createdDate?: string, finishedDate?: string | nul
 
 export function formatRun(run: RunLike): string {
 	const lines: string[] = [];
-	const stateIcon = RUN_STATE_ICONS[run.state ?? ""] ?? "⏸️";
-	const resultLabel = run.result ? (RUN_RESULT_LABELS[run.result] ?? run.result) : "";
+	const stateIcon = normalizeRunState(run.state);
+	const resultLabel = run.result ? normalizeRunResult(run.result) : "";
 	const pipelineName = run.pipeline?.name ?? "?";
 	const branch = run.resources?.repositories?.self?.refName?.replace("refs/heads/", "") ?? "?";
 	const duration = formatDuration(run.createdDate, run.finishedDate);
 
 	lines.push(`# Run #${run.id ?? "?"} — ${pipelineName}`);
-	lines.push(`- **State:** ${stateIcon} ${run.state ?? "unknown"}`);
+	lines.push(`- **State:** ${stateIcon}`);
 	if (resultLabel) lines.push(`- **Result:** ${resultLabel}`);
 	lines.push(`- **Branch:** ${branch}`);
 	lines.push(`- **Duration:** ${duration}`);
@@ -768,12 +792,12 @@ export function formatRunList(runs: RunLike[]): string {
 
 	const lines: string[] = [];
 	for (const run of runs) {
-		const stateIcon = RUN_STATE_ICONS[run.state ?? ""] ?? "⏸️";
-		const resultLabel = run.result ? (RUN_RESULT_LABELS[run.result] ?? run.result) : "";
+		const stateIcon = normalizeRunState(run.state);
+		const resultLabel = run.result ? normalizeRunResult(run.result) : "";
 		const pipelineName = run.pipeline?.name ?? "?";
 		const branch = run.resources?.repositories?.self?.refName?.replace("refs/heads/", "") ?? "?";
 		const duration = formatDuration(run.createdDate, run.finishedDate);
-		const statusStr = resultLabel ? `${stateIcon} ${resultLabel}` : `${stateIcon} ${run.state ?? "?"}`;
+		const statusStr = resultLabel ? `${stateIcon} ${resultLabel}` : `${stateIcon}`;
 		lines.push(`#${run.id ?? "?"} ${pipelineName} — ${statusStr} — ${branch} (${duration})`);
 	}
 	return lines.join("\n");

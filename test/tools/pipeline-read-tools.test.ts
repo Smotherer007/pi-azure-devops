@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { type AzureDevOpsConfig } from "../../src/config/index.js";
+import { type AzureDevOpsConfig } from "../../src/config/index.ts";
 
 function makeConfig(overrides: Partial<AzureDevOpsConfig> = {}): AzureDevOpsConfig {
 	return {
@@ -25,7 +25,7 @@ const noop = undefined as any;
 
 describe("azure_devops_list_pipelines (mock)", () => {
 	it("returns all pipelines", async () => {
-		const { listPipelinesTool } = await import("../../src/tools/list-pipelines.js");
+		const { listPipelinesTool } = await import("../../src/tools/list-pipelines.ts");
 		const result = await listPipelinesTool.execute("", { mock: true }, undefined, noop, mockCtx);
 		assert.equal(result.details.count, 3);
 		assert.ok(result.content[0].text.includes("CI Pipeline"));
@@ -34,7 +34,7 @@ describe("azure_devops_list_pipelines (mock)", () => {
 	});
 
 	it("includes mock indicator", async () => {
-		const { listPipelinesTool } = await import("../../src/tools/list-pipelines.js");
+		const { listPipelinesTool } = await import("../../src/tools/list-pipelines.ts");
 		const result = await listPipelinesTool.execute("", { mock: true }, undefined, noop, mockCtx);
 		assert.ok(result.content[0].text.includes("mock"));
 	});
@@ -46,14 +46,14 @@ describe("azure_devops_list_pipelines (mock)", () => {
 
 describe("azure_devops_get_pipeline (mock)", () => {
 	it("returns pipeline by ID", async () => {
-		const { getPipelineTool } = await import("../../src/tools/get-pipeline.js");
+		const { getPipelineTool } = await import("../../src/tools/get-pipeline.ts");
 		const result = await getPipelineTool.execute("", { pipelineId: 1, mock: true }, undefined, noop, mockCtx);
 		assert.ok(result.content[0].text.includes("CI Pipeline"));
 		assert.equal(result.details.pipelineId, 1);
 	});
 
 	it("returns error for unknown pipeline", async () => {
-		const { getPipelineTool } = await import("../../src/tools/get-pipeline.js");
+		const { getPipelineTool } = await import("../../src/tools/get-pipeline.ts");
 		const result = await getPipelineTool.execute("", { pipelineId: 999, mock: true }, undefined, noop, mockCtx);
 		assert.ok(result.content[0].text.includes("not found"));
 		assert.equal(result.details.error, true);
@@ -66,32 +66,32 @@ describe("azure_devops_get_pipeline (mock)", () => {
 
 describe("azure_devops_list_runs (mock)", () => {
 	it("returns all runs", async () => {
-		const { listRunsTool } = await import("../../src/tools/list-runs.js");
+		const { listRunsTool } = await import("../../src/tools/list-runs.ts");
 		const result = await listRunsTool.execute("", { mock: true }, undefined, noop, mockCtx);
 		assert.equal(result.details.count, 5);
 		assert.ok(result.content[0].text.includes("CI Pipeline"));
 	});
 
 	it("filters by pipeline", async () => {
-		const { listRunsTool } = await import("../../src/tools/list-runs.js");
+		const { listRunsTool } = await import("../../src/tools/list-runs.ts");
 		const result = await listRunsTool.execute("", { pipelineId: 1, mock: true }, undefined, noop, mockCtx);
 		assert.equal(result.details.count, 3);
 	});
 
 	it("filters by status", async () => {
-		const { listRunsTool } = await import("../../src/tools/list-runs.js");
+		const { listRunsTool } = await import("../../src/tools/list-runs.ts");
 		const result = await listRunsTool.execute("", { status: "inProgress", mock: true }, undefined, noop, mockCtx);
 		assert.equal(result.details.count, 1);
 	});
 
 	it("filters by result", async () => {
-		const { listRunsTool } = await import("../../src/tools/list-runs.js");
+		const { listRunsTool } = await import("../../src/tools/list-runs.ts");
 		const result = await listRunsTool.execute("", { result: "failed", mock: true }, undefined, noop, mockCtx);
 		assert.equal(result.details.count, 1);
 	});
 
 	it("filters by branch", async () => {
-		const { listRunsTool } = await import("../../src/tools/list-runs.js");
+		const { listRunsTool } = await import("../../src/tools/list-runs.ts");
 		const result = await listRunsTool.execute("", { branch: "main", mock: true }, undefined, noop, mockCtx);
 		assert.equal(result.details.count, 3);
 	});
@@ -103,14 +103,14 @@ describe("azure_devops_list_runs (mock)", () => {
 
 describe("azure_devops_get_run (mock)", () => {
 	it("returns run by pipeline and run ID", async () => {
-		const { getRunTool } = await import("../../src/tools/get-run.js");
+		const { getRunTool } = await import("../../src/tools/get-run.ts");
 		const result = await getRunTool.execute("", { pipelineId: 1, runId: 42, mock: true }, undefined, noop, mockCtx);
 		assert.ok(result.content[0].text.includes("CI Pipeline"));
 		assert.equal(result.details.runId, 42);
 	});
 
 	it("returns error for unknown run", async () => {
-		const { getRunTool } = await import("../../src/tools/get-run.js");
+		const { getRunTool } = await import("../../src/tools/get-run.ts");
 		const result = await getRunTool.execute("", { pipelineId: 1, runId: 9999, mock: true }, undefined, noop, mockCtx);
 		assert.ok(result.content[0].text.includes("not found"));
 		assert.equal(result.details.error, true);
@@ -123,7 +123,7 @@ describe("azure_devops_get_run (mock)", () => {
 
 describe("azure_devops_get_run_artifacts (mock)", () => {
 	it("returns artifacts for known run", async () => {
-		const { getRunArtifactsTool } = await import("../../src/tools/get-run-artifacts.js");
+		const { getRunArtifactsTool } = await import("../../src/tools/get-run-artifacts.ts");
 		const result = await getRunArtifactsTool.execute("", { pipelineId: 1, runId: 42, mock: true }, undefined, noop, mockCtx);
 		assert.equal(result.details.count, 2);
 		assert.ok(result.content[0].text.includes("drop"));
@@ -131,7 +131,7 @@ describe("azure_devops_get_run_artifacts (mock)", () => {
 	});
 
 	it("returns empty for run with no artifacts", async () => {
-		const { getRunArtifactsTool } = await import("../../src/tools/get-run-artifacts.js");
+		const { getRunArtifactsTool } = await import("../../src/tools/get-run-artifacts.ts");
 		const result = await getRunArtifactsTool.execute("", { pipelineId: 1, runId: 43, mock: true }, undefined, noop, mockCtx);
 		assert.equal(result.details.count, 0);
 		assert.ok(result.content[0].text.includes("No artifacts"));
@@ -144,7 +144,7 @@ describe("azure_devops_get_run_artifacts (mock)", () => {
 
 describe("azure_devops_get_run_logs (mock)", () => {
 	it("returns logs for known run", async () => {
-		const { getRunLogsTool } = await import("../../src/tools/get-run-logs.js");
+		const { getRunLogsTool } = await import("../../src/tools/get-run-logs.ts");
 		const result = await getRunLogsTool.execute("", { pipelineId: 1, runId: 42, mock: true }, undefined, noop, mockCtx);
 		assert.equal(result.details.count, 3);
 		assert.ok(result.content[0].text.includes("Log #1"));
@@ -152,7 +152,7 @@ describe("azure_devops_get_run_logs (mock)", () => {
 	});
 
 	it("returns empty for run with no logs", async () => {
-		const { getRunLogsTool } = await import("../../src/tools/get-run-logs.js");
+		const { getRunLogsTool } = await import("../../src/tools/get-run-logs.ts");
 		const result = await getRunLogsTool.execute("", { pipelineId: 1, runId: 43, mock: true }, undefined, noop, mockCtx);
 		assert.equal(result.details.count, 0);
 		assert.ok(result.content[0].text.includes("No logs"));
@@ -165,7 +165,7 @@ describe("azure_devops_get_run_logs (mock)", () => {
 
 describe("azure_devops_get_run_timeline (mock)", () => {
 	it("returns timeline for known run", async () => {
-		const { getRunTimelineTool } = await import("../../src/tools/get-run-timeline.js");
+		const { getRunTimelineTool } = await import("../../src/tools/get-run-timeline.ts");
 		const result = await getRunTimelineTool.execute("", { pipelineId: 1, runId: 42, mock: true }, undefined, noop, mockCtx);
 		assert.equal(result.details.count, 5);
 		assert.ok(result.content[0].text.includes("Build"));
@@ -174,14 +174,14 @@ describe("azure_devops_get_run_timeline (mock)", () => {
 	});
 
 	it("returns timeline for failed run", async () => {
-		const { getRunTimelineTool } = await import("../../src/tools/get-run-timeline.js");
+		const { getRunTimelineTool } = await import("../../src/tools/get-run-timeline.ts");
 		const result = await getRunTimelineTool.execute("", { pipelineId: 1, runId: 43, mock: true }, undefined, noop, mockCtx);
 		assert.equal(result.details.count, 3);
 		assert.ok(result.content[0].text.includes("failed") || result.content[0].text.includes("🔴"));
 	});
 
 	it("returns empty for run with no timeline", async () => {
-		const { getRunTimelineTool } = await import("../../src/tools/get-run-timeline.js");
+		const { getRunTimelineTool } = await import("../../src/tools/get-run-timeline.ts");
 		const result = await getRunTimelineTool.execute("", { pipelineId: 2, runId: 15, mock: true }, undefined, noop, mockCtx);
 		assert.equal(result.details.count, 0);
 		assert.ok(result.content[0].text.includes("No timeline"));

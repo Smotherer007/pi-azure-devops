@@ -1,8 +1,8 @@
 import { describe, it, beforeEach, afterEach } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
-import { runDoctor } from "../../src/tools/doctor.js";
-import type { AzureDevOpsConfig } from "../../src/config/index.js";
+import { runDoctor } from "../../src/tools/doctor.ts";
+import type { AzureDevOpsConfig } from "../../src/config/index.ts";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { randomUUID } from "node:crypto";
