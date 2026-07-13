@@ -1,0 +1,4173 @@
+{
+  "nodes": [
+    {
+      "id": "index_file",
+      "label": "index.ts",
+      "type": "file",
+      "sourceFile": "index.ts",
+      "centrality": 0,
+      "community": 0
+    },
+    {
+      "id": "package_file",
+      "label": "package.json",
+      "type": "file",
+      "sourceFile": "package.json",
+      "centrality": 0.027,
+      "community": 2
+    },
+    {
+      "id": "package_name",
+      "label": "name",
+      "type": "field",
+      "sourceFile": "package.json",
+      "centrality": 0.002,
+      "community": 2
+    },
+    {
+      "id": "package_version",
+      "label": "version",
+      "type": "field",
+      "sourceFile": "package.json",
+      "centrality": 0.002,
+      "community": 2
+    },
+    {
+      "id": "package_description",
+      "label": "description",
+      "type": "field",
+      "sourceFile": "package.json",
+      "centrality": 0.002,
+      "community": 2
+    },
+    {
+      "id": "package_keywords",
+      "label": "keywords",
+      "type": "field",
+      "sourceFile": "package.json",
+      "centrality": 0.002,
+      "community": 2
+    },
+    {
+      "id": "package_author",
+      "label": "author",
+      "type": "field",
+      "sourceFile": "package.json",
+      "centrality": 0.002,
+      "community": 2
+    },
+    {
+      "id": "package_license",
+      "label": "license",
+      "type": "field",
+      "sourceFile": "package.json",
+      "centrality": 0.002,
+      "community": 2
+    },
+    {
+      "id": "package_type",
+      "label": "type",
+      "type": "field",
+      "sourceFile": "package.json",
+      "centrality": 0.002,
+      "community": 2
+    },
+    {
+      "id": "package_engines",
+      "label": "engines",
+      "type": "field",
+      "sourceFile": "package.json",
+      "centrality": 0.002,
+      "community": 2
+    },
+    {
+      "id": "package_repository",
+      "label": "repository",
+      "type": "field",
+      "sourceFile": "package.json",
+      "centrality": 0.002,
+      "community": 2
+    },
+    {
+      "id": "package_bugs",
+      "label": "bugs",
+      "type": "field",
+      "sourceFile": "package.json",
+      "centrality": 0.002,
+      "community": 2
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "type": "field",
+      "sourceFile": "package.json",
+      "centrality": 0.002,
+      "community": 2
+    },
+    {
+      "id": "package_dependencies",
+      "label": "dependencies",
+      "type": "field",
+      "sourceFile": "package.json",
+      "centrality": 0.002,
+      "community": 2
+    },
+    {
+      "id": "package_peerDependencies",
+      "label": "peerDependencies",
+      "type": "field",
+      "sourceFile": "package.json",
+      "centrality": 0.002,
+      "community": 2
+    },
+    {
+      "id": "package_devDependencies",
+      "label": "devDependencies",
+      "type": "field",
+      "sourceFile": "package.json",
+      "centrality": 0.002,
+      "community": 2
+    },
+    {
+      "id": "package_overrides",
+      "label": "overrides",
+      "type": "field",
+      "sourceFile": "package.json",
+      "centrality": 0.002,
+      "community": 2
+    },
+    {
+      "id": "package_publishConfig",
+      "label": "publishConfig",
+      "type": "field",
+      "sourceFile": "package.json",
+      "centrality": 0.002,
+      "community": 2
+    },
+    {
+      "id": "package_pi",
+      "label": "pi",
+      "type": "field",
+      "sourceFile": "package.json",
+      "centrality": 0.002,
+      "community": 2
+    },
+    {
+      "id": "release.config_file",
+      "label": "release.config.cjs",
+      "type": "file",
+      "sourceFile": "release.config.cjs",
+      "centrality": 0,
+      "community": 19
+    },
+    {
+      "id": "src_auth_azure-cli_file",
+      "label": "src/auth/azure-cli.ts",
+      "type": "file",
+      "sourceFile": "src/auth/azure-cli.ts",
+      "centrality": 0.011,
+      "community": 38
+    },
+    {
+      "id": "src_auth_azure-cli_IRequestHandler",
+      "label": "IRequestHandler",
+      "type": "type",
+      "sourceFile": "src/auth/azure-cli.ts",
+      "sourceLocation": "L10",
+      "centrality": 0.002,
+      "community": 38
+    },
+    {
+      "id": "src_auth_azure-cli_AzureCliAuthResult",
+      "label": "AzureCliAuthResult",
+      "type": "interface",
+      "sourceFile": "src/auth/azure-cli.ts",
+      "sourceLocation": "L15",
+      "centrality": 0.002,
+      "community": 38
+    },
+    {
+      "id": "src_auth_azure-cli_AzAccessToken",
+      "label": "AzAccessToken",
+      "type": "interface",
+      "sourceFile": "src/auth/azure-cli.ts",
+      "sourceLocation": "L20",
+      "centrality": 0.002,
+      "community": 38
+    },
+    {
+      "id": "src_auth_azure-cli_isAzureCliAvailable",
+      "label": "isAzureCliAvailable",
+      "type": "function",
+      "sourceFile": "src/auth/azure-cli.ts",
+      "sourceLocation": "L31",
+      "centrality": 0.002,
+      "community": 38
+    },
+    {
+      "id": "src_auth_azure-cli_acquireToken",
+      "label": "acquireToken",
+      "type": "function",
+      "sourceFile": "src/auth/azure-cli.ts",
+      "sourceLocation": "L44",
+      "description": "* Acquire a token from Azure CLI. Caches the token and refreshes when near expiry.",
+      "centrality": 0.003,
+      "community": 38
+    },
+    {
+      "id": "src_auth_azure-cli_createAzureCliAuth",
+      "label": "createAzureCliAuth",
+      "type": "function",
+      "sourceFile": "src/auth/azure-cli.ts",
+      "sourceLocation": "L90",
+      "centrality": 0.003,
+      "community": 38
+    },
+    {
+      "id": "src_auth_azure-cli_clearTokenCache",
+      "label": "clearTokenCache",
+      "type": "function",
+      "sourceFile": "src/auth/azure-cli.ts",
+      "sourceLocation": "L105",
+      "centrality": 0.002,
+      "community": 38
+    },
+    {
+      "id": "src_auth_index_file",
+      "label": "src/auth/index.ts",
+      "type": "file",
+      "sourceFile": "src/auth/index.ts",
+      "centrality": 0.012,
+      "community": 38
+    },
+    {
+      "id": "src_auth_index_IRequestHandler",
+      "label": "IRequestHandler",
+      "type": "type",
+      "sourceFile": "src/auth/index.ts",
+      "sourceLocation": "L14",
+      "centrality": 0.001,
+      "community": 38
+    },
+    {
+      "id": "src_auth_index_AuthResult",
+      "label": "AuthResult",
+      "type": "interface",
+      "sourceFile": "src/auth/index.ts",
+      "sourceLocation": "L16",
+      "centrality": 0.001,
+      "community": 38
+    },
+    {
+      "id": "src_auth_index_resolveAuth",
+      "label": "resolveAuth",
+      "type": "function",
+      "sourceFile": "src/auth/index.ts",
+      "sourceLocation": "L30",
+      "centrality": 0.004,
+      "community": 38
+    },
+    {
+      "id": "src_auth_index_tryResolveAuth",
+      "label": "tryResolveAuth",
+      "type": "function",
+      "sourceFile": "src/auth/index.ts",
+      "sourceLocation": "L58",
+      "centrality": 0.003,
+      "community": 38
+    },
+    {
+      "id": "src_auth_index_getMethodsToTry",
+      "label": "getMethodsToTry",
+      "type": "function",
+      "sourceFile": "src/auth/index.ts",
+      "sourceLocation": "L69",
+      "centrality": 0.003,
+      "community": 38
+    },
+    {
+      "id": "src_auth_index_AuthResolutionError",
+      "label": "AuthResolutionError",
+      "type": "class",
+      "sourceFile": "src/auth/index.ts",
+      "sourceLocation": "L81",
+      "centrality": 0.004,
+      "community": 38
+    },
+    {
+      "id": "src_auth_index_AuthResolutionError_attemptedMethods",
+      "label": "AuthResolutionError.attemptedMethods",
+      "type": "method",
+      "sourceFile": "src/auth/index.ts",
+      "sourceLocation": "L82",
+      "centrality": 0.003,
+      "community": 38
+    },
+    {
+      "id": "src_auth_index_AuthResolutionError_constructor",
+      "label": "AuthResolutionError.constructor",
+      "type": "method",
+      "sourceFile": "src/auth/index.ts",
+      "sourceLocation": "L83",
+      "centrality": 0.003,
+      "community": 38
+    },
+    {
+      "id": "src_auth_pat_file",
+      "label": "src/auth/pat.ts",
+      "type": "file",
+      "sourceFile": "src/auth/pat.ts",
+      "centrality": 0.004,
+      "community": 38
+    },
+    {
+      "id": "src_auth_pat_PatAuthResult",
+      "label": "PatAuthResult",
+      "type": "interface",
+      "sourceFile": "src/auth/pat.ts",
+      "sourceLocation": "L8",
+      "centrality": 0.002,
+      "community": 38
+    },
+    {
+      "id": "src_auth_pat_createPatAuth",
+      "label": "createPatAuth",
+      "type": "function",
+      "sourceFile": "src/auth/pat.ts",
+      "sourceLocation": "L18",
+      "centrality": 0.002,
+      "community": 38
+    },
+    {
+      "id": "src_autocomplete_iteration-autocomplete_file",
+      "label": "src/autocomplete/iteration-autocomplete.ts",
+      "type": "file",
+      "sourceFile": "src/autocomplete/iteration-autocomplete.ts",
+      "centrality": 0.009,
+      "community": 41
+    },
+    {
+      "id": "src_autocomplete_iteration-autocomplete_IterationSummary",
+      "label": "IterationSummary",
+      "type": "type",
+      "sourceFile": "src/autocomplete/iteration-autocomplete.ts",
+      "sourceLocation": "L25",
+      "centrality": 0.001,
+      "community": 41
+    },
+    {
+      "id": "src_autocomplete_iteration-autocomplete_extractIterationToken",
+      "label": "extractIterationToken",
+      "type": "function",
+      "sourceFile": "src/autocomplete/iteration-autocomplete.ts",
+      "sourceLocation": "L46",
+      "centrality": 0.002,
+      "community": 41
+    },
+    {
+      "id": "src_autocomplete_iteration-autocomplete_formatIterationItem",
+      "label": "formatIterationItem",
+      "type": "function",
+      "sourceFile": "src/autocomplete/iteration-autocomplete.ts",
+      "sourceLocation": "L55",
+      "centrality": 0.001,
+      "community": 41
+    },
+    {
+      "id": "src_autocomplete_iteration-autocomplete_filterIterations",
+      "label": "filterIterations",
+      "type": "function",
+      "sourceFile": "src/autocomplete/iteration-autocomplete.ts",
+      "sourceLocation": "L72",
+      "centrality": 0.002,
+      "community": 41
+    },
+    {
+      "id": "src_autocomplete_iteration-autocomplete_loadIterationsFromMockData",
+      "label": "loadIterationsFromMockData",
+      "type": "function",
+      "sourceFile": "src/autocomplete/iteration-autocomplete.ts",
+      "sourceLocation": "L89",
+      "centrality": 0.002,
+      "community": 41
+    },
+    {
+      "id": "src_autocomplete_iteration-autocomplete_loadIterationsFromApi",
+      "label": "loadIterationsFromApi",
+      "type": "function",
+      "sourceFile": "src/autocomplete/iteration-autocomplete.ts",
+      "sourceLocation": "L116",
+      "centrality": 0.002,
+      "community": 41
+    },
+    {
+      "id": "src_autocomplete_iteration-autocomplete_createIterationAutocompleteProvider",
+      "label": "createIterationAutocompleteProvider",
+      "type": "function",
+      "sourceFile": "src/autocomplete/iteration-autocomplete.ts",
+      "sourceLocation": "L146",
+      "centrality": 0.004,
+      "community": 41
+    },
+    {
+      "id": "src_autocomplete_iteration-autocomplete_registerIterationAutocomplete",
+      "label": "registerIterationAutocomplete",
+      "type": "function",
+      "sourceFile": "src/autocomplete/iteration-autocomplete.ts",
+      "sourceLocation": "L204",
+      "centrality": 0.004,
+      "community": 41
+    },
+    {
+      "id": "src_autocomplete_work-item-autocomplete_file",
+      "label": "src/autocomplete/work-item-autocomplete.ts",
+      "type": "file",
+      "sourceFile": "src/autocomplete/work-item-autocomplete.ts",
+      "centrality": 0.009,
+      "community": 50
+    },
+    {
+      "id": "src_autocomplete_work-item-autocomplete_WorkItemSummary",
+      "label": "WorkItemSummary",
+      "type": "type",
+      "sourceFile": "src/autocomplete/work-item-autocomplete.ts",
+      "sourceLocation": "L24",
+      "centrality": 0.001,
+      "community": 50
+    },
+    {
+      "id": "src_autocomplete_work-item-autocomplete_extractWorkItemToken",
+      "label": "extractWorkItemToken",
+      "type": "function",
+      "sourceFile": "src/autocomplete/work-item-autocomplete.ts",
+      "sourceLocation": "L38",
+      "centrality": 0.002,
+      "community": 50
+    },
+    {
+      "id": "src_autocomplete_work-item-autocomplete_formatWorkItemItem",
+      "label": "formatWorkItemItem",
+      "type": "function",
+      "sourceFile": "src/autocomplete/work-item-autocomplete.ts",
+      "sourceLocation": "L47",
+      "centrality": 0.001,
+      "community": 50
+    },
+    {
+      "id": "src_autocomplete_work-item-autocomplete_filterWorkItems",
+      "label": "filterWorkItems",
+      "type": "function",
+      "sourceFile": "src/autocomplete/work-item-autocomplete.ts",
+      "sourceLocation": "L59",
+      "centrality": 0.002,
+      "community": 50
+    },
+    {
+      "id": "src_autocomplete_work-item-autocomplete_createWorkItemAutocompleteProvider",
+      "label": "createWorkItemAutocompleteProvider",
+      "type": "function",
+      "sourceFile": "src/autocomplete/work-item-autocomplete.ts",
+      "sourceLocation": "L88",
+      "centrality": 0.004,
+      "community": 50
+    },
+    {
+      "id": "src_autocomplete_work-item-autocomplete_loadWorkItemsFromApi",
+      "label": "loadWorkItemsFromApi",
+      "type": "function",
+      "sourceFile": "src/autocomplete/work-item-autocomplete.ts",
+      "sourceLocation": "L146",
+      "centrality": 0.002,
+      "community": 50
+    },
+    {
+      "id": "src_autocomplete_work-item-autocomplete_loadWorkItemsFromMock",
+      "label": "loadWorkItemsFromMock",
+      "type": "function",
+      "sourceFile": "src/autocomplete/work-item-autocomplete.ts",
+      "sourceLocation": "L185",
+      "centrality": 0.002,
+      "community": 50
+    },
+    {
+      "id": "src_autocomplete_work-item-autocomplete_registerAutocomplete",
+      "label": "registerAutocomplete",
+      "type": "function",
+      "sourceFile": "src/autocomplete/work-item-autocomplete.ts",
+      "sourceLocation": "L209",
+      "centrality": 0.004,
+      "community": 50
+    },
+    {
+      "id": "src_config_index_file",
+      "label": "src/config/index.ts",
+      "type": "file",
+      "sourceFile": "src/config/index.ts",
+      "centrality": 0.02,
+      "community": 59
+    },
+    {
+      "id": "src_config_index_AuthMethod",
+      "label": "AuthMethod",
+      "type": "type",
+      "sourceFile": "src/config/index.ts",
+      "sourceLocation": "L10",
+      "centrality": 0.001,
+      "community": 59
+    },
+    {
+      "id": "src_config_index_SafetyLevel",
+      "label": "SafetyLevel",
+      "type": "type",
+      "sourceFile": "src/config/index.ts",
+      "sourceLocation": "L13",
+      "centrality": 0.001,
+      "community": 59
+    },
+    {
+      "id": "src_config_index_ProjectConfig",
+      "label": "ProjectConfig",
+      "type": "interface",
+      "sourceFile": "src/config/index.ts",
+      "sourceLocation": "L16",
+      "centrality": 0.001,
+      "community": 59
+    },
+    {
+      "id": "src_config_index_OrgConfig",
+      "label": "OrgConfig",
+      "type": "interface",
+      "sourceFile": "src/config/index.ts",
+      "sourceLocation": "L26",
+      "centrality": 0.001,
+      "community": 59
+    },
+    {
+      "id": "src_config_index_AzureDevOpsRootConfig",
+      "label": "AzureDevOpsRootConfig",
+      "type": "interface",
+      "sourceFile": "src/config/index.ts",
+      "sourceLocation": "L38",
+      "centrality": 0.001,
+      "community": 59
+    },
+    {
+      "id": "src_config_index_AzureDevOpsConfig",
+      "label": "AzureDevOpsConfig",
+      "type": "interface",
+      "sourceFile": "src/config/index.ts",
+      "sourceLocation": "L62",
+      "centrality": 0.001,
+      "community": 59
+    },
+    {
+      "id": "src_config_index_ConfigError",
+      "label": "ConfigError",
+      "type": "class",
+      "sourceFile": "src/config/index.ts",
+      "sourceLocation": "L88",
+      "centrality": 0.003,
+      "community": 59
+    },
+    {
+      "id": "src_config_index_ConfigError_missing",
+      "label": "ConfigError.missing",
+      "type": "method",
+      "sourceFile": "src/config/index.ts",
+      "sourceLocation": "L89",
+      "centrality": 0.002,
+      "community": 59
+    },
+    {
+      "id": "src_config_index_ConfigError_constructor",
+      "label": "ConfigError.constructor",
+      "type": "method",
+      "sourceFile": "src/config/index.ts",
+      "sourceLocation": "L90",
+      "centrality": 0.002,
+      "community": 59
+    },
+    {
+      "id": "src_config_index_getAgentDir",
+      "label": "getAgentDir",
+      "type": "function",
+      "sourceFile": "src/config/index.ts",
+      "sourceLocation": "L120",
+      "centrality": 0.002,
+      "community": 59
+    },
+    {
+      "id": "src_config_index_getConfigPath",
+      "label": "getConfigPath",
+      "type": "function",
+      "sourceFile": "src/config/index.ts",
+      "sourceLocation": "L124",
+      "centrality": 0.004,
+      "community": 59
+    },
+    {
+      "id": "src_config_index_readConfigFile",
+      "label": "readConfigFile",
+      "type": "function",
+      "sourceFile": "src/config/index.ts",
+      "sourceLocation": "L128",
+      "centrality": 0.005,
+      "community": 59
+    },
+    {
+      "id": "src_config_index_findOrg",
+      "label": "findOrg",
+      "type": "function",
+      "sourceFile": "src/config/index.ts",
+      "sourceLocation": "L142",
+      "centrality": 0.002,
+      "community": 59
+    },
+    {
+      "id": "src_config_index_findProject",
+      "label": "findProject",
+      "type": "function",
+      "sourceFile": "src/config/index.ts",
+      "sourceLocation": "L147",
+      "centrality": 0.002,
+      "community": 59
+    },
+    {
+      "id": "src_config_index_validateAuthMethod",
+      "label": "validateAuthMethod",
+      "type": "function",
+      "sourceFile": "src/config/index.ts",
+      "sourceLocation": "L152",
+      "centrality": 0.003,
+      "community": 59
+    },
+    {
+      "id": "src_config_index_validateSafetyLevel",
+      "label": "validateSafetyLevel",
+      "type": "function",
+      "sourceFile": "src/config/index.ts",
+      "sourceLocation": "L158",
+      "centrality": 0.002,
+      "community": 59
+    },
+    {
+      "id": "src_config_index_resolveEffectiveSafetyLevel",
+      "label": "resolveEffectiveSafetyLevel",
+      "type": "function",
+      "sourceFile": "src/config/index.ts",
+      "sourceLocation": "L168",
+      "description": "* Resolve the effective safety level with cascading overrides. Priority (most specific wins): project > org > global > default",
+      "centrality": 0.004,
+      "community": 59
+    },
+    {
+      "id": "src_config_index_resolveConfig",
+      "label": "resolveConfig",
+      "type": "function",
+      "sourceFile": "src/config/index.ts",
+      "sourceLocation": "L197",
+      "centrality": 0.006,
+      "community": 59
+    },
+    {
+      "id": "src_config_index_tryResolveConfig",
+      "label": "tryResolveConfig",
+      "type": "function",
+      "sourceFile": "src/config/index.ts",
+      "sourceLocation": "L257",
+      "centrality": 0.002,
+      "community": 59
+    },
+    {
+      "id": "src_config_index_resolveOrgProjectConfig",
+      "label": "resolveOrgProjectConfig",
+      "type": "function",
+      "sourceFile": "src/config/index.ts",
+      "sourceLocation": "L277",
+      "centrality": 0.003,
+      "community": 59
+    },
+    {
+      "id": "src_config_index_resolveAllOrgConfigs",
+      "label": "resolveAllOrgConfigs",
+      "type": "function",
+      "sourceFile": "src/config/index.ts",
+      "sourceLocation": "L349",
+      "centrality": 0.003,
+      "community": 59
+    },
+    {
+      "id": "src_config_index_ensureConfigTemplate",
+      "label": "ensureConfigTemplate",
+      "type": "function",
+      "sourceFile": "src/config/index.ts",
+      "sourceLocation": "L435",
+      "centrality": 0.003,
+      "community": 59
+    },
+    {
+      "id": "src_extension_index_file",
+      "label": "src/extension/index.ts",
+      "type": "file",
+      "sourceFile": "src/extension/index.ts",
+      "centrality": 0.003,
+      "community": 82
+    },
+    {
+      "id": "src_extension_index_ToolExecuteParams",
+      "label": "ToolExecuteParams",
+      "type": "type",
+      "sourceFile": "src/extension/index.ts",
+      "sourceLocation": "L129",
+      "centrality": 0.003,
+      "community": 82
+    },
+    {
+      "id": "src_mocks_fixtures_board-detail_file",
+      "label": "src/mocks/fixtures/board-detail.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/board-detail.json",
+      "centrality": 0.003,
+      "community": 84
+    },
+    {
+      "id": "src_mocks_fixtures_board-detail_boardDetails",
+      "label": "boardDetails",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/board-detail.json",
+      "centrality": 0.003,
+      "community": 84
+    },
+    {
+      "id": "src_mocks_fixtures_boards_file",
+      "label": "src/mocks/fixtures/boards.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/boards.json",
+      "centrality": 0.003,
+      "community": 86
+    },
+    {
+      "id": "src_mocks_fixtures_boards_boards",
+      "label": "boards",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/boards.json",
+      "centrality": 0.003,
+      "community": 86
+    },
+    {
+      "id": "src_mocks_fixtures_branches_file",
+      "label": "src/mocks/fixtures/branches.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/branches.json",
+      "centrality": 0.003,
+      "community": 88
+    },
+    {
+      "id": "src_mocks_fixtures_branches_branches",
+      "label": "branches",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/branches.json",
+      "centrality": 0.003,
+      "community": 88
+    },
+    {
+      "id": "src_mocks_fixtures_capacity_file",
+      "label": "src/mocks/fixtures/capacity.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/capacity.json",
+      "centrality": 0.003,
+      "community": 90
+    },
+    {
+      "id": "src_mocks_fixtures_capacity_capacities",
+      "label": "capacities",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/capacity.json",
+      "centrality": 0.003,
+      "community": 90
+    },
+    {
+      "id": "src_mocks_fixtures_comments_file",
+      "label": "src/mocks/fixtures/comments.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/comments.json",
+      "centrality": 0.003,
+      "community": 92
+    },
+    {
+      "id": "src_mocks_fixtures_comments_comments",
+      "label": "comments",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/comments.json",
+      "centrality": 0.003,
+      "community": 92
+    },
+    {
+      "id": "src_mocks_fixtures_iteration-work-items_file",
+      "label": "src/mocks/fixtures/iteration-work-items.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/iteration-work-items.json",
+      "centrality": 0.003,
+      "community": 94
+    },
+    {
+      "id": "src_mocks_fixtures_iteration-work-items_iterationWorkItems",
+      "label": "iterationWorkItems",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/iteration-work-items.json",
+      "centrality": 0.003,
+      "community": 94
+    },
+    {
+      "id": "src_mocks_fixtures_iterations_file",
+      "label": "src/mocks/fixtures/iterations.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/iterations.json",
+      "centrality": 0.003,
+      "community": 96
+    },
+    {
+      "id": "src_mocks_fixtures_iterations_iterations",
+      "label": "iterations",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/iterations.json",
+      "centrality": 0.003,
+      "community": 96
+    },
+    {
+      "id": "src_mocks_fixtures_pipelines_file",
+      "label": "src/mocks/fixtures/pipelines.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/pipelines.json",
+      "centrality": 0.003,
+      "community": 98
+    },
+    {
+      "id": "src_mocks_fixtures_pipelines_pipelines",
+      "label": "pipelines",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/pipelines.json",
+      "centrality": 0.003,
+      "community": 98
+    },
+    {
+      "id": "src_mocks_fixtures_policies_file",
+      "label": "src/mocks/fixtures/policies.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/policies.json",
+      "centrality": 0.003,
+      "community": 100
+    },
+    {
+      "id": "src_mocks_fixtures_policies_policies",
+      "label": "policies",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/policies.json",
+      "centrality": 0.003,
+      "community": 100
+    },
+    {
+      "id": "src_mocks_fixtures_policy-evaluations_file",
+      "label": "src/mocks/fixtures/policy-evaluations.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/policy-evaluations.json",
+      "centrality": 0.003,
+      "community": 102
+    },
+    {
+      "id": "src_mocks_fixtures_policy-evaluations_evaluations",
+      "label": "evaluations",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/policy-evaluations.json",
+      "centrality": 0.003,
+      "community": 102
+    },
+    {
+      "id": "src_mocks_fixtures_pr-commits_file",
+      "label": "src/mocks/fixtures/pr-commits.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/pr-commits.json",
+      "centrality": 0.003,
+      "community": 104
+    },
+    {
+      "id": "src_mocks_fixtures_pr-commits_prCommits",
+      "label": "prCommits",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/pr-commits.json",
+      "centrality": 0.003,
+      "community": 104
+    },
+    {
+      "id": "src_mocks_fixtures_pr-threads_file",
+      "label": "src/mocks/fixtures/pr-threads.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/pr-threads.json",
+      "centrality": 0.003,
+      "community": 106
+    },
+    {
+      "id": "src_mocks_fixtures_pr-threads_prThreads",
+      "label": "prThreads",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/pr-threads.json",
+      "centrality": 0.003,
+      "community": 106
+    },
+    {
+      "id": "src_mocks_fixtures_pull-requests_file",
+      "label": "src/mocks/fixtures/pull-requests.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/pull-requests.json",
+      "centrality": 0.003,
+      "community": 108
+    },
+    {
+      "id": "src_mocks_fixtures_pull-requests_pullRequests",
+      "label": "pullRequests",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/pull-requests.json",
+      "centrality": 0.003,
+      "community": 108
+    },
+    {
+      "id": "src_mocks_fixtures_repos_file",
+      "label": "src/mocks/fixtures/repos.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/repos.json",
+      "centrality": 0.003,
+      "community": 110
+    },
+    {
+      "id": "src_mocks_fixtures_repos_repositories",
+      "label": "repositories",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/repos.json",
+      "centrality": 0.003,
+      "community": 110
+    },
+    {
+      "id": "src_mocks_fixtures_revisions_file",
+      "label": "src/mocks/fixtures/revisions.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/revisions.json",
+      "centrality": 0.003,
+      "community": 112
+    },
+    {
+      "id": "src_mocks_fixtures_revisions_revisions",
+      "label": "revisions",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/revisions.json",
+      "centrality": 0.003,
+      "community": 112
+    },
+    {
+      "id": "src_mocks_fixtures_run-artifacts_file",
+      "label": "src/mocks/fixtures/run-artifacts.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/run-artifacts.json",
+      "centrality": 0.003,
+      "community": 114
+    },
+    {
+      "id": "src_mocks_fixtures_run-artifacts_artifacts",
+      "label": "artifacts",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/run-artifacts.json",
+      "centrality": 0.003,
+      "community": 114
+    },
+    {
+      "id": "src_mocks_fixtures_run-logs_file",
+      "label": "src/mocks/fixtures/run-logs.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/run-logs.json",
+      "centrality": 0.003,
+      "community": 116
+    },
+    {
+      "id": "src_mocks_fixtures_run-logs_logs",
+      "label": "logs",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/run-logs.json",
+      "centrality": 0.003,
+      "community": 116
+    },
+    {
+      "id": "src_mocks_fixtures_run-timeline_file",
+      "label": "src/mocks/fixtures/run-timeline.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/run-timeline.json",
+      "centrality": 0.003,
+      "community": 118
+    },
+    {
+      "id": "src_mocks_fixtures_run-timeline_timelines",
+      "label": "timelines",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/run-timeline.json",
+      "centrality": 0.003,
+      "community": 118
+    },
+    {
+      "id": "src_mocks_fixtures_runs_file",
+      "label": "src/mocks/fixtures/runs.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/runs.json",
+      "centrality": 0.003,
+      "community": 120
+    },
+    {
+      "id": "src_mocks_fixtures_runs_runs",
+      "label": "runs",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/runs.json",
+      "centrality": 0.003,
+      "community": 120
+    },
+    {
+      "id": "src_mocks_fixtures_teams_file",
+      "label": "src/mocks/fixtures/teams.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/teams.json",
+      "centrality": 0.003,
+      "community": 122
+    },
+    {
+      "id": "src_mocks_fixtures_teams_teams",
+      "label": "teams",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/teams.json",
+      "centrality": 0.003,
+      "community": 122
+    },
+    {
+      "id": "src_mocks_fixtures_test-cases_file",
+      "label": "src/mocks/fixtures/test-cases.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/test-cases.json",
+      "centrality": 0.003,
+      "community": 124
+    },
+    {
+      "id": "src_mocks_fixtures_test-cases_testCases",
+      "label": "testCases",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/test-cases.json",
+      "centrality": 0.003,
+      "community": 124
+    },
+    {
+      "id": "src_mocks_fixtures_test-plans_file",
+      "label": "src/mocks/fixtures/test-plans.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/test-plans.json",
+      "centrality": 0.003,
+      "community": 126
+    },
+    {
+      "id": "src_mocks_fixtures_test-plans_testPlans",
+      "label": "testPlans",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/test-plans.json",
+      "centrality": 0.003,
+      "community": 126
+    },
+    {
+      "id": "src_mocks_fixtures_test-points_file",
+      "label": "src/mocks/fixtures/test-points.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/test-points.json",
+      "centrality": 0.003,
+      "community": 128
+    },
+    {
+      "id": "src_mocks_fixtures_test-points_testPoints",
+      "label": "testPoints",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/test-points.json",
+      "centrality": 0.003,
+      "community": 128
+    },
+    {
+      "id": "src_mocks_fixtures_test-results_file",
+      "label": "src/mocks/fixtures/test-results.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/test-results.json",
+      "centrality": 0.003,
+      "community": 130
+    },
+    {
+      "id": "src_mocks_fixtures_test-results_testResults",
+      "label": "testResults",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/test-results.json",
+      "centrality": 0.003,
+      "community": 130
+    },
+    {
+      "id": "src_mocks_fixtures_test-runs_file",
+      "label": "src/mocks/fixtures/test-runs.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/test-runs.json",
+      "centrality": 0.003,
+      "community": 132
+    },
+    {
+      "id": "src_mocks_fixtures_test-runs_testRuns",
+      "label": "testRuns",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/test-runs.json",
+      "centrality": 0.003,
+      "community": 132
+    },
+    {
+      "id": "src_mocks_fixtures_test-suites_file",
+      "label": "src/mocks/fixtures/test-suites.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/test-suites.json",
+      "centrality": 0.003,
+      "community": 134
+    },
+    {
+      "id": "src_mocks_fixtures_test-suites_testSuites",
+      "label": "testSuites",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/test-suites.json",
+      "centrality": 0.003,
+      "community": 134
+    },
+    {
+      "id": "src_mocks_fixtures_work-item-types_file",
+      "label": "src/mocks/fixtures/work-item-types.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/work-item-types.json",
+      "centrality": 0.003,
+      "community": 136
+    },
+    {
+      "id": "src_mocks_fixtures_work-item-types_workItemTypes",
+      "label": "workItemTypes",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/work-item-types.json",
+      "centrality": 0.003,
+      "community": 136
+    },
+    {
+      "id": "src_mocks_fixtures_work-items_file",
+      "label": "src/mocks/fixtures/work-items.json",
+      "type": "file",
+      "sourceFile": "src/mocks/fixtures/work-items.json",
+      "centrality": 0.003,
+      "community": 138
+    },
+    {
+      "id": "src_mocks_fixtures_work-items_workItems",
+      "label": "workItems",
+      "type": "field",
+      "sourceFile": "src/mocks/fixtures/work-items.json",
+      "centrality": 0.003,
+      "community": 138
+    },
+    {
+      "id": "src_safety_index_file",
+      "label": "src/safety/index.ts",
+      "type": "file",
+      "sourceFile": "src/safety/index.ts",
+      "centrality": 0.006,
+      "community": 141
+    },
+    {
+      "id": "src_safety_index_isMutationTool",
+      "label": "isMutationTool",
+      "type": "function",
+      "sourceFile": "src/safety/index.ts",
+      "sourceLocation": "L20",
+      "centrality": 0.003,
+      "community": 140
+    },
+    {
+      "id": "src_safety_index_shouldBlock",
+      "label": "shouldBlock",
+      "type": "function",
+      "sourceFile": "src/safety/index.ts",
+      "sourceLocation": "L28",
+      "centrality": 0.003,
+      "community": 141
+    },
+    {
+      "id": "src_safety_index_MutationParams",
+      "label": "MutationParams",
+      "type": "interface",
+      "sourceFile": "src/safety/index.ts",
+      "sourceLocation": "L48",
+      "centrality": 0.002,
+      "community": 141
+    },
+    {
+      "id": "src_safety_index_formatMutationSummary",
+      "label": "formatMutationSummary",
+      "type": "function",
+      "sourceFile": "src/safety/index.ts",
+      "sourceLocation": "L55",
+      "centrality": 0.002,
+      "community": 141
+    },
+    {
+      "id": "src_tools_add-pull-request-comment_file",
+      "label": "src/tools/add-pull-request-comment.ts",
+      "type": "file",
+      "sourceFile": "src/tools/add-pull-request-comment.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_add-work-item-comment_file",
+      "label": "src/tools/add-work-item-comment.ts",
+      "type": "file",
+      "sourceFile": "src/tools/add-work-item-comment.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_cancel-run_file",
+      "label": "src/tools/cancel-run.ts",
+      "type": "file",
+      "sourceFile": "src/tools/cancel-run.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_create-pull-request_file",
+      "label": "src/tools/create-pull-request.ts",
+      "type": "file",
+      "sourceFile": "src/tools/create-pull-request.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_create-test-run_file",
+      "label": "src/tools/create-test-run.ts",
+      "type": "file",
+      "sourceFile": "src/tools/create-test-run.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_create-work-item_file",
+      "label": "src/tools/create-work-item.ts",
+      "type": "file",
+      "sourceFile": "src/tools/create-work-item.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_doctor_file",
+      "label": "src/tools/doctor.ts",
+      "type": "file",
+      "sourceFile": "src/tools/doctor.ts",
+      "centrality": 0.004,
+      "community": 198
+    },
+    {
+      "id": "src_tools_doctor_runDoctor",
+      "label": "runDoctor",
+      "type": "function",
+      "sourceFile": "src/tools/doctor.ts",
+      "sourceLocation": "L19",
+      "centrality": 0.003,
+      "community": 198
+    },
+    {
+      "id": "src_tools_doctor_formatMockReport",
+      "label": "formatMockReport",
+      "type": "function",
+      "sourceFile": "src/tools/doctor.ts",
+      "sourceLocation": "L95",
+      "centrality": 0.003,
+      "community": 198
+    },
+    {
+      "id": "src_tools_get-board_file",
+      "label": "src/tools/get-board.ts",
+      "type": "file",
+      "sourceFile": "src/tools/get-board.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_get-capacity_file",
+      "label": "src/tools/get-capacity.ts",
+      "type": "file",
+      "sourceFile": "src/tools/get-capacity.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_get-iteration-work-items_file",
+      "label": "src/tools/get-iteration-work-items.ts",
+      "type": "file",
+      "sourceFile": "src/tools/get-iteration-work-items.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_get-pipeline_file",
+      "label": "src/tools/get-pipeline.ts",
+      "type": "file",
+      "sourceFile": "src/tools/get-pipeline.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_get-policy-evaluations_file",
+      "label": "src/tools/get-policy-evaluations.ts",
+      "type": "file",
+      "sourceFile": "src/tools/get-policy-evaluations.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_get-pull-request-commits_file",
+      "label": "src/tools/get-pull-request-commits.ts",
+      "type": "file",
+      "sourceFile": "src/tools/get-pull-request-commits.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_get-pull-request-threads_file",
+      "label": "src/tools/get-pull-request-threads.ts",
+      "type": "file",
+      "sourceFile": "src/tools/get-pull-request-threads.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_get-pull-request_file",
+      "label": "src/tools/get-pull-request.ts",
+      "type": "file",
+      "sourceFile": "src/tools/get-pull-request.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_get-repo_file",
+      "label": "src/tools/get-repo.ts",
+      "type": "file",
+      "sourceFile": "src/tools/get-repo.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_get-run-artifacts_file",
+      "label": "src/tools/get-run-artifacts.ts",
+      "type": "file",
+      "sourceFile": "src/tools/get-run-artifacts.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_get-run-logs_file",
+      "label": "src/tools/get-run-logs.ts",
+      "type": "file",
+      "sourceFile": "src/tools/get-run-logs.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_get-run-timeline_file",
+      "label": "src/tools/get-run-timeline.ts",
+      "type": "file",
+      "sourceFile": "src/tools/get-run-timeline.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_get-run_file",
+      "label": "src/tools/get-run.ts",
+      "type": "file",
+      "sourceFile": "src/tools/get-run.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_get-test-plan_file",
+      "label": "src/tools/get-test-plan.ts",
+      "type": "file",
+      "sourceFile": "src/tools/get-test-plan.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_get-test-run_file",
+      "label": "src/tools/get-test-run.ts",
+      "type": "file",
+      "sourceFile": "src/tools/get-test-run.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_get-test-suite_file",
+      "label": "src/tools/get-test-suite.ts",
+      "type": "file",
+      "sourceFile": "src/tools/get-test-suite.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_get-work-item-comments_file",
+      "label": "src/tools/get-work-item-comments.ts",
+      "type": "file",
+      "sourceFile": "src/tools/get-work-item-comments.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_get-work-item-revisions_file",
+      "label": "src/tools/get-work-item-revisions.ts",
+      "type": "file",
+      "sourceFile": "src/tools/get-work-item-revisions.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_get-work-item_file",
+      "label": "src/tools/get-work-item.ts",
+      "type": "file",
+      "sourceFile": "src/tools/get-work-item.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_link-pr-work-items_file",
+      "label": "src/tools/link-pr-work-items.ts",
+      "type": "file",
+      "sourceFile": "src/tools/link-pr-work-items.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_list-boards_file",
+      "label": "src/tools/list-boards.ts",
+      "type": "file",
+      "sourceFile": "src/tools/list-boards.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_list-branches_file",
+      "label": "src/tools/list-branches.ts",
+      "type": "file",
+      "sourceFile": "src/tools/list-branches.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_list-iterations_file",
+      "label": "src/tools/list-iterations.ts",
+      "type": "file",
+      "sourceFile": "src/tools/list-iterations.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_list-pipelines_file",
+      "label": "src/tools/list-pipelines.ts",
+      "type": "file",
+      "sourceFile": "src/tools/list-pipelines.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_list-policies_file",
+      "label": "src/tools/list-policies.ts",
+      "type": "file",
+      "sourceFile": "src/tools/list-policies.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_list-pull-requests_file",
+      "label": "src/tools/list-pull-requests.ts",
+      "type": "file",
+      "sourceFile": "src/tools/list-pull-requests.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_list-repos_file",
+      "label": "src/tools/list-repos.ts",
+      "type": "file",
+      "sourceFile": "src/tools/list-repos.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_list-runs_file",
+      "label": "src/tools/list-runs.ts",
+      "type": "file",
+      "sourceFile": "src/tools/list-runs.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_list-teams_file",
+      "label": "src/tools/list-teams.ts",
+      "type": "file",
+      "sourceFile": "src/tools/list-teams.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_list-test-cases_file",
+      "label": "src/tools/list-test-cases.ts",
+      "type": "file",
+      "sourceFile": "src/tools/list-test-cases.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_list-test-plans_file",
+      "label": "src/tools/list-test-plans.ts",
+      "type": "file",
+      "sourceFile": "src/tools/list-test-plans.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_list-test-points_file",
+      "label": "src/tools/list-test-points.ts",
+      "type": "file",
+      "sourceFile": "src/tools/list-test-points.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_list-test-runs_file",
+      "label": "src/tools/list-test-runs.ts",
+      "type": "file",
+      "sourceFile": "src/tools/list-test-runs.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_list-test-suites_file",
+      "label": "src/tools/list-test-suites.ts",
+      "type": "file",
+      "sourceFile": "src/tools/list-test-suites.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_list-work-item-types_file",
+      "label": "src/tools/list-work-item-types.ts",
+      "type": "file",
+      "sourceFile": "src/tools/list-work-item-types.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_manage-work-item-links_file",
+      "label": "src/tools/manage-work-item-links.ts",
+      "type": "file",
+      "sourceFile": "src/tools/manage-work-item-links.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_query-work-items_file",
+      "label": "src/tools/query-work-items.ts",
+      "type": "file",
+      "sourceFile": "src/tools/query-work-items.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_retry-run_file",
+      "label": "src/tools/retry-run.ts",
+      "type": "file",
+      "sourceFile": "src/tools/retry-run.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_run-pipeline_file",
+      "label": "src/tools/run-pipeline.ts",
+      "type": "file",
+      "sourceFile": "src/tools/run-pipeline.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_set-board-columns_file",
+      "label": "src/tools/set-board-columns.ts",
+      "type": "file",
+      "sourceFile": "src/tools/set-board-columns.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_set-capacity_file",
+      "label": "src/tools/set-capacity.ts",
+      "type": "file",
+      "sourceFile": "src/tools/set-capacity.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_set-iteration_file",
+      "label": "src/tools/set-iteration.ts",
+      "type": "file",
+      "sourceFile": "src/tools/set-iteration.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_set-pull-request-autocomplete_file",
+      "label": "src/tools/set-pull-request-autocomplete.ts",
+      "type": "file",
+      "sourceFile": "src/tools/set-pull-request-autocomplete.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_set-pull-request-vote_file",
+      "label": "src/tools/set-pull-request-vote.ts",
+      "type": "file",
+      "sourceFile": "src/tools/set-pull-request-vote.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_shared_file",
+      "label": "src/tools/shared.ts",
+      "type": "file",
+      "sourceFile": "src/tools/shared.ts",
+      "centrality": 0.093,
+      "community": 198
+    },
+    {
+      "id": "src_tools_shared_ToolResult",
+      "label": "ToolResult",
+      "type": "interface",
+      "sourceFile": "src/tools/shared.ts",
+      "sourceLocation": "L49",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_shared_textResult",
+      "label": "textResult",
+      "type": "function",
+      "sourceFile": "src/tools/shared.ts",
+      "sourceLocation": "L54",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_shared_errorResult",
+      "label": "errorResult",
+      "type": "function",
+      "sourceFile": "src/tools/shared.ts",
+      "sourceLocation": "L61",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_shared_isMock",
+      "label": "isMock",
+      "type": "function",
+      "sourceFile": "src/tools/shared.ts",
+      "sourceLocation": "L76",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_shared_isMutationTool",
+      "label": "isMutationTool",
+      "type": "function",
+      "sourceFile": "src/tools/shared.ts",
+      "sourceLocation": "L110",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_shared_resolveEffectiveConfig",
+      "label": "resolveEffectiveConfig",
+      "type": "function",
+      "sourceFile": "src/tools/shared.ts",
+      "sourceLocation": "L123",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_shared_TeamContext",
+      "label": "TeamContext",
+      "type": "interface",
+      "sourceFile": "src/tools/shared.ts",
+      "sourceLocation": "L140",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_shared_resolveTeamContext",
+      "label": "resolveTeamContext",
+      "type": "function",
+      "sourceFile": "src/tools/shared.ts",
+      "sourceLocation": "L152",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_update-pull-request_file",
+      "label": "src/tools/update-pull-request.ts",
+      "type": "file",
+      "sourceFile": "src/tools/update-pull-request.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_update-test-results_file",
+      "label": "src/tools/update-test-results.ts",
+      "type": "file",
+      "sourceFile": "src/tools/update-test-results.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_tools_update-work-item_file",
+      "label": "src/tools/update-work-item.ts",
+      "type": "file",
+      "sourceFile": "src/tools/update-work-item.ts",
+      "centrality": 0.002,
+      "community": 198
+    },
+    {
+      "id": "src_utils_connection_file",
+      "label": "src/utils/connection.ts",
+      "type": "file",
+      "sourceFile": "src/utils/connection.ts",
+      "centrality": 0.01,
+      "community": 211
+    },
+    {
+      "id": "src_utils_connection_getConnection",
+      "label": "getConnection",
+      "type": "function",
+      "sourceFile": "src/utils/connection.ts",
+      "sourceLocation": "L17",
+      "centrality": 0.009,
+      "community": 210
+    },
+    {
+      "id": "src_utils_connection_getWorkItemTrackingApi",
+      "label": "getWorkItemTrackingApi",
+      "type": "function",
+      "sourceFile": "src/utils/connection.ts",
+      "sourceLocation": "L34",
+      "centrality": 0.002,
+      "community": 211
+    },
+    {
+      "id": "src_utils_connection_getWorkApi",
+      "label": "getWorkApi",
+      "type": "function",
+      "sourceFile": "src/utils/connection.ts",
+      "sourceLocation": "L45",
+      "centrality": 0.002,
+      "community": 211
+    },
+    {
+      "id": "src_utils_connection_getCoreApi",
+      "label": "getCoreApi",
+      "type": "function",
+      "sourceFile": "src/utils/connection.ts",
+      "sourceLocation": "L56",
+      "centrality": 0.002,
+      "community": 211
+    },
+    {
+      "id": "src_utils_connection_getGitApi",
+      "label": "getGitApi",
+      "type": "function",
+      "sourceFile": "src/utils/connection.ts",
+      "sourceLocation": "L67",
+      "centrality": 0.002,
+      "community": 211
+    },
+    {
+      "id": "src_utils_connection_getPolicyApi",
+      "label": "getPolicyApi",
+      "type": "function",
+      "sourceFile": "src/utils/connection.ts",
+      "sourceLocation": "L78",
+      "centrality": 0.002,
+      "community": 211
+    },
+    {
+      "id": "src_utils_connection_getBuildApi",
+      "label": "getBuildApi",
+      "type": "function",
+      "sourceFile": "src/utils/connection.ts",
+      "sourceLocation": "L89",
+      "centrality": 0.002,
+      "community": 211
+    },
+    {
+      "id": "src_utils_connection_getPipelinesApi",
+      "label": "getPipelinesApi",
+      "type": "function",
+      "sourceFile": "src/utils/connection.ts",
+      "sourceLocation": "L100",
+      "centrality": 0.002,
+      "community": 211
+    },
+    {
+      "id": "src_utils_connection_getTestPlanApi",
+      "label": "getTestPlanApi",
+      "type": "function",
+      "sourceFile": "src/utils/connection.ts",
+      "sourceLocation": "L111",
+      "centrality": 0.002,
+      "community": 211
+    },
+    {
+      "id": "src_utils_connection_getTestResultsApi",
+      "label": "getTestResultsApi",
+      "type": "function",
+      "sourceFile": "src/utils/connection.ts",
+      "sourceLocation": "L122",
+      "centrality": 0.002,
+      "community": 211
+    },
+    {
+      "id": "src_utils_connection_clearConnectionCache",
+      "label": "clearConnectionCache",
+      "type": "function",
+      "sourceFile": "src/utils/connection.ts",
+      "sourceLocation": "L133",
+      "centrality": 0.001,
+      "community": 211
+    },
+    {
+      "id": "src_utils_errors_file",
+      "label": "src/utils/errors.ts",
+      "type": "file",
+      "sourceFile": "src/utils/errors.ts",
+      "centrality": 0.006,
+      "community": 222
+    },
+    {
+      "id": "src_utils_errors_formatAdoError",
+      "label": "formatAdoError",
+      "type": "function",
+      "sourceFile": "src/utils/errors.ts",
+      "sourceLocation": "L8",
+      "centrality": 0.002,
+      "community": 222
+    },
+    {
+      "id": "src_utils_errors_isAuthError",
+      "label": "isAuthError",
+      "type": "function",
+      "sourceFile": "src/utils/errors.ts",
+      "sourceLocation": "L52",
+      "centrality": 0.002,
+      "community": 222
+    },
+    {
+      "id": "src_utils_errors_isNotFoundError",
+      "label": "isNotFoundError",
+      "type": "function",
+      "sourceFile": "src/utils/errors.ts",
+      "sourceLocation": "L61",
+      "centrality": 0.002,
+      "community": 222
+    },
+    {
+      "id": "test_auth_auth-resolver.test_file",
+      "label": "test/auth/auth-resolver.test.ts",
+      "type": "file",
+      "sourceFile": "test/auth/auth-resolver.test.ts",
+      "centrality": 0.003,
+      "community": 226
+    },
+    {
+      "id": "test_auth_auth-resolver.test_makeConfig",
+      "label": "makeConfig",
+      "type": "function",
+      "sourceFile": "test/auth/auth-resolver.test.ts",
+      "sourceLocation": "L10",
+      "centrality": 0.003,
+      "community": 226
+    },
+    {
+      "id": "test_auth_pat.test_file",
+      "label": "test/auth/pat.test.ts",
+      "type": "file",
+      "sourceFile": "test/auth/pat.test.ts",
+      "centrality": 0,
+      "community": 227
+    },
+    {
+      "id": "test_autocomplete_iteration-autocomplete.test_file",
+      "label": "test/autocomplete/iteration-autocomplete.test.ts",
+      "type": "file",
+      "sourceFile": "test/autocomplete/iteration-autocomplete.test.ts",
+      "centrality": 0,
+      "community": 228
+    },
+    {
+      "id": "test_autocomplete_token-extraction.test_file",
+      "label": "test/autocomplete/token-extraction.test.ts",
+      "type": "file",
+      "sourceFile": "test/autocomplete/token-extraction.test.ts",
+      "centrality": 0,
+      "community": 229
+    },
+    {
+      "id": "test_autocomplete_work-item-autocomplete.test_file",
+      "label": "test/autocomplete/work-item-autocomplete.test.ts",
+      "type": "file",
+      "sourceFile": "test/autocomplete/work-item-autocomplete.test.ts",
+      "centrality": 0,
+      "community": 230
+    },
+    {
+      "id": "test_config_config-edge-cases.test_file",
+      "label": "test/config/config-edge-cases.test.ts",
+      "type": "file",
+      "sourceFile": "test/config/config-edge-cases.test.ts",
+      "centrality": 0.005,
+      "community": 232
+    },
+    {
+      "id": "test_config_config-edge-cases.test_setup",
+      "label": "setup",
+      "type": "function",
+      "sourceFile": "test/config/config-edge-cases.test.ts",
+      "sourceLocation": "L13",
+      "centrality": 0.003,
+      "community": 232
+    },
+    {
+      "id": "test_config_config-edge-cases.test_teardown",
+      "label": "teardown",
+      "type": "function",
+      "sourceFile": "test/config/config-edge-cases.test.ts",
+      "sourceLocation": "L19",
+      "centrality": 0.003,
+      "community": 232
+    },
+    {
+      "id": "test_config_config-resolver.test_file",
+      "label": "test/config/config-resolver.test.ts",
+      "type": "file",
+      "sourceFile": "test/config/config-resolver.test.ts",
+      "centrality": 0.005,
+      "community": 235
+    },
+    {
+      "id": "test_config_config-resolver.test_setup",
+      "label": "setup",
+      "type": "function",
+      "sourceFile": "test/config/config-resolver.test.ts",
+      "sourceLocation": "L17",
+      "centrality": 0.003,
+      "community": 235
+    },
+    {
+      "id": "test_config_config-resolver.test_teardown",
+      "label": "teardown",
+      "type": "function",
+      "sourceFile": "test/config/config-resolver.test.ts",
+      "sourceLocation": "L25",
+      "centrality": 0.003,
+      "community": 235
+    },
+    {
+      "id": "test_config_team-config-edge-cases.test_file",
+      "label": "test/config/team-config-edge-cases.test.ts",
+      "type": "file",
+      "sourceFile": "test/config/team-config-edge-cases.test.ts",
+      "centrality": 0,
+      "community": 237
+    },
+    {
+      "id": "test_config_team-config.test_file",
+      "label": "test/config/team-config.test.ts",
+      "type": "file",
+      "sourceFile": "test/config/team-config.test.ts",
+      "centrality": 0.005,
+      "community": 239
+    },
+    {
+      "id": "test_config_team-config.test_setup",
+      "label": "setup",
+      "type": "function",
+      "sourceFile": "test/config/team-config.test.ts",
+      "sourceLocation": "L13",
+      "centrality": 0.003,
+      "community": 239
+    },
+    {
+      "id": "test_config_team-config.test_teardown",
+      "label": "teardown",
+      "type": "function",
+      "sourceFile": "test/config/team-config.test.ts",
+      "sourceLocation": "L19",
+      "centrality": 0.003,
+      "community": 239
+    },
+    {
+      "id": "test_mocks_board-mock-edge-cases.test_file",
+      "label": "test/mocks/board-mock-edge-cases.test.ts",
+      "type": "file",
+      "sourceFile": "test/mocks/board-mock-edge-cases.test.ts",
+      "centrality": 0,
+      "community": 241
+    },
+    {
+      "id": "test_mocks_board-mock-handler.test_file",
+      "label": "test/mocks/board-mock-handler.test.ts",
+      "type": "file",
+      "sourceFile": "test/mocks/board-mock-handler.test.ts",
+      "centrality": 0,
+      "community": 242
+    },
+    {
+      "id": "test_mocks_mock-handler.test_file",
+      "label": "test/mocks/mock-handler.test.ts",
+      "type": "file",
+      "sourceFile": "test/mocks/mock-handler.test.ts",
+      "centrality": 0,
+      "community": 243
+    },
+    {
+      "id": "test_mocks_pipeline-mock-edge-cases.test_file",
+      "label": "test/mocks/pipeline-mock-edge-cases.test.ts",
+      "type": "file",
+      "sourceFile": "test/mocks/pipeline-mock-edge-cases.test.ts",
+      "centrality": 0,
+      "community": 244
+    },
+    {
+      "id": "test_mocks_pipeline-mock-handler.test_file",
+      "label": "test/mocks/pipeline-mock-handler.test.ts",
+      "type": "file",
+      "sourceFile": "test/mocks/pipeline-mock-handler.test.ts",
+      "centrality": 0,
+      "community": 245
+    },
+    {
+      "id": "test_mocks_repo-mock-edge-cases.test_file",
+      "label": "test/mocks/repo-mock-edge-cases.test.ts",
+      "type": "file",
+      "sourceFile": "test/mocks/repo-mock-edge-cases.test.ts",
+      "centrality": 0,
+      "community": 246
+    },
+    {
+      "id": "test_mocks_repo-mock-handler.test_file",
+      "label": "test/mocks/repo-mock-handler.test.ts",
+      "type": "file",
+      "sourceFile": "test/mocks/repo-mock-handler.test.ts",
+      "centrality": 0,
+      "community": 247
+    },
+    {
+      "id": "test_mocks_testplan-mock-edge-cases.test_file",
+      "label": "test/mocks/testplan-mock-edge-cases.test.ts",
+      "type": "file",
+      "sourceFile": "test/mocks/testplan-mock-edge-cases.test.ts",
+      "centrality": 0,
+      "community": 248
+    },
+    {
+      "id": "test_mocks_testplan-mock-handler.test_file",
+      "label": "test/mocks/testplan-mock-handler.test.ts",
+      "type": "file",
+      "sourceFile": "test/mocks/testplan-mock-handler.test.ts",
+      "centrality": 0,
+      "community": 249
+    },
+    {
+      "id": "test_safety_board-safety.test_file",
+      "label": "test/safety/board-safety.test.ts",
+      "type": "file",
+      "sourceFile": "test/safety/board-safety.test.ts",
+      "centrality": 0,
+      "community": 250
+    },
+    {
+      "id": "test_safety_pipeline-safety.test_file",
+      "label": "test/safety/pipeline-safety.test.ts",
+      "type": "file",
+      "sourceFile": "test/safety/pipeline-safety.test.ts",
+      "centrality": 0,
+      "community": 251
+    },
+    {
+      "id": "test_safety_repo-safety.test_file",
+      "label": "test/safety/repo-safety.test.ts",
+      "type": "file",
+      "sourceFile": "test/safety/repo-safety.test.ts",
+      "centrality": 0,
+      "community": 252
+    },
+    {
+      "id": "test_safety_safety-interceptor.test_file",
+      "label": "test/safety/safety-interceptor.test.ts",
+      "type": "file",
+      "sourceFile": "test/safety/safety-interceptor.test.ts",
+      "centrality": 0,
+      "community": 253
+    },
+    {
+      "id": "test_safety_testplan-safety.test_file",
+      "label": "test/safety/testplan-safety.test.ts",
+      "type": "file",
+      "sourceFile": "test/safety/testplan-safety.test.ts",
+      "centrality": 0,
+      "community": 254
+    },
+    {
+      "id": "test_tools_board-read-edge-cases.test_file",
+      "label": "test/tools/board-read-edge-cases.test.ts",
+      "type": "file",
+      "sourceFile": "test/tools/board-read-edge-cases.test.ts",
+      "centrality": 0.003,
+      "community": 256
+    },
+    {
+      "id": "test_tools_board-read-edge-cases.test_mockConfig",
+      "label": "mockConfig",
+      "type": "function",
+      "sourceFile": "test/tools/board-read-edge-cases.test.ts",
+      "sourceLocation": "L5",
+      "centrality": 0.003,
+      "community": 256
+    },
+    {
+      "id": "test_tools_board-read-tools.test_file",
+      "label": "test/tools/board-read-tools.test.ts",
+      "type": "file",
+      "sourceFile": "test/tools/board-read-tools.test.ts",
+      "centrality": 0.003,
+      "community": 258
+    },
+    {
+      "id": "test_tools_board-read-tools.test_mockConfig",
+      "label": "mockConfig",
+      "type": "function",
+      "sourceFile": "test/tools/board-read-tools.test.ts",
+      "sourceLocation": "L6",
+      "centrality": 0.003,
+      "community": 258
+    },
+    {
+      "id": "test_tools_board-write-edge-cases.test_file",
+      "label": "test/tools/board-write-edge-cases.test.ts",
+      "type": "file",
+      "sourceFile": "test/tools/board-write-edge-cases.test.ts",
+      "centrality": 0.003,
+      "community": 260
+    },
+    {
+      "id": "test_tools_board-write-edge-cases.test_mockConfig",
+      "label": "mockConfig",
+      "type": "function",
+      "sourceFile": "test/tools/board-write-edge-cases.test.ts",
+      "sourceLocation": "L5",
+      "centrality": 0.003,
+      "community": 260
+    },
+    {
+      "id": "test_tools_board-write-tools.test_file",
+      "label": "test/tools/board-write-tools.test.ts",
+      "type": "file",
+      "sourceFile": "test/tools/board-write-tools.test.ts",
+      "centrality": 0.003,
+      "community": 262
+    },
+    {
+      "id": "test_tools_board-write-tools.test_mockConfig",
+      "label": "mockConfig",
+      "type": "function",
+      "sourceFile": "test/tools/board-write-tools.test.ts",
+      "sourceLocation": "L5",
+      "centrality": 0.003,
+      "community": 262
+    },
+    {
+      "id": "test_tools_doctor.test_file",
+      "label": "test/tools/doctor.test.ts",
+      "type": "file",
+      "sourceFile": "test/tools/doctor.test.ts",
+      "centrality": 0.005,
+      "community": 264
+    },
+    {
+      "id": "test_tools_doctor.test_makeConfig",
+      "label": "makeConfig",
+      "type": "function",
+      "sourceFile": "test/tools/doctor.test.ts",
+      "sourceLocation": "L14",
+      "centrality": 0.003,
+      "community": 264
+    },
+    {
+      "id": "test_tools_doctor.test_writeConfigFile",
+      "label": "writeConfigFile",
+      "type": "function",
+      "sourceFile": "test/tools/doctor.test.ts",
+      "sourceLocation": "L36",
+      "description": "Write a valid pi-azure-devops.json to the test dir so resolveAllOrgConfigs can find it",
+      "centrality": 0.003,
+      "community": 264
+    },
+    {
+      "id": "test_tools_pipeline-read-edge-cases.test_file",
+      "label": "test/tools/pipeline-read-edge-cases.test.ts",
+      "type": "file",
+      "sourceFile": "test/tools/pipeline-read-edge-cases.test.ts",
+      "centrality": 0.003,
+      "community": 267
+    },
+    {
+      "id": "test_tools_pipeline-read-edge-cases.test_makeConfig",
+      "label": "makeConfig",
+      "type": "function",
+      "sourceFile": "test/tools/pipeline-read-edge-cases.test.ts",
+      "sourceLocation": "L5",
+      "centrality": 0.003,
+      "community": 267
+    },
+    {
+      "id": "test_tools_pipeline-read-tools.test_file",
+      "label": "test/tools/pipeline-read-tools.test.ts",
+      "type": "file",
+      "sourceFile": "test/tools/pipeline-read-tools.test.ts",
+      "centrality": 0.003,
+      "community": 269
+    },
+    {
+      "id": "test_tools_pipeline-read-tools.test_makeConfig",
+      "label": "makeConfig",
+      "type": "function",
+      "sourceFile": "test/tools/pipeline-read-tools.test.ts",
+      "sourceLocation": "L5",
+      "centrality": 0.003,
+      "community": 269
+    },
+    {
+      "id": "test_tools_pipeline-write-edge-cases.test_file",
+      "label": "test/tools/pipeline-write-edge-cases.test.ts",
+      "type": "file",
+      "sourceFile": "test/tools/pipeline-write-edge-cases.test.ts",
+      "centrality": 0.003,
+      "community": 271
+    },
+    {
+      "id": "test_tools_pipeline-write-edge-cases.test_makeConfig",
+      "label": "makeConfig",
+      "type": "function",
+      "sourceFile": "test/tools/pipeline-write-edge-cases.test.ts",
+      "sourceLocation": "L5",
+      "centrality": 0.003,
+      "community": 271
+    },
+    {
+      "id": "test_tools_pipeline-write-tools.test_file",
+      "label": "test/tools/pipeline-write-tools.test.ts",
+      "type": "file",
+      "sourceFile": "test/tools/pipeline-write-tools.test.ts",
+      "centrality": 0.003,
+      "community": 273
+    },
+    {
+      "id": "test_tools_pipeline-write-tools.test_makeConfig",
+      "label": "makeConfig",
+      "type": "function",
+      "sourceFile": "test/tools/pipeline-write-tools.test.ts",
+      "sourceLocation": "L5",
+      "centrality": 0.003,
+      "community": 273
+    },
+    {
+      "id": "test_tools_read-tools.test_file",
+      "label": "test/tools/read-tools.test.ts",
+      "type": "file",
+      "sourceFile": "test/tools/read-tools.test.ts",
+      "centrality": 0.003,
+      "community": 275
+    },
+    {
+      "id": "test_tools_read-tools.test_makeConfig",
+      "label": "makeConfig",
+      "type": "function",
+      "sourceFile": "test/tools/read-tools.test.ts",
+      "sourceLocation": "L14",
+      "centrality": 0.003,
+      "community": 275
+    },
+    {
+      "id": "test_tools_repo-read-edge-cases.test_file",
+      "label": "test/tools/repo-read-edge-cases.test.ts",
+      "type": "file",
+      "sourceFile": "test/tools/repo-read-edge-cases.test.ts",
+      "centrality": 0.003,
+      "community": 277
+    },
+    {
+      "id": "test_tools_repo-read-edge-cases.test_makeConfig",
+      "label": "makeConfig",
+      "type": "function",
+      "sourceFile": "test/tools/repo-read-edge-cases.test.ts",
+      "sourceLocation": "L5",
+      "centrality": 0.003,
+      "community": 277
+    },
+    {
+      "id": "test_tools_repo-read-tools.test_file",
+      "label": "test/tools/repo-read-tools.test.ts",
+      "type": "file",
+      "sourceFile": "test/tools/repo-read-tools.test.ts",
+      "centrality": 0.003,
+      "community": 279
+    },
+    {
+      "id": "test_tools_repo-read-tools.test_makeConfig",
+      "label": "makeConfig",
+      "type": "function",
+      "sourceFile": "test/tools/repo-read-tools.test.ts",
+      "sourceLocation": "L6",
+      "centrality": 0.003,
+      "community": 279
+    },
+    {
+      "id": "test_tools_repo-write-edge-cases.test_file",
+      "label": "test/tools/repo-write-edge-cases.test.ts",
+      "type": "file",
+      "sourceFile": "test/tools/repo-write-edge-cases.test.ts",
+      "centrality": 0.003,
+      "community": 281
+    },
+    {
+      "id": "test_tools_repo-write-edge-cases.test_makeConfig",
+      "label": "makeConfig",
+      "type": "function",
+      "sourceFile": "test/tools/repo-write-edge-cases.test.ts",
+      "sourceLocation": "L5",
+      "centrality": 0.003,
+      "community": 281
+    },
+    {
+      "id": "test_tools_repo-write-tools.test_file",
+      "label": "test/tools/repo-write-tools.test.ts",
+      "type": "file",
+      "sourceFile": "test/tools/repo-write-tools.test.ts",
+      "centrality": 0.003,
+      "community": 283
+    },
+    {
+      "id": "test_tools_repo-write-tools.test_makeConfig",
+      "label": "makeConfig",
+      "type": "function",
+      "sourceFile": "test/tools/repo-write-tools.test.ts",
+      "sourceLocation": "L6",
+      "centrality": 0.003,
+      "community": 283
+    },
+    {
+      "id": "test_tools_team-context.test_file",
+      "label": "test/tools/team-context.test.ts",
+      "type": "file",
+      "sourceFile": "test/tools/team-context.test.ts",
+      "centrality": 0,
+      "community": 284
+    },
+    {
+      "id": "test_tools_testplan-read-edge-cases.test_file",
+      "label": "test/tools/testplan-read-edge-cases.test.ts",
+      "type": "file",
+      "sourceFile": "test/tools/testplan-read-edge-cases.test.ts",
+      "centrality": 0.003,
+      "community": 286
+    },
+    {
+      "id": "test_tools_testplan-read-edge-cases.test_makeConfig",
+      "label": "makeConfig",
+      "type": "function",
+      "sourceFile": "test/tools/testplan-read-edge-cases.test.ts",
+      "sourceLocation": "L5",
+      "centrality": 0.003,
+      "community": 286
+    },
+    {
+      "id": "test_tools_testplan-read-tools.test_file",
+      "label": "test/tools/testplan-read-tools.test.ts",
+      "type": "file",
+      "sourceFile": "test/tools/testplan-read-tools.test.ts",
+      "centrality": 0.003,
+      "community": 288
+    },
+    {
+      "id": "test_tools_testplan-read-tools.test_makeConfig",
+      "label": "makeConfig",
+      "type": "function",
+      "sourceFile": "test/tools/testplan-read-tools.test.ts",
+      "sourceLocation": "L5",
+      "centrality": 0.003,
+      "community": 288
+    },
+    {
+      "id": "test_tools_testplan-write-edge-cases.test_file",
+      "label": "test/tools/testplan-write-edge-cases.test.ts",
+      "type": "file",
+      "sourceFile": "test/tools/testplan-write-edge-cases.test.ts",
+      "centrality": 0.003,
+      "community": 290
+    },
+    {
+      "id": "test_tools_testplan-write-edge-cases.test_makeConfig",
+      "label": "makeConfig",
+      "type": "function",
+      "sourceFile": "test/tools/testplan-write-edge-cases.test.ts",
+      "sourceLocation": "L5",
+      "centrality": 0.003,
+      "community": 290
+    },
+    {
+      "id": "test_tools_testplan-write-tools.test_file",
+      "label": "test/tools/testplan-write-tools.test.ts",
+      "type": "file",
+      "sourceFile": "test/tools/testplan-write-tools.test.ts",
+      "centrality": 0.003,
+      "community": 292
+    },
+    {
+      "id": "test_tools_testplan-write-tools.test_makeConfig",
+      "label": "makeConfig",
+      "type": "function",
+      "sourceFile": "test/tools/testplan-write-tools.test.ts",
+      "sourceLocation": "L5",
+      "centrality": 0.003,
+      "community": 292
+    },
+    {
+      "id": "test_tools_write-tools.test_file",
+      "label": "test/tools/write-tools.test.ts",
+      "type": "file",
+      "sourceFile": "test/tools/write-tools.test.ts",
+      "centrality": 0.003,
+      "community": 294
+    },
+    {
+      "id": "test_tools_write-tools.test_makeConfig",
+      "label": "makeConfig",
+      "type": "function",
+      "sourceFile": "test/tools/write-tools.test.ts",
+      "sourceLocation": "L13",
+      "centrality": 0.003,
+      "community": 294
+    },
+    {
+      "id": "test_utils_board-formatting-edge-cases.test_file",
+      "label": "test/utils/board-formatting-edge-cases.test.ts",
+      "type": "file",
+      "sourceFile": "test/utils/board-formatting-edge-cases.test.ts",
+      "centrality": 0,
+      "community": 295
+    },
+    {
+      "id": "test_utils_board-formatting.test_file",
+      "label": "test/utils/board-formatting.test.ts",
+      "type": "file",
+      "sourceFile": "test/utils/board-formatting.test.ts",
+      "centrality": 0,
+      "community": 296
+    },
+    {
+      "id": "test_utils_connection.test_file",
+      "label": "test/utils/connection.test.ts",
+      "type": "file",
+      "sourceFile": "test/utils/connection.test.ts",
+      "centrality": 0,
+      "community": 297
+    },
+    {
+      "id": "test_utils_errors.test_file",
+      "label": "test/utils/errors.test.ts",
+      "type": "file",
+      "sourceFile": "test/utils/errors.test.ts",
+      "centrality": 0,
+      "community": 298
+    },
+    {
+      "id": "test_utils_formatting.test_file",
+      "label": "test/utils/formatting.test.ts",
+      "type": "file",
+      "sourceFile": "test/utils/formatting.test.ts",
+      "centrality": 0.003,
+      "community": 300
+    },
+    {
+      "id": "test_utils_formatting.test_makeWorkItem",
+      "label": "makeWorkItem",
+      "type": "function",
+      "sourceFile": "test/utils/formatting.test.ts",
+      "sourceLocation": "L14",
+      "centrality": 0.003,
+      "community": 300
+    },
+    {
+      "id": "test_utils_pipeline-formatting-edge-cases.test_file",
+      "label": "test/utils/pipeline-formatting-edge-cases.test.ts",
+      "type": "file",
+      "sourceFile": "test/utils/pipeline-formatting-edge-cases.test.ts",
+      "centrality": 0,
+      "community": 301
+    },
+    {
+      "id": "test_utils_pipeline-formatting.test_file",
+      "label": "test/utils/pipeline-formatting.test.ts",
+      "type": "file",
+      "sourceFile": "test/utils/pipeline-formatting.test.ts",
+      "centrality": 0,
+      "community": 302
+    },
+    {
+      "id": "test_utils_repo-formatting-edge-cases.test_file",
+      "label": "test/utils/repo-formatting-edge-cases.test.ts",
+      "type": "file",
+      "sourceFile": "test/utils/repo-formatting-edge-cases.test.ts",
+      "centrality": 0,
+      "community": 303
+    },
+    {
+      "id": "test_utils_repo-formatting.test_file",
+      "label": "test/utils/repo-formatting.test.ts",
+      "type": "file",
+      "sourceFile": "test/utils/repo-formatting.test.ts",
+      "centrality": 0,
+      "community": 304
+    },
+    {
+      "id": "test_utils_testplan-formatting-edge-cases.test_file",
+      "label": "test/utils/testplan-formatting-edge-cases.test.ts",
+      "type": "file",
+      "sourceFile": "test/utils/testplan-formatting-edge-cases.test.ts",
+      "centrality": 0,
+      "community": 305
+    },
+    {
+      "id": "test_utils_testplan-formatting.test_file",
+      "label": "test/utils/testplan-formatting.test.ts",
+      "type": "file",
+      "sourceFile": "test/utils/testplan-formatting.test.ts",
+      "centrality": 0,
+      "community": 306
+    }
+  ],
+  "edges": [
+    {
+      "source": "package_file",
+      "target": "package_name",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "package_file",
+      "target": "package_version",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "package_file",
+      "target": "package_description",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "package_file",
+      "target": "package_keywords",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "package_file",
+      "target": "package_author",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "package_file",
+      "target": "package_license",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "package_file",
+      "target": "package_type",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "package_file",
+      "target": "package_engines",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "package_file",
+      "target": "package_repository",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "package_file",
+      "target": "package_bugs",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "package_file",
+      "target": "package_scripts",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "package_file",
+      "target": "package_dependencies",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "package_file",
+      "target": "package_peerDependencies",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "package_file",
+      "target": "package_devDependencies",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "package_file",
+      "target": "package_overrides",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "package_file",
+      "target": "package_publishConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "package_file",
+      "target": "package_pi",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_auth_azure-cli_file",
+      "target": "src_auth_azure-cli_IRequestHandler",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_auth_azure-cli_file",
+      "target": "src_auth_azure-cli_AzureCliAuthResult",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_auth_azure-cli_file",
+      "target": "src_auth_azure-cli_AzAccessToken",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_auth_azure-cli_file",
+      "target": "src_auth_azure-cli_isAzureCliAvailable",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_auth_azure-cli_file",
+      "target": "src_auth_azure-cli_acquireToken",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_auth_azure-cli_file",
+      "target": "src_auth_azure-cli_createAzureCliAuth",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_auth_azure-cli_createAzureCliAuth",
+      "target": "src_auth_azure-cli_acquireToken",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_auth_azure-cli_file",
+      "target": "src_auth_azure-cli_clearTokenCache",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_auth_index_file",
+      "target": "src_auth_pat_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_auth_index_file",
+      "target": "src_auth_azure-cli_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_auth_index_file",
+      "target": "src_auth_index_IRequestHandler",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_auth_index_file",
+      "target": "src_auth_index_AuthResult",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_auth_index_file",
+      "target": "src_auth_index_resolveAuth",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_auth_index_resolveAuth",
+      "target": "src_auth_index_getMethodsToTry",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_auth_index_file",
+      "target": "src_auth_index_tryResolveAuth",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_auth_index_tryResolveAuth",
+      "target": "src_auth_index_resolveAuth",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_auth_index_file",
+      "target": "src_auth_index_getMethodsToTry",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_auth_index_file",
+      "target": "src_auth_index_AuthResolutionError",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_auth_index_file",
+      "target": "src_auth_index_AuthResolutionError_attemptedMethods",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_auth_index_AuthResolutionError",
+      "target": "src_auth_index_AuthResolutionError_attemptedMethods",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_auth_index_file",
+      "target": "src_auth_index_AuthResolutionError_constructor",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_auth_index_AuthResolutionError",
+      "target": "src_auth_index_AuthResolutionError_constructor",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_auth_pat_file",
+      "target": "src_auth_pat_PatAuthResult",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_auth_pat_file",
+      "target": "src_auth_pat_createPatAuth",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_autocomplete_iteration-autocomplete_file",
+      "target": "src_autocomplete_iteration-autocomplete_IterationSummary",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_autocomplete_iteration-autocomplete_file",
+      "target": "src_autocomplete_iteration-autocomplete_extractIterationToken",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_autocomplete_iteration-autocomplete_file",
+      "target": "src_autocomplete_iteration-autocomplete_formatIterationItem",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_autocomplete_iteration-autocomplete_file",
+      "target": "src_autocomplete_iteration-autocomplete_filterIterations",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_autocomplete_iteration-autocomplete_file",
+      "target": "src_autocomplete_iteration-autocomplete_loadIterationsFromMockData",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_autocomplete_iteration-autocomplete_file",
+      "target": "src_autocomplete_iteration-autocomplete_loadIterationsFromApi",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_autocomplete_iteration-autocomplete_file",
+      "target": "src_autocomplete_iteration-autocomplete_createIterationAutocompleteProvider",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_autocomplete_iteration-autocomplete_createIterationAutocompleteProvider",
+      "target": "src_autocomplete_iteration-autocomplete_extractIterationToken",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_autocomplete_iteration-autocomplete_createIterationAutocompleteProvider",
+      "target": "src_autocomplete_iteration-autocomplete_filterIterations",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_autocomplete_iteration-autocomplete_file",
+      "target": "src_autocomplete_iteration-autocomplete_registerIterationAutocomplete",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_autocomplete_iteration-autocomplete_registerIterationAutocomplete",
+      "target": "src_autocomplete_iteration-autocomplete_loadIterationsFromMockData",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_autocomplete_iteration-autocomplete_registerIterationAutocomplete",
+      "target": "src_autocomplete_iteration-autocomplete_loadIterationsFromApi",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_autocomplete_iteration-autocomplete_registerIterationAutocomplete",
+      "target": "src_autocomplete_iteration-autocomplete_createIterationAutocompleteProvider",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_autocomplete_work-item-autocomplete_file",
+      "target": "src_autocomplete_work-item-autocomplete_WorkItemSummary",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_autocomplete_work-item-autocomplete_file",
+      "target": "src_autocomplete_work-item-autocomplete_extractWorkItemToken",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_autocomplete_work-item-autocomplete_file",
+      "target": "src_autocomplete_work-item-autocomplete_formatWorkItemItem",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_autocomplete_work-item-autocomplete_file",
+      "target": "src_autocomplete_work-item-autocomplete_filterWorkItems",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_autocomplete_work-item-autocomplete_file",
+      "target": "src_autocomplete_work-item-autocomplete_createWorkItemAutocompleteProvider",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_autocomplete_work-item-autocomplete_createWorkItemAutocompleteProvider",
+      "target": "src_autocomplete_work-item-autocomplete_extractWorkItemToken",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_autocomplete_work-item-autocomplete_createWorkItemAutocompleteProvider",
+      "target": "src_autocomplete_work-item-autocomplete_filterWorkItems",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_autocomplete_work-item-autocomplete_file",
+      "target": "src_autocomplete_work-item-autocomplete_loadWorkItemsFromApi",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_autocomplete_work-item-autocomplete_file",
+      "target": "src_autocomplete_work-item-autocomplete_loadWorkItemsFromMock",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_autocomplete_work-item-autocomplete_file",
+      "target": "src_autocomplete_work-item-autocomplete_registerAutocomplete",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_autocomplete_work-item-autocomplete_registerAutocomplete",
+      "target": "src_autocomplete_work-item-autocomplete_loadWorkItemsFromMock",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_autocomplete_work-item-autocomplete_registerAutocomplete",
+      "target": "src_autocomplete_work-item-autocomplete_loadWorkItemsFromApi",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_autocomplete_work-item-autocomplete_registerAutocomplete",
+      "target": "src_autocomplete_work-item-autocomplete_createWorkItemAutocompleteProvider",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_config_index_file",
+      "target": "src_config_index_AuthMethod",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_file",
+      "target": "src_config_index_SafetyLevel",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_file",
+      "target": "src_config_index_ProjectConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_file",
+      "target": "src_config_index_OrgConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_file",
+      "target": "src_config_index_AzureDevOpsRootConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_file",
+      "target": "src_config_index_AzureDevOpsConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_file",
+      "target": "src_config_index_ConfigError",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_file",
+      "target": "src_config_index_ConfigError_missing",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_ConfigError",
+      "target": "src_config_index_ConfigError_missing",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_file",
+      "target": "src_config_index_ConfigError_constructor",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_ConfigError",
+      "target": "src_config_index_ConfigError_constructor",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_file",
+      "target": "src_config_index_getAgentDir",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_file",
+      "target": "src_config_index_getConfigPath",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_getConfigPath",
+      "target": "src_config_index_getAgentDir",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_config_index_file",
+      "target": "src_config_index_readConfigFile",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_readConfigFile",
+      "target": "src_config_index_getConfigPath",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_config_index_readConfigFile",
+      "target": "src_config_index_ensureConfigTemplate",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_config_index_file",
+      "target": "src_config_index_findOrg",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_file",
+      "target": "src_config_index_findProject",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_file",
+      "target": "src_config_index_validateAuthMethod",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_file",
+      "target": "src_config_index_validateSafetyLevel",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_file",
+      "target": "src_config_index_resolveEffectiveSafetyLevel",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_resolveEffectiveSafetyLevel",
+      "target": "src_config_index_validateSafetyLevel",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_config_index_resolveEffectiveSafetyLevel",
+      "target": "src_config_index_validateSafetyLevel",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_config_index_resolveEffectiveSafetyLevel",
+      "target": "src_config_index_validateSafetyLevel",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_config_index_file",
+      "target": "src_config_index_resolveConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_resolveConfig",
+      "target": "src_config_index_readConfigFile",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_config_index_resolveConfig",
+      "target": "src_config_index_findOrg",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_config_index_resolveConfig",
+      "target": "src_config_index_findProject",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_config_index_resolveConfig",
+      "target": "src_config_index_validateAuthMethod",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_config_index_resolveConfig",
+      "target": "src_config_index_resolveEffectiveSafetyLevel",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_config_index_file",
+      "target": "src_config_index_tryResolveConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_tryResolveConfig",
+      "target": "src_config_index_resolveConfig",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_config_index_file",
+      "target": "src_config_index_resolveOrgProjectConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_resolveOrgProjectConfig",
+      "target": "src_config_index_readConfigFile",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_config_index_resolveOrgProjectConfig",
+      "target": "src_config_index_resolveEffectiveSafetyLevel",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_config_index_file",
+      "target": "src_config_index_resolveAllOrgConfigs",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_resolveAllOrgConfigs",
+      "target": "src_config_index_readConfigFile",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_config_index_resolveAllOrgConfigs",
+      "target": "src_config_index_validateAuthMethod",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_config_index_resolveAllOrgConfigs",
+      "target": "src_config_index_resolveEffectiveSafetyLevel",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_config_index_file",
+      "target": "src_config_index_ensureConfigTemplate",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_config_index_ensureConfigTemplate",
+      "target": "src_config_index_getConfigPath",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_extension_index_file",
+      "target": "src_extension_index_ToolExecuteParams",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_board-detail_file",
+      "target": "src_mocks_fixtures_board-detail_boardDetails",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_boards_file",
+      "target": "src_mocks_fixtures_boards_boards",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_branches_file",
+      "target": "src_mocks_fixtures_branches_branches",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_capacity_file",
+      "target": "src_mocks_fixtures_capacity_capacities",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_comments_file",
+      "target": "src_mocks_fixtures_comments_comments",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_iteration-work-items_file",
+      "target": "src_mocks_fixtures_iteration-work-items_iterationWorkItems",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_iterations_file",
+      "target": "src_mocks_fixtures_iterations_iterations",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_pipelines_file",
+      "target": "src_mocks_fixtures_pipelines_pipelines",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_policies_file",
+      "target": "src_mocks_fixtures_policies_policies",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_policy-evaluations_file",
+      "target": "src_mocks_fixtures_policy-evaluations_evaluations",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_pr-commits_file",
+      "target": "src_mocks_fixtures_pr-commits_prCommits",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_pr-threads_file",
+      "target": "src_mocks_fixtures_pr-threads_prThreads",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_pull-requests_file",
+      "target": "src_mocks_fixtures_pull-requests_pullRequests",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_repos_file",
+      "target": "src_mocks_fixtures_repos_repositories",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_revisions_file",
+      "target": "src_mocks_fixtures_revisions_revisions",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_run-artifacts_file",
+      "target": "src_mocks_fixtures_run-artifacts_artifacts",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_run-logs_file",
+      "target": "src_mocks_fixtures_run-logs_logs",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_run-timeline_file",
+      "target": "src_mocks_fixtures_run-timeline_timelines",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_runs_file",
+      "target": "src_mocks_fixtures_runs_runs",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_teams_file",
+      "target": "src_mocks_fixtures_teams_teams",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_test-cases_file",
+      "target": "src_mocks_fixtures_test-cases_testCases",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_test-plans_file",
+      "target": "src_mocks_fixtures_test-plans_testPlans",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_test-points_file",
+      "target": "src_mocks_fixtures_test-points_testPoints",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_test-results_file",
+      "target": "src_mocks_fixtures_test-results_testResults",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_test-runs_file",
+      "target": "src_mocks_fixtures_test-runs_testRuns",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_test-suites_file",
+      "target": "src_mocks_fixtures_test-suites_testSuites",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_work-item-types_file",
+      "target": "src_mocks_fixtures_work-item-types_workItemTypes",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_mocks_fixtures_work-items_file",
+      "target": "src_mocks_fixtures_work-items_workItems",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_safety_index_file",
+      "target": "src_safety_index_isMutationTool",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_safety_index_file",
+      "target": "src_safety_index_shouldBlock",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_safety_index_shouldBlock",
+      "target": "src_safety_index_isMutationTool",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_safety_index_file",
+      "target": "src_safety_index_MutationParams",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_safety_index_file",
+      "target": "src_safety_index_formatMutationSummary",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_add-pull-request-comment_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_add-work-item-comment_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_cancel-run_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_create-pull-request_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_create-test-run_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_create-work-item_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_doctor_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_doctor_file",
+      "target": "src_tools_doctor_runDoctor",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_doctor_runDoctor",
+      "target": "src_tools_doctor_formatMockReport",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_tools_doctor_file",
+      "target": "src_tools_doctor_formatMockReport",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_get-board_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_get-capacity_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_get-iteration-work-items_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_get-pipeline_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_get-policy-evaluations_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_get-pull-request-commits_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_get-pull-request-threads_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_get-pull-request_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_get-repo_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_get-run-artifacts_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_get-run-logs_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_get-run-timeline_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_get-run_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_get-test-plan_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_get-test-run_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_get-test-suite_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_get-work-item-comments_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_get-work-item-revisions_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_get-work-item_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_link-pr-work-items_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_list-boards_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_list-branches_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_list-iterations_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_list-pipelines_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_list-policies_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_list-pull-requests_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_list-repos_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_list-runs_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_list-teams_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_list-test-cases_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_list-test-plans_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_list-test-points_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_list-test-runs_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_list-test-suites_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_list-work-item-types_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_manage-work-item-links_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_query-work-items_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_retry-run_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_run-pipeline_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_set-board-columns_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_set-capacity_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_set-iteration_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_set-pull-request-autocomplete_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_set-pull-request-vote_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_shared_file",
+      "target": "src_tools_shared_ToolResult",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_shared_file",
+      "target": "src_tools_shared_textResult",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_shared_file",
+      "target": "src_tools_shared_errorResult",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_shared_file",
+      "target": "src_tools_shared_isMock",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_shared_file",
+      "target": "src_tools_shared_isMutationTool",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_shared_file",
+      "target": "src_tools_shared_resolveEffectiveConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_shared_file",
+      "target": "src_tools_shared_TeamContext",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_shared_file",
+      "target": "src_tools_shared_resolveTeamContext",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_update-pull-request_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_update-test-results_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_tools_update-work-item_file",
+      "target": "src_tools_shared_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_utils_connection_file",
+      "target": "src_utils_connection_getConnection",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_utils_connection_file",
+      "target": "src_utils_connection_getWorkItemTrackingApi",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_utils_connection_getWorkItemTrackingApi",
+      "target": "src_utils_connection_getConnection",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_utils_connection_file",
+      "target": "src_utils_connection_getWorkApi",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_utils_connection_getWorkApi",
+      "target": "src_utils_connection_getConnection",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_utils_connection_file",
+      "target": "src_utils_connection_getCoreApi",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_utils_connection_getCoreApi",
+      "target": "src_utils_connection_getConnection",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_utils_connection_file",
+      "target": "src_utils_connection_getGitApi",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_utils_connection_getGitApi",
+      "target": "src_utils_connection_getConnection",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_utils_connection_file",
+      "target": "src_utils_connection_getPolicyApi",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_utils_connection_getPolicyApi",
+      "target": "src_utils_connection_getConnection",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_utils_connection_file",
+      "target": "src_utils_connection_getBuildApi",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_utils_connection_getBuildApi",
+      "target": "src_utils_connection_getConnection",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_utils_connection_file",
+      "target": "src_utils_connection_getPipelinesApi",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_utils_connection_getPipelinesApi",
+      "target": "src_utils_connection_getConnection",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_utils_connection_file",
+      "target": "src_utils_connection_getTestPlanApi",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_utils_connection_getTestPlanApi",
+      "target": "src_utils_connection_getConnection",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_utils_connection_file",
+      "target": "src_utils_connection_getTestResultsApi",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_utils_connection_getTestResultsApi",
+      "target": "src_utils_connection_getConnection",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_utils_connection_file",
+      "target": "src_utils_connection_clearConnectionCache",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_utils_errors_file",
+      "target": "src_utils_errors_formatAdoError",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_utils_errors_file",
+      "target": "src_utils_errors_isAuthError",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_utils_errors_file",
+      "target": "src_utils_errors_isNotFoundError",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_auth_auth-resolver.test_file",
+      "target": "test_auth_auth-resolver.test_makeConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_config_config-edge-cases.test_file",
+      "target": "test_config_config-edge-cases.test_setup",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_config_config-edge-cases.test_file",
+      "target": "test_config_config-edge-cases.test_teardown",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_config_config-resolver.test_file",
+      "target": "test_config_config-resolver.test_setup",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_config_config-resolver.test_file",
+      "target": "test_config_config-resolver.test_teardown",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_config_team-config.test_file",
+      "target": "test_config_team-config.test_setup",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_config_team-config.test_file",
+      "target": "test_config_team-config.test_teardown",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_tools_board-read-edge-cases.test_file",
+      "target": "test_tools_board-read-edge-cases.test_mockConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_tools_board-read-tools.test_file",
+      "target": "test_tools_board-read-tools.test_mockConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_tools_board-write-edge-cases.test_file",
+      "target": "test_tools_board-write-edge-cases.test_mockConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_tools_board-write-tools.test_file",
+      "target": "test_tools_board-write-tools.test_mockConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_tools_doctor.test_file",
+      "target": "test_tools_doctor.test_makeConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_tools_doctor.test_file",
+      "target": "test_tools_doctor.test_writeConfigFile",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_tools_pipeline-read-edge-cases.test_file",
+      "target": "test_tools_pipeline-read-edge-cases.test_makeConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_tools_pipeline-read-tools.test_file",
+      "target": "test_tools_pipeline-read-tools.test_makeConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_tools_pipeline-write-edge-cases.test_file",
+      "target": "test_tools_pipeline-write-edge-cases.test_makeConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_tools_pipeline-write-tools.test_file",
+      "target": "test_tools_pipeline-write-tools.test_makeConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_tools_read-tools.test_file",
+      "target": "test_tools_read-tools.test_makeConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_tools_repo-read-edge-cases.test_file",
+      "target": "test_tools_repo-read-edge-cases.test_makeConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_tools_repo-read-tools.test_file",
+      "target": "test_tools_repo-read-tools.test_makeConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_tools_repo-write-edge-cases.test_file",
+      "target": "test_tools_repo-write-edge-cases.test_makeConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_tools_repo-write-tools.test_file",
+      "target": "test_tools_repo-write-tools.test_makeConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_tools_testplan-read-edge-cases.test_file",
+      "target": "test_tools_testplan-read-edge-cases.test_makeConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_tools_testplan-read-tools.test_file",
+      "target": "test_tools_testplan-read-tools.test_makeConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_tools_testplan-write-edge-cases.test_file",
+      "target": "test_tools_testplan-write-edge-cases.test_makeConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_tools_testplan-write-tools.test_file",
+      "target": "test_tools_testplan-write-tools.test_makeConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_tools_write-tools.test_file",
+      "target": "test_tools_write-tools.test_makeConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_utils_formatting.test_file",
+      "target": "test_utils_formatting.test_makeWorkItem",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    }
+  ]
+}
