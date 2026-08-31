@@ -602,7 +602,7 @@
       "type": "function",
       "sourceFile": "src/config/index.ts",
       "sourceLocation": "L124",
-      "centrality": 0.004,
+      "centrality": 0.003,
       "community": 59
     },
     {
@@ -1749,7 +1749,7 @@
       "label": "src/utils/connection.ts",
       "type": "file",
       "sourceFile": "src/utils/connection.ts",
-      "centrality": 0.01,
+      "centrality": 0.011,
       "community": 211
     },
     {
@@ -1758,7 +1758,7 @@
       "type": "function",
       "sourceFile": "src/utils/connection.ts",
       "sourceLocation": "L17",
-      "centrality": 0.009,
+      "centrality": 0.01,
       "community": 210
     },
     {
@@ -2585,7 +2585,7 @@
       "type": "interface",
       "sourceFile": "src/status.ts",
       "sourceLocation": "L20",
-      "centrality": 0.002,
+      "centrality": 0.001,
       "community": 59
     },
     {
@@ -2612,7 +2612,7 @@
       "type": "function",
       "sourceFile": "src/status.ts",
       "sourceLocation": "L80",
-      "centrality": 0.002,
+      "centrality": 0.001,
       "community": 59
     },
     {
@@ -2621,7 +2621,7 @@
       "type": "function",
       "sourceFile": "src/status.ts",
       "sourceLocation": "L94",
-      "centrality": 0.002,
+      "centrality": 0.001,
       "community": 59
     },
     {
@@ -2664,6 +2664,15 @@
       "sourceFile": "undefined/pi-azure-devops.json",
       "centrality": 0.002,
       "community": 316
+    },
+    {
+      "id": "src_utils_connection_getConnectionCacheKey",
+      "label": "getConnectionCacheKey",
+      "type": "function",
+      "sourceFile": "src/utils/connection.ts",
+      "sourceLocation": "L15",
+      "centrality": 0.002,
+      "community": 211
     }
   ],
   "edges": [
@@ -4309,6 +4318,19 @@
       "target": "undefined_pi-azure-devops_safetyLevel",
       "relation": "contains",
       "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_utils_connection_file",
+      "target": "src_utils_connection_getConnectionCacheKey",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_utils_connection_getConnection",
+      "target": "src_utils_connection_getConnectionCacheKey",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
     }
   ]
 }
