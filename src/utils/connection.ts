@@ -7,24 +7,32 @@ import { WebApi } from "azure-devops-node-api";
 import type { AzureDevOpsConfig } from "../config/index.ts";
 import { resolveAuth } from "../auth/index.ts";
 
-// Cache per session — keyed by orgUrl
+// Cache per session — keyed by orgUrl + auth method + PAT.
+// Including the PAT means rotating a token invalidates the stale connection
+// immediately, instead of serving an expired-auth WebApi until restart.
 const connections = new Map<string, WebApi>();
+
+function getConnectionCacheKey(config: AzureDevOpsConfig): string {
+	return `${config.orgUrl}::${config.authMethod}::${config.pat ?? ""}`;
+}
 
 /**
  * Get or create an authenticated WebApi connection.
- * Cached by orgUrl so we reuse connections within a session.
+ * Cached by orgUrl + auth method + PAT so reusing a session connection stays
+ * efficient, while a token change produces a fresh, properly-authenticated one.
  */
 export async function getConnection(
 	config: AzureDevOpsConfig,
 	signal?: AbortSignal,
 ): Promise<WebApi> {
-	const cached = connections.get(config.orgUrl);
+	const key = getConnectionCacheKey(config);
+	const cached = connections.get(key);
 	if (cached) return cached;
 
 	const authResult = await resolveAuth(config, signal);
 	const connection = new WebApi(config.orgUrl, authResult.handler);
 
-	connections.set(config.orgUrl, connection);
+	connections.set(key, connection);
 	return connection;
 }
 
