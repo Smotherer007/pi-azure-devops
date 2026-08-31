@@ -13,7 +13,7 @@
       "label": "package.json",
       "type": "file",
       "sourceFile": "package.json",
-      "centrality": 0.027,
+      "centrality": 0.026,
       "community": 2
     },
     {
@@ -237,7 +237,7 @@
       "label": "src/auth/index.ts",
       "type": "file",
       "sourceFile": "src/auth/index.ts",
-      "centrality": 0.012,
+      "centrality": 0.011,
       "community": 38
     },
     {
@@ -273,7 +273,7 @@
       "type": "function",
       "sourceFile": "src/auth/index.ts",
       "sourceLocation": "L58",
-      "centrality": 0.003,
+      "centrality": 0.002,
       "community": 38
     },
     {
@@ -282,7 +282,7 @@
       "type": "function",
       "sourceFile": "src/auth/index.ts",
       "sourceLocation": "L69",
-      "centrality": 0.003,
+      "centrality": 0.002,
       "community": 38
     },
     {
@@ -300,7 +300,7 @@
       "type": "method",
       "sourceFile": "src/auth/index.ts",
       "sourceLocation": "L82",
-      "centrality": 0.003,
+      "centrality": 0.002,
       "community": 38
     },
     {
@@ -309,7 +309,7 @@
       "type": "method",
       "sourceFile": "src/auth/index.ts",
       "sourceLocation": "L83",
-      "centrality": 0.003,
+      "centrality": 0.002,
       "community": 38
     },
     {
@@ -343,7 +343,7 @@
       "label": "src/autocomplete/iteration-autocomplete.ts",
       "type": "file",
       "sourceFile": "src/autocomplete/iteration-autocomplete.ts",
-      "centrality": 0.009,
+      "centrality": 0.008,
       "community": 41
     },
     {
@@ -423,7 +423,7 @@
       "label": "src/autocomplete/work-item-autocomplete.ts",
       "type": "file",
       "sourceFile": "src/autocomplete/work-item-autocomplete.ts",
-      "centrality": 0.009,
+      "centrality": 0.008,
       "community": 50
     },
     {
@@ -1645,7 +1645,7 @@
       "label": "src/tools/shared.ts",
       "type": "file",
       "sourceFile": "src/tools/shared.ts",
-      "centrality": 0.093,
+      "centrality": 0.09,
       "community": 198
     },
     {
@@ -1891,7 +1891,7 @@
       "label": "test/auth/auth-resolver.test.ts",
       "type": "file",
       "sourceFile": "test/auth/auth-resolver.test.ts",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 226
     },
     {
@@ -1900,7 +1900,7 @@
       "type": "function",
       "sourceFile": "test/auth/auth-resolver.test.ts",
       "sourceLocation": "L10",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 226
     },
     {
@@ -1940,7 +1940,7 @@
       "label": "test/config/config-edge-cases.test.ts",
       "type": "file",
       "sourceFile": "test/config/config-edge-cases.test.ts",
-      "centrality": 0.005,
+      "centrality": 0.001,
       "community": 232
     },
     {
@@ -1949,7 +1949,7 @@
       "type": "function",
       "sourceFile": "test/config/config-edge-cases.test.ts",
       "sourceLocation": "L13",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 232
     },
     {
@@ -1958,7 +1958,7 @@
       "type": "function",
       "sourceFile": "test/config/config-edge-cases.test.ts",
       "sourceLocation": "L19",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 232
     },
     {
@@ -1966,7 +1966,7 @@
       "label": "test/config/config-resolver.test.ts",
       "type": "file",
       "sourceFile": "test/config/config-resolver.test.ts",
-      "centrality": 0.005,
+      "centrality": 0.001,
       "community": 235
     },
     {
@@ -1975,7 +1975,7 @@
       "type": "function",
       "sourceFile": "test/config/config-resolver.test.ts",
       "sourceLocation": "L17",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 235
     },
     {
@@ -1984,7 +1984,7 @@
       "type": "function",
       "sourceFile": "test/config/config-resolver.test.ts",
       "sourceLocation": "L25",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 235
     },
     {
@@ -2000,7 +2000,7 @@
       "label": "test/config/team-config.test.ts",
       "type": "file",
       "sourceFile": "test/config/team-config.test.ts",
-      "centrality": 0.005,
+      "centrality": 0.001,
       "community": 239
     },
     {
@@ -2009,7 +2009,7 @@
       "type": "function",
       "sourceFile": "test/config/team-config.test.ts",
       "sourceLocation": "L13",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 239
     },
     {
@@ -2018,7 +2018,7 @@
       "type": "function",
       "sourceFile": "test/config/team-config.test.ts",
       "sourceLocation": "L19",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 239
     },
     {
@@ -2138,7 +2138,7 @@
       "label": "test/tools/board-read-edge-cases.test.ts",
       "type": "file",
       "sourceFile": "test/tools/board-read-edge-cases.test.ts",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 256
     },
     {
@@ -2147,7 +2147,7 @@
       "type": "function",
       "sourceFile": "test/tools/board-read-edge-cases.test.ts",
       "sourceLocation": "L5",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 256
     },
     {
@@ -2155,7 +2155,7 @@
       "label": "test/tools/board-read-tools.test.ts",
       "type": "file",
       "sourceFile": "test/tools/board-read-tools.test.ts",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 258
     },
     {
@@ -2164,7 +2164,7 @@
       "type": "function",
       "sourceFile": "test/tools/board-read-tools.test.ts",
       "sourceLocation": "L6",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 258
     },
     {
@@ -2172,7 +2172,7 @@
       "label": "test/tools/board-write-edge-cases.test.ts",
       "type": "file",
       "sourceFile": "test/tools/board-write-edge-cases.test.ts",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 260
     },
     {
@@ -2181,7 +2181,7 @@
       "type": "function",
       "sourceFile": "test/tools/board-write-edge-cases.test.ts",
       "sourceLocation": "L5",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 260
     },
     {
@@ -2189,7 +2189,7 @@
       "label": "test/tools/board-write-tools.test.ts",
       "type": "file",
       "sourceFile": "test/tools/board-write-tools.test.ts",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 262
     },
     {
@@ -2198,7 +2198,7 @@
       "type": "function",
       "sourceFile": "test/tools/board-write-tools.test.ts",
       "sourceLocation": "L5",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 262
     },
     {
@@ -2206,7 +2206,7 @@
       "label": "test/tools/doctor.test.ts",
       "type": "file",
       "sourceFile": "test/tools/doctor.test.ts",
-      "centrality": 0.005,
+      "centrality": 0.001,
       "community": 264
     },
     {
@@ -2215,7 +2215,7 @@
       "type": "function",
       "sourceFile": "test/tools/doctor.test.ts",
       "sourceLocation": "L14",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 264
     },
     {
@@ -2225,7 +2225,7 @@
       "sourceFile": "test/tools/doctor.test.ts",
       "sourceLocation": "L36",
       "description": "Write a valid pi-azure-devops.json to the test dir so resolveAllOrgConfigs can find it",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 264
     },
     {
@@ -2233,7 +2233,7 @@
       "label": "test/tools/pipeline-read-edge-cases.test.ts",
       "type": "file",
       "sourceFile": "test/tools/pipeline-read-edge-cases.test.ts",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 267
     },
     {
@@ -2242,7 +2242,7 @@
       "type": "function",
       "sourceFile": "test/tools/pipeline-read-edge-cases.test.ts",
       "sourceLocation": "L5",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 267
     },
     {
@@ -2250,7 +2250,7 @@
       "label": "test/tools/pipeline-read-tools.test.ts",
       "type": "file",
       "sourceFile": "test/tools/pipeline-read-tools.test.ts",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 269
     },
     {
@@ -2259,7 +2259,7 @@
       "type": "function",
       "sourceFile": "test/tools/pipeline-read-tools.test.ts",
       "sourceLocation": "L5",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 269
     },
     {
@@ -2267,7 +2267,7 @@
       "label": "test/tools/pipeline-write-edge-cases.test.ts",
       "type": "file",
       "sourceFile": "test/tools/pipeline-write-edge-cases.test.ts",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 271
     },
     {
@@ -2276,7 +2276,7 @@
       "type": "function",
       "sourceFile": "test/tools/pipeline-write-edge-cases.test.ts",
       "sourceLocation": "L5",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 271
     },
     {
@@ -2284,7 +2284,7 @@
       "label": "test/tools/pipeline-write-tools.test.ts",
       "type": "file",
       "sourceFile": "test/tools/pipeline-write-tools.test.ts",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 273
     },
     {
@@ -2293,7 +2293,7 @@
       "type": "function",
       "sourceFile": "test/tools/pipeline-write-tools.test.ts",
       "sourceLocation": "L5",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 273
     },
     {
@@ -2301,7 +2301,7 @@
       "label": "test/tools/read-tools.test.ts",
       "type": "file",
       "sourceFile": "test/tools/read-tools.test.ts",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 275
     },
     {
@@ -2310,7 +2310,7 @@
       "type": "function",
       "sourceFile": "test/tools/read-tools.test.ts",
       "sourceLocation": "L14",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 275
     },
     {
@@ -2318,7 +2318,7 @@
       "label": "test/tools/repo-read-edge-cases.test.ts",
       "type": "file",
       "sourceFile": "test/tools/repo-read-edge-cases.test.ts",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 277
     },
     {
@@ -2327,7 +2327,7 @@
       "type": "function",
       "sourceFile": "test/tools/repo-read-edge-cases.test.ts",
       "sourceLocation": "L5",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 277
     },
     {
@@ -2335,7 +2335,7 @@
       "label": "test/tools/repo-read-tools.test.ts",
       "type": "file",
       "sourceFile": "test/tools/repo-read-tools.test.ts",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 279
     },
     {
@@ -2344,7 +2344,7 @@
       "type": "function",
       "sourceFile": "test/tools/repo-read-tools.test.ts",
       "sourceLocation": "L6",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 279
     },
     {
@@ -2352,7 +2352,7 @@
       "label": "test/tools/repo-write-edge-cases.test.ts",
       "type": "file",
       "sourceFile": "test/tools/repo-write-edge-cases.test.ts",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 281
     },
     {
@@ -2361,7 +2361,7 @@
       "type": "function",
       "sourceFile": "test/tools/repo-write-edge-cases.test.ts",
       "sourceLocation": "L5",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 281
     },
     {
@@ -2369,7 +2369,7 @@
       "label": "test/tools/repo-write-tools.test.ts",
       "type": "file",
       "sourceFile": "test/tools/repo-write-tools.test.ts",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 283
     },
     {
@@ -2378,7 +2378,7 @@
       "type": "function",
       "sourceFile": "test/tools/repo-write-tools.test.ts",
       "sourceLocation": "L6",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 283
     },
     {
@@ -2394,7 +2394,7 @@
       "label": "test/tools/testplan-read-edge-cases.test.ts",
       "type": "file",
       "sourceFile": "test/tools/testplan-read-edge-cases.test.ts",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 286
     },
     {
@@ -2403,7 +2403,7 @@
       "type": "function",
       "sourceFile": "test/tools/testplan-read-edge-cases.test.ts",
       "sourceLocation": "L5",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 286
     },
     {
@@ -2411,7 +2411,7 @@
       "label": "test/tools/testplan-read-tools.test.ts",
       "type": "file",
       "sourceFile": "test/tools/testplan-read-tools.test.ts",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 288
     },
     {
@@ -2420,7 +2420,7 @@
       "type": "function",
       "sourceFile": "test/tools/testplan-read-tools.test.ts",
       "sourceLocation": "L5",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 288
     },
     {
@@ -2428,7 +2428,7 @@
       "label": "test/tools/testplan-write-edge-cases.test.ts",
       "type": "file",
       "sourceFile": "test/tools/testplan-write-edge-cases.test.ts",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 290
     },
     {
@@ -2437,7 +2437,7 @@
       "type": "function",
       "sourceFile": "test/tools/testplan-write-edge-cases.test.ts",
       "sourceLocation": "L5",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 290
     },
     {
@@ -2445,7 +2445,7 @@
       "label": "test/tools/testplan-write-tools.test.ts",
       "type": "file",
       "sourceFile": "test/tools/testplan-write-tools.test.ts",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 292
     },
     {
@@ -2454,7 +2454,7 @@
       "type": "function",
       "sourceFile": "test/tools/testplan-write-tools.test.ts",
       "sourceLocation": "L5",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 292
     },
     {
@@ -2462,7 +2462,7 @@
       "label": "test/tools/write-tools.test.ts",
       "type": "file",
       "sourceFile": "test/tools/write-tools.test.ts",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 294
     },
     {
@@ -2471,7 +2471,7 @@
       "type": "function",
       "sourceFile": "test/tools/write-tools.test.ts",
       "sourceLocation": "L13",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 294
     },
     {
@@ -2511,7 +2511,7 @@
       "label": "test/utils/formatting.test.ts",
       "type": "file",
       "sourceFile": "test/utils/formatting.test.ts",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 300
     },
     {
@@ -2520,7 +2520,7 @@
       "type": "function",
       "sourceFile": "test/utils/formatting.test.ts",
       "sourceLocation": "L14",
-      "centrality": 0.003,
+      "centrality": 0,
       "community": 300
     },
     {
@@ -2570,6 +2570,100 @@
       "sourceFile": "test/utils/testplan-formatting.test.ts",
       "centrality": 0,
       "community": 306
+    },
+    {
+      "id": "src_status_file",
+      "label": "src/status.ts",
+      "type": "file",
+      "sourceFile": "src/status.ts",
+      "centrality": 0.007,
+      "community": 59
+    },
+    {
+      "id": "src_status_ConnectionCard",
+      "label": "ConnectionCard",
+      "type": "interface",
+      "sourceFile": "src/status.ts",
+      "sourceLocation": "L20",
+      "centrality": 0.002,
+      "community": 59
+    },
+    {
+      "id": "src_status_extractOrgName",
+      "label": "extractOrgName",
+      "type": "function",
+      "sourceFile": "src/status.ts",
+      "sourceLocation": "L49",
+      "centrality": 0.003,
+      "community": 59
+    },
+    {
+      "id": "src_status_buildConnectionCard",
+      "label": "buildConnectionCard",
+      "type": "function",
+      "sourceFile": "src/status.ts",
+      "sourceLocation": "L58",
+      "centrality": 0.003,
+      "community": 59
+    },
+    {
+      "id": "src_status_buildConnectionLabel",
+      "label": "buildConnectionLabel",
+      "type": "function",
+      "sourceFile": "src/status.ts",
+      "sourceLocation": "L80",
+      "centrality": 0.002,
+      "community": 59
+    },
+    {
+      "id": "src_status_formatStatusText",
+      "label": "formatStatusText",
+      "type": "function",
+      "sourceFile": "src/status.ts",
+      "sourceLocation": "L94",
+      "centrality": 0.002,
+      "community": 59
+    },
+    {
+      "id": "test_status_status.test_file",
+      "label": "test/status/status.test.ts",
+      "type": "file",
+      "sourceFile": "test/status/status.test.ts",
+      "centrality": 0,
+      "community": 314
+    },
+    {
+      "id": "test_status_status.test_makeConfig",
+      "label": "makeConfig",
+      "type": "function",
+      "sourceFile": "test/status/status.test.ts",
+      "sourceLocation": "L16",
+      "centrality": 0,
+      "community": 314
+    },
+    {
+      "id": "undefined_pi-azure-devops_file",
+      "label": "undefined/pi-azure-devops.json",
+      "type": "file",
+      "sourceFile": "undefined/pi-azure-devops.json",
+      "centrality": 0.005,
+      "community": 316
+    },
+    {
+      "id": "undefined_pi-azure-devops_orgs",
+      "label": "orgs",
+      "type": "field",
+      "sourceFile": "undefined/pi-azure-devops.json",
+      "centrality": 0.002,
+      "community": 316
+    },
+    {
+      "id": "undefined_pi-azure-devops_safetyLevel",
+      "label": "safetyLevel",
+      "type": "field",
+      "sourceFile": "undefined/pi-azure-devops.json",
+      "centrality": 0.002,
+      "community": 316
     }
   ],
   "edges": [
@@ -3122,20 +3216,6 @@
       "target": "src_config_index_resolveEffectiveSafetyLevel",
       "relation": "contains",
       "confidence": "EXTRACTED"
-    },
-    {
-      "source": "src_config_index_resolveEffectiveSafetyLevel",
-      "target": "src_config_index_validateSafetyLevel",
-      "relation": "calls",
-      "confidence": "INFERRED",
-      "confidenceScore": 0.85
-    },
-    {
-      "source": "src_config_index_resolveEffectiveSafetyLevel",
-      "target": "src_config_index_validateSafetyLevel",
-      "relation": "calls",
-      "confidence": "INFERRED",
-      "confidenceScore": 0.85
     },
     {
       "source": "src_config_index_resolveEffectiveSafetyLevel",
@@ -4166,6 +4246,67 @@
     {
       "source": "test_utils_formatting.test_file",
       "target": "test_utils_formatting.test_makeWorkItem",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_status_file",
+      "target": "src_config_index_file",
+      "relation": "imports",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_status_file",
+      "target": "src_status_ConnectionCard",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_status_file",
+      "target": "src_status_extractOrgName",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_status_file",
+      "target": "src_status_buildConnectionCard",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_status_buildConnectionCard",
+      "target": "src_status_extractOrgName",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidenceScore": 0.85
+    },
+    {
+      "source": "src_status_file",
+      "target": "src_status_buildConnectionLabel",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_status_file",
+      "target": "src_status_formatStatusText",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "test_status_status.test_file",
+      "target": "test_status_status.test_makeConfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "undefined_pi-azure-devops_file",
+      "target": "undefined_pi-azure-devops_orgs",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "undefined_pi-azure-devops_file",
+      "target": "undefined_pi-azure-devops_safetyLevel",
       "relation": "contains",
       "confidence": "EXTRACTED"
     }
