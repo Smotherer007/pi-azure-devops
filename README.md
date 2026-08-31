@@ -115,6 +115,8 @@ pi install /path/to/pi-azure-devops
 | `azure_devops_update_pull_request` | Update PR (title, status) |
 | `azure_devops_add_pull_request_comment` | Comment on a PR |
 | `azure_devops_set_pull_request_vote` | Vote on a PR |
+| `azure_devops_set_pull_request_autocomplete` | Enable/disable PR auto-complete |
+| `azure_devops_link_pr_work_items` | Link/unlink work items to a PR |
 
 ### Pipelines
 
@@ -150,6 +152,7 @@ pi install /path/to/pi-azure-devops
 
 | Command | Description |
 |---------|-------------|
+| `/azure-devops-status` | Show the current Azure DevOps connection status (org/project/team/safety) |
 | `/azure-devops-doctor` | Check Azure DevOps configuration, auth, and connection health |
 | `/azure-devops-triage [filter]` | Triage untriaged work items |
 | `/azure-devops-status-report [group]` | Status report by state, assignee, etc. |
@@ -164,6 +167,19 @@ pi install /path/to/pi-azure-devops
 | `/azure-devops-pr-creator <repo> <branch>` | Create a pull request |
 | `/azure-devops-test-status [run-id]` | Test run status report |
 | `/azure-devops-test-runner [plan-id]` | Create and manage a test run |
+
+## Connection Status
+
+On session start the extension shows the active connection in two places, both driven by `src/status.ts`:
+
+- **Footer status line** — `ctx.ui.setStatus` renders a compact `ADO · org/project · @team · safety` label.
+- **Persistent connection card** — an entry rendered inside the transcript (via `appendEntry` + `registerEntryRenderer`) with the full connection details. It is **not** sent to the LLM and survives `/reload`.
+
+Use `/azure-devops-status` to re-publish the connection card and refresh the footer at any time.
+
+| Command | Behavior |
+|---------|----------|
+| `/azure-devops-status` | Re-publish the connection card and update the footer status |
 
 ## Configuration
 
@@ -226,8 +242,9 @@ The extension follows a modular architecture:
 
 - **`src/config/index.ts`** — Configuration management from `pi-azure-devops.json`
 - **`src/auth/`** — PAT and Azure CLI authentication
-- **`src/tools/*.ts`** — 52 individual tool definitions
+- **`src/tools/*.ts`** — 54 individual tool definitions
 - **`src/extension/index.ts`** — Extension entry point, tool registration, safety interceptor
+- **`src/status.ts`** — Connection status builders (footer label, connection card, status text)
 - **`src/utils/`** — Connection factory, error handling, formatting
 - **`src/autocomplete/`** — `#id` and `@sprint` autocomplete providers
 - **`src/safety/`** — Mutation safety gates
@@ -246,7 +263,7 @@ This package is forked from [jwayong/pi-azure-devops](https://github.com/jwayong
 
 ## Requirements
 
-- Node.js 20.12+
+- Node.js 26+ (native TypeScript type stripping; CI also verifies Node 22)
 - pi coding agent 0.70.0+
 - Azure DevOps organization with PAT access
 
@@ -254,6 +271,7 @@ This package is forked from [jwayong/pi-azure-devops](https://github.com/jwayong
 
 - [azure-devops-node-api](https://www.npmjs.com/package/azure-devops-node-api) — Azure DevOps REST API client
 - [typebox](https://www.npmjs.com/package/typebox) — Runtime type validation
+- [@earendil-works/pi-tui](https://www.npmjs.com/package/@earendil-works/pi-tui) — TUI components for custom entry rendering
 
 ## Publishing as a pi Package
 
@@ -272,10 +290,8 @@ The package catalog auto-discovers packages with the `pi-package` keyword from n
 ### Continuous Integration (`.github/workflows/ci.yml`)
 
 Runs on every push and PR to `main`/`master`:
-- Matrix testing across Node.js 18, 20, 22
-- Type checking (`npm run typecheck`)
-- Unit tests (`npm test`)
-- Coverage reporting to Codecov (Node 22 only)
+- Matrix testing across Node.js 22 and 26
+- Unit tests (`npm test`) — native TypeScript via Node's type stripping
 
 ### Automated Release (`.github/workflows/release.yml`)
 

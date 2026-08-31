@@ -28,7 +28,8 @@
   },
   "dependencies": {
     "azure-devops-node-api": "^15.1.0",
-    "typebox": "^1.2.8"
+    "typebox": "^1.2.8",
+    "@earendil-works/pi-tui": "^0.80.3"
   },
   "peerDependencies": {
     "@earendil-works/pi-coding-agent": ">=0.70.0",

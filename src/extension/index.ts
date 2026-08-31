@@ -1,5 +1,12 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { Type } from "typebox";
+import { Box, Text } from "@earendil-works/pi-tui";
+import {
+	buildConnectionCard,
+	buildConnectionLabel,
+	formatStatusText,
+	type ConnectionCard,
+} from "../status.ts";
 import { resolveConfig, tryResolveConfig, ensureConfigTemplate, type AzureDevOpsConfig } from "../config/index.ts";
 import { isMutationTool, formatMutationSummary } from "../safety/index.ts";
 import { doctorTool } from "../tools/doctor.ts";
@@ -138,6 +145,43 @@ export default function (pi: ExtensionAPI) {
 	// Resolve config once per session
 	let config: AzureDevOpsConfig | undefined;
 
+	// Connection status card — rendered in the transcript, never sent to the LLM.
+	pi.registerEntryRenderer<ConnectionCard>(
+		"azure-devops-connection",
+		(entry, { expanded }, theme) => {
+			const card = entry.data;
+			const box = new Box(1, 1, (text) => theme.bg("customMessageBg", text));
+			box.addChild(new Text(theme.fg("accent", theme.bold("Azure DevOps")), 0, 0));
+			if (!card) {
+				box.addChild(new Text(theme.fg("warning", "not configured"), 0, 0));
+				return box;
+			}
+			box.addChild(new Text(theme.fg("dim", `${card.org}/${card.project}`), 0, 0));
+			if (expanded) {
+				box.addChild(new Text(theme.fg("muted", formatStatusText(card)), 0, 0));
+			}
+			return box;
+		},
+	);
+
+	// `/azure-devops-status` — re-publish the connection card and update the footer.
+	pi.registerCommand("azure-devops-status", {
+		description: "Show the current Azure DevOps connection status",
+		handler: async (_args, ctx) => {
+			const card = buildConnectionCard(config);
+			if (!card) {
+				ctx.ui.notify(
+					"Azure DevOps: no config found. See ~/.pi/agent/pi-azure-devops.json",
+					"warning",
+				);
+				return;
+			}
+			pi.appendEntry<ConnectionCard>("azure-devops-connection", card);
+			ctx.ui.setStatus("azure-devops", buildConnectionLabel(card));
+			ctx.ui.notify(buildConnectionLabel(card), "info");
+		},
+	});
+
 	pi.on("session_start", async (_event, ctx) => {
 		// Auto-create template config if missing
 		ensureConfigTemplate();
@@ -164,6 +208,18 @@ export default function (pi: ExtensionAPI) {
 			(wrapper) => ctx.ui.addAutocompleteProvider(wrapper),
 			config,
 		);
+
+		// Connection status — footer label + persisted connection card (survives /reload).
+		const card = buildConnectionCard(config);
+		if (card) {
+			ctx.ui.setStatus("azure-devops", buildConnectionLabel(card));
+			const existing = ctx.sessionManager.getEntries().some(
+				(e) => e.type === "custom" && e.customType === "azure-devops-connection",
+			);
+			if (!existing) {
+				pi.appendEntry<ConnectionCard>("azure-devops-connection", card);
+			}
+		}
 	});
 
 	// Register all tools
