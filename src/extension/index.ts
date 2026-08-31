@@ -177,7 +177,7 @@ export default function (pi: ExtensionAPI) {
 				return;
 			}
 			pi.appendEntry<ConnectionCard>("azure-devops-connection", card);
-			ctx.ui.setStatus("azure-devops", buildConnectionLabel(card));
+			ctx.ui.setStatus("azure-devops", ctx.ui.theme.fg("success", buildConnectionLabel(card)));
 			ctx.ui.notify(buildConnectionLabel(card), "info");
 		},
 	});
@@ -212,7 +212,7 @@ export default function (pi: ExtensionAPI) {
 		// Connection status — footer label + persisted connection card (survives /reload).
 		const card = buildConnectionCard(config);
 		if (card) {
-			ctx.ui.setStatus("azure-devops", buildConnectionLabel(card));
+			ctx.ui.setStatus("azure-devops", ctx.ui.theme.fg("success", buildConnectionLabel(card)));
 			const existing = ctx.sessionManager.getEntries().some(
 				(e) => e.type === "custom" && e.customType === "azure-devops-connection",
 			);

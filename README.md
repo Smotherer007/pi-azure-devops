@@ -172,7 +172,7 @@ pi install /path/to/pi-azure-devops
 
 On session start the extension shows the active connection in two places, both driven by `src/status.ts`:
 
-- **Footer status line** — `ctx.ui.setStatus` renders a compact `ADO · org/project · @team · safety` label.
+- **Footer status line** — `ctx.ui.setStatus` renders a compact green `✓ Azure DevOps · org/project · @team` label (no safety level in the status line).
 - **Persistent connection card** — an entry rendered inside the transcript (via `appendEntry` + `registerEntryRenderer`) with the full connection details. It is **not** sent to the LLM and survives `/reload`.
 
 Use `/azure-devops-status` to re-publish the connection card and refresh the footer at any time.

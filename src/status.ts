@@ -74,18 +74,18 @@ export function buildConnectionCard(
 }
 
 /**
- * Short footer label, e.g. "ADO · neoimpulse/MyProject · confirm".
+ * Short footer label, e.g. "✓ Azure DevOps · neoimpulse/MyProject".
+ * Positive, green-friendly health label — no safety level, no mock marker.
  * Falls back to a "not configured" hint when no card is available.
  */
 export function buildConnectionLabel(card: ConnectionCard | undefined): string {
 	if (!card) {
-		return "ADO · not configured";
+		return "Azure DevOps · not configured";
 	}
 
 	const parts: string[] = [`${card.org}/${card.project}`];
 	if (card.team) parts.push(`@${card.team}`);
-	parts.push(card.mock ? "mock" : card.safetyLevel);
-	return `ADO · ${parts.join(" · ")}`;
+	return `✓ Azure DevOps · ${parts.join(" · ")}`;
 }
 
 /**

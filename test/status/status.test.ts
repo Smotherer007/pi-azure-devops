@@ -97,22 +97,17 @@ describe("buildConnectionCard", () => {
 
 describe("buildConnectionLabel", () => {
 	it("labels a not-configured card", () => {
-		assert.equal(buildConnectionLabel(undefined), "ADO · not configured");
+		assert.equal(buildConnectionLabel(undefined), "Azure DevOps · not configured");
 	});
 
-	it("includes org/project + safety", () => {
+	it("includes org/project without safety level", () => {
 		const card = buildConnectionCard(makeConfig())!;
-		assert.equal(buildConnectionLabel(card), "ADO · neoimpulse/PI Agent Reviewer · confirm");
+		assert.equal(buildConnectionLabel(card), "✓ Azure DevOps · neoimpulse/PI Agent Reviewer");
 	});
 
 	it("includes the team when configured", () => {
 		const card = buildConnectionCard(makeConfig({ team: "Platform" }))!;
-		assert.equal(buildConnectionLabel(card), "ADO · neoimpulse/PI Agent Reviewer · @Platform · confirm");
-	});
-
-	it("shows mock mode instead of safety level", () => {
-		const card = buildConnectionCard(makeConfig({ mock: true }))!;
-		assert.equal(buildConnectionLabel(card), "ADO · neoimpulse/PI Agent Reviewer · mock");
+		assert.equal(buildConnectionLabel(card), "✓ Azure DevOps · neoimpulse/PI Agent Reviewer · @Platform");
 	});
 });
 
